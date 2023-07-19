@@ -53,11 +53,18 @@ extension ECKeyPair {
 
 public extension Identity {
     static func generate(from seed: Data) throws -> (ed25519KeyPair: Sign.KeyPair, x25519KeyPair: ECKeyPair) {
-        guard (seed.count == 16) else { throw GeneralError.invalidSeed }
-        let padding = Data(repeating: 0, count: 16)
-        
+        var data : Data?
+        if seed.count == 16 {
+            data = seed + Data(repeating: 0, count: 16)
+        }
+        if seed.count == 32 {
+            data = seed
+        }
+        guard let data = data else{
+            throw GeneralError.invalidSeed
+        }
         guard
-            let ed25519KeyPair = Sodium().sign.keyPair(seed: (seed + padding).bytes),
+            let ed25519KeyPair = Sodium().sign.keyPair(seed: (data).bytes),
             let x25519PublicKey = Sodium().sign.toX25519(ed25519PublicKey: ed25519KeyPair.publicKey),
             let x25519SecretKey = Sodium().sign.toX25519(ed25519SecretKey: ed25519KeyPair.secretKey)
         else {

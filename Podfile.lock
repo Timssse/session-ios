@@ -14,10 +14,12 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - Alamofire (5.7.1)
+  - BigInt (5.2.0)
   - CocoaLumberjack (3.8.0):
     - CocoaLumberjack/Core (= 3.8.0)
   - CocoaLumberjack/Core (3.8.0)
-  - CryptoSwift (1.4.2)
+  - CryptoSwift (1.5.1)
   - Curve25519Kit (2.1.0):
     - CocoaLumberjack
     - SignalCoreKit
@@ -27,8 +29,10 @@ PODS:
   - DifferenceKit/Core (1.3.0)
   - DifferenceKit/UIKitExtension (1.3.0):
     - DifferenceKit/Core
+  - GQImageVideoViewer (0.0.4)
   - GRDB.swift/SQLCipher (6.13.0):
     - SQLCipher (>= 3.4.2)
+  - HandyJSON (5.0.4-beta)
   - JFPopup (1.5.3):
     - JRBaseKit (~> 1.0.0)
   - JRBaseKit (1.0.0)
@@ -41,7 +45,6 @@ PODS:
   - libwebp/mux (1.2.1):
     - libwebp/demux
   - libwebp/webp (1.2.1)
-  - Nimble (10.0.0)
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
@@ -56,9 +59,12 @@ PODS:
   - PromiseKit/UIKit (6.15.3):
     - PromiseKit/CorePromise
   - PureLayout (3.1.9)
-  - Quick (5.0.1)
   - Reachability (3.2)
   - SAMKeychain (1.5.3)
+  - SDWebImage (5.15.8):
+    - SDWebImage/Core (= 5.15.8)
+  - SDWebImage/Core (5.15.8)
+  - secp256k1.c (0.1.2)
   - SignalCoreKit (1.0.0):
     - CocoaLumberjack
     - OpenSSL-Universal
@@ -70,6 +76,7 @@ PODS:
   - SQLCipher/common (4.5.3)
   - SQLCipher/standard (4.5.3):
     - SQLCipher/common
+  - Starscream (4.0.4)
   - SwiftProtobuf (1.5.0)
   - TrustWalletCore (3.1.35):
     - TrustWalletCore/Core (= 3.1.35)
@@ -77,6 +84,13 @@ PODS:
     - TrustWalletCore/Types
   - TrustWalletCore/Types (3.1.35):
     - SwiftProtobuf
+  - Web3Core (3.1.2):
+    - BigInt (~> 5.2.0)
+    - CryptoSwift (~> 1.5.1)
+    - secp256k1.c (~> 0.1)
+  - web3swift (3.1.2):
+    - Starscream (~> 4.0.4)
+    - Web3Core (~> 3.1.2)
   - WebRTC-lib (96.0.0)
   - YapDatabase/SQLCipher (3.1.1):
     - YapDatabase/SQLCipher/Core (= 3.1.1)
@@ -150,18 +164,20 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - Alamofire
   - CryptoSwift
   - Curve25519Kit (from `https://github.com/oxen-io/session-ios-curve-25519-kit.git`, branch `session-version`)
   - DifferenceKit
+  - GQImageVideoViewer
   - GRDB.swift/SQLCipher
+  - HandyJSON (~> 5.0.4-beta)
   - JFPopup
-  - Nimble
   - NVActivityIndicatorView
   - PromiseKit
   - PureLayout (~> 3.1.8)
-  - Quick
   - Reachability
   - SAMKeychain
+  - SDWebImage
   - SignalCoreKit (from `https://github.com/oxen-io/session-ios-core-kit`, branch `session-version`)
   - SnapKit
   - SocketRocket (~> 0.5.1)
@@ -169,6 +185,7 @@ DEPENDENCIES:
   - SQLCipher (~> 4.5.3)
   - SwiftProtobuf (~> 1.5.0)
   - TrustWalletCore
+  - web3swift (~> 3.1.2)
   - WebRTC-lib
   - YapDatabase/SQLCipher (from `https://github.com/oxen-io/session-ios-yap-database.git`, branch `signal-release`)
   - YYImage/libwebp (from `https://github.com/signalapp/YYImage`)
@@ -177,26 +194,33 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - Alamofire
+    - BigInt
     - CocoaLumberjack
     - CryptoSwift
     - DifferenceKit
+    - GQImageVideoViewer
     - GRDB.swift
+    - HandyJSON
     - JFPopup
     - JRBaseKit
     - libwebp
-    - Nimble
     - NVActivityIndicatorView
     - OpenSSL-Universal
     - PromiseKit
     - PureLayout
-    - Quick
     - Reachability
     - SAMKeychain
+    - SDWebImage
+    - secp256k1.c
     - SnapKit
     - SocketRocket
     - SQLCipher
+    - Starscream
     - SwiftProtobuf
     - TrustWalletCore
+    - Web3Core
+    - web3swift
     - WebRTC-lib
     - ZXingObjC
 
@@ -235,34 +259,41 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  BigInt: f668a80089607f521586bbe29513d708491ef2f7
   CocoaLumberjack: 78abfb691154e2a9df8ded4350d504ee19d90732
-  CryptoSwift: a532e74ed010f8c95f611d00b8bbae42e9fe7c17
+  CryptoSwift: c4f2debceb38bf44c80659afe009f71e23e4a082
   Curve25519Kit: e63f9859ede02438ae3defc5e1a87e09d1ec7ee6
   DifferenceKit: ab185c4d7f9cef8af3fcf593e5b387fb81e999ca
+  GQImageVideoViewer: 6f201f65e6355e1a17ace21324c97720c270abfe
   GRDB.swift: fe420b1af49ec519c7e96e07887ee44f5dfa2b78
+  HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
   JFPopup: 2b6ae1b160039f1ed07b2af742f3e438d7a49f27
   JRBaseKit: ed75cfce9e340a3316bee0eaac0fa1c400714287
   libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
-  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   OpenSSL-Universal: e7311447fd2419f57420c79524b641537387eff2
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
-  Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
+  SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
+  secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
   SignalCoreKit: 1fbd8732163ef76de16cd1107d1fa3684b607e5d
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   Sodium: a7d42cb46e789d2630fa552d35870b416ed055ae
   SQLCipher: 57fa9f863fa4a3ed9dd3c90ace52315db8c0fdca
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
   TrustWalletCore: 188beb78722894c4cd4419ea30ef2dc793489401
+  Web3Core: 050eb18f0434ac16c42eb7b2270fbce325935128
+  web3swift: 8496f6615c3a1f86e7c9e5fe16c5422ef181527b
   WebRTC-lib: 508fe02efa0c1a3a8867082a77d24c9be5d29aeb
   YapDatabase: b418a4baa6906e8028748938f9159807fd039af4
   YYImage: f1ddd15ac032a58b78bbed1e012b50302d318331
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 8291d54196be4ab2915416a140317d8d40932c3c
+PODFILE CHECKSUM: a4a32c27c4382b902337e50873c19867435d47e9
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.11.3

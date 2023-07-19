@@ -26,7 +26,7 @@ open class ScreenLockViewController: UIViewController {
     // MARK: - UI
     
     private let logoView: UIImageView = {
-        let result: UIImageView = UIImageView(image: #imageLiteral(resourceName: "SessionGreen64"))
+        let result: UIImageView = UIImageView(image: UIImage(named: "launch_logo"))
         result.contentMode = .scaleAspectFit
         result.isHidden = true
         
@@ -71,8 +71,8 @@ open class ScreenLockViewController: UIViewController {
         
         edgesView.addSubview(logoView)
         logoView.center(in: edgesView)
-        logoView.set(.width, to: 64)
-        logoView.set(.height, to: 64)
+        logoView.set(.width, to: 239)
+        logoView.set(.height, to: 131)
 
         edgesView.addSubview(unlockButton)
         unlockButton.pin(.top, to: .bottom, of: logoView, withInset: Values.mediumSpacing)

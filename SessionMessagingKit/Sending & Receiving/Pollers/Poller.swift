@@ -197,6 +197,7 @@ public final class Poller {
                         else {
                             SNLog("Received \(messageCount) new message\(messageCount == 1 ? "" : "s") (duplicates:  \(messages.count - messageCount))")
                         }
+                        
                     }
                 }
                 else {

@@ -207,7 +207,7 @@ public final class ProfilePictureView: UIView {
                     targetSize = 32
                 }
                 else if self.size == Values.largeProfilePictureSize {
-                    targetSize = 56
+                    targetSize = 88
                 }
                 else {
                     targetSize = Values.smallProfilePictureSize
@@ -242,6 +242,7 @@ public final class ProfilePictureView: UIView {
                 
             default:
                 targetSize = self.size
+            
                 imageViewWidthConstraint.constant = targetSize
                 imageViewHeightConstraint.constant = targetSize
                 additionalImageContainerView.isHidden = true

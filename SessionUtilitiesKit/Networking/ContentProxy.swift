@@ -46,7 +46,6 @@ public class ContentProxy: NSObject {
         return configuration
     }
     
-
     @objc
     public class func sessionManager(baseUrl baseUrlString: String?) -> AFHTTPSessionManager? {
         guard let baseUrlString = baseUrlString else {

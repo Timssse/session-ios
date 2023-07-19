@@ -4,7 +4,7 @@
 
 #import "OWSViewController.h"
 #import "UIView+OWS.h"
-#import <SessionUIKit/SessionUIKit.h>
+#import <SessionUIKit/EthmessengerUIKit.h>
 #import "AppContext.h"
 
 NS_ASSUME_NONNULL_BEGIN

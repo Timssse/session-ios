@@ -8,7 +8,7 @@ public enum Mnemonic {
         fileprivate let prefixLength: UInt
         
         public static let english = Language(filename: "english", prefixLength: 0)
-//        public static let japanese = Language(filename: "japanese", prefixLength: 3)
+        public static let old = Language(filename: "english_old", prefixLength: 3)
 //        public static let portuguese = Language(filename: "portuguese", prefixLength: 4)
 //        public static let spanish = Language(filename: "spanish", prefixLength: 4)
         
@@ -107,6 +107,43 @@ public enum Mnemonic {
     }
     
     public static func decode(mnemonic: String, language: Language = .english) throws -> String {
+        var words = mnemonic.split(separator: " ").map { String($0) }
+        let truncatedWordSet = language.loadWordSet()
+        let prefixLength = language.prefixLength
+        var result = ""
+        let n = truncatedWordSet.count
+        // Check preconditions
+        if words.count == 13{
+            return try oldDecode(mnemonic: mnemonic)
+        }
+        var bitString = ""
+        for word in words {
+//            let idx = language.words.index(of: word)
+            let idx = truncatedWordSet.firstIndex(of: word)
+            if (idx == nil) {
+                throw DecodingError.invalidWord
+            }
+            let idxAsInt = truncatedWordSet.startIndex.distance(to: idx!)
+            let stringForm = String(UInt16(idxAsInt), radix: 2).leftPadding(toLength: 11, withPad: "0")
+            bitString.append(stringForm)
+        }
+        let stringCount = bitString.count
+        if !stringCount.isMultiple(of: 33) {
+            throw DecodingError.invalidWord
+        }
+        let entropyBits = bitString[0 ..< (bitString.count - bitString.count/33)]
+        let checksumBits = bitString[(bitString.count - bitString.count/33) ..< bitString.count]
+        guard let entropy = entropyBits.interpretAsBinaryData() else {
+            throw DecodingError.invalidWord
+        }
+        let checksum = String(entropy.sha256().bitsInRange(0, checksumBits.count)!, radix: 2).leftPadding(toLength: checksumBits.count, withPad: "0")
+        if checksum != checksumBits {
+            throw DecodingError.invalidWord
+        }
+        return entropy.toHexString()
+    }
+    
+    public static func oldDecode(mnemonic: String, language: Language = .old) throws -> String {
         var words = mnemonic.split(separator: " ").map { String($0) }
         let truncatedWordSet = language.loadTruncatedWordSet()
         let prefixLength = language.prefixLength

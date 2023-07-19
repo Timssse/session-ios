@@ -18,22 +18,21 @@ abstract_target 'GlobalDependencies' do
   pod 'WebRTC-lib'
   pod 'SocketRocket', '~> 0.5.1'
   
-  target 'Session' do
+  target 'Ethmessenger' do
     pod 'AFNetworking'
     pod 'Reachability'
     pod 'PureLayout', '~> 3.1.8'
+    pod 'web3swift', '~> 3.1.2'
     pod 'NVActivityIndicatorView'
     pod 'YYImage/libwebp', git: 'https://github.com/signalapp/YYImage'
     pod 'ZXingObjC'
+    pod 'SDWebImage'
     pod 'DifferenceKit'
     pod 'TrustWalletCore'
+    pod 'HandyJSON', '~> 5.0.4-beta'
     pod 'JFPopup'
-    target 'SessionTests' do
-      inherit! :complete
-      
-      pod 'Quick'
-      pod 'Nimble'
-    end
+    pod 'Alamofire'
+    pod 'GQImageVideoViewer'
   end
   
   # Dependencies to be included only in all extensions/frameworks
@@ -70,28 +69,12 @@ abstract_target 'GlobalDependencies' do
         pod 'SwiftProtobuf', '~> 1.5.0'
         pod 'DifferenceKit'
         
-        target 'SessionMessagingKitTests' do
-          inherit! :complete
-          
-          pod 'Quick'
-          pod 'Nimble'
-          
-          # Need to include this for the tests because otherwise it won't actually build
-          pod 'YYImage/libwebp', git: 'https://github.com/signalapp/YYImage'
-        end
       end
       
       target 'SessionUtilitiesKit' do
         pod 'SAMKeychain'
         pod 'YYImage/libwebp', git: 'https://github.com/signalapp/YYImage'
         pod 'DifferenceKit'
-        
-        target 'SessionUtilitiesKitTests' do
-          inherit! :complete
-          
-          pod 'Quick'
-          pod 'Nimble'
-        end
       end
     end
   end
@@ -145,8 +128,5 @@ end
 # Workaround for Xcode 14.3:
 # Sourced from https://github.com/flutter/flutter/issues/123852#issuecomment-1493232105
 def xcode_14_3_workaround(installer)
-  system('sed -i \'\' \'44s/readlink/readlink -f/\' \'Pods/Target Support Files/Pods-GlobalDependencies-FrameworkAndExtensionDependencies-ExtendedDependencies-SessionMessagingKit-SessionMessagingKitTests/Pods-GlobalDependencies-FrameworkAndExtensionDependencies-ExtendedDependencies-SessionMessagingKit-SessionMessagingKitTests-frameworks.sh\'')
-  system('sed -i \'\' \'44s/readlink/readlink -f/\' \'Pods/Target Support Files/Pods-GlobalDependencies-FrameworkAndExtensionDependencies-ExtendedDependencies-SessionUtilitiesKit-SessionUtilitiesKitTests/Pods-GlobalDependencies-FrameworkAndExtensionDependencies-ExtendedDependencies-SessionUtilitiesKit-SessionUtilitiesKitTests-frameworks.sh\'')
   system('sed -i \'\' \'44s/readlink/readlink -f/\' \'Pods/Target Support Files/Pods-GlobalDependencies-Session/Pods-GlobalDependencies-Session-frameworks.sh\'')
-  system('sed -i \'\' \'44s/readlink/readlink -f/\' \'Pods/Target Support Files/Pods-GlobalDependencies-Session-SessionTests/Pods-GlobalDependencies-Session-SessionTests-frameworks.sh\'')
 end

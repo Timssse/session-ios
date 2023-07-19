@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D221A088169C9E5E00537ABF"
-               BuildableName = "Session.app"
-               BlueprintName = "Session"
+               BuildableName = "Ethmessenger.app"
+               BlueprintName = "Ethmessenger"
                ReferencedContainer = "container:Session.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D221A088169C9E5E00537ABF"
-            BuildableName = "Session.app"
-            BlueprintName = "Session"
+            BuildableName = "Ethmessenger.app"
+            BlueprintName = "Ethmessenger"
             ReferencedContainer = "container:Session.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D221A088169C9E5E00537ABF"
-            BuildableName = "Session.app"
-            BlueprintName = "Session"
+            BuildableName = "Ethmessenger.app"
+            BlueprintName = "Ethmessenger"
             ReferencedContainer = "container:Session.xcodeproj">
          </BuildableReference>
          <BuildableReference
@@ -173,8 +173,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D221A088169C9E5E00537ABF"
-            BuildableName = "Session.app"
-            BlueprintName = "Session"
+            BuildableName = "Ethmessenger.app"
+            BlueprintName = "Ethmessenger"
             ReferencedContainer = "container:Session.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -212,8 +212,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D221A088169C9E5E00537ABF"
-            BuildableName = "Session.app"
-            BlueprintName = "Session"
+            BuildableName = "Ethmessenger.app"
+            BlueprintName = "Ethmessenger"
             ReferencedContainer = "container:Session.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
