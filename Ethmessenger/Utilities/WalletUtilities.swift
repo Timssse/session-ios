@@ -47,12 +47,11 @@ public class WalletUtilities{
         return self.account.address
     }
     
-    
     static func signPersonalMessage(message : String) -> String?{
         guard let keystore = try! EthereumKeystoreV3(privateKey: Data(hex: self.account.privateKey),password: "")else{
             return nil
         }
-        guard let data = message.data(using: String.Encoding.ascii) else{
+        guard let data = message.data(using: String.Encoding.utf8) else{
             return nil
         }
         guard let result = try? Web3Signer.signPersonalMessage(data, keystore: keystore, account: keystore.addresses![0], password: "") else{
@@ -60,6 +59,4 @@ public class WalletUtilities{
         }
         return result.hexEncoded
     }
-    
-    
 }

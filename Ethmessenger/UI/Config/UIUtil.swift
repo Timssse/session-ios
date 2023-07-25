@@ -5,8 +5,7 @@ import UIKit
 class UIUtil{
     
     private class func topVC () -> UIViewController? {
-        let app = UIApplication.shared.delegate as? AppDelegate
-        return presentedVC(topVC: app?.window?.rootViewController)
+        return presentedVC(topVC: self.getWindow()?.rootViewController)
     }
     
     private class func presentedVC (topVC: UIViewController?) -> UIViewController? {
@@ -39,5 +38,10 @@ class UIUtil{
         } else {
             return topVC?.navigationController
         }
+    }
+    
+    class func getWindow() -> UIWindow?{
+        let app = UIApplication.shared.delegate as? AppDelegate
+        return app?.window
     }
 }

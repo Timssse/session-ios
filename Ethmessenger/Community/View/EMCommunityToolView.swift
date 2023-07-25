@@ -5,8 +5,8 @@ import UIKit
 class EMCommunityToolView: UIView {
     
     var likeBlock : (()->())?
-    var replyBlock : (()->())?
-    var forwardBlock : (()->())?
+//    var replyBlock : (()->())?
+//    var forwardBlock : (()->())?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,7 +42,8 @@ class EMCommunityToolView: UIView {
     
     lazy var btnReply : UIButton = {
         let btn = UIButton(type: .system,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_reply"),tintColor: .communitTool)
-        btn.addTarget(self, action: #selector(onclickReply), for: .touchUpInside)
+        btn.isUserInteractionEnabled = false
+//        btn.addTarget(self, action: #selector(onclickReply), for: .touchUpInside)
         return btn
     }()
     
@@ -52,7 +53,7 @@ class EMCommunityToolView: UIView {
         return btn
     }()
     
-    var model : EMHomeListEntity!{
+    var model : EMCommunityHomeListEntity!{
         didSet{
             btnLike.setTitle("  \(model.LikeCount)", for: .normal)
             btnReply.setTitle("  \(model.CommentCount)", for: .normal)
@@ -67,11 +68,15 @@ class EMCommunityToolView: UIView {
         self.likeBlock?()
     }
     
-    @objc func onclickReply(){
-        self.replyBlock?()
-    }
+//    @objc func onclickReply(){
+//        let vc = EMCommunityDetailPage(model: self.model)
+//        UIUtil.visibleNav()?.pushViewController(vc, animated: true)
+//    }
     
     @objc func onclickForword(){
-        self.forwardBlock?()
+//        self.forwardBlock?()
+        let vc = EMPublishPage(forward: self.model)
+        vc.modalPresentationStyle = .fullScreen
+        UIUtil.visibleVC()?.present(vc, animated: true)
     }
 }

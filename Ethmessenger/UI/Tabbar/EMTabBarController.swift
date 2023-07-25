@@ -14,6 +14,10 @@ class EMTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Task{
+            await EMCommunityController.login()
+            await EMCommunityController.config()
+        }
         self.tabBar.isHidden = true
         WalletUtilities.createAccount()
         NotificationCenter.default.addObserver(self, selector: #selector(messageChange(_:)), name: kNotifyRefreshMessageCount, object: nil)
@@ -51,10 +55,15 @@ class EMTabBarController: UITabBarController {
         addChild(homevc)
         let vc = EMCommunityMainPage()
         let twitter = StyledNavigationController(rootViewController: vc)
+        twitter.delegate = self
         addChild(twitter)
-        let settingVC = StyledNavigationController(rootViewController: EMSettingPage())
-        settingVC.delegate = self
-        addChild(settingVC)
+        let userVC = StyledNavigationController(rootViewController: EMUserPage())
+        userVC.delegate = self
+        addChild(userVC)
+        
+//        let settingVC = StyledNavigationController(rootViewController: EMSettingPage())
+//        settingVC.delegate = self
+//        addChild(settingVC)
     }
     
     lazy var itemChats : EMTabBarItem = {
@@ -91,6 +100,7 @@ extension EMTabBarController : UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if navigationController.viewControllers.count > 1{
             self.customTabBar.isHidden = true
+            self.customTabBar.isUserInteractionEnabled = false
         }
         if (viewController is EMHideNavigationBarProtocol){
             navigationController.setNavigationBarHidden(true, animated: true)
@@ -104,6 +114,7 @@ extension EMTabBarController : UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if navigationController.viewControllers.count <= 1{
             self.customTabBar.isHidden = false
+            self.customTabBar.isUserInteractionEnabled = true
         }
     }
 }

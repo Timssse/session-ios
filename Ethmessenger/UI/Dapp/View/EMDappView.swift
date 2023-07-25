@@ -149,7 +149,7 @@ extension EMDappView: WKUIDelegate {
     
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         let alertVC = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "cancel".localized, style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: LocalCancel.localized, style: .cancel) { (action) in
             completionHandler(false)
         }
         let deleteAction = UIAlertAction(title: "LocalConfirm".localized, style: .default) { (action) in

@@ -13,6 +13,14 @@ extension UIView{
             self.dealLayer(corner: corner)
         }
     }
+    
+    convenience init(_ color : UIColor,corner : CGFloat = 0) {
+        self.init()
+        self.backgroundColor = color
+        if corner > 0{
+            self.dealLayer(corner: corner)
+        }
+    }
 }
 
 extension UIView{

@@ -2,22 +2,26 @@
 
 import UIKit
 import SessionUIKit
-class EMCommunityMainPage: BaseVC,EMHideNavigationBarProtocol {
+class EMCommunityMainPage: BaseVC,EMHideNavigationBarProtocol,ThemedNavigation {
 
     let vc1 = EMCommunityFollowPage()
     let vc2 = EMCommunityExplorePage()
     
+    override var navigationBackground: ThemeValue { .conversationButton_background }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Task{
-            await EMCommunityController.login()
-        }
     }
-
+    
     override func layoutUI() {
         self.view.themeBackgroundColor = .navBack
         self.view.addSubview(pageTitleView)
         self.view.addSubview(pageView)
+        self.view.addSubview(btnAdd)
+        btnAdd.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-10.w)
+            make.bottom.equalToSuperview().offset(-safeBottomH-110.w)
+        }
     }
     
     lazy var pageTitleView : SGPagingTitleView = {
@@ -35,9 +39,21 @@ class EMCommunityMainPage: BaseVC,EMHideNavigationBarProtocol {
         view.themeBackgroundColor = .conversationButton_background
         return view
     }()
+    
+    lazy var btnAdd : UIButton = {
+        let btn = UIButton(image: UIImage(named: "icon_community_add"))
+        btn.addTarget(self, action: #selector(onclickAdd), for: .touchUpInside)
+        return btn
+    }()
 }
 
 extension EMCommunityMainPage : SGPagingContentViewDelegate,SGPagingTitleViewDelegate{
+    @objc func onclickAdd(){
+        let vc = EMPublishPage(forward: nil)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+    
     func pagingTitleView(titleView: SGPagingTitleView, index: Int) {
         pageView.setPagingContentView(index: index)
     }

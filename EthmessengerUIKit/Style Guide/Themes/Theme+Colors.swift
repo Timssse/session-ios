@@ -14,6 +14,7 @@ public extension Theme {
         case red
         case orange
         case yellow
+        case defaultColor
         
         internal init?(color: UIColor?) {
             guard
@@ -33,6 +34,7 @@ public extension Theme {
                 case .red: return #colorLiteral(red: 1, green: 0.6117647059, blue: 0.5568627451, alpha: 1)            // #FF9C8E
                 case .orange: return #colorLiteral(red: 0.9882352941, green: 0.6941176471, blue: 0.3490196078, alpha: 1)         // #FCB159
                 case .yellow: return #colorLiteral(red: 0.9803921569, green: 0.8392156863, blue: 0.3411764706, alpha: 1)         // #FAD657
+                case .defaultColor: return #colorLiteral(red: 0.2431372549, green: 0.4, blue: 0.9843137255, alpha: 1)         // #FAD657
             }
         }
     }
@@ -94,14 +96,18 @@ internal extension UIColor {
     static let navBack : UIColor = #colorLiteral(red: 0.8901960784, green: 0.8980392157, blue: 0.9058823529, alpha: 1)           //E3E5E7
     static let messageBubble_outgoingBackground : UIColor = #colorLiteral(red: 0.2431372549, green: 0.4, blue: 0.9843137255, alpha: 1)           //3E66FB
     static let messageBubble_incomingBackgroundLight : UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)      // #FFFFFF
-    static let messageBubble_incomingBackgroundDark : UIColor = #colorLiteral(red: 0.1529411765, green: 0.1529411765, blue: 0.1529411765, alpha: 1)      // #272727
+    static let color_272727 : UIColor = #colorLiteral(red: 0.1529411765, green: 0.1529411765, blue: 0.1529411765, alpha: 1)      // #272727
     static let chatBackgroundPrimaryDark : UIColor = #colorLiteral(red: 0.1058823529, green: 0.1058823529, blue: 0.1058823529, alpha: 1)      // #1B1B1B
     static let chatBackgroundPrimaryLight : UIColor = #colorLiteral(red: 0.9764705882, green: 0.9803921569, blue: 0.9803921569, alpha: 1)        // #F9FAFA
     static let color_616569 : UIColor = #colorLiteral(red: 0.3803921569, green: 0.3960784314, blue: 0.4117647059, alpha: 1)        // #616569
     static let color_606060 : UIColor = #colorLiteral(red: 0.3764705882, green: 0.3764705882, blue: 0.3764705882, alpha: 1)        // #606060
     static let color_C2C9D1 : UIColor = #colorLiteral(red: 0.7607843137, green: 0.7882352941, blue: 0.8196078431, alpha: 1)        // #C2C9D1
     static let color_BEBEBE : UIColor = #colorLiteral(red: 0.7450980392, green: 0.7450980392, blue: 0.7450980392, alpha: 1)        // #BEBEBE
-    
+    static let color_91979D : UIColor = #colorLiteral(red: 0.568627451, green: 0.5921568627, blue: 0.6156862745, alpha: 1)        // #91979D
+    static let color_FFFFFF_A30 : UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)        // #FFFFFF aplha 0.3
+    static let color_1B1B1B_A80 : UIColor = #colorLiteral(red: 0.1058823529, green: 0.1058823529, blue: 0.1058823529, alpha: 0.8)        // #1b1b1b aplha 0.8
+    static let color_FFFFFF_A80 : UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.8)        // #FFFFFF aplha 0.8
+    static let color_DDE3EF : UIColor = #colorLiteral(red: 0.8666666667, green: 0.8901960784, blue: 0.937254902, alpha: 1)        // #DDE3EF
 }
 
 public extension UIColor {

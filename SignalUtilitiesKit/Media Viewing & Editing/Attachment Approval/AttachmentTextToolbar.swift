@@ -62,7 +62,7 @@ class AttachmentTextToolbar: UIView, UITextViewDelegate {
         textView.accessibilityIdentifier = "Text input box"
         textView.isAccessibilityElement = true
 
-        let sendTitle = NSLocalizedString("ATTACHMENT_APPROVAL_SEND_BUTTON", comment: "Label for 'send' button in the 'attachment approval' dialog.")
+        let sendTitle = NSLocalizedString("LocalSend", comment: "Label for 'send' button in the 'attachment approval' dialog.")
         sendButton.setTitle(sendTitle, for: .normal)
         sendButton.addTarget(self, action: #selector(didTapSend), for: .touchUpInside)
 

@@ -3,11 +3,11 @@
 import UIKit
 
 class EMCommunityForwardView: UIView {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.dealLayer(corner: 4.w)
-        self.themeBackgroundColor = .chatBackgroundPrimary
+        self.themeBackgroundColor = .forwardingBGColor
         self.addSubview(icon)
         icon.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(15.w)
@@ -68,7 +68,7 @@ class EMCommunityForwardView: UIView {
     
     lazy var labContent : UILabel = {
         let lab = UILabel(font: UIFont.Regular(size: 13),textColor: .textPrimary)
-        lab.numberOfLines = 0
+        lab.numberOfLines = 3
         return lab
     }()
     
@@ -80,19 +80,20 @@ class EMCommunityForwardView: UIView {
         let collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(EMCommunityImageItem.self, forCellWithReuseIdentifier: "EMCommunityImageItem")
         return collectionView
     }()
     
-    var model : EMHomeListEntity?{
+    var model : EMCommunityHomeListEntity?{
         didSet{
             icon.sd_setImage(with: URL(string: model?.UserInfo?.Avatar ?? ""),placeholderImage: UIImage(named: ""))
             labName.text = model?.UserInfo?.Nickname
-            labTime.text = model?.showTime
+            labTime.text = model?.CreatedAt.showTime
             labContent.text = model?.Content
-            let imageHeight = ceil(CGFloat(model!.images.count)/3.0) * 66.w
+            let imageHeight = model!.images.count > 0 ? 66.w : 0
+            
             imagesCollectionView.snp.updateConstraints { make in
                 make.height.equalTo(imageHeight)
             }

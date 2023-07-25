@@ -19,5 +19,16 @@ extension Int {
             return (Screen_height/812.0)*CGFloat(self)
         }
     }
+    
+    var showTime : String{
+        let difference = Date().timeIntervalSince1970 - Double(self)
+        if difference < 60 * 60{
+            return "\(Int(ceil(difference/60))) \(LocalMinAgo.localized())"
+        }
+        if difference < 60 * 60 * 24{
+            return "\(Int(ceil(difference/60/60))) \(LocalHourAgo.localized())"
+        }
+        return "\(self)".toyyyyMMdd("yyyy.MM.dd")
+    }
 }
 

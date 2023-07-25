@@ -117,7 +117,15 @@ internal enum Theme_ClassicLight: ThemeColors {
         .setting_icon_icon : .color_616569,
         .tab_select_bg : .white,
         .textGary1 : .color_C2C9D1,
-        .communitTool : .color_BEBEBE
-        
+        .communitTool : .color_BEBEBE,
+        .textPlaceholder : .color_BEBEBE,
+        .communitInput : .white,
+        .iconColor : .color_616569,
+        .forwardingBGColor : .chatBackgroundPrimaryLight,
+        .user_session_bg : .color_FFFFFF_A30,
+        .color_91979D : .color_91979D,
+        .color_616569 : .color_616569,
+        .user_communit_bg : .color_FFFFFF_A80,
+        .emptyContent : .color_DDE3EF
     ]
 }

@@ -1053,7 +1053,7 @@ extension ConversationVC:
             UIPasteboard.general.string = url.absoluteString
             self?.showInputAccessoryView()
         })
-        actionSheet.addAction(UIAlertAction(title: "cancel".localized(), style: .cancel) { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: LocalCancel.localized(), style: .cancel) { [weak self] _ in
             self?.showInputAccessoryView()
         })
         

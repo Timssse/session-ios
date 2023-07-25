@@ -212,6 +212,24 @@ public indirect enum ThemeValue: Hashable {
     case textGary1
     
     case communitTool
+    
+    case communitInput
+    
+    case textPlaceholder
+    
+    case iconColor
+    
+    case forwardingBGColor
+    
+    case user_session_bg
+    
+    case color_91979D
+    
+    case color_616569
+    
+    case user_communit_bg
+    
+    case emptyContent 
 }
 
 // MARK: - ForcedThemeValue

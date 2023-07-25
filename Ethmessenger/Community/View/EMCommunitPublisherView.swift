@@ -3,6 +3,9 @@
 import UIKit
 
 class EMCommunitPublisherView: UIView {
+    
+    var updateModel : ((_ model : EMCommunityHomeListEntity)->())?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(icon)
@@ -24,7 +27,7 @@ class EMCommunitPublisherView: UIView {
         }
         
         let more = UIButton(type: .system,image: UIImage(named: "icon_community_more"),tintColor: .setting_icon_icon)
-        more.addTarget(self, action: #selector(onclickMore), for: .touchUpInside)
+        more.addTarget(self, action: #selector(onclickMore(_:)), for: .touchUpInside)
         self.addSubview(more)
         more.snp.makeConstraints { make in
             make.right.top.equalToSuperview()
@@ -54,15 +57,24 @@ class EMCommunitPublisherView: UIView {
     }()
     
     
-    var model : EMHomeListEntity!{
+    var model : EMCommunityHomeListEntity!{
         didSet{
-            icon.sd_setImage(with: URL(string: model.UserInfo?.Avatar ?? ""),placeholderImage: UIImage(named: "icon_community_default"))
+            icon.sd_setImage(with: URL(string: model.UserInfo?.Avatar ?? ""),placeholderImage: icon_default)
             labName.text = model.UserInfo?.Nickname
-            labTime.text = model.showTime
+            labTime.text = model.CreatedAt.showTime
         }
     }
     
-    @objc func onclickMore(){
-        
+    
+    
+    @objc func onclickMore(_ sender : UIButton){
+        var frame = sender.convert(sender.bounds, to: UIUtil.getWindow()!)
+        frame.origin.x -= 55.w
+        frame.origin.y += 31.w
+        frame.size = CGSize(width: 77.w, height: 35.w)
+        EMCommunityMoreView.share.show(UIUtil.getWindow()!,contentFrame: frame)
+        EMCommunityMoreView.share.reportBlock = {
+            
+        }
     }
 }

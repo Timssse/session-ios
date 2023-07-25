@@ -87,3 +87,17 @@ class CacheUtilites : NSObject{
     
     
 }
+
+extension CacheUtilites{
+    class func cacheImageToFile(image: UIImage?, success:(_ path: String) -> Void) async throws -> String {
+        let doc: URL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first)!
+        let dir = doc.appendingPathComponent("image")
+        
+        try  FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true, attributes: nil)
+        
+        let data =  image?.jpegData(compressionQuality: 0.75)
+        let url = dir.appendingPathComponent("\(UUID().uuidString.lowercased()).jpg")
+        try data?.write(to: url)
+        return url.path
+    }
+}

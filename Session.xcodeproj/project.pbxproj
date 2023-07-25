@@ -116,11 +116,39 @@
 		B920D66A2A663984008AD159 /* EMCommunitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6692A663984008AD159 /* EMCommunitRequest.swift */; };
 		B920D66C2A663CA9008AD159 /* EMCommunityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D66B2A663CA9008AD159 /* EMCommunityController.swift */; };
 		B920D6702A66440C008AD159 /* EMCommunityUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D66F2A66440C008AD159 /* EMCommunityUserEntity.swift */; };
-		B920D6722A666AC5008AD159 /* EMHomeListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6712A666AC5008AD159 /* EMHomeListEntity.swift */; };
+		B920D6722A666AC5008AD159 /* EMCommunityHomeListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6712A666AC5008AD159 /* EMCommunityHomeListEntity.swift */; };
 		B920D6742A666CED008AD159 /* EMRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6732A666CED008AD159 /* EMRefreshController.swift */; };
 		B920D6762A667321008AD159 /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6752A667321008AD159 /* FileUtilities.swift */; };
 		B920D6782A6686B7008AD159 /* EMCommunityToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6772A6686B7008AD159 /* EMCommunityToolView.swift */; };
 		B920D67A2A66ADE6008AD159 /* EMPhotoLookUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6792A66ADE6008AD159 /* EMPhotoLookUtilities.swift */; };
+		B920D67C2A6770DC008AD159 /* EMCommunityMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D67B2A6770DC008AD159 /* EMCommunityMoreView.swift */; };
+		B920D67E2A677E10008AD159 /* EMCommunityDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D67D2A677E10008AD159 /* EMCommunityDetailPage.swift */; };
+		B920D6802A677F8A008AD159 /* EMCommunityCommentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D67F2A677F8A008AD159 /* EMCommunityCommentEntity.swift */; };
+		B920D6822A67895B008AD159 /* EMCommunitDetailHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6812A67895B008AD159 /* EMCommunitDetailHeadCell.swift */; };
+		B920D6842A678F36008AD159 /* EMCommunityCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6832A678F36008AD159 /* EMCommunityCommentCell.swift */; };
+		B920D6862A67AFC6008AD159 /* EMCommunitySendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6852A67AFC6008AD159 /* EMCommunitySendView.swift */; };
+		B920D6892A67CF05008AD159 /* EMImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6882A67CF05008AD159 /* EMImageViewer.swift */; };
+		B920D68B2A67E3C4008AD159 /* EMMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D68A2A67E3C4008AD159 /* EMMaskView.swift */; };
+		B920D68D2A67ECE5008AD159 /* EMPublishPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D68C2A67ECE5008AD159 /* EMPublishPage.swift */; };
+		B920D68F2A67EE3B008AD159 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D68E2A67EE3B008AD159 /* UITextView+Extension.swift */; };
+		B920D6922A68DDF7008AD159 /* loding.json in Resources */ = {isa = PBXBuildFile; fileRef = B920D6912A68DDF7008AD159 /* loding.json */; };
+		B920D6942A68DE6A008AD159 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6932A68DE6A008AD159 /* AnimationManager.swift */; };
+		B920D6962A68DFFC008AD159 /* Thread+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6952A68DFFC008AD159 /* Thread+Extension.swift */; };
+		B920D6982A68E65E008AD159 /* dappLoding.json in Resources */ = {isa = PBXBuildFile; fileRef = B920D6972A68E65E008AD159 /* dappLoding.json */; };
+		B920D69A2A68FED6008AD159 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6992A68FED6008AD159 /* UIViewController+Extension.swift */; };
+		B920D69C2A692A3B008AD159 /* EMCommunityConfigEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D69B2A692A3B008AD159 /* EMCommunityConfigEntity.swift */; };
+		B920D6A32A6A605F008AD159 /* EMUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6A22A6A605F008AD159 /* EMUserPage.swift */; };
+		B920D6A52A6A6245008AD159 /* EMMyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6A42A6A6245008AD159 /* EMMyInfoCell.swift */; };
+		B920D6A72A6A6261008AD159 /* EMMyNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6A62A6A6261008AD159 /* EMMyNav.swift */; };
+		B920D6A92A6A7737008AD159 /* EMWalletCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6A82A6A7737008AD159 /* EMWalletCardView.swift */; };
+		B920D6AB2A6A839C008AD159 /* EMUserCommunitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6AA2A6A839C008AD159 /* EMUserCommunitCell.swift */; };
+		B920D6AD2A6A8F9F008AD159 /* EMUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6AC2A6A8F9F008AD159 /* EMUserController.swift */; };
+		B920D6B02A6A8FC7008AD159 /* EMUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6AF2A6A8FC7008AD159 /* EMUserRequest.swift */; };
+		B920D6C72A6E47A0008AD159 /* PubMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6C62A6E47A0008AD159 /* PubMethod.swift */; };
+		B920D6CC2A6E605E008AD159 /* EMAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6CB2A6E605E008AD159 /* EMAppConfig.swift */; };
+		B920D6CE2A6E6138008AD159 /* EMChainConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6CD2A6E6138008AD159 /* EMChainConfigModel.swift */; };
+		B920D6D12A6E780B008AD159 /* EMPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6D02A6E780B008AD159 /* EMPlaceholder.swift */; };
+		B920D6D32A6E8528008AD159 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6D22A6E8528008AD159 /* UIColor+Extension.swift */; };
 		B936001F2A5D305B0038CD49 /* EMLocalizationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936001E2A5D305A0038CD49 /* EMLocalizationTool.swift */; };
 		B98E5B512A611560007B421F /* MiniCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E59CD2A61155F007B421F /* MiniCallView.swift */; };
 		B98E5B522A611560007B421F /* IncomingCallBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E59CE2A61155F007B421F /* IncomingCallBanner.swift */; };
@@ -1173,11 +1201,39 @@
 		B920D6692A663984008AD159 /* EMCommunitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunitRequest.swift; sourceTree = "<group>"; };
 		B920D66B2A663CA9008AD159 /* EMCommunityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityController.swift; sourceTree = "<group>"; };
 		B920D66F2A66440C008AD159 /* EMCommunityUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityUserEntity.swift; sourceTree = "<group>"; };
-		B920D6712A666AC5008AD159 /* EMHomeListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMHomeListEntity.swift; sourceTree = "<group>"; };
+		B920D6712A666AC5008AD159 /* EMCommunityHomeListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityHomeListEntity.swift; sourceTree = "<group>"; };
 		B920D6732A666CED008AD159 /* EMRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRefreshController.swift; sourceTree = "<group>"; };
 		B920D6752A667321008AD159 /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		B920D6772A6686B7008AD159 /* EMCommunityToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityToolView.swift; sourceTree = "<group>"; };
 		B920D6792A66ADE6008AD159 /* EMPhotoLookUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMPhotoLookUtilities.swift; sourceTree = "<group>"; };
+		B920D67B2A6770DC008AD159 /* EMCommunityMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityMoreView.swift; sourceTree = "<group>"; };
+		B920D67D2A677E10008AD159 /* EMCommunityDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityDetailPage.swift; sourceTree = "<group>"; };
+		B920D67F2A677F8A008AD159 /* EMCommunityCommentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityCommentEntity.swift; sourceTree = "<group>"; };
+		B920D6812A67895B008AD159 /* EMCommunitDetailHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunitDetailHeadCell.swift; sourceTree = "<group>"; };
+		B920D6832A678F36008AD159 /* EMCommunityCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityCommentCell.swift; sourceTree = "<group>"; };
+		B920D6852A67AFC6008AD159 /* EMCommunitySendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunitySendView.swift; sourceTree = "<group>"; };
+		B920D6882A67CF05008AD159 /* EMImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMImageViewer.swift; sourceTree = "<group>"; };
+		B920D68A2A67E3C4008AD159 /* EMMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMMaskView.swift; sourceTree = "<group>"; };
+		B920D68C2A67ECE5008AD159 /* EMPublishPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMPublishPage.swift; sourceTree = "<group>"; };
+		B920D68E2A67EE3B008AD159 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
+		B920D6912A68DDF7008AD159 /* loding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loding.json; sourceTree = "<group>"; };
+		B920D6932A68DE6A008AD159 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
+		B920D6952A68DFFC008AD159 /* Thread+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+Extension.swift"; sourceTree = "<group>"; };
+		B920D6972A68E65E008AD159 /* dappLoding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dappLoding.json; sourceTree = "<group>"; };
+		B920D6992A68FED6008AD159 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		B920D69B2A692A3B008AD159 /* EMCommunityConfigEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityConfigEntity.swift; sourceTree = "<group>"; };
+		B920D6A22A6A605F008AD159 /* EMUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserPage.swift; sourceTree = "<group>"; };
+		B920D6A42A6A6245008AD159 /* EMMyInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMMyInfoCell.swift; sourceTree = "<group>"; };
+		B920D6A62A6A6261008AD159 /* EMMyNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMMyNav.swift; sourceTree = "<group>"; };
+		B920D6A82A6A7737008AD159 /* EMWalletCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletCardView.swift; sourceTree = "<group>"; };
+		B920D6AA2A6A839C008AD159 /* EMUserCommunitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserCommunitCell.swift; sourceTree = "<group>"; };
+		B920D6AC2A6A8F9F008AD159 /* EMUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserController.swift; sourceTree = "<group>"; };
+		B920D6AF2A6A8FC7008AD159 /* EMUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserRequest.swift; sourceTree = "<group>"; };
+		B920D6C62A6E47A0008AD159 /* PubMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubMethod.swift; sourceTree = "<group>"; };
+		B920D6CB2A6E605E008AD159 /* EMAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAppConfig.swift; sourceTree = "<group>"; };
+		B920D6CD2A6E6138008AD159 /* EMChainConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChainConfigModel.swift; sourceTree = "<group>"; };
+		B920D6D02A6E780B008AD159 /* EMPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMPlaceholder.swift; sourceTree = "<group>"; };
+		B920D6D22A6E8528008AD159 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B936001E2A5D305A0038CD49 /* EMLocalizationTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMLocalizationTool.swift; sourceTree = "<group>"; };
 		B936FFAD2A5BF7BD0038CD49 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		B936FFAF2A5BF7BE0038CD49 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -2349,6 +2405,8 @@
 				B920D6272A6549C9008AD159 /* EMCommunityMainPage.swift */,
 				B920D6292A6549E2008AD159 /* EMCommunityFollowPage.swift */,
 				B920D62B2A6549F3008AD159 /* EMCommunityExplorePage.swift */,
+				B920D67D2A677E10008AD159 /* EMCommunityDetailPage.swift */,
+				B920D68C2A67ECE5008AD159 /* EMPublishPage.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -2361,6 +2419,11 @@
 				B920D65B2A662C09008AD159 /* EMCommunitPublisherView.swift */,
 				B920D65D2A663559008AD159 /* EMCommunityImageItem.swift */,
 				B920D6772A6686B7008AD159 /* EMCommunityToolView.swift */,
+				B920D67B2A6770DC008AD159 /* EMCommunityMoreView.swift */,
+				B920D6812A67895B008AD159 /* EMCommunitDetailHeadCell.swift */,
+				B920D6832A678F36008AD159 /* EMCommunityCommentCell.swift */,
+				B920D6852A67AFC6008AD159 /* EMCommunitySendView.swift */,
+				B920D68A2A67E3C4008AD159 /* EMMaskView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2369,7 +2432,9 @@
 			isa = PBXGroup;
 			children = (
 				B920D66F2A66440C008AD159 /* EMCommunityUserEntity.swift */,
-				B920D6712A666AC5008AD159 /* EMHomeListEntity.swift */,
+				B920D6712A666AC5008AD159 /* EMCommunityHomeListEntity.swift */,
+				B920D67F2A677F8A008AD159 /* EMCommunityCommentEntity.swift */,
+				B920D69B2A692A3B008AD159 /* EMCommunityConfigEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2431,9 +2496,90 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		B920D6872A67CE71008AD159 /* ImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				B920D6882A67CF05008AD159 /* EMImageViewer.swift */,
+			);
+			path = ImageViewer;
+			sourceTree = "<group>";
+		};
+		B920D6902A68DDF7008AD159 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				B920D6972A68E65E008AD159 /* dappLoding.json */,
+				B920D6912A68DDF7008AD159 /* loding.json */,
+				B920D6932A68DE6A008AD159 /* AnimationManager.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		B920D69D2A6A6019008AD159 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B920D6AE2A6A8FB3008AD159 /* Request */,
+				B920D69E2A6A6019008AD159 /* Page */,
+				B920D69F2A6A6019008AD159 /* Controller */,
+				B920D6A02A6A6019008AD159 /* Model */,
+				B920D6A12A6A6019008AD159 /* View */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		B920D69E2A6A6019008AD159 /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				B920D6A22A6A605F008AD159 /* EMUserPage.swift */,
+			);
+			path = Page;
+			sourceTree = "<group>";
+		};
+		B920D69F2A6A6019008AD159 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B920D6AC2A6A8F9F008AD159 /* EMUserController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B920D6A02A6A6019008AD159 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B920D6A12A6A6019008AD159 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B920D6A42A6A6245008AD159 /* EMMyInfoCell.swift */,
+				B920D6AA2A6A839C008AD159 /* EMUserCommunitCell.swift */,
+				B920D6A62A6A6261008AD159 /* EMMyNav.swift */,
+				B920D6A82A6A7737008AD159 /* EMWalletCardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B920D6AE2A6A8FB3008AD159 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				B920D6AF2A6A8FC7008AD159 /* EMUserRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		B920D6CF2A6E77FA008AD159 /* Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				B920D6D02A6E780B008AD159 /* EMPlaceholder.swift */,
+			);
+			path = Placeholder;
+			sourceTree = "<group>";
+		};
 		B98E59CA2A61155F007B421F /* Ethmessenger */ = {
 			isa = PBXGroup;
 			children = (
+				B920D69D2A6A6019008AD159 /* UserInfo */,
 				B920D6612A663897008AD159 /* HTTP */,
 				B920D61C2A654877008AD159 /* Community */,
 				B98E59CB2A61155F007B421F /* Calls */,
@@ -2500,6 +2646,8 @@
 		B98E59DC2A61155F007B421F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B920D6CF2A6E77FA008AD159 /* Placeholder */,
+				B920D6872A67CE71008AD159 /* ImageViewer */,
 				B920D6432A654DEE008AD159 /* PageView */,
 				B98E59DD2A61155F007B421F /* Cells */,
 				B98E59DF2A61155F007B421F /* Extension */,
@@ -2533,8 +2681,12 @@
 				B98E59E42A61155F007B421F /* UILabel+Extention.swift */,
 				B98E59E52A61155F007B421F /* String+Extension.swift */,
 				B98E59E62A61155F007B421F /* UITextField+Extension.swift */,
+				B920D68E2A67EE3B008AD159 /* UITextView+Extension.swift */,
 				B98E59E72A61155F007B421F /* ViewController+Extension.swift */,
 				B98E59E82A61155F007B421F /* CGFloat+extension.swift */,
+				B920D6952A68DFFC008AD159 /* Thread+Extension.swift */,
+				B920D6992A68FED6008AD159 /* UIViewController+Extension.swift */,
+				B920D6D22A6E8528008AD159 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2612,6 +2764,9 @@
 				B98E59FD2A61155F007B421F /* NotificationConfig.swift */,
 				B98E59FE2A61155F007B421F /* UIUtil.swift */,
 				B98E59FF2A61155F007B421F /* ColorConfig.swift */,
+				B920D6C62A6E47A0008AD159 /* PubMethod.swift */,
+				B920D6CB2A6E605E008AD159 /* EMAppConfig.swift */,
+				B920D6CD2A6E6138008AD159 /* EMChainConfigModel.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -2817,6 +2972,7 @@
 		B98E5A4D2A61155F007B421F /* Meta */ = {
 			isa = PBXGroup;
 			children = (
+				B920D6902A68DDF7008AD159 /* Animation */,
 				B98E5A4E2A61155F007B421F /* Settings.bundle */,
 				B98E5A4F2A61155F007B421F /* MainAppContext.h */,
 				B98E5A502A61155F007B421F /* SignalTSan.supp */,
@@ -5029,6 +5185,7 @@
 				B98E5BBB2A611560007B421F /* seed2-2023-2y.crt in Resources */,
 				B98E5BB82A611560007B421F /* seed1-2023-2y.der in Resources */,
 				B98E5BCA2A611560007B421F /* complete-quiet.aifc in Resources */,
+				B920D6922A68DDF7008AD159 /* loding.json in Resources */,
 				B98E5BDB2A611560007B421F /* synth-quiet.aifc in Resources */,
 				B98E5BD52A611560007B421F /* popcorn.aifc in Resources */,
 				B98E5BC42A611560007B421F /* input-quiet.aifc in Resources */,
@@ -5052,6 +5209,7 @@
 				B98E5BB72A611560007B421F /* seed3-2023-2y.crt in Resources */,
 				B98E5BBA2A611560007B421F /* seed3-2023-2y.der in Resources */,
 				B98E5BB92A611560007B421F /* seed1-2023-2y.crt in Resources */,
+				B920D6982A68E65E008AD159 /* dappLoding.json in Resources */,
 				B98E5BBD2A611560007B421F /* Opening.m4r in Resources */,
 				B98E5BDD2A611560007B421F /* sonarping.mp3 in Resources */,
 				B98E5BB52A611560007B421F /* Session-Info.plist in Resources */,
@@ -5787,9 +5945,11 @@
 			files = (
 				B98E5C6C2A611560007B421F /* MediaInfoVC+MediaPreviewView.swift in Sources */,
 				B98E5B572A611560007B421F /* SessionCallManager+CXProvider.swift in Sources */,
+				B920D6802A677F8A008AD159 /* EMCommunityCommentEntity.swift in Sources */,
 				B920D6512A654DEE008AD159 /* SGPagingContentView.swift in Sources */,
 				B98E5BA42A611560007B421F /* NewConversationVC.swift in Sources */,
 				B98E5BA52A611560007B421F /* GlobalSearchViewController.swift in Sources */,
+				B920D6822A67895B008AD159 /* EMCommunitDetailHeadCell.swift in Sources */,
 				B98E5B7B2A611560007B421F /* EMTabBar.swift in Sources */,
 				B98E5B652A611560007B421F /* String+Extension.swift in Sources */,
 				B98E5B682A611560007B421F /* CGFloat+extension.swift in Sources */,
@@ -5837,8 +5997,10 @@
 				B98E5C7F2A611560007B421F /* LandingVC.swift in Sources */,
 				B98E5C452A611560007B421F /* ContextMenuVC.swift in Sources */,
 				B98E5C352A611560007B421F /* MediaAlbumView.swift in Sources */,
+				B920D6AB2A6A839C008AD159 /* EMUserCommunitCell.swift in Sources */,
 				B98E5B722A611560007B421F /* EMDappView.swift in Sources */,
 				B98E5C3E2A611560007B421F /* ConversationTitleView.swift in Sources */,
+				B920D6AD2A6A8F9F008AD159 /* EMUserController.swift in Sources */,
 				B98E5B712A611560007B421F /* EMTransferConfirmItem.swift in Sources */,
 				B98E5C672A611560007B421F /* AllMediaViewController.swift in Sources */,
 				B98E5C422A611560007B421F /* ContextMenuVC+Action.swift in Sources */,
@@ -5849,6 +6011,7 @@
 				B98E5C4C2A611560007B421F /* ConversationSearch.swift in Sources */,
 				B98E5B9A2A611560007B421F /* VersionFooterView.swift in Sources */,
 				B98E5C432A611560007B421F /* ContextMenuVC+EmojiReactsView.swift in Sources */,
+				B920D68F2A67EE3B008AD159 /* UITextView+Extension.swift in Sources */,
 				B98E5BF72A611560007B421F /* DismissType.swift in Sources */,
 				B98E5BFF2A611560007B421F /* ScanQRCodeWrapperVC.swift in Sources */,
 				B98E5C2B2A611560007B421F /* DeletedMessageView.swift in Sources */,
@@ -5857,6 +6020,7 @@
 				B98E5B542A611560007B421F /* CallMissedTipsModal.swift in Sources */,
 				B98E5BF52A611560007B421F /* SessionCell+Accessory.swift in Sources */,
 				B98E5C052A611560007B421F /* SessionCell.swift in Sources */,
+				B920D6962A68DFFC008AD159 /* Thread+Extension.swift in Sources */,
 				B98E5C662A611560007B421F /* GifPickerCell.swift in Sources */,
 				B98E5B692A611560007B421F /* EMDappPage.swift in Sources */,
 				B98E5C222A611560007B421F /* TraitObservingWindow.swift in Sources */,
@@ -5885,6 +6049,8 @@
 				B98E5C812A611560007B421F /* SeedVC.swift in Sources */,
 				B920D6762A667321008AD159 /* FileUtilities.swift in Sources */,
 				B98E5C442A611560007B421F /* ContextMenuVC+ActionView.swift in Sources */,
+				B920D69A2A68FED6008AD159 /* UIViewController+Extension.swift in Sources */,
+				B920D6A52A6A6245008AD159 /* EMMyInfoCell.swift in Sources */,
 				B98E5BA22A611560007B421F /* NewDMVC.swift in Sources */,
 				B920D6782A6686B7008AD159 /* EMCommunityToolView.swift in Sources */,
 				B98E5C842A611560007B421F /* DisplayNameVC.swift in Sources */,
@@ -5906,8 +6072,11 @@
 				B98E5C702A611560007B421F /* MediaDismissAnimationController.swift in Sources */,
 				B98E5BAB2A611560007B421F /* Emoji+Category.swift in Sources */,
 				B98E5B8E2A611560007B421F /* BlockedContactsViewController.swift in Sources */,
+				B920D6942A68DE6A008AD159 /* AnimationManager.swift in Sources */,
+				B920D67C2A6770DC008AD159 /* EMCommunityMoreView.swift in Sources */,
+				B920D6D12A6E780B008AD159 /* EMPlaceholder.swift in Sources */,
 				B98E5C772A611560007B421F /* OpenGroupSuggestionGrid.swift in Sources */,
-				B920D6722A666AC5008AD159 /* EMHomeListEntity.swift in Sources */,
+				B920D6722A666AC5008AD159 /* EMCommunityHomeListEntity.swift in Sources */,
 				B98E5BAA2A611560007B421F /* PathStatusView.swift in Sources */,
 				B98E5B582A611560007B421F /* SessionCall.swift in Sources */,
 				B920D6552A654DEE008AD159 /* SGPagingTitleView.swift in Sources */,
@@ -5921,6 +6090,7 @@
 				B98E5B7C2A611560007B421F /* EMTabBarController.swift in Sources */,
 				B98E5C472A611560007B421F /* InputViewButton.swift in Sources */,
 				B98E5C3B2A611560007B421F /* VisibleMessageCell.swift in Sources */,
+				B920D6A92A6A7737008AD159 /* EMWalletCardView.swift in Sources */,
 				B98E5BA12A611560007B421F /* HomeVC.swift in Sources */,
 				B98E5BF22A611560007B421F /* ScreenLockUI.swift in Sources */,
 				B98E5C342A611560007B421F /* ReactionContainerView.swift in Sources */,
@@ -5935,6 +6105,7 @@
 				B98E5C5C2A611560007B421F /* MediaGalleryNavigationController.swift in Sources */,
 				B98E5C5A2A611560007B421F /* EMPRCModel.swift in Sources */,
 				B98E5C232A611560007B421F /* ThreadSettingsViewModel.swift in Sources */,
+				B920D67E2A677E10008AD159 /* EMCommunityDetailPage.swift in Sources */,
 				B98E5B902A611560007B421F /* NotificationSoundViewModel.swift in Sources */,
 				B98E5C3C2A611560007B421F /* InfoBanner.swift in Sources */,
 				B98E5B952A611560007B421F /* QRCodeVC.swift in Sources */,
@@ -5961,18 +6132,24 @@
 				B98E5C5D2A611560007B421F /* MediaInfoVC.swift in Sources */,
 				B98E5C362A611560007B421F /* MediaPlaceholderView.swift in Sources */,
 				B98E5B632A611560007B421F /* UIView+extension.swift in Sources */,
+				B920D68D2A67ECE5008AD159 /* EMPublishPage.swift in Sources */,
 				B920D6602A6637BC008AD159 /* EMCommunityForwardView.swift in Sources */,
+				B920D6842A678F36008AD159 /* EMCommunityCommentCell.swift in Sources */,
 				B98E5C732A611560007B421F /* MediaDetailViewController.swift in Sources */,
 				B98E5C642A611560007B421F /* GiphyDownloader.swift in Sources */,
 				B98E5C6A2A611560007B421F /* PhotoCollectionPickerViewModel.swift in Sources */,
 				B98E5C3A2A611560007B421F /* MessageCell.swift in Sources */,
 				B98E5C7B2A611560007B421F /* AppNotifications.swift in Sources */,
+				B920D69C2A692A3B008AD159 /* EMCommunityConfigEntity.swift in Sources */,
 				B98E5C272A611560007B421F /* ConversationSearchVC.swift in Sources */,
+				B920D6CE2A6E6138008AD159 /* EMChainConfigModel.swift in Sources */,
 				B98E5C612A611560007B421F /* CropScaleImageViewController.swift in Sources */,
 				B98E5B612A611560007B421F /* Int+extension.swift in Sources */,
 				B920D66C2A663CA9008AD159 /* EMCommunityController.swift in Sources */,
 				B98E5C022A611560007B421F /* SessionCell+AccessoryView.swift in Sources */,
+				B920D6D32A6E8528008AD159 /* UIColor+Extension.swift in Sources */,
 				B98E5C202A611560007B421F /* CacheUtilites.swift in Sources */,
+				B920D6C72A6E47A0008AD159 /* PubMethod.swift in Sources */,
 				B98E5C822A611560007B421F /* PNModeVC.swift in Sources */,
 				B98E5B562A611560007B421F /* CallVC+Camera.swift in Sources */,
 				B98E5B972A611560007B421F /* ThemeSelectionView.swift in Sources */,
@@ -6009,9 +6186,12 @@
 				B98E5BF82A611560007B421F /* SessionTableSection.swift in Sources */,
 				B98E5BF12A611560007B421F /* SessionCarouselView.swift in Sources */,
 				B98E5C2F2A611560007B421F /* QuoteView.swift in Sources */,
+				B920D6A32A6A605F008AD159 /* EMUserPage.swift in Sources */,
 				B920D6742A666CED008AD159 /* EMRefreshController.swift in Sources */,
 				B98E5B662A611560007B421F /* UITextField+Extension.swift in Sources */,
 				B98E5B7A2A611560007B421F /* EMTabBarItem.swift in Sources */,
+				B920D6862A67AFC6008AD159 /* EMCommunitySendView.swift in Sources */,
+				B920D6892A67CF05008AD159 /* EMImageViewer.swift in Sources */,
 				B98E5C572A611560007B421F /* WalletERC20Request.swift in Sources */,
 				B920D6282A6549C9008AD159 /* EMCommunityMainPage.swift in Sources */,
 				B920D65A2A6629DF008AD159 /* EMCommunityCell.swift in Sources */,
@@ -6047,13 +6227,17 @@
 				B920D6562A654DEE008AD159 /* SGPagingTitleViewConfigure.swift in Sources */,
 				B98E5BB12A611560007B421F /* Emoji+Available.swift in Sources */,
 				B98E5C122A611560007B421F /* UIImage+Scaling.swift in Sources */,
+				B920D6B02A6A8FC7008AD159 /* EMUserRequest.swift in Sources */,
+				B920D6A72A6A6261008AD159 /* EMMyNav.swift in Sources */,
 				B98E5C1D2A611560007B421F /* IP2Country.swift in Sources */,
+				B920D68B2A67E3C4008AD159 /* EMMaskView.swift in Sources */,
 				B98E5B7E2A611560007B421F /* EMSettingPage.swift in Sources */,
 				B98E5C002A611560007B421F /* SessionTableViewController.swift in Sources */,
 				B98E5BB02A611560007B421F /* Emoji+Name.swift in Sources */,
 				B98E5B962A611560007B421F /* HelpViewModel.swift in Sources */,
 				B98E5C832A611560007B421F /* PNOptionView.swift in Sources */,
 				B920D64F2A654DEE008AD159 /* UIButton+SGPagingView.swift in Sources */,
+				B920D6CC2A6E605E008AD159 /* EMAppConfig.swift in Sources */,
 				B98E5C852A611560007B421F /* RestoreVC.swift in Sources */,
 				B98E5C752A611560007B421F /* SendMediaNavigationController.swift in Sources */,
 				B98E5BF02A611560007B421F /* SRCopyableLabel.swift in Sources */,

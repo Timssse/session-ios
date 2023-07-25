@@ -993,7 +993,7 @@ class ConversationSearchVC: BaseVC, ConversationSearchControllerDelegate, UITabl
         // See more https://developer.apple.com/documentation/uikit/uisearchbar/1624283-showscancelbutton?language=objc
         if UIDevice.current.isIPad {
             let ipadCancelButton = UIButton()
-            ipadCancelButton.setTitle("cancel".localized(), for: .normal)
+            ipadCancelButton.setTitle(LocalCancel.localized(), for: .normal)
             ipadCancelButton.addTarget(self, action: #selector(back), for: .touchUpInside)
             ipadCancelButton.setThemeTitleColor(.textPrimary, for: .normal)
             searchBarContainer.addSubview(ipadCancelButton)

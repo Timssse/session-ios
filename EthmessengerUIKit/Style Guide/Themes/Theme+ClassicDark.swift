@@ -31,7 +31,7 @@ internal enum Theme_ClassicDark: ThemeColors {
     
         // MessageBubble
         .messageBubble_outgoingBackground: .messageBubble_outgoingBackground,
-        .messageBubble_incomingBackground: .messageBubble_incomingBackgroundDark,
+        .messageBubble_incomingBackground: .color_272727,
         .messageBubble_outgoingText: .classicDark0,
         .messageBubble_incomingText: .classicDark6,
         .messageBubble_overlay: .black_06,
@@ -117,7 +117,15 @@ internal enum Theme_ClassicDark: ThemeColors {
         .setting_icon_icon : .white,
         .tab_select_bg : .black,
         .textGary1 : .color_606060,
-        .communitTool : .color_616569
-        
+        .communitTool : .color_616569,
+        .textPlaceholder : .color_91979D,
+        .communitInput : .color_272727,
+        .iconColor : .color_BEBEBE,
+        .forwardingBGColor : .color_272727,
+        .user_session_bg : .color_272727,
+        .color_91979D : .color_91979D,
+        .color_616569 : .color_616569,
+        .user_communit_bg : .color_1B1B1B_A80,
+        .emptyContent : .color_616569
     ]
 }

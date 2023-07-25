@@ -9,7 +9,7 @@
 /* One-line label indicating the user can add no more text to the media message field. */
 "ATTACHMENT_APPROVAL_MESSAGE_LENGTH_LIMIT_REACHED" = "Message limit reached";
 /* Label for 'send' button in the 'attachment approval' dialog. */
-"ATTACHMENT_APPROVAL_SEND_BUTTON" = "Send";
+"LocalSend" = "Send";
 /* Generic filename for an attachment with no known name */
 "ATTACHMENT_DEFAULT_FILENAME" = "Attachment";
 /* The title of the 'attachment error' alert. */
@@ -245,7 +245,7 @@
 "next" = "Next";
 "share" = "Share";
 "invalid_Ethmessenger_id" = "Invalid Ethmessenger ID";
-"cancel" = "Cancel";
+"LocalCancel" = "Cancel";
 "your_id" = "Your ID";
 "vc_landing_title_2" = "Your Ethmessenger begins here...";
 "vc_landing_register_button_title" = "Create Ethmessenger ID";
@@ -650,3 +650,10 @@
 "LocalHttpDownloadError" = "File is not exist.";
 "LocalMinAgo" = "min ago";
 "LocalHourAgo" = "hour ago";
+"LocalReport" = "Report";
+"LocalCollection" = "Collection";
+"LocalComment" = "Comment";
+"LocalEnterDesc" = "Enter Description";
+"LocalPublish" = "publish";
+"LocalFollower" = "Follower";
+"LocalNotContent" = "No content";

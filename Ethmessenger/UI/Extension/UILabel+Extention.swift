@@ -9,12 +9,14 @@
 import UIKit
 import SessionUIKit
 extension UILabel {
-    convenience init(font: UIFont? = nil, textColor: ThemeValue? = nil, text: String? = nil) {
+    convenience init(font: UIFont? = nil, textColor: ThemeValue? = nil,color : UIColor? = nil, text: String? = nil) {
         self.init()
         if let font = font {
             self.font = font
         }
-        
+        if let color = color {
+            self.textColor = color
+        }
         if let textColor = textColor {
             self.themeTextColor = textColor
         }

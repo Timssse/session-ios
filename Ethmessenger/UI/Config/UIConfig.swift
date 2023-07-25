@@ -7,6 +7,7 @@ import SessionUIKit
 let Screen_width = UIScreen.main.bounds.size.width
 let Screen_height = UIScreen.main.bounds.size.height
 
+let icon_default = UIImage(named: "icon_community_default")
 
 /// 安全区底部高度
 var safeBottomH : CGFloat{

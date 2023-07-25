@@ -4,3 +4,5 @@ import Foundation
 
 
 let kNotifyRefreshMessageCount = NSNotification.Name(rawValue: "kNotifyRefreshMessageCount")
+
+let kNotifyRefreshCommunity = NSNotification.Name(rawValue: "kNotifyRefreshCommunity")

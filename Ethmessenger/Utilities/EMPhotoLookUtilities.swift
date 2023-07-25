@@ -4,6 +4,8 @@ import UIKit
 import GQImageVideoViewer
 class EMPhotoLookUtilities {
     static func showImages(images : [EMCommunityFileEntity],selectIndex : Int){
+        
+        
         var imageArray : [Any] = []
         images.forEach { model in
             if let url = URL(string: model.path){
@@ -11,12 +13,22 @@ class EMPhotoLookUtilities {
             }
         }
         
-        GQImageVideoViewer.sharedInstance().dataArray = imageArray
-        GQImageVideoViewer.sharedInstance().usePageControl = true
-        GQImageVideoViewer.sharedInstance().selectIndex = selectIndex
-        GQImageVideoViewer.sharedInstance().achieveSelectIndex = {index in
-            
+//        let labNum = UILabel(font: UIFont.Regular(size: 18),textColor: .white,text: "\(selectIndex + 1)/\(images.count)")
+        
+        let view = GQImageVideoViewer.sharedInstance()!;
+        view.backgroundColor = UIColor.black
+        view.dataArray = imageArray
+        view.usePageControl = false
+        view.selectIndex = selectIndex
+        view.achieveSelectIndex = {index in
+//            labNum.text = "\(index + 1)/\(images.count)"
         }
-        GQImageVideoViewer.sharedInstance().show(in: UIUtil.visibleVC()?.view)
+        view.show(in: UIUtil.getWindow())
+        
+//        view.addSubview(labNum)
+//        labNum.snp.makeConstraints { make in
+//            make.centerX.equalToSuperview()
+//            make.bottom.equalToSuperview().offset(-safeBottomH)
+//        }
     }
 }

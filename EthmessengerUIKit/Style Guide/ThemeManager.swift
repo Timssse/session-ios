@@ -55,7 +55,7 @@ public enum ThemeManager {
     }
     
     public static var primaryColor: Theme.PrimaryColor = {
-        Storage.shared[.themePrimaryColor].defaulting(to: Theme.PrimaryColor.green)
+        Storage.shared[.themePrimaryColor].defaulting(to: Theme.PrimaryColor.defaultColor)
     }() {
         didSet {
             // Only update if it was changed

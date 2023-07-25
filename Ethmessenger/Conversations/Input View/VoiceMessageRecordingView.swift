@@ -89,7 +89,7 @@ final class VoiceMessageRecordingView: UIView {
 
     private lazy var cancelButton: UIButton = {
         let result: UIButton = UIButton()
-        result.setTitle("cancel".localized(), for: .normal)
+        result.setTitle(LocalCancel.localized(), for: .normal)
         result.titleLabel?.font = .boldSystemFont(ofSize: Values.smallFontSize)
         result.setThemeTitleColor(.textPrimary, for: .normal)
         result.addTarget(self, action: #selector(handleCancelButtonTapped), for: UIControl.Event.touchUpInside)

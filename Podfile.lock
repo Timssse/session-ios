@@ -45,6 +45,7 @@ PODS:
   - libwebp/mux (1.2.1):
     - libwebp/demux
   - libwebp/webp (1.2.1)
+  - lottie-ios (4.2.0)
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
@@ -84,6 +85,7 @@ PODS:
     - TrustWalletCore/Types
   - TrustWalletCore/Types (3.1.35):
     - SwiftProtobuf
+  - TZImagePickerController/Basic (3.8.3)
   - Web3Core (3.1.2):
     - BigInt (~> 5.2.0)
     - CryptoSwift (~> 1.5.1)
@@ -172,6 +174,7 @@ DEPENDENCIES:
   - GRDB.swift/SQLCipher
   - HandyJSON (~> 5.0.4-beta)
   - JFPopup
+  - lottie-ios
   - NVActivityIndicatorView
   - PromiseKit
   - PureLayout (~> 3.1.8)
@@ -185,6 +188,7 @@ DEPENDENCIES:
   - SQLCipher (~> 4.5.3)
   - SwiftProtobuf (~> 1.5.0)
   - TrustWalletCore
+  - TZImagePickerController/Basic
   - web3swift (~> 3.1.2)
   - WebRTC-lib
   - YapDatabase/SQLCipher (from `https://github.com/oxen-io/session-ios-yap-database.git`, branch `signal-release`)
@@ -205,6 +209,7 @@ SPEC REPOS:
     - JFPopup
     - JRBaseKit
     - libwebp
+    - lottie-ios
     - NVActivityIndicatorView
     - OpenSSL-Universal
     - PromiseKit
@@ -219,6 +224,7 @@ SPEC REPOS:
     - Starscream
     - SwiftProtobuf
     - TrustWalletCore
+    - TZImagePickerController
     - Web3Core
     - web3swift
     - WebRTC-lib
@@ -271,6 +277,7 @@ SPEC CHECKSUMS:
   JFPopup: 2b6ae1b160039f1ed07b2af742f3e438d7a49f27
   JRBaseKit: ed75cfce9e340a3316bee0eaac0fa1c400714287
   libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   OpenSSL-Universal: e7311447fd2419f57420c79524b641537387eff2
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
@@ -287,6 +294,7 @@ SPEC CHECKSUMS:
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
   TrustWalletCore: 188beb78722894c4cd4419ea30ef2dc793489401
+  TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   Web3Core: 050eb18f0434ac16c42eb7b2270fbce325935128
   web3swift: 8496f6615c3a1f86e7c9e5fe16c5422ef181527b
   WebRTC-lib: 508fe02efa0c1a3a8867082a77d24c9be5d29aeb
@@ -294,6 +302,6 @@ SPEC CHECKSUMS:
   YYImage: f1ddd15ac032a58b78bbed1e012b50302d318331
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: a4a32c27c4382b902337e50873c19867435d47e9
+PODFILE CHECKSUM: 6e3dd4886d94ec9a3707cf408066eabae941d79f
 
 COCOAPODS: 1.11.3

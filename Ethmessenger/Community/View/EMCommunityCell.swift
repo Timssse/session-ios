@@ -87,11 +87,11 @@ class EMCommunityCell: BaseTableViewCell {
         return view
     }()
     
-    var model : EMHomeListEntity!{
+    var model : EMCommunityHomeListEntity!{
         didSet{
             self.publisherView.model = model
             labContent.text = model.Content
-            let imageHeight = ceil(CGFloat(model.images.count)/3.0) * 88.w
+            let imageHeight = ceil(CGFloat((model.images.count > 9 ? 9 : model.images.count))/3.0) * 88.w
             imagesCollectionView.snp.updateConstraints { make in
                 make.height.equalTo(imageHeight)
             }
@@ -120,12 +120,20 @@ extension EMCommunityCell : UICollectionViewDelegate,UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.model.images.count
+        return self.model.images.count > 9 ? 9 : self.model.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EMCommunityImageItem", for: indexPath) as! EMCommunityImageItem
         cell.model = self.model.images[indexPath.row]
+        
+        if indexPath.row == 8 && self.model.images.count > 9{
+            cell.numView.isHidden = false
+            cell.labCount.text = "+\(self.model.images.count-9)"
+        }else{
+            cell.numView.isHidden = true
+        }
+        
         return cell
     }
     

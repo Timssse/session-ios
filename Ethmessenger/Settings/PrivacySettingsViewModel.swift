@@ -290,7 +290,7 @@ class PrivacySettingsViewModel: SessionTableViewModel<PrivacySettingsViewModel.N
                 title: "LocalTips".localized(),
                 body: .text("LocalRestartTips".localized()),
                 confirmTitle: "LocalConfirm".localized(),
-                cancelTitle: "cancel".localized(),
+                cancelTitle: LocalCancel.localized(),
                 cancelStyle: .alert_text,
                 onConfirm: { _ in
                     exit(0)

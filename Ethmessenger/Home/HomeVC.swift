@@ -42,6 +42,7 @@ final class HomeVC: BaseVC, UITableViewDataSource, UITableViewDelegate,ThemedNav
     
     private lazy var seedReminderView: SeedReminderView = {
         let result = SeedReminderView(hasContinueButton: true)
+        result.frame = CGRect(x: 0, y: 0, width: Screen_width, height: 90.w)
         result.accessibilityLabel = "Recovery phrase reminder"
         let title = "You're almost finished! 80%"
         result.subtitle = "view_seed_reminder_subtitle_1".localized()
@@ -228,10 +229,10 @@ final class HomeVC: BaseVC, UITableViewDataSource, UITableViewDelegate,ThemedNav
         
         self.view.themeBackgroundColor = .navBack
         // Recovery phrase reminder
-        view.addSubview(seedReminderView)
-        seedReminderView.pin(.leading, to: .leading, of: view)
-        seedReminderView.pin(.top, to: .top, of: view)
-        seedReminderView.pin(.trailing, to: .trailing, of: view)
+//        view.addSubview(seedReminderView)
+//        seedReminderView.pin(.leading, to: .leading, of: view)
+//        seedReminderView.pin(.top, to: .top, of: view)
+//        seedReminderView.pin(.trailing, to: .trailing, of: view)
         
         // Loading conversations label
         view.addSubview(loadingConversationsLabel)
@@ -244,11 +245,10 @@ final class HomeVC: BaseVC, UITableViewDataSource, UITableViewDelegate,ThemedNav
         view.addSubview(tableView)
         tableView.pin(.leading, to: .leading, of: view)
         if self.viewModel.state.showViewedSeedBanner {
-            tableViewTopConstraint = tableView.pin(.top, to: .bottom, of: seedReminderView)
+            tableView.tableHeaderView = self.seedReminderView
         }
-        else {
-            tableViewTopConstraint = tableView.pin(.top, to: .top, of: view)
-        }
+        
+        tableViewTopConstraint = tableView.pin(.top, to: .top, of: view)
         tableView.pin(.trailing, to: .trailing, of: view)
         tableView.pin(.bottom, to: .bottom, of: view)
         
@@ -376,13 +376,15 @@ final class HomeVC: BaseVC, UITableViewDataSource, UITableViewDelegate,ThemedNav
         // Update the 'view seed' UI
         if updatedState.showViewedSeedBanner != self.viewModel.state.showViewedSeedBanner {
             tableViewTopConstraint.isActive = false
-            seedReminderView.isHidden = !updatedState.showViewedSeedBanner
-            
+//            seedReminderView.isHidden = !updatedState.showViewedSeedBanner
+            tableViewTopConstraint = tableView.pin(.top, to: .top, of: view, withInset: Values.smallSpacing)
             if updatedState.showViewedSeedBanner {
-                tableViewTopConstraint = tableView.pin(.top, to: .bottom, of: seedReminderView)
+                tableView.tableHeaderView = self.seedReminderView
+//                tableViewTopConstraint = tableView.pin(.top, to: .bottom, of: seedReminderView)
             }
             else {
-                tableViewTopConstraint = tableView.pin(.top, to: .top, of: view, withInset: Values.smallSpacing)
+                tableView.tableHeaderView = nil
+//                tableViewTopConstraint = tableView.pin(.top, to: .top, of: view, withInset: Values.smallSpacing)
             }
         }
         

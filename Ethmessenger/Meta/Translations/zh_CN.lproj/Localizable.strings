@@ -9,7 +9,7 @@
 /* One-line label indicating the user can add no more text to the media message field. */
 "ATTACHMENT_APPROVAL_MESSAGE_LENGTH_LIMIT_REACHED" = "消息字数已满。";
 /* Label for 'send' button in the 'attachment approval' dialog. */
-"ATTACHMENT_APPROVAL_SEND_BUTTON" = "发送";
+"LocalSend" = "发送";
 /* Generic filename for an attachment with no known name */
 "ATTACHMENT_DEFAULT_FILENAME" = "附件";
 /* The title of the 'attachment error' alert. */
@@ -245,7 +245,7 @@
 "next" = "下一步";
 "share" = "共享";
 "invalid_Ethmessenger_id" = "无效的Ethmessenger ID";
-"cancel" = "取消";
+"LocalCancel" = "取消";
 "your_id" = "您的 ID";
 "vc_landing_title_2" = "您的Ethmessenger从这里开始...";
 "vc_landing_register_button_title" = "创建Ethmessenger ID";
@@ -651,3 +651,10 @@
 "LocalHttpDownloadError" = "文件不存在。";
 "LocalMinAgo" = "分钟前";
 "LocalHourAgo" = "小时前";
+"LocalReport" = "举报";
+"LocalCollection" = "收藏";
+"LocalComment" = "评论";
+"LocalEnterDesc" = "输入内容...";
+"LocalPublish" = "发布";
+"LocalFollower" = "粉丝";
+"LocalNotContent" = "没有内容";

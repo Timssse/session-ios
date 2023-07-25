@@ -35,6 +35,17 @@ extension HTTPRequest {
             }
         })
     }
+    
+    func uploadAwait(_ datas: [HTTPMultipartData], parameters: [String: String]? = nil) async throws -> Any {
+        try await withCheckedThrowingContinuation({ continuation in
+            upload(datas,parameters: parameters).success { data in
+                continuation.resume(returning: data)
+            }.failed { error in
+                debugPrint("HTTP error:"+error.localizedDescription)
+                continuation.resume(throwing: error)
+            }
+        })
+    }
 }
 
 extension HTTPRequest {
@@ -57,7 +68,7 @@ extension HTTPRequest {
     func upload(_ datas: [HTTPMultipartData], parameters: [String: String]? = nil) -> NetworkingRequest {
         let totalHeaders = headers == nil ? commonHeaders() : commonHeaders().merging(headers!) { $1 }
         let method = HTTPMethod.methodWith(self.method)
-        let url = baseUrl() + self.url
+        let url = EMCommunityConfigEntity.share.IpfsHost + self.url
         let task = http.upload(url: url, method: method, parameters: parameters, datas: datas, headers: totalHeaders)
         return task
     }

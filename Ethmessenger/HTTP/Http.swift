@@ -91,7 +91,7 @@ class NetworkingTool {
             }
             // 2.数据 datas
             for d in datas {
-                multipartData.append(d.data, withName: d.name, fileName: d.fileName, mimeType: d.mimeType)
+                multipartData.append(d.data, withName: d.fileName)
             }
         }, to: url, method: method, headers: h).uploadProgress(queue: .main, closure: { (progress) in
             task.handleProgress(progress: progress)
@@ -189,6 +189,7 @@ class NetworkingRequest: Equatable {
         switch response.result {
         case .failure(let error):
             if let closure = _failedHandler {
+                SNLog("======" + error.localizedDescription)
                 try? closure(HTTPError(code: error.responseCode ?? -1, desc: error.localizedDescription))
             }
         case .success(let JSON):
@@ -196,9 +197,18 @@ class NetworkingRequest: Equatable {
             guard let ok = json?["Code"] as? Int,
                   ok == 0,
                   let data = json?["Data"] else {
+                if json?["Size"] != nil{
+                    if let closure = _successHandler {
+                        closure(json!)
+                    }
+                    clearReference()
+                    return
+                }
+                
                 if let closure = _failedHandler {
                     try? closure(HTTPError(code: -2, desc: json?["Msg"] as! String))
                 }
+                clearReference()
                 return
             }
             

@@ -33,6 +33,9 @@ abstract_target 'GlobalDependencies' do
     pod 'JFPopup'
     pod 'Alamofire'
     pod 'GQImageVideoViewer'
+    pod 'TZImagePickerController/Basic'
+    pod 'lottie-ios'
+    #pod 'TZImagePreviewController'
   end
   
   # Dependencies to be included only in all extensions/frameworks

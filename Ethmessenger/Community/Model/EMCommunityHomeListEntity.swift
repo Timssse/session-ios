@@ -2,7 +2,7 @@
 
 import UIKit
 import HandyJSON
-class EMHomeListEntity: HandyJSON {
+class EMCommunityHomeListEntity: HandyJSON {
     var Attachment : String = ""
     var Cursor : String = ""
     var CommentCount : Int = 0
@@ -12,7 +12,7 @@ class EMHomeListEntity: HandyJSON {
     var ID : String = ""
     var LikeCount : Int = 0
     var DonateCount : Int = 0
-    var OriginTweet : EMHomeListEntity?
+    var OriginTweet : EMCommunityHomeListEntity?
     var TwAddress : String = ""
     var isTwLike : Bool = true
     var UserInfo : EMCommunityUserEntity?
@@ -44,18 +44,10 @@ class EMHomeListEntity: HandyJSON {
             if FileUtilities.fileIsVideo(String(paths.last ?? "")){
                 _images?.append(EMCommunityFileEntity(path: String(subString), type: .video))
             }
+            if (paths.last ?? "").count > 6{
+                _images?.append(EMCommunityFileEntity(path: String(subString), type: .image))
+            }
         }
-    }
-    
-    var showTime : String{
-        let difference = Date().timeIntervalSince1970 - Double(CreatedAt)
-        if difference < 60 * 60{
-            return "\(Int(ceil(difference/60))) \(LocalMinAgo.localized())"
-        }
-        if difference < 60 * 60 * 24{
-            return "\(Int(ceil(difference/60/60))) \(LocalHourAgo.localized())"
-        }
-        return "\(CreatedAt)".toyyyyMMdd("yyyy.MM.dd")
     }
 }
 

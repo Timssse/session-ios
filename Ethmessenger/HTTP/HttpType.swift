@@ -58,6 +58,7 @@ enum HTTPDataMimeType: String {
     case HEIF = "image/heif"
     case WEBP = "image/webp"
     case TIF = "image/tif"
+    case MP4 = "video/mp4"
     case JSON = "application/json"
 }
 

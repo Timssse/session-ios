@@ -6,11 +6,14 @@ class EMCommunityExplorePage: EMRefreshController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(refressh), name: kNotifyRefreshCommunity, object: nil)
     }
     
     override func layoutUI() {
         self.view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         self.refressh()
     }
 
@@ -21,18 +24,19 @@ class EMCommunityExplorePage: EMRefreshController {
         let footerView = UIView(.conversationButton_background)
         footerView.frame = CGRect(x: 0, y: 0, width: Screen_width, height: 90.w)
         tableView.tableFooterView = footerView
-        self.view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        
         setRefreshView(tableView)
         return tableView
     }()
 
     
-    lazy var dataArr : [EMHomeListEntity] = {
+    lazy var dataArr : [EMCommunityHomeListEntity] = {
         return []
     }()
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension EMCommunityExplorePage{
@@ -50,7 +54,7 @@ extension EMCommunityExplorePage{
         Task{
             let cursor = self.page == 1 ? "" : self.dataArr.last?.Cursor ?? ""
             let data = await EMCommunityController.homeList(cursor)
-            isLoadMore = data.count > 10
+            isLoadMore = data.count < 10
             if self.page == 1{
                 self.dataArr.removeAll()
             }
@@ -92,6 +96,10 @@ extension EMCommunityExplorePage : UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = EMCommunityDetailPage(model: self.dataArr[indexPath.row])
+        self.push(vc)
+    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if isLoadMore || self.dataArr.count < 10{

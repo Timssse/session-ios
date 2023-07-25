@@ -51,6 +51,9 @@ public class BaseVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func dismissVC() {
+        self.dismiss(animated: true)
+    }
 
     internal func setNavBarTitle(_ title: String, customFontSize: CGFloat? = nil) {
         let container = UIView()
@@ -86,7 +89,13 @@ public class BaseVC: UIViewController {
 
     var navHeight : CGFloat{
         get{
-            return (navigationController?.navigationBar.frame.size.height ?? 44) + statusBarH
+            return navigationBarHeight + statusBarH
+        }
+    }
+    
+    var navigationBarHeight : CGFloat{
+        get{
+            return (navigationController?.navigationBar.frame.size.height ?? 44)
         }
     }
 }
