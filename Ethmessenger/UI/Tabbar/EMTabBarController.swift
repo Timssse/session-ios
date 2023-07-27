@@ -43,6 +43,7 @@ class EMTabBarController: UITabBarController {
         customTabBar.dealLayer(corner: 22.w)
         shaowTabar.addSubview(customTabBar)
         
+        
         let itemDAO = EMTabBarType.createItem(.DAO).setSelectd(false).clickAction {[weak self] in
             self?.selectedIndex = 1
         }
@@ -99,8 +100,7 @@ extension EMTabBarController{
 extension EMTabBarController : UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if navigationController.viewControllers.count > 1{
-            self.customTabBar.isHidden = true
-            self.customTabBar.isUserInteractionEnabled = false
+            self.customTabBar.superview?.isHidden = true
         }
         if (viewController is EMHideNavigationBarProtocol){
             navigationController.setNavigationBarHidden(true, animated: true)
@@ -113,8 +113,7 @@ extension EMTabBarController : UINavigationControllerDelegate{
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if navigationController.viewControllers.count <= 1{
-            self.customTabBar.isHidden = false
-            self.customTabBar.isUserInteractionEnabled = true
+            self.customTabBar.superview?.isHidden = false
         }
     }
 }

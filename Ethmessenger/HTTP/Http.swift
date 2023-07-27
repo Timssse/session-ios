@@ -233,7 +233,7 @@ class NetworkingRequest: Equatable {
             guard let path = response.fileURL?.path,
                   !path.hasSuffix("action") else {
                 if let closure = _failedHandler {
-                    try? closure(HTTPError(code: -1, desc: LocalHttpDownloadError.localized))
+                    try? closure(HTTPError(code: -1, desc: LocalHttpDownloadError.localized()))
                 }
                 return
             }

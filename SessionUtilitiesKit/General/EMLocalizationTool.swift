@@ -4,7 +4,7 @@ import UIKit
 
 
 
-enum Language : Int {
+public enum Language : Int {
     case English = 0
     case Chinese
 //    case French
@@ -12,15 +12,16 @@ enum Language : Int {
 //    case Vietnamese
 }
 
-class EMLocalizationTool {
-    static let shared = EMLocalizationTool()
+public class EMLocalizationTool {
+    public static let shared = EMLocalizationTool()
     var bundle: Bundle?
-    var currentLanguage: Language = .English
+    public var currentLanguage: Language = .English
     
     private let defaults = UserDefaults.standard
     
     func valueWithKey(key: String) -> String {
         let bundle = EMLocalizationTool.shared.bundle
+        
         if let bundle = bundle {
             return NSLocalizedString(key, tableName: "Localizable", bundle: bundle, value: "", comment: "")
         } else {
@@ -28,7 +29,7 @@ class EMLocalizationTool {
         }
     }
     
-    func setLanguage(language: Language) {
+    public func setLanguage(language: Language) {
         if currentLanguage == language {
             return
         }
@@ -36,7 +37,7 @@ class EMLocalizationTool {
         currentLanguage = getLanguage()
     }
     
-    func checkLanguage() {
+    public func checkLanguage() {
         currentLanguage = getLanguage()
     }
     
@@ -47,16 +48,17 @@ class EMLocalizationTool {
         }else{
             type = getSystemLanguage()
         }
-        if let path = Bundle.main.path(forResource:self.getLanguageSysName(type) , ofType: "lproj") {
-            bundle = Bundle(path: path)
+        guard let path = Bundle.main.path(forResource:self.getLanguageSysName(type) , ofType: "lproj") else{
+            return type
         }
+        bundle = Bundle(path: path)
         return type
     }
     
     func getLanguageSysName(_ type : Language) -> String {
         switch type {
         case .Chinese:
-            return "zh-Hans"
+            return "zh_CN"
         case .English:
             return "en"
 //        case .French:
@@ -95,7 +97,7 @@ class EMLocalizationTool {
         }
     }
     
-    class func getLanguageName(_ type : Language) -> String {
+    public class func getLanguageName(_ type : Language) -> String {
         switch type {
         case .Chinese:
             return "中文（简体）"

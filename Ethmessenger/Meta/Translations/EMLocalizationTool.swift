@@ -116,4 +116,8 @@ extension String {
     var localized: String {
         return EMLocalizationTool.shared.valueWithKey(key: self)
     }
+    
+//    func localized() -> String {
+//        return EMLocalizationTool.shared.valueWithKey(key: self)
+//    }
 }

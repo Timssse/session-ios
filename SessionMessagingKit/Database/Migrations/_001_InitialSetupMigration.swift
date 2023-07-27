@@ -48,12 +48,10 @@ enum _001_InitialSetupMigration: Migration {
             t.column(.profilePictureFileName, .text)
             t.column(.profileEncryptionKey, .blob)
         }
-        
         /// Create a full-text search table synchronized with the Profile table
         try db.create(virtualTable: Profile.fullTextSearchTableName, using: FTS5()) { t in
             t.synchronize(withTable: Profile.databaseTableName)
             t.tokenizer = _001_InitialSetupMigration.fullTextSearchTokenizer
-            
             t.column(Profile.Columns.nickname.name)
             t.column(Profile.Columns.name.name)
         }

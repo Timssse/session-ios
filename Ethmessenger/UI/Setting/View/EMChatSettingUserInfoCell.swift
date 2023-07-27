@@ -36,7 +36,7 @@ class EMChatSettingUserInfoCell: BaseTableViewCell {
     }()
     
     lazy var idView : EMUserInfoAddressItem = {
-        let idView = EMUserInfoAddressItem(title: "ID".localized(), dotColor: .path_connected)
+        let idView = EMUserInfoAddressItem(title: "ID", dotColor: .path_connected)
         return idView
     }()
     

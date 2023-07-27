@@ -126,6 +126,7 @@ internal enum Theme_ClassicLight: ThemeColors {
         .color_91979D : .color_91979D,
         .color_616569 : .color_616569,
         .user_communit_bg : .color_FFFFFF_A80,
-        .emptyContent : .color_DDE3EF
+        .emptyContent : .color_DDE3EF,
+        .alertTextColor : .color_616569
     ]
 }

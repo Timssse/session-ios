@@ -9,7 +9,7 @@ public struct SessionApp {
     
     // MARK: - View Convenience Methods
     
-    public static func presentConversation(for threadId: String, action: ConversationViewModel.Action = .none, animated: Bool) {
+    public static func presentConversation(for threadId: String, action: ConversationViewModel.Action = .none, animated: Bool,currentVC : UIViewController? = nil) {
         let maybeThreadInfo: (thread: SessionThread, isMessageRequest: Bool)? = Storage.shared.write { db in
             let thread: SessionThread = try SessionThread.fetchOrCreate(db, id: threadId, variant: .contact)
             return (thread, thread.isMessageRequest(db))
@@ -24,7 +24,8 @@ public struct SessionApp {
             isMessageRequest: isMessageRequest,
             action: action,
             focusInteractionId: nil,
-            animated: animated
+            animated: animated,
+            currentVC: currentVC
         )
     }
     
@@ -34,7 +35,8 @@ public struct SessionApp {
         isMessageRequest: Bool,
         action: ConversationViewModel.Action,
         focusInteractionId: Int64?,
-        animated: Bool
+        animated: Bool,
+        currentVC : UIViewController? = nil
     ) {
         guard Thread.isMainThread else {
             DispatchQueue.main.async {
@@ -47,6 +49,15 @@ public struct SessionApp {
                     animated: animated
                 )
             }
+            return
+        }
+        
+        if currentVC != nil{            
+            currentVC?.navigationController?.pushViewController(ConversationVC(
+                threadId: threadId,
+                threadVariant: threadVariant,
+                focusedInteractionId: focusInteractionId
+            ), animated: animated)
             return
         }
         

@@ -51,9 +51,15 @@ public class BaseVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func popPage()  {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func dismissVC() {
         self.dismiss(animated: true)
     }
+    
+    
 
     internal func setNavBarTitle(_ title: String, customFontSize: CGFloat? = nil) {
         let container = UIView()

@@ -8,6 +8,7 @@ import SessionUtilitiesKit
 public enum Theme: String, CaseIterable, Codable, EnumStringSetting {
     case classicDark = "classic_dark"
     case classicLight = "classic_light"
+    case classicSystem = "classic_system"
 //    case oceanDark = "ocean_dark"
 //    case oceanLight = "ocean_light"
     
@@ -15,8 +16,9 @@ public enum Theme: String, CaseIterable, Codable, EnumStringSetting {
     
     public var title: String {
         switch self {
-            case .classicDark: return "Classic Dark"
-            case .classicLight: return "Classic Light"
+        case .classicDark: return "LocalDarkMode".localized()
+        case .classicLight: return "LocalDayMode".localized()
+        case .classicSystem: return "LocalSystemMode".localized()
 //            case .oceanDark: return "Ocean Dark"
 //            case .oceanLight: return "Ocean Light"
         }
@@ -24,8 +26,9 @@ public enum Theme: String, CaseIterable, Codable, EnumStringSetting {
     
     public var interfaceStyle: UIUserInterfaceStyle {
         switch self {
-            case .classicDark/*, .oceanDark*/: return .dark
-            case .classicLight/*, .oceanLight8*/: return .light
+        case .classicDark/*, .oceanDark*/: return .dark
+        case .classicLight/*, .oceanLight8*/: return .light
+        case .classicSystem : return .unspecified
         }
     }
     
@@ -33,6 +36,7 @@ public enum Theme: String, CaseIterable, Codable, EnumStringSetting {
         switch self {
             case .classicDark/*, .oceanDark*/: return .lightContent
             case .classicLight/*, .oceanLight*/: return .darkContent
+            case .classicSystem : return .default
         }
     }
     
@@ -40,6 +44,7 @@ public enum Theme: String, CaseIterable, Codable, EnumStringSetting {
         switch self {
             case .classicDark/*, .oceanDark*/: return .dark
             case .classicLight/*, .oceanLight*/: return .default
+            case .classicSystem : return .default
         }
     }
     
@@ -47,6 +52,10 @@ public enum Theme: String, CaseIterable, Codable, EnumStringSetting {
         switch self {
             case .classicDark: return Theme_ClassicDark.theme
             case .classicLight: return Theme_ClassicLight.theme
+        case .classicSystem:
+            let style = UITraitCollection.current.userInterfaceStyle
+            
+            return style == .dark ? Theme_ClassicDark.theme : Theme_ClassicLight.theme
 //            case .oceanDark: return Theme_OceanDark.theme
 //            case .oceanLight: return Theme_OceanLight.theme
         }
@@ -229,7 +238,9 @@ public indirect enum ThemeValue: Hashable {
     
     case user_communit_bg
     
-    case emptyContent 
+    case emptyContent
+    
+    case alertTextColor
 }
 
 // MARK: - ForcedThemeValue

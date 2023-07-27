@@ -3,8 +3,8 @@
 import UIKit
 import SessionUIKit
 
-class EMUserPage: EMRefreshController ,EMHideNavigationBarProtocol,ThemedNavigation{
-
+class EMWalletPage: EMRefreshController ,EMHideNavigationBarProtocol,ThemedNavigation{
+    
     var userInfo : Profile?
     var emUserInfo : EMCommunityUserEntity?
     
@@ -105,7 +105,7 @@ class EMUserPage: EMRefreshController ,EMHideNavigationBarProtocol,ThemedNavigat
 }
 
 
-extension EMUserPage{
+extension EMWalletPage{
     override func refressh() {
         self.page = 1
         isLoadMore = false
@@ -152,7 +152,7 @@ extension EMUserPage{
     }
 }
 
-extension EMUserPage{
+extension EMWalletPage{
     @objc func onclickPublish(){
         let vc = EMPublishPage(forward: nil)
         vc.modalPresentationStyle = .fullScreen
@@ -160,7 +160,7 @@ extension EMUserPage{
     }
 }
 
-extension EMUserPage : UITableViewDelegate,UITableViewDataSource{
+extension EMWalletPage : UITableViewDelegate,UITableViewDataSource{
     
     
     func numberOfSections(in tableView: UITableView) -> Int {

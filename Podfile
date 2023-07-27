@@ -31,6 +31,7 @@ abstract_target 'GlobalDependencies' do
     pod 'TrustWalletCore'
     pod 'HandyJSON', '~> 5.0.4-beta'
     pod 'JFPopup'
+    pod 'FMDB'
     pod 'Alamofire'
     pod 'GQImageVideoViewer'
     pod 'TZImagePickerController/Basic'

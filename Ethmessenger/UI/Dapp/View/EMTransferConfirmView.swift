@@ -47,7 +47,7 @@ class EMTransferConfirmView: UIView {
             topView = view
         }
         
-        let btnConfirm = UIButton(title: "LocalConfirm".localized,font: UIFont.Bold(size: 17),color: .textPrimary)
+        let btnConfirm = UIButton(title: LocalConfirm.localized(),font: UIFont.Bold(size: 17),color: .textPrimary)
 //        btnConfirm.addLeftTopToRightBottomGradient(colors: [color_AD01BA.cgColor,color_3A00F9.cgColor], size: CGSize(width: 334.w, height: 58.w), cornerRadius: 29.w)
         btnConfirm.addTarget(self, action: #selector(onclickConfirm), for: .touchUpInside)
         backView.addSubview(btnConfirm)
@@ -57,7 +57,7 @@ class EMTransferConfirmView: UIView {
             make.size.equalTo(CGSize(width: 334.w, height: 58.w))
         }
         
-        let btnCancel = UIButton(title: LocalCancel.localized,font: UIFont.Bold(size: 14),color: .textPrimary)
+        let btnCancel = UIButton(title: LocalCancel.localized(),font: UIFont.Bold(size: 14),color: .textPrimary)
         btnCancel.addTarget(self, action: #selector(onclickCancel), for: .touchUpInside)
         backView.addSubview(btnCancel)
         btnCancel.snp.makeConstraints { make in

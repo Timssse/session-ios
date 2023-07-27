@@ -54,13 +54,13 @@ final class LandingVC: BaseVC ,EMHideNavigationBarProtocol{
     }()
     
     lazy var labTitle : UILabel = {
-        let lab = UILabel(font: UIFont.Bold(size: 45.w),textColor: .textPrimary,text: self.titles.first)
+        let lab = UILabel(font: UIFont.Bold(size: 45),textColor: .textPrimary,text: self.titles.first)
         lab.numberOfLines = 2
         return lab
     }()
     
     lazy var labContent : UILabel = {
-        let lab = UILabel(font: UIFont.Medium(size: 11.w),textColor: .textPrimary,text: self.contents.first)
+        let lab = UILabel(font: UIFont.Medium(size: 11),textColor: .textPrimary,text: self.contents.first)
         lab.numberOfLines = 0
         lab.textAlignment = .center
         return lab

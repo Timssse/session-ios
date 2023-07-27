@@ -18,7 +18,7 @@ class EMMyInfoCell: BaseTableViewCell {
         self.contentView.addSubview(userName)
         userName.snp.makeConstraints { make in
             make.left.equalTo(userIcon.snp.right).offset(15.w)
-            make.top.equalTo(userIcon).offset(10.w)
+            make.top.equalTo(userIcon).offset(5.w)
         }
         
         self.contentView.addSubview(sessionView)
@@ -32,7 +32,7 @@ class EMMyInfoCell: BaseTableViewCell {
         self.contentView.addSubview(arrowIcon)
         arrowIcon.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-30.w)
-            make.centerY.equalToSuperview()
+            make.centerY.equalTo(userIcon)
         }
         
         self.contentView.addSubview(followingView)

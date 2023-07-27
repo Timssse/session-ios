@@ -2,11 +2,14 @@
 
 import UIKit
 import SessionMessagingKit
+import SessionUIKit
+
 
 enum EMSettingSectionType : String{
     case userInfo
     case groupInfo
     case settings
+    case globalChatSetting
     case help
     case chatSettings
     case privateGroupSettings
@@ -22,15 +25,23 @@ enum EMSettingSectionType : String{
         case groupInfo :
             return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.groupInfo,profile: profile)], type: .groupInfo)
         case settings :
-            return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.path),
+            return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.appearance),
+                                                      EMSettingCellType.createCell(.language),
+                                                      EMSettingCellType.createCell(.cleanCache),
                                                       EMSettingCellType.createCell(.privacy),
-                                                      EMSettingCellType.createCell(.notification),
-                                                      EMSettingCellType.createCell(.conversations),
-                                                      EMSettingCellType.createCell(.message),
-                                                      EMSettingCellType.createCell(.appearance),
-                                                      EMSettingCellType.createCell(.recovery),
+                                                      EMSettingCellType.createCell(.notification)
+                                                      ], type: .settings)
+        case globalChatSetting :
+            return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.receiptRead),
+                                                      EMSettingCellType.createCell(.autoDeleteMessage),
+                                                      EMSettingCellType.createCell(.inputTips),
+                                                      EMSettingCellType.createCell(.linkPreview),
+                                                      EMSettingCellType.createCell(.voiceAndVideoCall),
                                                       EMSettingCellType.createCell(.invite),
-                                                      EMSettingCellType.createCell(.language)], type: .settings)
+                                                      EMSettingCellType.createCell(.aboutUs),
+                                                      EMSettingCellType.createCell(.website),
+                                                      EMSettingCellType.createCell(.useGuide)
+                                                      ], type: .settings)
         case help :
             return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.help),EMSettingCellType.createCell(.clean)], type: .help)
         case chatSettings :
@@ -66,6 +77,7 @@ enum EMSettingCellType : String{
     case copyGroupUrl
     case groupInfo
     case path
+    case cleanCache
     case privacy
     case notification
     case conversations
@@ -86,6 +98,14 @@ enum EMSettingCellType : String{
     case shield
     case notifyMentionsOnly
     case addMembers
+    case receiptRead
+    case autoDeleteMessage
+    case inputTips
+    case linkPreview
+    case voiceAndVideoCall
+    case aboutUs
+    case website
+    case useGuide
     
     static func createCell(_ type : EMSettingCellType,
                            profile : Profile? = nil,
@@ -100,21 +120,21 @@ enum EMSettingCellType : String{
         case path :
             return EMSettingCellModel(title: "vc_path_title".localized(),status: 1,type: type)
         case privacy :
-            return EMSettingCellModel(title: "vc_settings_privacy_button_title".localized(),icon: UIImage(named: "icon_setting_privacy"),type: type)
+            return EMSettingCellModel(title: "vc_settings_privacy_button_title".localized(),icon: UIImage(named: "icon_setting_privacy"),type: type,showArrow: true)
         case notification :
-            return EMSettingCellModel(title: "vc_settings_notifications_button_title".localized(),icon: UIImage(named: "icon_setting_notification"),type: type)
+            return EMSettingCellModel(title: "vc_settings_notifications_button_title".localized(),icon: UIImage(named: "icon_setting_notification"),type: type,showArrow: true)
         case conversations :
             return EMSettingCellModel(title: "CONVERSATION_SETTINGS_TITLE".localized(),icon: UIImage(named: "icon_setting_conversations"),type: type)
         case message :
             return EMSettingCellModel(title: "MESSAGE_REQUESTS_TITLE".localized(),icon: UIImage(named: "icon_setting_message"),type: type)
         case appearance :
-            return EMSettingCellModel(title: "APPEARANCE_TITLE".localized(),icon: UIImage(named: "icon_setting_appearance"),type: type)
+            return EMSettingCellModel(title: LocalThemeMode.localized(),icon: UIImage(named: "icon_setting_appearance"),content: ThemeManager.currentTheme.title,type: type,showArrow: true)
         case recovery :
             return EMSettingCellModel(title: "vc_enter_recovery_phrase_title".localized(),icon: UIImage(named: "icon_setting_recovery"),type: type)
         case invite :
-            return EMSettingCellModel(title: "vc_settings_invite_a_friend_button_title".localized(),icon: UIImage(named: "icon_setting_invite"),type: type)
+            return EMSettingCellModel(title: "vc_settings_invite_a_friend_button_title".localized(),icon: UIImage(named: "icon_setting_invite"),type: type,showArrow: true)
         case language :
-            return EMSettingCellModel(title: "LocalLanguage".localized(),type: type)
+            return EMSettingCellModel(title: LocalLanguage.localized(),content: EMLocalizationTool.getLanguageName(EMLocalizationTool.shared.currentLanguage),type: type,showArrow: true)
         case help :
             return EMSettingCellModel(title: "HELP_TITLE".localized(),icon: UIImage(named: "icon_setting_help"),type: type)
         case clean :
@@ -141,6 +161,24 @@ enum EMSettingCellType : String{
             return EMSettingCellModel(title: "vc_conversation_settings_notify_for_mentions_only_title".localized(),icon: UIImage(named: "icon_chats_notifyMentionsOnly"),maybeThreadViewModel: maybeThreadViewModel,type: type)
         case .addMembers:
             return EMSettingCellModel(title: "vc_conversation_settings_invite_button_title".localized(),icon: UIImage(named: "icon_chats_addMembers"),type: type)
+        case .receiptRead:
+            return EMSettingCellModel(title: LocalReceiptRead.localized(),type: type)
+        case .autoDeleteMessage:
+            return EMSettingCellModel(title: LocalAutoDeleteMessage.localized(),type: type)
+        case .inputTips:
+            return EMSettingCellModel(title: LocalEnteringPrompt.localized(),type: type)
+        case .linkPreview:
+            return EMSettingCellModel(title: LocalSendLinkPreview.localized(),type: type)
+        case .voiceAndVideoCall:
+            return EMSettingCellModel(title: LocalVoiceAndVideoCall.localized(),type: type)
+        case .aboutUs:
+            return EMSettingCellModel(title: LocalAboutUS.localized(),type: type,showArrow: true)
+        case .website:
+            return EMSettingCellModel(title: LocalWebsite.localized(),type: type,showArrow: true)
+        case .useGuide:
+            return EMSettingCellModel(title: LocalUsageGuidelines.localized(),type: type,showArrow: true)
+        case .cleanCache:
+            return EMSettingCellModel(title: LocalCleanCache.localized(),content: EMCacheManager.share.getCacheSize(),type: type,showArrow: true)
         }
         
     }
@@ -168,10 +206,11 @@ class EMSettingCellModel : Equatable{
     var status : Int = 0
     var content : String?
     var userInfo : Profile?
+    var showArrow : Bool = false
     var notificationSound : Preferences.Sound?
     var disappearingMessagesConfig : DisappearingMessagesConfiguration?
     var maybeThreadViewModel: SessionThreadViewModel?
-    convenience init(title: String? = nil, icon: UIImage? = nil, status: Int = 0, userInfo: Profile? = nil,content : String? = nil,disappearingMessagesConfig : DisappearingMessagesConfiguration? = nil,notificationSound : Preferences.Sound? = nil,maybeThreadViewModel: SessionThreadViewModel? = nil,type : EMSettingCellType) {
+    convenience init(title: String? = nil, icon: UIImage? = nil, status: Int = 0, userInfo: Profile? = nil,content : String? = nil,disappearingMessagesConfig : DisappearingMessagesConfiguration? = nil,notificationSound : Preferences.Sound? = nil,maybeThreadViewModel: SessionThreadViewModel? = nil,type : EMSettingCellType,showArrow : Bool = false) {
         self.init()
         self.title = title
         self.icon = icon
@@ -182,6 +221,7 @@ class EMSettingCellModel : Equatable{
         self.disappearingMessagesConfig = disappearingMessagesConfig
         self.notificationSound = notificationSound
         self.maybeThreadViewModel = maybeThreadViewModel
+        self.showArrow = showArrow
     }
     
     static func == (lhs: EMSettingCellModel, rhs: EMSettingCellModel) -> Bool {
@@ -191,7 +231,8 @@ class EMSettingCellModel : Equatable{
                 lhs.userInfo == rhs.userInfo &&
                 lhs.disappearingMessagesConfig == rhs.disappearingMessagesConfig &&
                 lhs.notificationSound == rhs.notificationSound &&
-                lhs.maybeThreadViewModel == rhs.maybeThreadViewModel)
+                lhs.maybeThreadViewModel == rhs.maybeThreadViewModel &&
+                lhs.showArrow == rhs.showArrow)
     }
 }
 

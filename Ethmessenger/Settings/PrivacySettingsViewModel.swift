@@ -30,19 +30,21 @@ class PrivacySettingsViewModel: SessionTableViewModel<PrivacySettingsViewModel.N
     public enum Section: SessionTableSection {
         case customer
         case screenSecurity
-        case readReceipts
-        case typingIndicators
-        case linkPreviews
-        case calls
+        case blockedContacts
+//        case readReceipts
+//        case typingIndicators
+//        case linkPreviews
+//        case calls
         
         var title: String? {
             switch self {
                 case .customer: return "LocalCustomSetting".localized()
                 case .screenSecurity: return "PRIVACY_SECTION_SCREEN_SECURITY".localized()
-                case .readReceipts: return "PRIVACY_SECTION_READ_RECEIPTS".localized()
-                case .typingIndicators: return "PRIVACY_SECTION_TYPING_INDICATORS".localized()
-                case .linkPreviews: return "PRIVACY_SECTION_LINK_PREVIEWS".localized()
-                case .calls: return "PRIVACY_SECTION_CALLS".localized()
+                case .blockedContacts: return nil
+//                case .readReceipts: return "PRIVACY_SECTION_READ_RECEIPTS".localized()
+//                case .typingIndicators: return "PRIVACY_SECTION_TYPING_INDICATORS".localized()
+//                case .linkPreviews: return "PRIVACY_SECTION_LINK_PREVIEWS".localized()
+//                case .calls: return "PRIVACY_SECTION_CALLS".localized()
             }
         }
         
@@ -55,10 +57,11 @@ class PrivacySettingsViewModel: SessionTableViewModel<PrivacySettingsViewModel.N
         case socks5Proxy
         case screenLock
         case screenshotNotifications
-        case readReceipts
-        case typingIndicators
-        case linkPreviews
-        case calls
+        case blockedContacts
+//        case readReceipts
+//        case typingIndicators
+//        case linkPreviews
+//        case calls
     }
     
     // MARK: - Navigation
@@ -179,101 +182,15 @@ class PrivacySettingsViewModel: SessionTableViewModel<PrivacySettingsViewModel.N
                     ]
                 ),
                 SectionModel(
-                    model: .readReceipts,
+                    model: .blockedContacts,
                     elements: [
                         SessionCell.Info(
-                            id: .readReceipts,
-                            title: "PRIVACY_READ_RECEIPTS_TITLE".localized(),
-                            subtitle: "PRIVACY_READ_RECEIPTS_DESCRIPTION".localized(),
-                            rightAccessory: .toggle(.settingBool(key: .areReadReceiptsEnabled)),
-                            onTap: {
-                                Storage.shared.write { db in
-                                    db[.areReadReceiptsEnabled] = !db[.areReadReceiptsEnabled]
-                                }
-                            }
-                        )
-                    ]
-                ),
-                SectionModel(
-                    model: .typingIndicators,
-                    elements: [
-                        SessionCell.Info(
-                            id: .typingIndicators,
-                            title: "PRIVACY_TYPING_INDICATORS_TITLE".localized(),
-                            subtitle: "PRIVACY_TYPING_INDICATORS_DESCRIPTION".localized(),
-                            subtitleExtraViewGenerator: {
-                                let targetHeight: CGFloat = 20
-                                let targetWidth: CGFloat = ceil(20 * (targetHeight / 12))
-                                let result: UIView = UIView(
-                                    frame: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight)
-                                )
-                                result.set(.width, to: targetWidth)
-                                result.set(.height, to: targetHeight)
-                                
-                                // Use a transform scale to reduce the size of the typing indicator to the
-                                // desired size (this way the animation remains intact)
-                                let cell: TypingIndicatorCell = TypingIndicatorCell()
-                                cell.transform = CGAffineTransform.scale(targetHeight / cell.bounds.height)
-                                cell.typingIndicatorView.startAnimation()
-                                result.addSubview(cell)
-                                
-                                // Note: Because we are messing with the transform these values don't work
-                                // logically so we inset the positioning to make it look visually centered
-                                // within the layout inspector
-                                cell.center(.vertical, in: result, withInset: -(targetHeight * 0.15))
-                                cell.center(.horizontal, in: result, withInset: -(targetWidth * 0.35))
-                                cell.set(.width, to: .width, of: result)
-                                cell.set(.height, to: .height, of: result)
-                                
-                                return result
-                            },
-                            rightAccessory: .toggle(.settingBool(key: .typingIndicatorsEnabled)),
-                            onTap: {
-                                Storage.shared.write { db in
-                                    db[.typingIndicatorsEnabled] = !db[.typingIndicatorsEnabled]
-                                }
-                            }
-                        )
-                    ]
-                ),
-                SectionModel(
-                    model: .linkPreviews,
-                    elements: [
-                        SessionCell.Info(
-                            id: .linkPreviews,
-                            title: "PRIVACY_LINK_PREVIEWS_TITLE".localized(),
-                            subtitle: "PRIVACY_LINK_PREVIEWS_DESCRIPTION".localized(),
-                            rightAccessory: .toggle(.settingBool(key: .areLinkPreviewsEnabled)),
-                            onTap: {
-                                Storage.shared.write { db in
-                                    db[.areLinkPreviewsEnabled] = !db[.areLinkPreviewsEnabled]
-                                }
-                            }
-                        )
-                    ]
-                ),
-                SectionModel(
-                    model: .calls,
-                    elements: [
-                        SessionCell.Info(
-                            id: .calls,
-                            title: "PRIVACY_CALLS_TITLE".localized(),
-                            subtitle: "PRIVACY_CALLS_DESCRIPTION".localized(),
-                            rightAccessory: .toggle(.settingBool(key: .areCallsEnabled)),
-                            accessibilityLabel: "Allow voice and video calls",
-                            confirmationInfo: ConfirmationModal.Info(
-                                title: "PRIVACY_CALLS_WARNING_TITLE".localized(),
-                                body: .text("PRIVACY_CALLS_WARNING_DESCRIPTION".localized()),
-                                showCondition: .disabled,
-                                confirmTitle: "continue_2".localized(),
-                                confirmAccessibilityLabel: "Enable",
-                                confirmStyle: .textPrimary,
-                                onConfirm: { _ in Permissions.requestMicrophonePermissionIfNeeded() }
-                            ),
-                            onTap: {
-                                Storage.shared.write { db in
-                                    db[.areCallsEnabled] = !db[.areCallsEnabled]
-                                }
+                            id: .blockedContacts,
+                            title: "CONVERSATION_SETTINGS_BLOCKED_CONTACTS_TITLE".localized(),
+                            tintColor: .danger,
+                            shouldHaveBackground: false,
+                            onTap: { [weak self] in
+                                self?.transitionToScreen(BlockedContactsViewController())
                             }
                         )
                     ]
@@ -287,9 +204,9 @@ class PrivacySettingsViewModel: SessionTableViewModel<PrivacySettingsViewModel.N
     private func restartApp(){
         self.transitionToScreen(ConfirmationModal(
             info: ConfirmationModal.Info(
-                title: "LocalTips".localized(),
+                title: LocalTips.localized(),
                 body: .text("LocalRestartTips".localized()),
-                confirmTitle: "LocalConfirm".localized(),
+                confirmTitle: LocalConfirm.localized(),
                 cancelTitle: LocalCancel.localized(),
                 cancelStyle: .alert_text,
                 onConfirm: { _ in

@@ -30,7 +30,7 @@ class EMUserInfoAddressItem: UIView {
             make.centerY.equalToSuperview()
         }
         
-        let btnCopy = UIButton(type: .system,title:"  " + "LocalCopy".localized(),font: UIFont.Bold(size: 13),image: UIImage(named: "icon_setting_copy"),tintColor: .textPrimary)
+        let btnCopy = UIButton(type: .system,title:"  " + LocalCopy.localized(),font: UIFont.Bold(size: 13),image: UIImage(named: "icon_setting_copy"),tintColor: .textPrimary)
         btnCopy.addTarget(self, action: #selector(copyString(_:)), for: .touchUpInside)
         titleView.addSubview(btnCopy)
         btnCopy.snp.makeConstraints { make in

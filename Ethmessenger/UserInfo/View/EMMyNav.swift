@@ -36,6 +36,7 @@ class EMMyNav: UIView {
         }
         
         let btnSetting = UIButton(image: UIImage(named: "icon_user_setting"))
+        btnSetting.addTarget(self, action: #selector(onclickSetting), for: .touchUpInside)
         nav.addSubview(btnSetting)
         btnSetting.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-20.w)
@@ -43,6 +44,7 @@ class EMMyNav: UIView {
         }
         
         let btnCard = UIButton(image: UIImage(named: "icon_user_card"))
+        btnCard.addTarget(self, action: #selector(onclickCard), for: .touchUpInside)
         nav.addSubview(btnCard)
         btnCard.snp.makeConstraints { make in
             make.right.equalTo(btnSetting.snp.left).offset(-16.w)
@@ -113,5 +115,18 @@ class EMMyNav: UIView {
         }
     }
     
+    var profile : Profile?
 }
 
+extension EMMyNav{
+    @objc func onclickSetting(){
+        UIUtil.visibleNav()?.pushViewController(EMSettingPage(), animated: true)
+    }
+    
+    @objc func onclickCard(){
+        if userInfo == nil || profile == nil {
+            return
+        }
+        UIUtil.visibleNav()?.pushViewController(EMUserCardPage(userInfo: profile!, emUserInfo: userInfo!), animated: true)
+    }
+}

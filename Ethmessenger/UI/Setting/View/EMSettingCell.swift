@@ -55,7 +55,7 @@ class EMSettingCell: BaseTableViewCell {
 
     var model : EMSettingCellModel?{
         didSet{
-            icon.image = model?.type == .path ? getStateIcon() : model?.type == .language ? getLangugeIcon() : model?.icon?.withRenderingMode(.alwaysTemplate)
+            icon.image = model?.type == .path ? getStateIcon() : model?.icon?.withRenderingMode(.alwaysTemplate)
             labTitle.text = model?.title
             let titleCenterY = model?.type == .burnAfterReading ? -5.w : model?.type == .notifyMentionsOnly ? -10.w : 0
             labTitle.snp.updateConstraints { make in
@@ -90,11 +90,11 @@ class EMSettingCell: BaseTableViewCell {
         }
     }
     
-    func getLangugeIcon() -> UIImage?{
-        switch (EMLocalizationTool.shared.currentLanguage) {
-        case .Chinese: return UIImage(named: "icon_setting_china")
-        case .English: return UIImage(named: "icon_setting_languange_us")
-        }
-    }
+//    func getLangugeIcon() -> UIImage?{
+//        switch (EMLocalizationTool.shared.currentLanguage) {
+//        case .Chinese: return UIImage(named: "icon_setting_china")
+//        case .English: return UIImage(named: "icon_setting_languange_us")
+//        }
+//    }
 }
 

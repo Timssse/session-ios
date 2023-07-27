@@ -139,9 +139,7 @@ class QRCodeScanningViewController: UIViewController, AVCaptureMetadataOutputObj
     
     internal func captureResult(_ capture: ZXCapture, result: ZXResult) {
         guard self.captureEnabled else { return }
-        
         self.stopCapture()
-        
         // Vibrate
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         

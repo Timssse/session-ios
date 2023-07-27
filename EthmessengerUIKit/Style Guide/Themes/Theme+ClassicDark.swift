@@ -126,6 +126,7 @@ internal enum Theme_ClassicDark: ThemeColors {
         .color_91979D : .color_91979D,
         .color_616569 : .color_616569,
         .user_communit_bg : .color_1B1B1B_A80,
-        .emptyContent : .color_616569
+        .emptyContent : .color_616569,
+        .alertTextColor : .color_91979D
     ]
 }

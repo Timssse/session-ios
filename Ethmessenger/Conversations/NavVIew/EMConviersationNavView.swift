@@ -23,10 +23,8 @@ class EMConviersationNavView: UIView {
             make.height.equalTo(54.w)
         }
         
-        let backBtn = UIButton(type: .system)
+        let backBtn = UIButton(type: .system,image: UIImage(named: "icon_back"),tintColor: .textPrimary)
         backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
-        backBtn.setImage(UIImage(named: "icon_back"), for: .normal)
-        backBtn.themeTintColor = .textPrimary
         contentView.addSubview(backBtn)
         backBtn.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()

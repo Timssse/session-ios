@@ -8,7 +8,7 @@ import SessionMessagingKit
 import SessionUtilitiesKit
 import SignalUtilitiesKit
 
-final class HomeVC: BaseVC, UITableViewDataSource, UITableViewDelegate,ThemedNavigation, SeedReminderViewDelegate {
+final class HomeVC: BaseVC, UITableViewDataSource, UITableViewDelegate, SeedReminderViewDelegate,ThemedNavigation {
     private static let loadingHeaderHeight: CGFloat = 40
     public static let newConversationButtonSize: CGFloat = 60
     

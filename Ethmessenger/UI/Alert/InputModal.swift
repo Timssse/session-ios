@@ -67,7 +67,7 @@ public class InputModal: Modal {
     
     private lazy var copyButton: UIButton = {
         let result: UIButton = Modal.createButton(
-            title: "LocalConfirm".localized(),
+            title: LocalConfirm.localized(),
             titleColor: ThemeValue.textPrimary
         )
         result.addTarget(self, action: #selector(confirm), for: .touchUpInside)
