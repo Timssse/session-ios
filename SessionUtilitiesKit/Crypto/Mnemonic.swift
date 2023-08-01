@@ -114,6 +114,7 @@ public enum Mnemonic {
         let n = truncatedWordSet.count
         // Check preconditions
         if words.count == 13{
+            SNLog("=========2222225")
             return try oldDecode(mnemonic: mnemonic)
         }
         var bitString = ""
@@ -121,6 +122,8 @@ public enum Mnemonic {
 //            let idx = language.words.index(of: word)
             let idx = truncatedWordSet.firstIndex(of: word)
             if (idx == nil) {
+                
+                SNLog("=========1111111\(word)")
                 throw DecodingError.invalidWord
             }
             let idxAsInt = truncatedWordSet.startIndex.distance(to: idx!)
@@ -129,15 +132,20 @@ public enum Mnemonic {
         }
         let stringCount = bitString.count
         if !stringCount.isMultiple(of: 33) {
+            SNLog("=========2222222")
             throw DecodingError.invalidWord
         }
         let entropyBits = bitString[0 ..< (bitString.count - bitString.count/33)]
         let checksumBits = bitString[(bitString.count - bitString.count/33) ..< bitString.count]
         guard let entropy = entropyBits.interpretAsBinaryData() else {
+            SNLog("=========22222223")
             throw DecodingError.invalidWord
         }
         let checksum = String(entropy.sha256().bitsInRange(0, checksumBits.count)!, radix: 2).leftPadding(toLength: checksumBits.count, withPad: "0")
+        SNLog("=========checksumBits==\(checksumBits)")
+        SNLog("=========checksum==\(checksum)")
         if checksum != checksumBits {
+            SNLog("=========22222224")
             throw DecodingError.invalidWord
         }
         return entropy.toHexString()

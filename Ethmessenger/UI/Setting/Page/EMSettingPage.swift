@@ -276,7 +276,7 @@ extension EMSettingPage: UITableViewDelegate,UITableViewDataSource{
                 .content(LocalCleanCacheTips.localized())
                 .confirm(LocalConfirm.localized())
                 .cancel(LocalCancel.localized())
-                .confirmAction {
+                .confirmAction {_ in
                     Task{
                         await EMCacheManager.share.cleanCache()
                         Toast.toast(hit: LocalCleanSuccess.localized())
@@ -312,7 +312,7 @@ extension EMSettingPage: UITableViewDelegate,UITableViewDataSource{
                 .content(LocalAutoDeleteMessageTips.localized())
                 .confirm(LocalConfirm.localized())
                 .cancel(LocalCancel.localized())
-                .confirmAction {
+                .confirmAction {_ in
                     Task{
                         Storage.shared.write { db in
                             db[.trimOpenGroupMessagesOlderThanSixMonths] = !db[.trimOpenGroupMessagesOlderThanSixMonths]
@@ -373,7 +373,7 @@ extension EMSettingPage: UITableViewDelegate,UITableViewDataSource{
                 .content("PRIVACY_CALLS_WARNING_DESCRIPTION".localized())
                 .confirm(LocalConfirm.localized())
                 .cancel(LocalCancel.localized())
-                .confirmAction {
+                .confirmAction {_ in
                     Permissions.requestMicrophonePermissionIfNeeded()
                     Storage.shared.write { db in
                         db[.areCallsEnabled] = !db[.areCallsEnabled]

@@ -12,6 +12,7 @@ class EMUserPage: EMRefreshController ,EMHideNavigationBarProtocol,ThemedNavigat
         super.viewDidLoad()
         userInfo = Profile.fetchOrCreateCurrentUser()
         NotificationCenter.default.addObserver(self, selector: #selector(refressh), name: kNotifyRefreshCommunity, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(chainChange), name: kNotifychangeChain, object: nil)
         self.refressh()
     }
     
@@ -37,7 +38,14 @@ class EMUserPage: EMRefreshController ,EMHideNavigationBarProtocol,ThemedNavigat
         }
     }
     
-    lazy var navView : EMMyNav = EMMyNav()
+    
+    lazy var navView : EMMyNav = {
+        let view = EMMyNav()
+        if let model = EMNetworkModel.getNetwork(){
+            view.chain = model
+        }
+        return view
+    }()
     
     lazy var tableView : UITableView = {
         let tableView = EMTableView(delegate: self, dataSource: self, backgroundColor: .clear)
@@ -85,13 +93,13 @@ class EMUserPage: EMRefreshController ,EMHideNavigationBarProtocol,ThemedNavigat
     
     lazy var notDataView : UIView = {
         let view = EMPlaceholder.show(EMPlaceholder.emptyTwitter(isPost: true, target: self, postAction: #selector(onclickPublish)),frame: CGRect(x: 0, y: 0, width: Screen_width, height: 380.w),centerY: -70.w)
-        let walletBottom = UIImageView(image: UIImage(named: "icon_user_wallet_bottom"))
-        view.addSubview(walletBottom)
-        walletBottom.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(16.w)
-            make.right.equalToSuperview().offset(-16.w)
-            make.top.equalToSuperview().offset(-9.w)
-        }
+//        let walletBottom = UIImageView(image: UIImage(named: "icon_user_wallet_bottom"))
+//        view.addSubview(walletBottom)
+//        walletBottom.snp.makeConstraints { make in
+//            make.left.equalToSuperview().offset(16.w)
+//            make.right.equalToSuperview().offset(-16.w)
+//            make.top.equalToSuperview().offset(-9.w)
+//        }
         return view
     }()
     
@@ -111,7 +119,7 @@ extension EMUserPage{
         isLoadMore = false
         getUserInfo()
         getData()
-        getChains()
+        getWalletConfig()
     }
     
     func getUserInfo(){
@@ -123,10 +131,18 @@ extension EMUserPage{
         }
     }
     
-    func getChains(){
+    func getWalletConfig(){
         Task{
-            await EMAppConfig.shared.getChains()
-            self.navView.chain = EMAppConfig.shared.chains.first
+            await EMWalletController.getConfig()
+            if let model = EMNetworkModel.getNetwork(){
+                navView.chain = model
+            }else{
+                let model = EMWalletConfigModel.shared.network.first
+                if model != nil{
+                    EMNetworkModel.save(network: model!)
+                }
+            }
+            await EMWalletController.getTokenPrice()
         }
     }
     
@@ -149,6 +165,10 @@ extension EMUserPage{
             self.tableView.tableFooterView = dataArr.count > 0 ? self.footerView : self.notDataView
             
         }
+    }
+    
+    @objc func chainChange(){
+        navView.chain = EMNetworkModel.getNetwork()
     }
 }
 

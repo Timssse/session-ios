@@ -7,6 +7,12 @@ class EMWalletCardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layoutUI()
+        Task{
+            await update()
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(refresshWalletMoney), name: kNotifyRefreshWallet, object: nil)
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickCard)))
+        
     }
     
     required init?(coder: NSCoder) {
@@ -30,6 +36,7 @@ class EMWalletCardView: UIView {
             make.centerY.equalTo(walletIcon)
         }
         
+        btnEye.addTarget(self, action: #selector(onclickEye), for: .touchUpInside)
         self.addSubview(btnEye)
         btnEye.snp.makeConstraints { make in
             make.left.equalTo(labWallet.snp.right)
@@ -60,5 +67,45 @@ class EMWalletCardView: UIView {
     
     lazy var btnEye : UIButton = UIButton(image: UIImage(named: "icon_user_eye_close"),selectImage: UIImage(named: "icon_user_eye_open"))
     
-    lazy var labUsd : UILabel = UILabel(font: UIFont.Bold(size: 20),color: UIColor(white: 1, alpha: 0.7),text: "Wallet")
+    lazy var labUsd : UILabel = UILabel(font: UIFont.Bold(size: 20),color: UIColor(white: 1, alpha: 0.7),text: "0.00")
+    
+    var moneny = "0.00"
+    
+    func updateMoney() {
+        btnEye.isSelected = EMWalletCache.shared.isMoneyVisiable
+        if !EMWalletCache.shared.isMoneyVisiable {
+            labUsd.text  = "****"
+        }else{
+            labUsd.text  = moneny
+        }
+    }
+    
+    deinit{
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+extension EMWalletCardView{
+    func update()async{
+        let tokens = EMTableToken.selectAll()
+        tokens.forEach { token in
+            moneny = moneny.add(numberString: token.balance.take(numberString: token.price))
+        }
+        labUsd.text = String(format: "%.2f", moneny.toDouble())
+    }
+    
+    @objc func refresshWalletMoney(){
+        Task{
+            await update()
+        }
+    }
+    
+    @objc func onclickEye(){
+        EMWalletCache.shared.isMoneyVisiable = !EMWalletCache.shared.isMoneyVisiable
+        updateMoney()
+    }
+    
+    @objc func onclickCard(){
+        UIUtil.visibleNav()?.pushViewController(EMWalletPage(), animated: true)
+    }
 }

@@ -9,6 +9,7 @@ struct CommunityConfigRequest: HTTPRequest {
     
     var headers: [String : String]? = nil
     
+    var urlType : RequestUrlType = .communit
     
     func request() async throws -> Any{
         return try await self.fetchAwait()
@@ -21,6 +22,8 @@ struct CommunityNonceRequest: HTTPRequest {
     var method: HTTPMethod = .get
     
     var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
     
     var address : String
     
@@ -37,6 +40,8 @@ struct CommunityLoginRequest: HTTPRequest {
     var method: HTTPMethod = .post
     
     var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
     
     var address : String
     
@@ -56,10 +61,28 @@ struct CommunityHomeRequest: HTTPRequest {
     
     var headers: [String : String]? = nil
     
+    var urlType : RequestUrlType = .communit
+    
     var cursor : String
     
     func request() async throws -> Any{
-        return try await self.fetchAwait(["user_address":cursor])
+        return try await self.fetchAwait(["cursor":cursor])
+    }
+}
+
+struct CommunityFollowTwitterRequest: HTTPRequest {
+    var url: String = "v0/tweets/follow"
+    
+    var method: HTTPMethod = .get
+    
+    var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
+    
+    var cursor : String
+    
+    func request() async throws -> Any{
+        return try await self.fetchAwait(["cursor":cursor])
     }
 }
 
@@ -69,6 +92,8 @@ struct CommunityLikeRequest: HTTPRequest {
     var method: HTTPMethod = .post
     
     var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
     
     var twAddress : String
     @discardableResult
@@ -84,6 +109,8 @@ struct CommunityDetailRequest: HTTPRequest {
     
     var headers: [String : String]? = nil
     
+    var urlType : RequestUrlType = .communit
+    
     var twId : String
     @discardableResult
     func request() async throws -> Any{
@@ -97,6 +124,8 @@ struct CommunityCommentListRequest: HTTPRequest {
     var method: HTTPMethod = .get
     
     var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
     
     var twAddress : String
     
@@ -115,6 +144,8 @@ struct CommunityCommentReleaseRequest: HTTPRequest {
     
     var headers: [String : String]? = nil
     
+    var urlType : RequestUrlType = .communit
+    
     var twAddress : String
     
     var content : String
@@ -131,6 +162,8 @@ struct CommunityCreateRequest: HTTPRequest {
     var method: HTTPMethod = .post
     
     var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
     
     var forwardId : String?
     
@@ -152,6 +185,8 @@ struct CommunityReleaseRequest: HTTPRequest {
     
     var headers: [String : String]? = nil
     
+    var urlType : RequestUrlType = .communit
+    
     var id : String
     
     var sign : String
@@ -169,6 +204,8 @@ struct CommunityUploadRequest: HTTPRequest {
     var method: HTTPMethod = .post
     
     var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
     
     var datas : [HTTPMultipartData]
     

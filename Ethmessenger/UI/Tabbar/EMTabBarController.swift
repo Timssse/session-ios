@@ -5,6 +5,9 @@ import SessionUIKit
 
 class EMTabBarController: UITabBarController {
     
+    static var shared : EMTabBarController?
+    
+    
     let customTabBar : EMTabBar = EMTabBar()
     let optionallyBtn: UIButton = UIButton(type: .custom)
     var currentItem : Int = 0
@@ -15,6 +18,7 @@ class EMTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Task{
+            EMTableToken.addMainToken()
             await EMCommunityController.login()
             await EMCommunityController.config()
         }
@@ -22,6 +26,8 @@ class EMTabBarController: UITabBarController {
         WalletUtilities.createAccount()
         NotificationCenter.default.addObserver(self, selector: #selector(messageChange(_:)), name: kNotifyRefreshMessageCount, object: nil)
         setupUI()
+        
+        EMTabBarController.shared = self
     }
     
     func setupUI() {
@@ -86,21 +92,30 @@ class EMTabBarController: UITabBarController {
             }
         }
     }
-    
-    
 }
+
+
 
 
 extension EMTabBarController{
     @objc func messageChange(_ notice : Notification){
         itemChats.dot.isHidden = (((notice.object as? Int64) ?? 0) == 0)
     }
+    
+    func showTabbar(){
+        self.customTabBar.superview?.isHidden = false
+    }
+    
+    func hiddenTabbar(){
+        self.customTabBar.superview?.isHidden = true
+    }
+    
 }
 
 extension EMTabBarController : UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if navigationController.viewControllers.count > 1{
-            self.customTabBar.superview?.isHidden = true
+            hiddenTabbar()
         }
         if (viewController is EMHideNavigationBarProtocol){
             navigationController.setNavigationBarHidden(true, animated: true)
@@ -113,7 +128,7 @@ extension EMTabBarController : UINavigationControllerDelegate{
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if navigationController.viewControllers.count <= 1{
-            self.customTabBar.superview?.isHidden = false
+            showTabbar()
         }
     }
 }

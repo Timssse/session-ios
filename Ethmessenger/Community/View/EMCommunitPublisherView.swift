@@ -9,12 +9,16 @@ class EMCommunitPublisherView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(icon)
+        icon.isUserInteractionEnabled = true
+        icon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushUserVC)))
         icon.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()
             make.size.equalTo(CGSize(width: 52.w, height: 52.w))
         }
         
         self.addSubview(labName)
+        labName.isUserInteractionEnabled = true
+        labName.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushUserVC)))
         labName.snp.makeConstraints { make in
             make.left.equalTo(icon.snp.right).offset(18.w)
             make.top.equalToSuperview()
@@ -65,7 +69,11 @@ class EMCommunitPublisherView: UIView {
         }
     }
     
-    
+    @objc func pushUserVC(){
+        let vc = EMOtherUserPage()
+        vc.address = FS(model.UserInfo?.UserAddress)
+        UIUtil.visibleNav()?.pushViewController(vc, animated: true)
+    }
     
     @objc func onclickMore(_ sender : UIButton){
         var frame = sender.convert(sender.bounds, to: UIUtil.getWindow()!)

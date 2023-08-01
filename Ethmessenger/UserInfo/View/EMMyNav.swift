@@ -3,7 +3,10 @@
 import UIKit
 
 class EMMyNav: UIView {
-
+    let btnSetting = UIButton(image: UIImage(named: "icon_user_setting"))
+    let btnCard = UIButton(image: UIImage(named: "icon_user_card"))
+    let backBtn = UIButton(type: .system,image: UIImage(named: "icon_back"),tintColor: .white)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layoutUI()
@@ -21,12 +24,12 @@ class EMMyNav: UIView {
             make.top.equalToSuperview().offset(statusBarH)
         }
         
-        nav.addSubview(chainView)
-        chainView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20.w)
-            make.centerY.equalToSuperview().offset(-5.w)
-            make.height.equalTo(36.w)
-        }
+//        nav.addSubview(chainView)
+//        chainView.snp.makeConstraints { make in
+//            make.left.equalToSuperview().offset(20.w)
+//            make.centerY.equalToSuperview().offset(-5.w)
+//            make.height.equalTo(36.w)
+//        }
         
         nav.addSubview(userInfoView)
         userInfoView.snp.makeConstraints { make in
@@ -35,7 +38,7 @@ class EMMyNav: UIView {
             make.height.equalTo(36.w)
         }
         
-        let btnSetting = UIButton(image: UIImage(named: "icon_user_setting"))
+        
         btnSetting.addTarget(self, action: #selector(onclickSetting), for: .touchUpInside)
         nav.addSubview(btnSetting)
         btnSetting.snp.makeConstraints { make in
@@ -43,17 +46,27 @@ class EMMyNav: UIView {
             make.centerY.equalToSuperview()
         }
         
-        let btnCard = UIButton(image: UIImage(named: "icon_user_card"))
+        
         btnCard.addTarget(self, action: #selector(onclickCard), for: .touchUpInside)
         nav.addSubview(btnCard)
         btnCard.snp.makeConstraints { make in
             make.right.equalTo(btnSetting.snp.left).offset(-16.w)
             make.centerY.equalToSuperview()
         }
+        
+        
+        backBtn.isHidden = true
+        backBtn.addTarget(self, action: #selector(popPage), for: .touchUpInside)
+        nav.addSubview(backBtn)
+        backBtn.snp.makeConstraints { make in
+            make.left.top.bottom.equalToSuperview()
+            make.width.equalTo(60.w)
+        }
     }
     
     lazy var chainView : UIView = {
         let view = UIView(UIColor(white: 1, alpha: 0.2),corner: 18.w)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickChain)))
         view.addSubview(chainIcon)
         chainIcon.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(9.w)
@@ -101,7 +114,7 @@ class EMMyNav: UIView {
     
     lazy var userName : UILabel = UILabel(font: UIFont.Bold(size: 20),textColor: .white)
     
-    var chain : EMChainModel? {
+    var chain : EMNetworkModel? {
         didSet{
             chainIcon.sd_setImage(with: URL(string: FS(chain?.icon)), placeholderImage: UIImage(named: "icon_community_default"))
             chainName.text = chain?.chain_symbol
@@ -115,10 +128,23 @@ class EMMyNav: UIView {
         }
     }
     
+    var isOther = false {
+        didSet{
+            userInfoView.isHidden = isOther
+            btnSetting.isHidden = isOther
+            btnCard.isHidden = isOther
+            backBtn.isHidden = !isOther
+        }
+    }
+    
     var profile : Profile?
 }
 
 extension EMMyNav{
+    @objc func popPage(){
+        UIUtil.visibleNav()?.popViewController(animated: true)
+    }
+    
     @objc func onclickSetting(){
         UIUtil.visibleNav()?.pushViewController(EMSettingPage(), animated: true)
     }
@@ -128,5 +154,12 @@ extension EMMyNav{
             return
         }
         UIUtil.visibleNav()?.pushViewController(EMUserCardPage(userInfo: profile!, emUserInfo: userInfo!), animated: true)
+    }
+    
+    @objc func onclickChain(){
+        EMTabBarController.shared?.hiddenTabbar()
+        EMAlert.alert(.selectNetwork).cancelAction {
+            EMTabBarController.shared?.showTabbar()
+        }.popup()
     }
 }

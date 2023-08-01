@@ -5,24 +5,61 @@ import web3swift
 import Web3Core
 import BigInt
 
+struct GetBalanceRequest : WalletERCRequest{
+    var rpc: String
+    var chainId: Int
+    var address : String
+    var contractAddress : String
+    func request() async throws -> BigUInt?{
+        if contractAddress.count == 0 {
+            return try await self.fetchAwait(.getBalance(address, .latest)) as? BigUInt
+        }
+        let web = try await createWeb3()
+        guard let walletAddress = EthereumAddress(address) else {
+            throw WalletError.addressError(desc: "address Error")
+        }
+        guard let eAddress = EthereumAddress(contractAddress) else {
+            throw WalletError.addressError(desc: "token Error")
+        }
+        let erc20token = ERC20.init(web3: web, provider:web.provider, address: eAddress)
+        return try await erc20token.getBalance(account: walletAddress)
+    }
+}
+
+//Mark:查询区块高度
+struct GetBlockNumberRequest : WalletERCRequest{
+    var rpc: String
+    var chainId: Int
+    func request() async throws -> BigUInt{
+        let web = try await createWeb3()
+        guard let response: APIResponse<BigUInt> = try? await APIRequest.sendRequest(with: web.provider, for: .blockNumber)else{
+            return 0
+        }
+        return response.result
+    }
+}
+
+//Mark:查询Token信息
+struct GetTokenInfoRequest : WalletERCRequest{
+    var rpc: String
+    var chainId: Int
+    var contractAddress : String
+    func request() async throws -> ERC20?{
+        guard let eAddress = EthereumAddress(contractAddress) else {
+            Toast.toast(hit: LocalTokenContractError.localized())
+            return nil
+        }
+        let web = try await createWeb3()
+        let erc20token = ERC20.init(web3: web, provider:web.provider, address: eAddress)
+        return erc20token
+    }
+}
+
+
 
 class WalletERC20Request{
     
-    //Mark:查询节点是否可用
-    class func checkRPCIsVisableRequest(rpc : String,chainId:Int) async -> Bool {
-        guard let newUrl = URL(string: rpc) else {
-            return false
-        }
-        guard let we3P = try? await Web3HttpProvider(url:newUrl, network: Networks.Custom(networkID: BigUInt(chainId))) else {
-            return false
-        }
-        
-        let request: APIRequest = .blockNumber
-        guard let response: APIResponse<BigUInt> = try? await APIRequest.sendRequest(with: we3P, for: request)else{
-            return false
-        }
-        return response.result != 0
-    }
+    
     
     //获取Gas
     class func getGasRequest(rpc: String,

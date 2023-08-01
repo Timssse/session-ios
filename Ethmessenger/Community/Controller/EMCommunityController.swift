@@ -57,6 +57,18 @@ struct EMCommunityController{
         }
     }
     
+    static func followTwitterList(_ cursor : String = "") async -> [EMCommunityHomeListEntity]{
+        do{
+            guard let data = try await CommunityFollowTwitterRequest(cursor: cursor).request() as? HTTPList else{
+                return []
+            }
+            let relust = [EMCommunityHomeListEntity].deserialize(from: data)
+            return (relust as? [EMCommunityHomeListEntity]) ?? []
+        }catch{
+            return []
+        }
+    }
+    
     ///
     static func like(_ twAddress : String = "") async{
         do{

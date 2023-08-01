@@ -116,7 +116,7 @@ internal enum Theme_ClassicDark: ThemeColors {
         .chatBackgroundPrimary : .chatBackgroundPrimaryDark,
         .setting_icon_icon : .white,
         .tab_select_bg : .black,
-        .textGary1 : .color_606060,
+        .textGary1 : .color_616569,
         .communitTool : .color_616569,
         .textPlaceholder : .color_91979D,
         .communitInput : .color_272727,
@@ -127,6 +127,9 @@ internal enum Theme_ClassicDark: ThemeColors {
         .color_616569 : .color_616569,
         .user_communit_bg : .color_1B1B1B_A80,
         .emptyContent : .color_616569,
-        .alertTextColor : .color_91979D
+        .alertTextColor : .color_91979D,
+        .wallet_bg : .chatBackgroundPrimaryDark,
+        .password_border_color : .lineDark,
+        .forget_textView_bg : .color_272727
     ]
 }

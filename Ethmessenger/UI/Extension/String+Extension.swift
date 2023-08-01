@@ -63,6 +63,53 @@ extension String{
         return nil
     }
     
+    //MARK: 数字格式化为金额
+    func toNumberFormatter(_ is100:Bool = false)->String{
+        let numStr = self.toNumber5PointFormatter()
+        let d = numStr.toDouble()
+        if is100{
+            let format = NumberFormatter()
+            format.positiveFormat = "#####0.00"
+            format.roundingMode = .floor
+            
+            if let string = format.string(from: NSNumber(value: d)){
+                return string
+            }
+        }
+        if d == 0 {
+            return "0.00"
+        }
+        return "\(d)"
+    }
+    
+    func toNumber5PointFormatter()->String{
+        
+        let numStr = self
+        let format = NumberFormatter()
+        format.positiveFormat = "#####0.0000"
+        format.roundingMode = .floor
+        let d = numStr.toDouble()
+        if let string = format.string(from: NSNumber(value: d)){
+            return string
+        }
+        return ""
+    }
+    
+    func toNumber8PointFormatter()->String{
+        let numStr = self
+        let format = NumberFormatter()
+        format.positiveFormat = "#####0.00000000"
+        format.roundingMode = .floor
+        let d = numStr.toDouble()
+        if d == 0 {
+            return "0.00"
+        }
+        if let string = format.string(from: NSNumber(value: d)){
+            return string.removeStr0()
+        }
+        return ""
+    }
+    
     func toIntWithHex(hex: CGFloat) -> String {
         if self.contains("0x") {
             let newdeci = UInt128(hex)
@@ -98,6 +145,19 @@ extension String{
         }
     }
     
+    func HexToDecimal() -> String {
+        var sum:String = "0"
+        let str = self.uppercased().replacingOccurrences(of: "0X", with: "").replacingOccurrences(of: "0x", with: "")
+        for i in str.utf8 {
+            //0-9：从48开始
+            sum = sum.description.take(numberString: "16").add(numberString: FS(i)).reduction(numberString: "48")
+            //A-Z：从65开始
+            if i >= 65 {
+                sum = sum.reduction(numberString: "7")
+            }
+        }
+        return sum
+    }
     
     func removeString(_ deleteValue : String) -> String{
         var value = self
@@ -118,6 +178,49 @@ extension String{
     static func randomString(length: Int) -> String {
       let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
       return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    //去除末尾的0
+    func removeStr0() -> String{
+        var outNumber = self
+        var i = 1
+        
+        if self.contains("."){
+            while i < self.count{
+                if outNumber.hasSuffix("0") {
+                    if i > 2 {
+                        if i == 3 {
+                            let n = Int( outNumber[i - 1])
+                            if n != 0 {
+                                outNumber.remove(at: outNumber.index(before: outNumber.endIndex))
+                            }
+                        }else{
+                            outNumber.remove(at: outNumber.index(before: outNumber.endIndex))
+                        }
+                        
+                    }
+                    i = i + 1
+                } else {
+                    break
+                }
+            }
+            if outNumber.hasSuffix("."){
+                if i > 3 {
+                    outNumber.remove(at: outNumber.index(before: outNumber.endIndex))
+                }
+            }
+            if outNumber.contains(".") == false {
+                return outNumber + ".00"
+            }
+            
+            return outNumber
+        } else {
+            return self
+        }
+    }
+    
+    subscript (i: Int) -> String {
+        return self[i ..< i + 1]
     }
 }
 

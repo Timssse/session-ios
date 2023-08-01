@@ -1,6 +1,7 @@
 // Copyright © 2023 Rangeproof Pty Ltd. All rights reserved.
 
 import UIKit
+import Photos
 
 struct EMUserController {
     
@@ -27,6 +28,66 @@ struct EMUserController {
             return (relust as? [EMCommunityHomeListEntity]) ?? []
         }catch{
             return []
+        }
+    }
+    
+    static func editUserInfo(name : String , icon : [PHAsset],userInfo : EMCommunityUserEntity) async -> Bool{
+        do{
+            if EMCommunityConfigEntity.share.IpfsHost == ""{
+                await EMCommunityController.config()
+                return await editUserInfo(name: name, icon: icon, userInfo: userInfo)
+            }
+            var avatar = userInfo.Avatar
+            for file in icon{
+                let path = try await EMCommunityController.upload(file: file)
+                avatar = path
+            }
+            let address = userInfo.UserAddress;
+            let nickName = name
+            let desc = userInfo.Desc;
+            let updateSignUnix = FS(Int(Date().timeIntervalSince1970))
+            let msg = [address,nickName,desc,avatar,updateSignUnix].joined(separator: "|")
+            let sign = WalletUtilities.signPersonalMessage(message: msg) ?? ""
+            try await UserUpdateInfoRequest(param: ["avatar":avatar,"nickname":nickName,"desc":desc,"sex":userInfo.Sex,"sign":sign,"updateSignUnix":updateSignUnix]).request()
+            return true
+        }catch{
+            Toast.toast(hit: error.localizedDescription)
+            return false
+        }
+    }
+    
+    static func userFans(_ page : Int)async -> [EMCommunityUserEntity]{
+        guard let data = try? await getUserFansRequest(page: page).request() as? HTTPList else{
+            return []
+        }
+        let relust = [EMCommunityUserEntity].deserialize(from: data)
+        return (relust as? [EMCommunityUserEntity]) ?? []
+    }
+    
+    static func userFollow(_ page : Int)async -> [EMCommunityUserEntity]{
+        guard let data = try? await getUserFollowRequest(page: page).request() as? HTTPList else{
+            return []
+        }
+        let relust = [EMCommunityUserEntity].deserialize(from: data)
+        return (relust as? [EMCommunityUserEntity]) ?? []
+    }
+    
+    static func follow(_ isFollow : Bool,address : String)async -> Bool{
+        
+        if isFollow{
+            do{
+                try await CancelUserFollowRequest(address: address).request()
+                return true
+            }catch{
+                return false
+            }
+            return false
+        }
+        do{
+            try await UserFollowRequest(address: address).request()
+            return true
+        }catch{
+            return false
         }
     }
 }

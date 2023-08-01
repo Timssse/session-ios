@@ -110,6 +110,27 @@ public class EMLocalizationTool {
         }
     }
     
+    public class func getLanguageSymbol(_ type : Language) -> String {
+        switch type {
+        case .Chinese:
+            return "CNY"
+//        case .ChineseTraditional:
+//            return "HKD"
+        case .English:
+            return "USD"
+//        case .French:
+//            return "EUR"
+//        case .Russian :
+//            return "RUB"
+//        case .Japanese:
+//            return "JPY"
+//        case .Korean:
+//            return "KRW"
+//        case .Vietnamese:
+//            return "VND"
+        }
+    }
+    
 }
 
 extension String {

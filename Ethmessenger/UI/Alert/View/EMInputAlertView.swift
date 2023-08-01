@@ -2,7 +2,7 @@
 
 import UIKit
 
-class EMCommonAlertView: UIView {
+class EMInputAlertView: UIView {
     var titleText = ""
     var contentText = ""
     var confirmText = ""
@@ -29,22 +29,12 @@ class EMCommonAlertView: UIView {
         title.text = titleText
         content.text = contentText
         confirmButton.setTitle(confirmText, for: .normal)
-        cancelButton.setTitle(cancelText, for: .normal)
     }
     
     func setup() {
         addSubview(title)
         addSubview(content)
         addSubview(confirmButton)
-        addSubview(cancelButton)
-        
-//        icon.snp.makeConstraints { make in
-//            make.centerX.equalToSuperview()
-//            make.top.equalToSuperview().offset(24.w)
-//            make.width.equalTo(114.w)
-//            make.height.equalTo(99.w)
-//        }
-        
         title.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(25.w)
             make.trailing.equalToSuperview().offset(-25.w)
@@ -63,11 +53,11 @@ class EMCommonAlertView: UIView {
             make.height.equalTo(41.w)
         }
         
-        cancelButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(title)
-            make.top.equalTo(confirmButton.snp.bottom).offset(16.w)
-            make.bottom.equalToSuperview().offset(-20.w)
-        }
+//        cancelButton.snp.makeConstraints { make in
+//            make.leading.trailing.equalTo(title)
+//            make.top.equalTo(confirmButton.snp.bottom).offset(16.w)
+//            make.bottom.equalToSuperview().offset(-20.w)
+//        }
     }
     
     lazy var title = {
@@ -84,15 +74,15 @@ class EMCommonAlertView: UIView {
         return label
     }()
     
+//    lazy var textInput : UITextField = {
+//        let text = UITextView(LocalPassword.localized(),textColor: .textPrimary)
+//        return text
+//    }()
+    
     lazy var confirmButton = {
         let btn = UIButton(font: UIFont.Bold(size: 15), color: .white, backgroundColor:.messageBubble_outgoingBackground)
         btn.isHidden  = true
         btn.dealLayer(corner: 10.w)
-        return btn
-    }()
-    lazy var cancelButton = {
-        let btn = UIButton(font: UIFont.Regular(size: 14), color: .alertTextColor)
-        btn.isHidden  = true
         return btn
     }()
 }

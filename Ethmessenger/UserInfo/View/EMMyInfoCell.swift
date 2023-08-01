@@ -3,8 +3,11 @@
 import UIKit
 
 class EMMyInfoCell: BaseTableViewCell {
-
+    let arrowIcon = UIImageView(image: UIImage(named: "icon_user_arrow"))
     override func layoutUI() {
+        
+        self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickEdit)))
+        
         self.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
         self.contentView.dealLayer(corner: 0)
@@ -28,7 +31,7 @@ class EMMyInfoCell: BaseTableViewCell {
             make.height.equalTo(22.w)
         }
         
-        let arrowIcon = UIImageView(image: UIImage(named: "icon_user_arrow"))
+        
         self.contentView.addSubview(arrowIcon)
         arrowIcon.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-30.w)
@@ -46,17 +49,20 @@ class EMMyInfoCell: BaseTableViewCell {
         followerView.snp.makeConstraints { make in
             make.left.equalTo(followingView.snp.right).offset(22.w)
             make.centerY.equalTo(followingView)
+            make.bottom.equalToSuperview().offset(-20.w)
             make.height.equalTo(25.w)
         }
         
-        self.contentView.addSubview(walletView)
-        walletView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(25.w)
-            make.right.equalToSuperview().offset(-25.w)
-            make.top.equalTo(followingView.snp.bottom).offset(23.w)
-            make.bottom.equalToSuperview().offset(20.w)
-            make.height.equalTo(105.w)
-        }
+        
+        
+//        self.contentView.addSubview(walletView)
+//        walletView.snp.makeConstraints { make in
+//            make.left.equalToSuperview().offset(25.w)
+//            make.right.equalToSuperview().offset(-25.w)
+//            make.top.equalTo(followingView.snp.bottom).offset(23.w)
+//            make.bottom.equalToSuperview().offset(20.w)
+//            make.height.equalTo(105.w)
+//        }
     }
 
     lazy var userIcon : UIImageView = UIImageView(UIColor.clear,corner: 36.w)
@@ -85,6 +91,7 @@ class EMMyInfoCell: BaseTableViewCell {
     
     lazy var followingView : UIView = {
         let view = UIView()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickFans)))
         view.addSubview(labFollowing)
         labFollowing.snp.makeConstraints { make in
             make.left.equalToSuperview()
@@ -103,6 +110,7 @@ class EMMyInfoCell: BaseTableViewCell {
     
     lazy var followerView : UIView = {
         let view = UIView()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickFans)))
         view.addSubview(labFollower)
         labFollower.snp.makeConstraints { make in
             make.left.equalToSuperview()
@@ -121,6 +129,7 @@ class EMMyInfoCell: BaseTableViewCell {
     
     lazy var walletView : EMWalletCardView = {
         let view = EMWalletCardView()
+        view.updateMoney()
         return view
     }()
     
@@ -130,6 +139,7 @@ class EMMyInfoCell: BaseTableViewCell {
             userIcon.sd_setImage(with: URL(string: emUserInfo?.Avatar ?? ""), placeholderImage: UIImage(named: "icon_community_default"))
             labFollowing.text = FS(emUserInfo?.FollowCount)
             labFollower.text = FS(emUserInfo?.FansCount)
+            walletView.updateMoney()
         }
     }
     
@@ -137,5 +147,36 @@ class EMMyInfoCell: BaseTableViewCell {
         didSet{
             self.labSessionId.text = userInfo?.id.showAddress(6)
         }
+    }
+    
+    var isOther : Bool = false{
+        didSet{
+            arrowIcon.isHidden = isOther
+            sessionView.isHidden = isOther
+            if isOther{
+                userName.snp.updateConstraints { make in
+                    make.top.equalTo(userIcon).offset(26.w)
+                }
+            }
+        }
+    }
+    
+    @objc func onclickEdit(){
+        if isOther {
+            return
+        }
+        guard let user = emUserInfo else{
+            return
+        }
+        let vc = EMUserEditPage()
+        vc.emUserInfo = user
+        UIUtil.visibleNav()?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func onclickFans(){
+        if isOther {
+            return
+        }
+        UIUtil.visibleNav()?.pushViewController(EMUserFollowMainPage(), animated: true)
     }
 }

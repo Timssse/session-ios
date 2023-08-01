@@ -146,7 +146,6 @@
 		B920D6B02A6A8FC7008AD159 /* EMUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6AF2A6A8FC7008AD159 /* EMUserRequest.swift */; };
 		B920D6C72A6E47A0008AD159 /* PubMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6C62A6E47A0008AD159 /* PubMethod.swift */; };
 		B920D6CC2A6E605E008AD159 /* EMAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6CB2A6E605E008AD159 /* EMAppConfig.swift */; };
-		B920D6CE2A6E6138008AD159 /* EMChainConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6CD2A6E6138008AD159 /* EMChainConfigModel.swift */; };
 		B920D6D12A6E780B008AD159 /* EMPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6D02A6E780B008AD159 /* EMPlaceholder.swift */; };
 		B920D6D32A6E8528008AD159 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6D22A6E8528008AD159 /* UIColor+Extension.swift */; };
 		B920D6D52A6F96CF008AD159 /* EMUserSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6D42A6F96CF008AD159 /* EMUserSettingCell.swift */; };
@@ -155,10 +154,51 @@
 		B920D6DB2A6FC669008AD159 /* EMLanguageChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6DA2A6FC669008AD159 /* EMLanguageChangeView.swift */; };
 		B920D6DD2A6FCE56008AD159 /* EMLocalizationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6DC2A6FCE56008AD159 /* EMLocalizationTool.swift */; };
 		B920D6DF2A70AC27008AD159 /* EMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6DE2A70AC27008AD159 /* EMAlert.swift */; };
-		B920D6E12A70AD2E008AD159 /* EMCommonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6E02A70AD2E008AD159 /* EMCommonAlertView.swift */; };
 		B94278C72A70C61500D89310 /* EMUserCardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278C62A70C61500D89310 /* EMUserCardPage.swift */; };
 		B94278C92A71022A00D89310 /* EMShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278C82A71022A00D89310 /* EMShareManager.swift */; };
 		B94278CE2A712A2500D89310 /* EMWalletPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278CD2A712A2500D89310 /* EMWalletPage.swift */; };
+		B94278D12A7203CB00D89310 /* token.sql in Resources */ = {isa = PBXBuildFile; fileRef = B94278D02A7203CB00D89310 /* token.sql */; };
+		B94278D32A72040600D89310 /* EMTableToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278D22A72040600D89310 /* EMTableToken.swift */; };
+		B94278D52A72042300D89310 /* EMDataBaseTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278D42A72042300D89310 /* EMDataBaseTool.swift */; };
+		B94278D72A7204AF00D89310 /* EMTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278D62A7204AF00D89310 /* EMTokenModel.swift */; };
+		B94278D92A72064300D89310 /* EMChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278D82A72064300D89310 /* EMChain.swift */; };
+		B94278DD2A720E0100D89310 /* EMWalletConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278DC2A720E0100D89310 /* EMWalletConfigModel.swift */; };
+		B94278DF2A720E6900D89310 /* EMWalletRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278DE2A720E6900D89310 /* EMWalletRequest.swift */; };
+		B94278E22A7211AE00D89310 /* EMWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278E12A7211AE00D89310 /* EMWalletController.swift */; };
+		B94278E52A7218A800D89310 /* EMWalletCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278E42A7218A800D89310 /* EMWalletCache.swift */; };
+		B94278E82A721CB000D89310 /* EMAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278E72A721CB000D89310 /* EMAccount.swift */; };
+		B94278EA2A721CC600D89310 /* EMTokenTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278E92A721CC600D89310 /* EMTokenTools.swift */; };
+		B94278EC2A723A2D00D89310 /* EMWalletNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278EB2A723A2D00D89310 /* EMWalletNav.swift */; };
+		B94278EE2A723B8400D89310 /* EMWalletHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278ED2A723B8400D89310 /* EMWalletHeadView.swift */; };
+		B94278F02A72490C00D89310 /* EMWalletTokenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278EF2A72490C00D89310 /* EMWalletTokenCell.swift */; };
+		B94278F62A73561500D89310 /* WalletERCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278F52A73561500D89310 /* WalletERCRequest.swift */; };
+		B94278F82A738E0E00D89310 /* EMWalletManagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278F72A738E0E00D89310 /* EMWalletManagePage.swift */; };
+		B94278FA2A738E9E00D89310 /* EMWalletManageItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278F92A738E9E00D89310 /* EMWalletManageItemModel.swift */; };
+		B94278FC2A73906100D89310 /* WalletCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278FB2A73906100D89310 /* WalletCrypto.swift */; };
+		B94278FE2A7392AD00D89310 /* EMWalletManageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278FD2A7392AD00D89310 /* EMWalletManageCell.swift */; };
+		B94279002A739CBB00D89310 /* EMWalletChangePasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278FF2A739CBB00D89310 /* EMWalletChangePasswordPage.swift */; };
+		B94279022A739FBB00D89310 /* EMWalletSetPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279012A739FBB00D89310 /* EMWalletSetPasswordPage.swift */; };
+		B94279042A73C02400D89310 /* EMForgetPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279032A73C02400D89310 /* EMForgetPasswordPage.swift */; };
+		B94279062A74027800D89310 /* EMViewMnemonicsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279052A74027800D89310 /* EMViewMnemonicsPage.swift */; };
+		B94279082A7402B100D89310 /* EMMnemonicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279072A7402B100D89310 /* EMMnemonicView.swift */; };
+		B942790A2A74FE4800D89310 /* EMTipAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279092A74FE4800D89310 /* EMTipAlertViewController.swift */; };
+		B942790C2A750C0600D89310 /* EMInputAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942790B2A750C0600D89310 /* EMInputAlertViewController.swift */; };
+		B94279102A75127C00D89310 /* EMPasswordAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942790F2A75127C00D89310 /* EMPasswordAlertViewController.swift */; };
+		B94279142A77490800D89310 /* EMSelectNetworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279132A77490800D89310 /* EMSelectNetworkVC.swift */; };
+		B94279192A774B0A00D89310 /* EMCommonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279162A774B0900D89310 /* EMCommonAlertView.swift */; };
+		B942791A2A774B0A00D89310 /* EMInputAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279172A774B0900D89310 /* EMInputAlertView.swift */; };
+		B942791B2A774B0A00D89310 /* EMPasswordAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279182A774B0900D89310 /* EMPasswordAlertView.swift */; };
+		B942791D2A774B2400D89310 /* EMSelelctNetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942791C2A774B2400D89310 /* EMSelelctNetworkCell.swift */; };
+		B942791F2A7759DD00D89310 /* EMViewPrivateKeyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942791E2A7759DD00D89310 /* EMViewPrivateKeyPage.swift */; };
+		B94279212A775D9A00D89310 /* EMRPCPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279202A775D9A00D89310 /* EMRPCPage.swift */; };
+		B94279232A77626200D89310 /* EMRPCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279222A77626200D89310 /* EMRPCCell.swift */; };
+		B94279252A77881E00D89310 /* EMAddTokensPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279242A77881E00D89310 /* EMAddTokensPage.swift */; };
+		B94279272A77AA9600D89310 /* EMUserEditPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279262A77AA9600D89310 /* EMUserEditPage.swift */; };
+		B94279292A77B6AA00D89310 /* EMUserFollowMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279282A77B6AA00D89310 /* EMUserFollowMainPage.swift */; };
+		B942792B2A77B6B900D89310 /* EMUserFollowingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942792A2A77B6B900D89310 /* EMUserFollowingPage.swift */; };
+		B942792D2A77B6C400D89310 /* EMUserFollowerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942792C2A77B6C400D89310 /* EMUserFollowerPage.swift */; };
+		B942792F2A77B74E00D89310 /* EMUserFollowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942792E2A77B74E00D89310 /* EMUserFollowingCell.swift */; };
+		B94279312A77C3B200D89310 /* EMOtherUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279302A77C3B200D89310 /* EMOtherUserPage.swift */; };
 		B98E5B512A611560007B421F /* MiniCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E59CD2A61155F007B421F /* MiniCallView.swift */; };
 		B98E5B522A611560007B421F /* IncomingCallBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E59CE2A61155F007B421F /* IncomingCallBanner.swift */; };
 		B98E5B532A611560007B421F /* CallVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E59CF2A61155F007B421F /* CallVideoView.swift */; };
@@ -422,8 +462,6 @@
 		B98E5C562A611560007B421F /* WalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E5B152A61155F007B421F /* WalletError.swift */; };
 		B98E5C572A611560007B421F /* WalletERC20Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E5B162A61155F007B421F /* WalletERC20Request.swift */; };
 		B98E5C582A611560007B421F /* EMJsonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E5B172A61155F007B421F /* EMJsonProtocol.swift */; };
-		B98E5C592A611560007B421F /* EMAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E5B192A61155F007B421F /* EMAccount.swift */; };
-		B98E5C5A2A611560007B421F /* EMPRCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E5B1B2A61155F007B421F /* EMPRCModel.swift */; };
 		B98E5C5B2A611560007B421F /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E5B1D2A61155F007B421F /* ImagePickerController.swift */; };
 		B98E5C5C2A611560007B421F /* MediaGalleryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E5B1E2A61155F007B421F /* MediaGalleryNavigationController.swift */; };
 		B98E5C5D2A611560007B421F /* MediaInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E5B1F2A61155F007B421F /* MediaInfoVC.swift */; };
@@ -1239,7 +1277,6 @@
 		B920D6AF2A6A8FC7008AD159 /* EMUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserRequest.swift; sourceTree = "<group>"; };
 		B920D6C62A6E47A0008AD159 /* PubMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubMethod.swift; sourceTree = "<group>"; };
 		B920D6CB2A6E605E008AD159 /* EMAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAppConfig.swift; sourceTree = "<group>"; };
-		B920D6CD2A6E6138008AD159 /* EMChainConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChainConfigModel.swift; sourceTree = "<group>"; };
 		B920D6D02A6E780B008AD159 /* EMPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMPlaceholder.swift; sourceTree = "<group>"; };
 		B920D6D22A6E8528008AD159 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B920D6D42A6F96CF008AD159 /* EMUserSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserSettingCell.swift; sourceTree = "<group>"; };
@@ -1248,7 +1285,6 @@
 		B920D6DA2A6FC669008AD159 /* EMLanguageChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMLanguageChangeView.swift; sourceTree = "<group>"; };
 		B920D6DC2A6FCE56008AD159 /* EMLocalizationTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMLocalizationTool.swift; sourceTree = "<group>"; };
 		B920D6DE2A70AC27008AD159 /* EMAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlert.swift; sourceTree = "<group>"; };
-		B920D6E02A70AD2E008AD159 /* EMCommonAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommonAlertView.swift; sourceTree = "<group>"; };
 		B936FFAD2A5BF7BD0038CD49 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		B936FFAF2A5BF7BE0038CD49 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		B936FFB12A5BF7BF0038CD49 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -1257,6 +1293,49 @@
 		B94278C62A70C61500D89310 /* EMUserCardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserCardPage.swift; sourceTree = "<group>"; };
 		B94278C82A71022A00D89310 /* EMShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMShareManager.swift; sourceTree = "<group>"; };
 		B94278CD2A712A2500D89310 /* EMWalletPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletPage.swift; sourceTree = "<group>"; };
+		B94278D02A7203CB00D89310 /* token.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = token.sql; sourceTree = "<group>"; };
+		B94278D22A72040600D89310 /* EMTableToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTableToken.swift; sourceTree = "<group>"; };
+		B94278D42A72042300D89310 /* EMDataBaseTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMDataBaseTool.swift; sourceTree = "<group>"; };
+		B94278D62A7204AF00D89310 /* EMTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTokenModel.swift; sourceTree = "<group>"; };
+		B94278D82A72064300D89310 /* EMChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChain.swift; sourceTree = "<group>"; };
+		B94278DC2A720E0100D89310 /* EMWalletConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletConfigModel.swift; sourceTree = "<group>"; };
+		B94278DE2A720E6900D89310 /* EMWalletRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletRequest.swift; sourceTree = "<group>"; };
+		B94278E12A7211AE00D89310 /* EMWalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletController.swift; sourceTree = "<group>"; };
+		B94278E42A7218A800D89310 /* EMWalletCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletCache.swift; sourceTree = "<group>"; };
+		B94278E72A721CB000D89310 /* EMAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAccount.swift; sourceTree = "<group>"; };
+		B94278E92A721CC600D89310 /* EMTokenTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTokenTools.swift; sourceTree = "<group>"; };
+		B94278EB2A723A2D00D89310 /* EMWalletNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletNav.swift; sourceTree = "<group>"; };
+		B94278ED2A723B8400D89310 /* EMWalletHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletHeadView.swift; sourceTree = "<group>"; };
+		B94278EF2A72490C00D89310 /* EMWalletTokenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletTokenCell.swift; sourceTree = "<group>"; };
+		B94278F32A72589C00D89310 /* LintLocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LintLocalizableStrings.swift; sourceTree = "<group>"; };
+		B94278F52A73561500D89310 /* WalletERCRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletERCRequest.swift; sourceTree = "<group>"; };
+		B94278F72A738E0E00D89310 /* EMWalletManagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletManagePage.swift; sourceTree = "<group>"; };
+		B94278F92A738E9E00D89310 /* EMWalletManageItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletManageItemModel.swift; sourceTree = "<group>"; };
+		B94278FB2A73906100D89310 /* WalletCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCrypto.swift; sourceTree = "<group>"; };
+		B94278FD2A7392AD00D89310 /* EMWalletManageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletManageCell.swift; sourceTree = "<group>"; };
+		B94278FF2A739CBB00D89310 /* EMWalletChangePasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletChangePasswordPage.swift; sourceTree = "<group>"; };
+		B94279012A739FBB00D89310 /* EMWalletSetPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMWalletSetPasswordPage.swift; sourceTree = "<group>"; };
+		B94279032A73C02400D89310 /* EMForgetPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMForgetPasswordPage.swift; sourceTree = "<group>"; };
+		B94279052A74027800D89310 /* EMViewMnemonicsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMViewMnemonicsPage.swift; sourceTree = "<group>"; };
+		B94279072A7402B100D89310 /* EMMnemonicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMMnemonicView.swift; sourceTree = "<group>"; };
+		B94279092A74FE4800D89310 /* EMTipAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTipAlertViewController.swift; sourceTree = "<group>"; };
+		B942790B2A750C0600D89310 /* EMInputAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMInputAlertViewController.swift; sourceTree = "<group>"; };
+		B942790F2A75127C00D89310 /* EMPasswordAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMPasswordAlertViewController.swift; sourceTree = "<group>"; };
+		B94279132A77490800D89310 /* EMSelectNetworkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSelectNetworkVC.swift; sourceTree = "<group>"; };
+		B94279162A774B0900D89310 /* EMCommonAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMCommonAlertView.swift; sourceTree = "<group>"; };
+		B94279172A774B0900D89310 /* EMInputAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMInputAlertView.swift; sourceTree = "<group>"; };
+		B94279182A774B0900D89310 /* EMPasswordAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMPasswordAlertView.swift; sourceTree = "<group>"; };
+		B942791C2A774B2400D89310 /* EMSelelctNetworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSelelctNetworkCell.swift; sourceTree = "<group>"; };
+		B942791E2A7759DD00D89310 /* EMViewPrivateKeyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMViewPrivateKeyPage.swift; sourceTree = "<group>"; };
+		B94279202A775D9A00D89310 /* EMRPCPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRPCPage.swift; sourceTree = "<group>"; };
+		B94279222A77626200D89310 /* EMRPCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRPCCell.swift; sourceTree = "<group>"; };
+		B94279242A77881E00D89310 /* EMAddTokensPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAddTokensPage.swift; sourceTree = "<group>"; };
+		B94279262A77AA9600D89310 /* EMUserEditPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserEditPage.swift; sourceTree = "<group>"; };
+		B94279282A77B6AA00D89310 /* EMUserFollowMainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserFollowMainPage.swift; sourceTree = "<group>"; };
+		B942792A2A77B6B900D89310 /* EMUserFollowingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserFollowingPage.swift; sourceTree = "<group>"; };
+		B942792C2A77B6C400D89310 /* EMUserFollowerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserFollowerPage.swift; sourceTree = "<group>"; };
+		B942792E2A77B74E00D89310 /* EMUserFollowingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserFollowingCell.swift; sourceTree = "<group>"; };
+		B94279302A77C3B200D89310 /* EMOtherUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOtherUserPage.swift; sourceTree = "<group>"; };
 		B98E59CD2A61155F007B421F /* MiniCallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniCallView.swift; sourceTree = "<group>"; };
 		B98E59CE2A61155F007B421F /* IncomingCallBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingCallBanner.swift; sourceTree = "<group>"; };
 		B98E59CF2A61155F007B421F /* CallVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallVideoView.swift; sourceTree = "<group>"; };
@@ -1528,8 +1607,6 @@
 		B98E5B152A61155F007B421F /* WalletError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletError.swift; sourceTree = "<group>"; };
 		B98E5B162A61155F007B421F /* WalletERC20Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletERC20Request.swift; sourceTree = "<group>"; };
 		B98E5B172A61155F007B421F /* EMJsonProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMJsonProtocol.swift; sourceTree = "<group>"; };
-		B98E5B192A61155F007B421F /* EMAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAccount.swift; sourceTree = "<group>"; };
-		B98E5B1B2A61155F007B421F /* EMPRCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMPRCModel.swift; sourceTree = "<group>"; };
 		B98E5B1D2A61155F007B421F /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		B98E5B1E2A61155F007B421F /* MediaGalleryNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryNavigationController.swift; sourceTree = "<group>"; };
 		B98E5B1F2A61155F007B421F /* MediaInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaInfoVC.swift; sourceTree = "<group>"; };
@@ -2041,7 +2118,6 @@
 		FDCDB8DD2810F73B00352A0C /* Differentiable+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Differentiable+Utilities.swift"; sourceTree = "<group>"; };
 		FDD2506F2837199200198BDA /* GarbageCollectionJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageCollectionJob.swift; sourceTree = "<group>"; };
 		FDE7214F287E50D50093DF33 /* ProtoWrappers.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = ProtoWrappers.py; sourceTree = "<group>"; };
-		FDE72150287E50D50093DF33 /* LintLocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LintLocalizableStrings.swift; sourceTree = "<group>"; };
 		FDE77F68280F9EDA002CFC5D /* JobRunnerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRunnerError.swift; sourceTree = "<group>"; };
 		FDE77F6A280FEB28002CFC5D /* ControlMessageProcessRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMessageProcessRecord.swift; sourceTree = "<group>"; };
 		FDED2E3B282E1B5D00B2CD2A /* UICollectionView+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ReusableView.swift"; sourceTree = "<group>"; };
@@ -2547,6 +2623,11 @@
 			children = (
 				B920D6A22A6A605F008AD159 /* EMUserPage.swift */,
 				B94278C62A70C61500D89310 /* EMUserCardPage.swift */,
+				B94279262A77AA9600D89310 /* EMUserEditPage.swift */,
+				B94279282A77B6AA00D89310 /* EMUserFollowMainPage.swift */,
+				B942792A2A77B6B900D89310 /* EMUserFollowingPage.swift */,
+				B942792C2A77B6C400D89310 /* EMUserFollowerPage.swift */,
+				B94279302A77C3B200D89310 /* EMOtherUserPage.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -2576,6 +2657,7 @@
 				B920D6D42A6F96CF008AD159 /* EMUserSettingCell.swift */,
 				B920D6D82A6FA9B3008AD159 /* EMThemeModeView.swift */,
 				B920D6DA2A6FC669008AD159 /* EMLanguageChangeView.swift */,
+				B942792E2A77B74E00D89310 /* EMUserFollowingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2599,6 +2681,12 @@
 		B94278CA2A712A1600D89310 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B94278EB2A723A2D00D89310 /* EMWalletNav.swift */,
+				B94278ED2A723B8400D89310 /* EMWalletHeadView.swift */,
+				B94278EF2A72490C00D89310 /* EMWalletTokenCell.swift */,
+				B94278FD2A7392AD00D89310 /* EMWalletManageCell.swift */,
+				B94279072A7402B100D89310 /* EMMnemonicView.swift */,
+				B94279222A77626200D89310 /* EMRPCCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2607,6 +2695,14 @@
 			isa = PBXGroup;
 			children = (
 				B94278CD2A712A2500D89310 /* EMWalletPage.swift */,
+				B94278F72A738E0E00D89310 /* EMWalletManagePage.swift */,
+				B94278FF2A739CBB00D89310 /* EMWalletChangePasswordPage.swift */,
+				B94279012A739FBB00D89310 /* EMWalletSetPasswordPage.swift */,
+				B94279032A73C02400D89310 /* EMForgetPasswordPage.swift */,
+				B94279052A74027800D89310 /* EMViewMnemonicsPage.swift */,
+				B942791E2A7759DD00D89310 /* EMViewPrivateKeyPage.swift */,
+				B94279202A775D9A00D89310 /* EMRPCPage.swift */,
+				B94279242A77881E00D89310 /* EMAddTokensPage.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -2614,6 +2710,11 @@
 		B94278CC2A712A1700D89310 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B94278E72A721CB000D89310 /* EMAccount.swift */,
+				B94278D62A7204AF00D89310 /* EMTokenModel.swift */,
+				B94278D82A72064300D89310 /* EMChain.swift */,
+				B94278DC2A720E0100D89310 /* EMWalletConfigModel.swift */,
+				B94278F92A738E9E00D89310 /* EMWalletManageItemModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2621,8 +2722,47 @@
 		B94278CF2A71FC1800D89310 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				B94278D02A7203CB00D89310 /* token.sql */,
+				B94278D22A72040600D89310 /* EMTableToken.swift */,
+				B94278D42A72042300D89310 /* EMDataBaseTool.swift */,
 			);
 			path = DB;
+			sourceTree = "<group>";
+		};
+		B94278E02A72119600D89310 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B94278E12A7211AE00D89310 /* EMWalletController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B94278E32A72183C00D89310 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				B94278E42A7218A800D89310 /* EMWalletCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		B94278E62A721C9600D89310 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B94278E92A721CC600D89310 /* EMTokenTools.swift */,
+				B94278FB2A73906100D89310 /* WalletCrypto.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		B94279152A774B0900D89310 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B94279162A774B0900D89310 /* EMCommonAlertView.swift */,
+				B94279172A774B0900D89310 /* EMInputAlertView.swift */,
+				B94279182A774B0900D89310 /* EMPasswordAlertView.swift */,
+				B942791C2A774B2400D89310 /* EMSelelctNetworkCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B98E59CA2A61155F007B421F /* Ethmessenger */ = {
@@ -2815,7 +2955,6 @@
 				B98E59FF2A61155F007B421F /* ColorConfig.swift */,
 				B920D6C62A6E47A0008AD159 /* PubMethod.swift */,
 				B920D6CB2A6E605E008AD159 /* EMAppConfig.swift */,
-				B920D6CD2A6E6138008AD159 /* EMChainConfigModel.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -2823,9 +2962,13 @@
 		B98E5A002A61155F007B421F /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				B94279152A774B0900D89310 /* View */,
 				B98E5A012A61155F007B421F /* InputModal.swift */,
 				B920D6DE2A70AC27008AD159 /* EMAlert.swift */,
-				B920D6E02A70AD2E008AD159 /* EMCommonAlertView.swift */,
+				B94279092A74FE4800D89310 /* EMTipAlertViewController.swift */,
+				B942790B2A750C0600D89310 /* EMInputAlertViewController.swift */,
+				B942790F2A75127C00D89310 /* EMPasswordAlertViewController.swift */,
+				B94279132A77490800D89310 /* EMSelectNetworkVC.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -3395,13 +3538,14 @@
 		B98E5B132A61155F007B421F /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B94278E62A721C9600D89310 /* Tools */,
+				B94278E32A72183C00D89310 /* Cache */,
+				B94278E02A72119600D89310 /* Controller */,
 				B94278CF2A71FC1800D89310 /* DB */,
 				B94278CC2A712A1700D89310 /* Model */,
 				B94278CB2A712A1600D89310 /* Page */,
 				B94278CA2A712A1600D89310 /* View */,
 				B98E5B142A61155F007B421F /* Request */,
-				B98E5B182A61155F007B421F /* Account */,
-				B98E5B1A2A61155F007B421F /* RPC */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -3412,24 +3556,10 @@
 				B98E5B152A61155F007B421F /* WalletError.swift */,
 				B98E5B162A61155F007B421F /* WalletERC20Request.swift */,
 				B98E5B172A61155F007B421F /* EMJsonProtocol.swift */,
+				B94278DE2A720E6900D89310 /* EMWalletRequest.swift */,
+				B94278F52A73561500D89310 /* WalletERCRequest.swift */,
 			);
 			path = Request;
-			sourceTree = "<group>";
-		};
-		B98E5B182A61155F007B421F /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				B98E5B192A61155F007B421F /* EMAccount.swift */,
-			);
-			path = Account;
-			sourceTree = "<group>";
-		};
-		B98E5B1A2A61155F007B421F /* RPC */ = {
-			isa = PBXGroup;
-			children = (
-				B98E5B1B2A61155F007B421F /* EMPRCModel.swift */,
-			);
-			path = RPC;
 			sourceTree = "<group>";
 		};
 		B98E5B1C2A61155F007B421F /* Media Viewing & Editing */ = {
@@ -4761,8 +4891,8 @@
 		FDE7214E287E50D50093DF33 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				B94278F32A72589C00D89310 /* LintLocalizableStrings.swift */,
 				FDE7214F287E50D50093DF33 /* ProtoWrappers.py */,
-				FDE72150287E50D50093DF33 /* LintLocalizableStrings.swift */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -5290,6 +5420,7 @@
 				B98E5BBF2A611560007B421F /* NewMessage.aifc in Resources */,
 				B98E5BEC2A611560007B421F /* ElegantIcons.ttf in Resources */,
 				B98E5BE12A611560007B421F /* japanese.txt in Resources */,
+				B94278D12A7203CB00D89310 /* token.sql in Resources */,
 				B98E5BC82A611560007B421F /* hello-quiet.aifc in Resources */,
 				B98E5BB22A611560007B421F /* Settings.bundle in Resources */,
 				B98E5B6B2A611560007B421F /* trust-min.js in Resources */,
@@ -6002,6 +6133,7 @@
 				B98E5C6C2A611560007B421F /* MediaInfoVC+MediaPreviewView.swift in Sources */,
 				B98E5B572A611560007B421F /* SessionCallManager+CXProvider.swift in Sources */,
 				B920D6802A677F8A008AD159 /* EMCommunityCommentEntity.swift in Sources */,
+				B94278EE2A723B8400D89310 /* EMWalletHeadView.swift in Sources */,
 				B920D6512A654DEE008AD159 /* SGPagingContentView.swift in Sources */,
 				B98E5BA42A611560007B421F /* NewConversationVC.swift in Sources */,
 				B98E5BA52A611560007B421F /* GlobalSearchViewController.swift in Sources */,
@@ -6013,10 +6145,11 @@
 				B920D6652A66393B008AD159 /* HttpType.swift in Sources */,
 				B98E5C0E2A611560007B421F /* UIScrollView+Utilities.swift in Sources */,
 				B98E5C132A611560007B421F /* CGRect+Utilities.swift in Sources */,
-				B98E5C592A611560007B421F /* EMAccount.swift in Sources */,
 				B98E5B5D2A611560007B421F /* CameraManager.swift in Sources */,
 				B920D65E2A663559008AD159 /* EMCommunityImageItem.swift in Sources */,
 				B98E5C522A611560007B421F /* ConversationVC+Interaction.swift in Sources */,
+				B94278EA2A721CC600D89310 /* EMTokenTools.swift in Sources */,
+				B94279142A77490800D89310 /* EMSelectNetworkVC.swift in Sources */,
 				B98E5C622A611560007B421F /* GifPickerViewController.swift in Sources */,
 				B98E5C782A611560007B421F /* JoinOpenGroupVC.swift in Sources */,
 				B98E5C3D2A611560007B421F /* InsetLockableTableView.swift in Sources */,
@@ -6029,27 +6162,38 @@
 				B98E5B5A2A611560007B421F /* SessionCallManager+Action.swift in Sources */,
 				B98E5B9F2A611560007B421F /* MessageRequestsViewController.swift in Sources */,
 				B98E5C0C2A611560007B421F /* UINavigationBar+Utilities.swift in Sources */,
+				B94279232A77626200D89310 /* EMRPCCell.swift in Sources */,
 				B98E5C162A611560007B421F /* MentionUtilities.swift in Sources */,
 				B98E5C4B2A611560007B421F /* InputView.swift in Sources */,
+				B94278EC2A723A2D00D89310 /* EMWalletNav.swift in Sources */,
+				B94278D72A7204AF00D89310 /* EMTokenModel.swift in Sources */,
 				B98E5B5B2A611560007B421F /* SessionCallManager+CXCallController.swift in Sources */,
 				B98E5BFD2A611560007B421F /* SessionCarouselView+Info.swift in Sources */,
+				B942792F2A77B74E00D89310 /* EMUserFollowingCell.swift in Sources */,
 				B98E5BA72A611560007B421F /* Data+Extension.swift in Sources */,
 				B98E5B782A611560007B421F /* InputModal.swift in Sources */,
 				B98E5B822A611560007B421F /* EMSettingCell.swift in Sources */,
 				B98E5C092A611560007B421F /* QRCodeScanningViewController.swift in Sources */,
 				B98E5B772A611560007B421F /* ColorConfig.swift in Sources */,
 				B98E5C882A611560007B421F /* FakeChatView.swift in Sources */,
+				B94279062A74027800D89310 /* EMViewMnemonicsPage.swift in Sources */,
 				B94278CE2A712A2500D89310 /* EMWalletPage.swift in Sources */,
 				B98E5C042A611560007B421F /* SessionHeaderView.swift in Sources */,
 				B98E5BF92A611560007B421F /* SessionCell+ExtraAction.swift in Sources */,
 				B98E5B642A611560007B421F /* UILabel+Extention.swift in Sources */,
+				B94279042A73C02400D89310 /* EMForgetPasswordPage.swift in Sources */,
 				B98E5B522A611560007B421F /* IncomingCallBanner.swift in Sources */,
 				B98E5C0D2A611560007B421F /* DifferenceKit+Utilities.swift in Sources */,
+				B94278F02A72490C00D89310 /* EMWalletTokenCell.swift in Sources */,
 				B98E5C802A611560007B421F /* RegisterVC.swift in Sources */,
 				B98E5C5E2A611560007B421F /* MediaTileViewController.swift in Sources */,
 				B98E5B6D2A611560007B421F /* ProviderNetwork.swift in Sources */,
 				B98E5B9B2A611560007B421F /* BlockedContactCell.swift in Sources */,
 				B98E5C012A611560007B421F /* SessionHighlightingBackgroundLabel.swift in Sources */,
+				B94278D92A72064300D89310 /* EMChain.swift in Sources */,
+				B94278D32A72040600D89310 /* EMTableToken.swift in Sources */,
+				B94279292A77B6AA00D89310 /* EMUserFollowMainPage.swift in Sources */,
+				B942790C2A750C0600D89310 /* EMInputAlertViewController.swift in Sources */,
 				B98E5B982A611560007B421F /* PrimaryColorSelectionView.swift in Sources */,
 				B98E5C7F2A611560007B421F /* LandingVC.swift in Sources */,
 				B98E5C452A611560007B421F /* ContextMenuVC.swift in Sources */,
@@ -6067,12 +6211,15 @@
 				B920D62C2A6549F3008AD159 /* EMCommunityExplorePage.swift in Sources */,
 				B98E5C722A611560007B421F /* MediaZoomAnimationController.swift in Sources */,
 				B98E5C4C2A611560007B421F /* ConversationSearch.swift in Sources */,
+				B94278DF2A720E6900D89310 /* EMWalletRequest.swift in Sources */,
 				B98E5B9A2A611560007B421F /* VersionFooterView.swift in Sources */,
 				B98E5C432A611560007B421F /* ContextMenuVC+EmojiReactsView.swift in Sources */,
+				B94278F62A73561500D89310 /* WalletERCRequest.swift in Sources */,
 				B920D68F2A67EE3B008AD159 /* UITextView+Extension.swift in Sources */,
 				B98E5BF72A611560007B421F /* DismissType.swift in Sources */,
 				B98E5BFF2A611560007B421F /* ScanQRCodeWrapperVC.swift in Sources */,
 				B98E5C2B2A611560007B421F /* DeletedMessageView.swift in Sources */,
+				B942791A2A774B0A00D89310 /* EMInputAlertView.swift in Sources */,
 				B920D6702A66440C008AD159 /* EMCommunityUserEntity.swift in Sources */,
 				B98E5C7D2A611560007B421F /* SyncPushTokensJob.swift in Sources */,
 				B98E5B542A611560007B421F /* CallMissedTipsModal.swift in Sources */,
@@ -6093,6 +6240,7 @@
 				B920D6502A654DEE008AD159 /* UIScreen+SGPagingView.swift in Sources */,
 				B98E5BA32A611560007B421F /* NewConversationViewModel.swift in Sources */,
 				B98E5B732A611560007B421F /* EMTransferConfirmView.swift in Sources */,
+				B94278E82A721CB000D89310 /* EMAccount.swift in Sources */,
 				B98E5C7C2A611560007B421F /* PushRegistrationManager.swift in Sources */,
 				B920D65C2A662C09008AD159 /* EMCommunitPublisherView.swift in Sources */,
 				B98E5B8B2A611560007B421F /* NotificationSettingsViewModel.swift in Sources */,
@@ -6100,6 +6248,7 @@
 				B98E5B792A611560007B421F /* Toast.swift in Sources */,
 				B98E5B702A611560007B421F /* EMDappModel.swift in Sources */,
 				B98E5C462A611560007B421F /* MentionSelectionView.swift in Sources */,
+				B942792B2A77B6B900D89310 /* EMUserFollowingPage.swift in Sources */,
 				B98E5BA62A611560007B421F /* EmptySearchResultCell.swift in Sources */,
 				B98E5C862A611560007B421F /* Onboarding.swift in Sources */,
 				B98E5BFE2A611560007B421F /* SessionCarouselViewDelegate.swift in Sources */,
@@ -6113,9 +6262,11 @@
 				B920D6782A6686B7008AD159 /* EMCommunityToolView.swift in Sources */,
 				B98E5C842A611560007B421F /* DisplayNameVC.swift in Sources */,
 				B98E5B7F2A611560007B421F /* EMSettingSectionModel.swift in Sources */,
+				B94279192A774B0A00D89310 /* EMCommonAlertView.swift in Sources */,
 				B98E5C082A611560007B421F /* SessionTableViewModel.swift in Sources */,
 				B98E5B882A611560007B421F /* EMBannerView.swift in Sources */,
 				B98E5C192A611560007B421F /* WalletUtilities.swift in Sources */,
+				B94278DD2A720E0100D89310 /* EMWalletConfigModel.swift in Sources */,
 				B98E5C872A611560007B421F /* LinkDeviceVC.swift in Sources */,
 				B98E5C312A611560007B421F /* DocumentView.swift in Sources */,
 				B98E5B942A611560007B421F /* ConversationSettingsViewModel.swift in Sources */,
@@ -6130,7 +6281,7 @@
 				B98E5C702A611560007B421F /* MediaDismissAnimationController.swift in Sources */,
 				B98E5BAB2A611560007B421F /* Emoji+Category.swift in Sources */,
 				B98E5B8E2A611560007B421F /* BlockedContactsViewController.swift in Sources */,
-				B920D6E12A70AD2E008AD159 /* EMCommonAlertView.swift in Sources */,
+				B94279022A739FBB00D89310 /* EMWalletSetPasswordPage.swift in Sources */,
 				B94278C72A70C61500D89310 /* EMUserCardPage.swift in Sources */,
 				B920D6942A68DE6A008AD159 /* AnimationManager.swift in Sources */,
 				B920D67C2A6770DC008AD159 /* EMCommunityMoreView.swift in Sources */,
@@ -6145,6 +6296,7 @@
 				B98E5B9E2A611560007B421F /* MessageRequestsViewModel.swift in Sources */,
 				B98E5C7E2A611560007B421F /* SeedReminderView.swift in Sources */,
 				B98E5C1F2A611560007B421F /* HapticFeedback.swift in Sources */,
+				B94279102A75127C00D89310 /* EMPasswordAlertViewController.swift in Sources */,
 				B98E5BAC2A611560007B421F /* EmojiWithSkinTones+String.swift in Sources */,
 				B98E5C6F2A611560007B421F /* MediaInteractiveDismiss.swift in Sources */,
 				B98E5B7C2A611560007B421F /* EMTabBarController.swift in Sources */,
@@ -6163,8 +6315,8 @@
 				B98E5B672A611560007B421F /* ViewController+Extension.swift in Sources */,
 				B98E5C112A611560007B421F /* Permissions.swift in Sources */,
 				B98E5C5C2A611560007B421F /* MediaGalleryNavigationController.swift in Sources */,
-				B98E5C5A2A611560007B421F /* EMPRCModel.swift in Sources */,
 				B98E5C232A611560007B421F /* ThreadSettingsViewModel.swift in Sources */,
+				B94278E52A7218A800D89310 /* EMWalletCache.swift in Sources */,
 				B920D67E2A677E10008AD159 /* EMCommunityDetailPage.swift in Sources */,
 				B98E5B902A611560007B421F /* NotificationSoundViewModel.swift in Sources */,
 				B98E5C3C2A611560007B421F /* InfoBanner.swift in Sources */,
@@ -6176,8 +6328,10 @@
 				B920D6522A654DEE008AD159 /* SGPagingContentScrollView.swift in Sources */,
 				B98E5C1B2A611560007B421F /* UIResponder+OWS.swift in Sources */,
 				B98E5C762A611560007B421F /* PhotoLibrary.swift in Sources */,
+				B94279312A77C3B200D89310 /* EMOtherUserPage.swift in Sources */,
 				B98E5B752A611560007B421F /* NotificationConfig.swift in Sources */,
 				B98E5BAE2A611560007B421F /* EmojiWithSkinTones.swift in Sources */,
+				B94278D52A72042300D89310 /* EMDataBaseTool.swift in Sources */,
 				B98E5B5C2A611560007B421F /* CallVC.swift in Sources */,
 				B98E5C492A611560007B421F /* InputTextView.swift in Sources */,
 				B98E5C682A611560007B421F /* PhotoGridViewCell.swift in Sources */,
@@ -6189,12 +6343,15 @@
 				B98E5B8D2A611560007B421F /* SettingsViewModel.swift in Sources */,
 				B98E5B8A2A611560007B421F /* EMBannerControl.swift in Sources */,
 				B98E5C4A2A611560007B421F /* ExpandingAttachmentsButton.swift in Sources */,
+				B94279272A77AA9600D89310 /* EMUserEditPage.swift in Sources */,
 				B98E5C382A611560007B421F /* TypingIndicatorCell.swift in Sources */,
 				B98E5C5D2A611560007B421F /* MediaInfoVC.swift in Sources */,
 				B98E5C362A611560007B421F /* MediaPlaceholderView.swift in Sources */,
+				B94278FA2A738E9E00D89310 /* EMWalletManageItemModel.swift in Sources */,
 				B98E5B632A611560007B421F /* UIView+extension.swift in Sources */,
 				B920D68D2A67ECE5008AD159 /* EMPublishPage.swift in Sources */,
 				B920D6602A6637BC008AD159 /* EMCommunityForwardView.swift in Sources */,
+				B942790A2A74FE4800D89310 /* EMTipAlertViewController.swift in Sources */,
 				B920D6842A678F36008AD159 /* EMCommunityCommentCell.swift in Sources */,
 				B98E5C732A611560007B421F /* MediaDetailViewController.swift in Sources */,
 				B98E5C642A611560007B421F /* GiphyDownloader.swift in Sources */,
@@ -6204,9 +6361,9 @@
 				B98E5C7B2A611560007B421F /* AppNotifications.swift in Sources */,
 				B920D69C2A692A3B008AD159 /* EMCommunityConfigEntity.swift in Sources */,
 				B98E5C272A611560007B421F /* ConversationSearchVC.swift in Sources */,
-				B920D6CE2A6E6138008AD159 /* EMChainConfigModel.swift in Sources */,
 				B98E5C612A611560007B421F /* CropScaleImageViewController.swift in Sources */,
 				B98E5B612A611560007B421F /* Int+extension.swift in Sources */,
+				B94279252A77881E00D89310 /* EMAddTokensPage.swift in Sources */,
 				B920D66C2A663CA9008AD159 /* EMCommunityController.swift in Sources */,
 				B98E5C022A611560007B421F /* SessionCell+AccessoryView.swift in Sources */,
 				B920D6D32A6E8528008AD159 /* UIColor+Extension.swift in Sources */,
@@ -6225,8 +6382,10 @@
 				B98E5C692A611560007B421F /* MediaGalleryViewModel.swift in Sources */,
 				B98E5C7A2A611560007B421F /* UserNotificationsAdaptee.swift in Sources */,
 				B98E5C602A611560007B421F /* DocumentTitleViewController.swift in Sources */,
+				B942791D2A774B2400D89310 /* EMSelelctNetworkCell.swift in Sources */,
 				B98E5C562A611560007B421F /* WalletError.swift in Sources */,
 				B98E5B6E2A611560007B421F /* WKWebView+Extension.swift in Sources */,
+				B94278FE2A7392AD00D89310 /* EMWalletManageCell.swift in Sources */,
 				B920D66A2A663984008AD159 /* EMCommunitRequest.swift in Sources */,
 				B98E5C652A611560007B421F /* GiphyAPI.swift in Sources */,
 				B98E5C242A611560007B421F /* ProfilePictureVC.swift in Sources */,
@@ -6247,6 +6406,7 @@
 				B98E5B912A611560007B421F /* PrivacySettingsViewModel.swift in Sources */,
 				B98E5C102A611560007B421F /* TextFieldHelper.swift in Sources */,
 				B98E5BF82A611560007B421F /* SessionTableSection.swift in Sources */,
+				B94278FC2A73906100D89310 /* WalletCrypto.swift in Sources */,
 				B98E5BF12A611560007B421F /* SessionCarouselView.swift in Sources */,
 				B98E5C2F2A611560007B421F /* QuoteView.swift in Sources */,
 				B920D6A32A6A605F008AD159 /* EMUserPage.swift in Sources */,
@@ -6255,6 +6415,8 @@
 				B98E5B7A2A611560007B421F /* EMTabBarItem.swift in Sources */,
 				B920D6862A67AFC6008AD159 /* EMCommunitySendView.swift in Sources */,
 				B920D6892A67CF05008AD159 /* EMImageViewer.swift in Sources */,
+				B942792D2A77B6C400D89310 /* EMUserFollowerPage.swift in Sources */,
+				B94279082A7402B100D89310 /* EMMnemonicView.swift in Sources */,
 				B98E5C572A611560007B421F /* WalletERC20Request.swift in Sources */,
 				B920D6282A6549C9008AD159 /* EMCommunityMainPage.swift in Sources */,
 				B920D65A2A6629DF008AD159 /* EMCommunityCell.swift in Sources */,
@@ -6292,6 +6454,7 @@
 				B98E5C122A611560007B421F /* UIImage+Scaling.swift in Sources */,
 				B920D6B02A6A8FC7008AD159 /* EMUserRequest.swift in Sources */,
 				B920D6A72A6A6261008AD159 /* EMMyNav.swift in Sources */,
+				B94279212A775D9A00D89310 /* EMRPCPage.swift in Sources */,
 				B98E5C1D2A611560007B421F /* IP2Country.swift in Sources */,
 				B920D68B2A67E3C4008AD159 /* EMMaskView.swift in Sources */,
 				B98E5B7E2A611560007B421F /* EMSettingPage.swift in Sources */,
@@ -6302,13 +6465,18 @@
 				B920D64F2A654DEE008AD159 /* UIButton+SGPagingView.swift in Sources */,
 				B920D6CC2A6E605E008AD159 /* EMAppConfig.swift in Sources */,
 				B98E5C852A611560007B421F /* RestoreVC.swift in Sources */,
+				B942791B2A774B0A00D89310 /* EMPasswordAlertView.swift in Sources */,
 				B98E5C752A611560007B421F /* SendMediaNavigationController.swift in Sources */,
 				B98E5BF02A611560007B421F /* SRCopyableLabel.swift in Sources */,
 				B920D6D72A6F9D26008AD159 /* EMCacheManager.swift in Sources */,
 				B98E5C142A611560007B421F /* UIView+Wrapping.swift in Sources */,
 				B98E5BF42A611560007B421F /* SessionCell+Info.swift in Sources */,
+				B94278E22A7211AE00D89310 /* EMWalletController.swift in Sources */,
+				B942791F2A7759DD00D89310 /* EMViewPrivateKeyPage.swift in Sources */,
+				B94279002A739CBB00D89310 /* EMWalletChangePasswordPage.swift in Sources */,
 				B98E5B622A611560007B421F /* UIButton+extension.swift in Sources */,
 				B920D6542A654DEE008AD159 /* SGPagingContentCollectionView.swift in Sources */,
+				B94278F82A738E0E00D89310 /* EMWalletManagePage.swift in Sources */,
 				B98E5C482A611560007B421F /* VoiceMessageRecordingView.swift in Sources */,
 				B98E5BED2A611560007B421F /* AppEnvironment.swift in Sources */,
 				B98E5C6E2A611560007B421F /* MediaInfoVC+MediaInfoView.swift in Sources */,

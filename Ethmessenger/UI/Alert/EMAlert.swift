@@ -5,8 +5,24 @@ import UIKit
 enum EMAlert {
     case tip
     case success
+    case input
+    case password
+    case selectNetwork
     
-    static func alert(_ type: EMAlert = tip) -> EMAlertController {
+    static func alert(_ type: EMAlert = .tip) -> EMAlertController {
+        if type == .tip{
+            return EMTipAlertViewController()
+        }
+        if type == .input{
+            return EMInputAlertViewController()
+        }
+        if type == .password{
+            return EMPasswordAlertViewController()
+        }
+        if type == .selectNetwork{
+            return EMSelectNetworkVC()
+        }
+        
         let alert = EMAlertController()
         alert.type = type
         return alert
@@ -14,51 +30,6 @@ enum EMAlert {
 }
 
 extension EMAlertController {
-    @discardableResult
-    func title(_ title: String) -> EMAlertController {
-        alert.titleText = title
-        alert.title.isHidden = false
-        return self
-    }
-    
-    @discardableResult
-    func content(_ content: String) -> EMAlertController {
-        alert.contentText = content
-        alert.content.isHidden = false
-        return self
-    }
-    
-    @discardableResult
-    func confirm(_ buttonText: String) -> EMAlertController {
-        alert.confirmText = buttonText
-        alert.confirmButton.isHidden = false
-        return self
-    }
-    
-    @discardableResult
-    func cancel(_ buttonText: String) -> EMAlertController {
-        alert.cancelText = buttonText
-        alert.cancelButton.isHidden = false
-        return self
-    }
-    
-    @discardableResult
-    func confirmAction(_ action: @escaping () -> Void) -> EMAlertController {
-        confirmAction = action
-        return self
-    }
-    
-    @discardableResult
-    func cancelAction(_ action: @escaping () -> Void) -> EMAlertController {
-        cancelAction = action
-        return self
-    }
-    
-//    @discardableResult
-//    func customView(_ view: UIView) -> EMAlertController {
-//        alert = view
-//        return self
-//    }
     
     @discardableResult
     func popup() -> EMAlertController {
@@ -74,38 +45,67 @@ class EMAlertController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
+        let bgView = UIView()
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        bgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelButtonAction)))
+        
         setup()
     }
     
     func setup() {
-        view.addSubview(alert)
         
-        alert.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.leading.equalToSuperview().offset(24.w)
-            make.trailing.equalToSuperview().offset(-24.w)
-        }
     }
     
-    private lazy var alert: EMCommonAlertView = {
-        let view = EMCommonAlertView()
-        view.confirmButton.addTarget(self, action: #selector(confirmButtonAction), for: .touchUpInside)
-        view.cancelButton.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
-        return view
-    }()
+    @discardableResult
+    func title(_ title: String) -> EMAlertController {
+        
+        return self
+    }
     
-    private var confirmAction: (() -> Void)? = nil
-    private var cancelAction: (() -> Void)? = nil
-}
-
-extension EMAlertController {
+    @discardableResult
+    func content(_ content: String) -> EMAlertController {
+        
+        return self
+    }
+    
+    @discardableResult
+    func confirm(_ buttonText: String) -> EMAlertController {
+        
+        return self
+    }
+    
+    @discardableResult
+    func cancel(_ buttonText: String) -> EMAlertController {
+        
+        return self
+    }
+    
+    @discardableResult
+    func confirmAction(_ action: @escaping (Any) -> Void) -> EMAlertController {
+        confirmAction = action
+        return self
+    }
+    
+    @discardableResult
+    func cancelAction(_ action: @escaping () -> Void) -> EMAlertController {
+        cancelAction = action
+        return self
+    }
+    
     @objc func confirmButtonAction() {
-        dismiss(animated: false, completion: confirmAction)
+        confirmAction?("")
+        dismiss(animated: false, completion: nil)
     }
     
     @objc func cancelButtonAction() {
         dismiss(animated: false, completion: cancelAction)
     }
+    
+    var confirmAction: ((Any) -> Void)? = nil
+    private var cancelAction: (() -> Void)? = nil
 }
 
 

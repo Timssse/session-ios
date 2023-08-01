@@ -39,8 +39,8 @@ enum EMSettingSectionType : String{
                                                       EMSettingCellType.createCell(.voiceAndVideoCall),
                                                       EMSettingCellType.createCell(.invite),
                                                       EMSettingCellType.createCell(.aboutUs),
-                                                      EMSettingCellType.createCell(.website),
-                                                      EMSettingCellType.createCell(.useGuide)
+                                                      EMSettingCellType.createCell(.website)
+//                                                      EMSettingCellType.createCell(.useGuide)
                                                       ], type: .settings)
         case help :
             return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.help),EMSettingCellType.createCell(.clean)], type: .help)

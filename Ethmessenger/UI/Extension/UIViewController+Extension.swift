@@ -67,4 +67,63 @@ extension UIViewController{
         }
         
     }
+    
+    //展示导航按钮图片
+    func showNavItemImageRight(itemImages: [String]) {
+        var items = [UIBarButtonItem]()
+        for (index,str) in itemImages.enumerated() {
+            let btn = getNavImageBtn(imageStr: str)
+            if index == 1 {
+                btn.addTarget(self, action: #selector(onRightAction1), for: .touchUpInside)
+            }else{
+                btn.addTarget(self, action: #selector(onRightAction), for: .touchUpInside)
+            }
+            let btnItem = UIBarButtonItem(customView: btn)
+            items.append(btnItem)
+        }
+        self.navigationItem.rightBarButtonItems = items
+    }
+    
+    //MARK: 设置右侧title
+    func showNavRight(_ string:String) {
+        let btn = getNavTitleBtn(title: string)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        btn.addTarget(self, action: #selector(onRightAction), for: .touchUpInside)
+        
+        let btnItem = UIBarButtonItem(customView: btn)
+        self.navigationItem.rightBarButtonItems = nil
+        self.navigationItem.rightBarButtonItem = btnItem;
+    }
+    
+    func getNavImageBtn(imageStr: String) -> UIButton {
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        if imageStr.count != 0 {
+            btn.setImage(UIImage(named: imageStr), for: .normal)
+        }
+        btn.contentHorizontalAlignment = .right
+        return btn
+    }
+    
+    private func getNavTitleBtn(title: String) -> UIButton {
+        var title = title
+        let btn = UIButton()
+        if title.count > 12 {
+            title = FS(title.prefix(12))
+        }
+        btn.sizeToFit()
+        btn.setTitle(title, for: .normal)
+        btn.setThemeTitleColor(.messageBubble_outgoingBackground, for: .normal)
+        btn.titleLabel?.font = UIFont.Medium(size: 13)
+        return btn
+    }
+}
+
+extension UIViewController{
+    @objc func onRightAction(){
+        
+    }
+    
+    @objc func onRightAction1(){
+        
+    }
 }

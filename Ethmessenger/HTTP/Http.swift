@@ -62,13 +62,26 @@ class NetworkingTool {
                                         encoding: encoding,
                                         headers: h).cacheResponse(using: cacher).validate().responseJSON { [weak self] response in
             task.handleResponse(response: response)
-            if let index = self?._taskQueue.firstIndex(of: task) {
-                self?._taskQueue.remove(at: index)
-            }
+//            if let index = self?._taskQueue.firstIndex(of: task) {
+//                self?._taskQueue.remove(at: index)
+//            }
         }
-        _taskQueue.append(task)
+//        _taskQueue.append(task)
         return task
     }
+    
+    func request(request: URLRequest) -> NetworkingRequest {
+        let task = NetworkingRequest()
+        task.request = _session.request(request).validate().responseJSON { [weak self] response in
+            task.handleResponse(response: response)
+//            if let index = self?._taskQueue.firstIndex(of: task) {
+//                self?._taskQueue.remove(at: index)
+//            }
+        }
+//        _taskQueue.append(task)
+        return task
+    }
+    
     
     func upload(url: String,
                 method: Alamofire.HTTPMethod = .post,
@@ -98,12 +111,12 @@ class NetworkingTool {
         }).validate().responseJSON(completionHandler: { [weak self] response in
             task.handleResponse(response: response)
 
-            if let index = self?._taskQueue.firstIndex(of: task) {
-                self?._taskQueue.remove(at: index)
-            }
+//            if let index = self?._taskQueue.firstIndex(of: task) {
+//                self?._taskQueue.remove(at: index)
+//            }
         })
         
-        _taskQueue.append(task)
+//        _taskQueue.append(task)
         return task
     }
 
@@ -127,12 +140,12 @@ class NetworkingTool {
         task.request = _session.download(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: h, to: destination).validate().responseData { [weak self] response in
             task.handleDownload(response: response)
 
-            if let index = self?._taskQueue.firstIndex(of: task) {
-                self?._taskQueue.remove(at: index)
-            }
+//            if let index = self?._taskQueue.firstIndex(of: task) {
+//                self?._taskQueue.remove(at: index)
+//            }
         }
         
-        _taskQueue.append(task)
+//        _taskQueue.append(task)
         return task
     }
     
@@ -141,7 +154,7 @@ class NetworkingTool {
     /// Network reachability manager, The first call to method `startMonitoring()` will be initialized.
     private var _reachability: NetworkReachabilityManager?
     
-    private var _taskQueue : [ NetworkingRequest ] = []
+//    private var _taskQueue : [ NetworkingRequest ] = []
 }
 
 extension NetworkingTool {
@@ -194,9 +207,9 @@ class NetworkingRequest: Equatable {
             }
         case .success(let JSON):
             let json = JSON as? [String: Any]
-            guard let ok = json?["Code"] as? Int,
+            guard let ok = (json?["Code"] as? Int) ?? json?["code"] as? Int,
                   ok == 0,
-                  let data = json?["Data"] else {
+                  let data = (json?["Data"]) ?? json?["data"] else {
                 if json?["Size"] != nil{
                     if let closure = _successHandler {
                         closure(json!)
@@ -206,7 +219,7 @@ class NetworkingRequest: Equatable {
                 }
                 
                 if let closure = _failedHandler {
-                    try? closure(HTTPError(code: -2, desc: json?["Msg"] as! String))
+                    try? closure(HTTPError(code: -2, desc: (json?["Msg"] ?? json?["msg"]) as! String))
                 }
                 clearReference()
                 return

@@ -84,13 +84,13 @@ class EMUserCommunitCell: BaseTableViewCell {
             make.height.equalTo(1)
         }
         
-        let walletBottom = UIImageView(image: UIImage(named: "icon_user_wallet_bottom"))
-        self.contentView.addSubview(walletBottom)
-        walletBottom.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(17.w)
-            make.right.equalToSuperview().offset(-17.w)
-            make.top.equalToSuperview().offset(-8.w)
-        }
+//        let walletBottom = UIImageView(image: UIImage(named: "icon_user_wallet_bottom"))
+//        self.contentView.addSubview(walletBottom)
+//        walletBottom.snp.makeConstraints { make in
+//            make.left.equalToSuperview().offset(17.w)
+//            make.right.equalToSuperview().offset(-17.w)
+//            make.top.equalToSuperview().offset(-8.w)
+//        }
         
     }
 

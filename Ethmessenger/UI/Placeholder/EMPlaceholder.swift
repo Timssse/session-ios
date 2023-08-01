@@ -4,9 +4,9 @@ import UIKit
 
 enum EMPlaceholder {
     case empty
-    case emptyTwitter(isPost : Bool,target : Any? = nil,postAction : Selector? = nil)
+    case emptyTwitter(isPost : Bool = false,target : Any? = nil,postAction : Selector? = nil)
     
-    static func show(_ type: EMPlaceholder = empty,frame: CGRect = CGRectMake(0, 0, Screen_width, Screen_height - 100.h),centerY : CGFloat = 0) -> UIView {
+    static func show(_ type: EMPlaceholder = empty,frame: CGRect = CGRectMake(0, 0, Screen_width, Screen_height - 200.h),centerY : CGFloat = 0) -> UIView {
         return EMEmptyView.createView(type,frame: frame,centerY: centerY)
     }
 }

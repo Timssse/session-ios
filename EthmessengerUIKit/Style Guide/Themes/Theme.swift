@@ -241,6 +241,12 @@ public indirect enum ThemeValue: Hashable {
     case emptyContent
     
     case alertTextColor
+    
+    case wallet_bg
+    
+    case password_border_color
+    
+    case forget_textView_bg
 }
 
 // MARK: - ForcedThemeValue

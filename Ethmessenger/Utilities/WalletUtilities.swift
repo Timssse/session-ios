@@ -17,8 +17,7 @@ public class WalletUtilities{
                 createAccountWithPrivateKey(seed)
                 return
             }
-            createAccountWithMnemonic(wallet!)
-            
+            createAccountWithMnemonic(wallet!,mnemonic:mnemonic)
             return
         }
         let seed = Identity.fetchUserPrivateKey()!
@@ -28,19 +27,19 @@ public class WalletUtilities{
             createAccountWithPrivateKey(seed)
             return
         }
-        createAccountWithMnemonic(wallet!)
+        createAccountWithMnemonic(wallet!,mnemonic:mnemonic)
     }
     
     static func createAccountWithPrivateKey(_ seed : Data){
         if let ks = try? EthereumKeystoreV3(privateKey: seed, password: ""){
-            self.account = EMAccount.init(address: ks.addresses?.first?.address ?? "", privateKey: seed.hexString)
+            self.account = EMAccount.init(address: ks.addresses?.first?.address ?? "", privateKey: seed.hexString,mnemonic: "")
         }
     }
     
-    static func createAccountWithMnemonic(_ wallet : HDWallet){
+    static func createAccountWithMnemonic(_ wallet : HDWallet,mnemonic : String){
         let address = wallet.getAddressForCoin(coin: .ethereum)
         let key = wallet.getKeyForCoin(coin: .ethereum).data.hexString
-        self.account = EMAccount.init(address: address, privateKey: key)
+        self.account = EMAccount.init(chain: EMChain(chainId: EMNetworkModel.getNetwork()?.chain_id ?? 1),address: address, privateKey: key,mnemonic: mnemonic)
     }
     
     public static var address : String{
@@ -60,3 +59,4 @@ public class WalletUtilities{
         return result.hexEncoded
     }
 }
+
