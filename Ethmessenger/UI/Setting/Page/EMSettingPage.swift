@@ -92,7 +92,7 @@ extension EMSettingPage{
     }
     
     @objc func onclickExit(){
-        EMAlert.alert(.tip)
+        EMAlert.alert(.tip)?
             .title(LocalExit.localized())
             .content(LocalExitTips.localized())
             .confirm(LocalCancel.localized())
@@ -271,7 +271,7 @@ extension EMSettingPage: UITableViewDelegate,UITableViewDataSource{
             EMLanguageChangeView.show()
             break
         case .cleanCache :
-            EMAlert.alert(.tip)
+            EMAlert.alert(.tip)?
                 .title(LocalTips.localized())
                 .content(LocalCleanCacheTips.localized())
                 .confirm(LocalConfirm.localized())
@@ -307,7 +307,7 @@ extension EMSettingPage: UITableViewDelegate,UITableViewDataSource{
                 self.tableView.reloadData()
                 return
             }
-            EMAlert.alert(.tip)
+            EMAlert.alert(.tip)?
                 .title(LocalTips.localized())
                 .content(LocalAutoDeleteMessageTips.localized())
                 .confirm(LocalConfirm.localized())
@@ -368,7 +368,7 @@ extension EMSettingPage: UITableViewDelegate,UITableViewDataSource{
                 self.tableView.reloadData()
                 return
             }
-            EMAlert.alert()
+            EMAlert.alert()?
                 .title("PRIVACY_CALLS_WARNING_TITLE".localized())
                 .content("PRIVACY_CALLS_WARNING_DESCRIPTION".localized())
                 .confirm(LocalConfirm.localized())

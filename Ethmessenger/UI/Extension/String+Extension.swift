@@ -65,7 +65,7 @@ extension String{
     
     //MARK: 数字格式化为金额
     func toNumberFormatter(_ is100:Bool = false)->String{
-        let numStr = self.toNumber5PointFormatter()
+        let numStr = self.toNumber6PointFormatter()
         let d = numStr.toDouble()
         if is100{
             let format = NumberFormatter()
@@ -82,11 +82,11 @@ extension String{
         return "\(d)"
     }
     
-    func toNumber5PointFormatter()->String{
+    func toNumber6PointFormatter()->String{
         
         let numStr = self
         let format = NumberFormatter()
-        format.positiveFormat = "#####0.0000"
+        format.positiveFormat = "#####0.000000"
         format.roundingMode = .floor
         let d = numStr.toDouble()
         if let string = format.string(from: NSNumber(value: d)){

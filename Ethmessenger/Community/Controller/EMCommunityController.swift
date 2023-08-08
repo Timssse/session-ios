@@ -36,8 +36,14 @@ struct EMCommunityController{
             guard let userData = try await CommunityLoginRequest(address: WalletUtilities.address, sign: sign2,nonce: "\(nonce)").request() as? HTTPJson else{
                 return nil
             }
-            let model = EMCommunityUserEntity.deserialize(from: userData)
-            CacheUtilites.shared.localCommunityToken = model?.Token
+            guard let model = EMCommunityUserEntity.deserialize(from: userData) else{
+                return nil
+            }
+            CacheUtilites.shared.localCommunityToken = model.Token
+            let userInfo = Profile.fetchOrCreateCurrentUser()
+            if userInfo.name != model.Nickname{
+                await EMUserController.editUserInfo(name: userInfo.name, icon: [], userInfo: model)
+            }
             return model
         }catch{
             return nil

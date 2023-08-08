@@ -457,7 +457,7 @@ final class VisibleMessageCell: MessageCell, TappableLabelDelegate {
         lastSearchText: String?
     ) {
         let bodyLabelTextColor: ThemeValue = (cellViewModel.variant == .standardOutgoing ?
-            .messageBubble_outgoingText :
+            .white :
             .messageBubble_incomingText
         )
         

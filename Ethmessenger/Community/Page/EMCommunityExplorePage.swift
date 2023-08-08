@@ -21,10 +21,6 @@ class EMCommunityExplorePage: EMRefreshController {
         let tableView = EMTableView(delegate: self, dataSource: self, backgroundColor: .conversationButton_background)
         tableView.register(EMCommunityCell.self, forCellReuseIdentifier: "EMCommunityCell")
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: Screen_width, height: 20.w))
-        let footerView = UIView(.conversationButton_background)
-        footerView.frame = CGRect(x: 0, y: 0, width: Screen_width, height: 90.w)
-        tableView.tableFooterView = footerView
-        
         setRefreshView(tableView)
         return tableView
     }()
@@ -84,13 +80,13 @@ extension EMCommunityExplorePage : UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "EMCommunityCell", for: indexPath) as! EMCommunityCell
         cell.model = self.dataArr[indexPath.row]
         cell.toolView.likeBlock = {[weak self] in
+            let model = (self?.dataArr[indexPath.row])!
+            model.isTwLike = !model.isTwLike
+            model.LikeCount = model.isTwLike ? (model.LikeCount + 1) : (model.LikeCount > 0 ? model.LikeCount - 1 : 0)
+            self?.dataArr[indexPath.row] = model
+            self?.tableView.reloadData()
             Task{
-                let model = (self?.dataArr[indexPath.row])!
                 await EMCommunityController.like(model.TwAddress)
-                model.isTwLike = !model.isTwLike
-                model.LikeCount = model.isTwLike ? (model.LikeCount + 1) : (model.LikeCount > 0 ? model.LikeCount - 1 : 0)
-                self?.dataArr[indexPath.row] = model
-                self?.tableView.reloadData()
             }
         }
         return cell

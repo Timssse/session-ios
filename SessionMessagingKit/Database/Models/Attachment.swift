@@ -643,7 +643,7 @@ extension Attachment {
         
         if isVideo {
             guard OWSMediaUtils.isValidVideo(path: originalFilePath) else { return nil }
-            
+            SNLog("forVideoAtPath ========11")
             return Attachment.videoStillImage(filePath: originalFilePath)?.size
         }
         
@@ -651,6 +651,7 @@ extension Attachment {
     }
     
     public static func videoStillImage(filePath: String) -> UIImage? {
+        SNLog("forVideoAtPath ========")
         return try? OWSMediaUtils.thumbnail(
             forVideoAtPath: filePath,
             maxDimension: CGFloat(Attachment.thumbnailDimensionLarge)
@@ -772,6 +773,7 @@ extension Attachment {
         guard let originalFilePath: String = originalFilePath else { return nil }
         
         if isVideo {
+            SNLog("forVideoAtPath ========22")
             return Attachment.videoStillImage(filePath: originalFilePath)
         }
         

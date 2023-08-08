@@ -85,7 +85,6 @@ extension HTTPRequest {
     }
     
     func fetchBody(_ body : Data) -> NetworkingRequest? {
-        let totalHeaders = headers == nil ? commonHeaders() : commonHeaders().merging(headers!) { $1 }
         let url = baseUrl() + self.url
         guard let turl = URL(string: url) else {
             return nil

@@ -46,6 +46,14 @@ class EMSelelctNetworkCell: BaseTableViewCell {
         }
     }
     
+    var token : EMTokenModel?{
+        didSet{
+            iconLogo.sd_setImage(with: URL(string: FS(token?.icon)), placeholderImage: icon_default)
+            labSymbol.text = token?.symbol
+            labName.text = token?.walletAddress
+        }
+    }
+    
     var isSelect : Bool = false{
         didSet{
             iconStatus.image = isSelect ? UIImage(named: "icon_network_selected") : UIImage(named: "icon_network_normal")

@@ -176,6 +176,7 @@ public final class FullConversationCell: BaseTableViewCell {
         contentView.addSubview(snippetLabel)
         snippetLabel.snp.makeConstraints { make in
             make.left.equalTo(displayNameLabel)
+            make.right.equalToSuperview().offset(-64.w)
             make.bottom.equalToSuperview().offset(-27)
         }
         
@@ -313,7 +314,7 @@ public final class FullConversationCell: BaseTableViewCell {
                 content: Interaction.previewText(
                     variant: (cellViewModel.interactionVariant ?? .standardIncoming),
                     body: cellViewModel.interactionBody,
-                    authorDisplayName: cellViewModel.authorName(for: .contact),
+                    authorDisplayName: cellViewModel.authorName(for: .contact) ?? cellViewModel.displayName,
                     attachmentDescriptionInfo: cellViewModel.interactionAttachmentDescriptionInfo,
                     attachmentCount: cellViewModel.interactionAttachmentCount,
                     isOpenGroupInvitation: (cellViewModel.interactionIsOpenGroupInvitation == true)
@@ -539,7 +540,7 @@ public final class FullConversationCell: BaseTableViewCell {
             (cellViewModel.threadVariant == .closedGroup || cellViewModel.threadVariant == .openGroup) &&
             (cellViewModel.interactionVariant?.isGroupControlMessage == false)
         {
-            let authorName: String = cellViewModel.authorName(for: cellViewModel.threadVariant)
+            let authorName: String = cellViewModel.authorName(for: cellViewModel.threadVariant) ?? cellViewModel.displayName
             
             result.append(NSAttributedString(
                 string: "\(authorName): ",
@@ -553,7 +554,7 @@ public final class FullConversationCell: BaseTableViewCell {
                 variant: (cellViewModel.interactionVariant ?? .standardIncoming),
                 body: cellViewModel.interactionBody,
                 threadContactDisplayName: cellViewModel.threadContactName(),
-                authorDisplayName: cellViewModel.authorName(for: cellViewModel.threadVariant),
+                authorDisplayName: cellViewModel.authorName(for: cellViewModel.threadVariant) ?? cellViewModel.displayName,
                 attachmentDescriptionInfo: cellViewModel.interactionAttachmentDescriptionInfo,
                 attachmentCount: cellViewModel.interactionAttachmentCount,
                 isOpenGroupInvitation: (cellViewModel.interactionIsOpenGroupInvitation == true)

@@ -32,3 +32,12 @@ extension Int {
     }
 }
 
+extension Int {
+    func getUnitWithDecimails() -> String {
+        var  decimalStr = "1"
+        for _ in 0..<self  {
+            decimalStr += "0"
+        }
+        return decimalStr
+    }
+}

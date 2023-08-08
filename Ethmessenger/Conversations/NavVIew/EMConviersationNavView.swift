@@ -112,8 +112,6 @@ class EMConviersationNavView: UIView {
                 ),
                 showMultiAvatarForClosedGroup: true
             )
-            
-            
             labID.text = model.threadVariant == .contact ? model?.threadId.showAddress(6) : "\(model.userCount ?? 0) members"
         }
     }

@@ -550,7 +550,7 @@ public class MediaGalleryViewModel {
         let navController: MediaGalleryNavigationController = MediaGalleryNavigationController()
         navController.viewControllers = [pageViewController]
         navController.modalPresentationStyle = .fullScreen
-        navController.transitioningDelegate = pageViewController
+//        navController.transitioningDelegate = pageViewController
         
         return navController
     }

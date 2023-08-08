@@ -9,18 +9,19 @@ class EMCommunitPublisherView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(icon)
+        icon.dealBorderLayer(corner: 20.w, bordercolor: .value(.white, alpha: 0.5), borderwidth: 2)
         icon.isUserInteractionEnabled = true
         icon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushUserVC)))
         icon.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()
-            make.size.equalTo(CGSize(width: 52.w, height: 52.w))
+            make.size.equalTo(CGSize(width: 40.w, height: 40.w))
         }
         
         self.addSubview(labName)
         labName.isUserInteractionEnabled = true
         labName.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushUserVC)))
         labName.snp.makeConstraints { make in
-            make.left.equalTo(icon.snp.right).offset(18.w)
+            make.left.equalTo(icon.snp.right).offset(12.w)
             make.top.equalToSuperview()
         }
         
@@ -63,7 +64,7 @@ class EMCommunitPublisherView: UIView {
     
     var model : EMCommunityHomeListEntity!{
         didSet{
-            icon.sd_setImage(with: URL(string: model.UserInfo?.Avatar ?? ""),placeholderImage: icon_default)
+            icon.sd_setImage(with: URL(string: model.UserInfo?.Avatar ?? ""),placeholderImage: UIImage(named: "icon_community_logo"))
             labName.text = model.UserInfo?.Nickname
             labTime.text = model.CreatedAt.showTime
         }
@@ -82,7 +83,7 @@ class EMCommunitPublisherView: UIView {
         frame.size = CGSize(width: 77.w, height: 35.w)
         EMCommunityMoreView.share.show(UIUtil.getWindow()!,contentFrame: frame)
         EMCommunityMoreView.share.reportBlock = {
-            
+            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(), animated: true)
         }
     }
 }

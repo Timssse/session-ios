@@ -45,9 +45,10 @@ struct EMWalletController{
         if chainId == -1 {
             tokens = EMTableToken.selectAllMainToken()
         }else{
-            tokens = EMTableToken.selectAllMainTokenWithChainId(chainId)
+            if let mainToken = EMTableToken.selectMainTokenWithChainId(chainId) {
+                tokens = [mainToken]
+            }
         }
-        
         
         for token in tokens{
             let chain = EMChain(chainId: token.chain_id)
@@ -69,6 +70,9 @@ struct EMWalletController{
                 tokens.remove(at: index)
                 break
             }
+        }
+        if tokens.count == 0{
+            return
         }
         guard let arr = try? await WalletTokenBlanceRequest(url: chain.rpc, tokens: tokens, address: WalletUtilities.account.address).request() as? HTTPList else{
             return
@@ -96,8 +100,8 @@ struct EMWalletController{
     }
     
     
-    static func searchToken(_ network : String,name : String) async -> [EMTokenModel]{
-        guard let data = try? await WalletSearchTokenRequest(network: network, name: name).request() as? HTTPList else{
+    static func searchToken(_ chainID : Int,name : String) async -> [EMTokenModel]{
+        guard let data = try? await WalletSearchTokenRequest(chainId: chainID, name: name).request() as? HTTPList else{
             return []
         }
         guard let relust = [EMTokenModel].deserialize(from: data) as? [EMTokenModel] else{
@@ -106,8 +110,63 @@ struct EMWalletController{
         return relust
     }
     
+    static func getTokensBalance(_ token : EMTokenModel) async -> String {
+        let chain = EMChain(chainId: token.chain_id)
+        let balance = try? await GetBalanceRequest(rpc: chain.rpc, chainId: token.chain_id, address: WalletUtilities.account.address, contractAddress: token.contract).request()
+        token.balance = Utilities.formatToPrecision(balance ?? BigUInt(0),units: .custom(token.decimals))
+        EMTableToken.updateToken(token)
+        return token.balance
+    }
+    
+    static func getGasPrice(_ chainId : Int) async -> BigUInt {
+        let chain = EMChain(chainId: chainId)
+        let gasPrice = try? await GetGasPriceRequest(rpc: chain.rpc, chainId: chainId).request()
+        return gasPrice ?? 0
+    }
+    
+    static func getGasLimit(transNum : String = "0",token : EMTokenModel,toAddress : String = "",gasPrice : BigUInt = 0) async -> BigUInt {
+        let chain = EMChain(chainId: token.chain_id)
+        if token.contract == ""{
+            let gasLimit = try? await GetMainTokenGasLimitRequest(rpc: chain.rpc, chainId: token.chain_id, transnum: transNum, token: token, fromAddress: WalletUtilities.address, toAddress: toAddress, gasPrice: gasPrice).request()
+            return gasLimit ?? 0
+        }
+        let gasLimit = try? await GetTokenGasLimtRequest(rpc: chain.rpc, chainId: token.chain_id, transnum: transNum, from: WalletUtilities.account.address, to: toAddress, gasPrice: gasPrice, token: token).request()
+        return gasLimit ?? 0
+    }
+    
+    ///转账 返回交易hash 为空就说明失败了
+    static func send(toAddress:String,num:String,token:EMTokenModel,gas:EMCostFeeModel) async throws -> String?{
+        let chain = EMChain(chainId: token.chain_id)
+        let transferResult = try await TransferRequest(rpc: chain.rpc, chainId: chain.chainId, fromAddress: WalletUtilities.address, to: toAddress, token: token, num: num, gas: gas).request()
+        return transferResult.hash
+    }
     
     
+    //处理历史记录
+    static func tradeHistoryRequest(address: String,
+                                   url: String,
+                                   apiKey: String,
+                                   page: Int,
+                                   contractaddress : String = "") async -> [EMTradeListModel] {
+        if (url == ""){
+            return []
+        }
+        var parame = ["module" : "account",
+                     "action":contractaddress == "" ? "txlist" : "tokentx",
+                     "address":address,
+                      "offset":"10","page":"\(page)",
+                      "startblock":"0",
+                      "endblock":"9999999999999",
+                      "sort":"desc",
+                      "apikey":apiKey]
+        if (contractaddress.count > 0){
+            parame["contractaddress"] = contractaddress
+        }
+        guard let result = try? await TransferRecordRequest(url: url).fetchAwait(parame) as? HTTPList else {
+            return []
+        }
+        return ([EMTradeListModel].deserialize(from: result) as? [EMTradeListModel]) ?? []
+    }
 }
 
 

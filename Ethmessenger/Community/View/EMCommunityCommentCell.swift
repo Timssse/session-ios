@@ -6,6 +6,8 @@ class EMCommunityCommentCell: BaseTableViewCell {
     
     override func layoutUI() {
         self.contentView.themeBackgroundColor = .conversationButton_background
+        icon.isUserInteractionEnabled = true
+        icon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushUserVC)))
         self.contentView.addSubview(icon)
         icon.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(25.w)
@@ -13,6 +15,8 @@ class EMCommunityCommentCell: BaseTableViewCell {
             make.size.equalTo(CGSize(width: 40.w, height: 40.w))
         }
         
+        labName.isUserInteractionEnabled = true
+        labName.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushUserVC)))
         self.contentView.addSubview(labName)
         labName.snp.makeConstraints { make in
             make.left.equalTo(icon.snp.right).offset(15.w)
@@ -69,9 +73,15 @@ class EMCommunityCommentCell: BaseTableViewCell {
         didSet{
             self.labName.text = model.UserInfo?.Nickname
             labContent.text = model.Content
-            icon.sd_setImage(with: URL(string: model.UserInfo?.Avatar ?? ""), placeholderImage: icon_default)
+            icon.sd_setImage(with: URL(string: model.UserInfo?.Avatar ?? ""), placeholderImage: UIImage(named: "icon_community_logo"))
             labTime.text = model.CreatedAt.showTime
         }
+    }
+    
+    @objc func pushUserVC(){
+        let vc = EMOtherUserPage()
+        vc.address = FS(model.UserInfo?.UserAddress)
+        UIUtil.visibleNav()?.pushViewController(vc, animated: true)
     }
     
     @objc func onclickMore(_ sender : UIButton){
@@ -81,7 +91,7 @@ class EMCommunityCommentCell: BaseTableViewCell {
         frame.size = CGSize(width: 77.w, height: 35.w)
         EMCommunityMoreView.share.show(UIUtil.getWindow()!,contentFrame: frame)
         EMCommunityMoreView.share.reportBlock = {
-            
+            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(), animated: true)
         }
     }
 }

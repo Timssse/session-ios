@@ -109,7 +109,7 @@ class EMWalletCache: NSObject {
             }
             let json: String? = UserDefaults.standard.string(forKey: "kPriceUnit")
             if let model = EMChargeUnitModel.deserialize(from: json) {
-                EMWalletConfigModel.shared.usd2cny = model.price
+                EMWalletConfigModel.shared.usd2usdt = model.price
                 _priceUnit = model
                 return model
             }
@@ -125,7 +125,7 @@ class EMWalletCache: NSObject {
                 _priceUnit?.price = _priceUnit?.price.take(numberString: usd2usdt) ?? ""
             }
             if let json = _priceUnit?.toJSONString() {
-                EMWalletConfigModel.shared.usd2cny = _priceUnit?.price ?? ""
+                EMWalletConfigModel.shared.usd2usdt = _priceUnit?.price ?? ""
                 UserDefaults.standard.set(json, forKey: "kPriceUnit")
                 EMWalletConfigModel.saveConfig(config: EMWalletConfigModel.shared)
                 UserDefaults.standard.synchronize()

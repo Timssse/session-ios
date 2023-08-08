@@ -5,6 +5,7 @@ import UIKit
 class EMWalletHeadView: UIView {
 
     var hiddenMoneyBlock : (()->())?
+    let labUsdTitle = UILabel(font: UIFont.Medium(size: 11),color: UIColor(white: 1, alpha: 0.7),text: "（USD）")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -12,7 +13,6 @@ class EMWalletHeadView: UIView {
         Task{
             await update()
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(refresshWalletMoney), name: kNotifyRefreshWallet, object: nil)
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickManage)))
     }
     
@@ -44,7 +44,7 @@ class EMWalletHeadView: UIView {
             make.top.equalTo(labAssetTitle.snp.bottom).offset(6.w)
         }
         
-        let labUsdTitle = UILabel(font: UIFont.Medium(size: 11),color: UIColor(white: 1, alpha: 0.7),text: "（USD）")
+        
         self.addSubview(labUsdTitle)
         labUsdTitle.snp.makeConstraints { make in
             make.left.equalTo(labUsd.snp.right).offset(8.w)
@@ -113,7 +113,12 @@ class EMWalletHeadView: UIView {
     lazy var labUsd : UILabel = UILabel(font: UIFont.Bold(size: 20),color: UIColor.white,text: "0.00")
     
     
-    var moneny = "0.00"
+    var moneny = "0.00" {
+        didSet{
+            labUsd.text = moneny
+            labUsdTitle.text = "(\(EMWalletCache.shared.priceUnit.symbol))"
+        }
+    }
     
     func updateMoney() {
         btnEye.isSelected = EMWalletCache.shared.isMoneyVisiable
@@ -134,23 +139,33 @@ extension EMWalletHeadView{
         UIUtil.visibleNav()?.pushViewController(EMWalletManagePage(), animated: true)
     }
     
-    @objc func onclickTransfer(){
-        
+    @objc func onclickTransfer(_ receiveAddress : String = ""){
+        guard let network = EMNetworkModel.getNetwork() else{
+            return
+        }
+        guard let token = EMTableToken.selectMainTokenWithChainId(network.chain_id) else{
+            return
+        }
+        UIUtil.visibleNav()?.pushViewController(EMTransferPage(token: token), animated: true)
     }
     
     @objc func onclickReceive(){
-        
+        EMAlert.alert(.receive)?.popup()
     }
     
     @objc func onclickScan(){
-        
+        let vc = EMScanViewController()
+        vc.okayBlock = { [weak self] (_, code) in//扫描地址
+            let address = code.split(separator: ":").last
+            self?.onclickTransfer(FS(address))
+        }
+        vc.modalPresentationStyle = .overFullScreen
+        UIUtil.visibleVC()?.present(vc, animated: true, completion: nil)
     }
     
+    
+    
     func update()async{
-        let tokens = EMTableToken.selectAll()
-        tokens.forEach { token in
-            moneny = moneny.add(numberString: token.balance.take(numberString: token.price))
-        }
         labUsd.text = String(format: "%.2f", moneny.toDouble())
     }
     

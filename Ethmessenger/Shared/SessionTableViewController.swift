@@ -250,7 +250,6 @@ class SessionTableViewController<NavItemId: Equatable, Section: SessionTableSect
                         items.map { item -> DisposableBarButtonItem in
                             let buttonItem: DisposableBarButtonItem = item.createBarButtonItem()
                             buttonItem.themeTintColor = .textPrimary
-
                             buttonItem.tapPublisher
                                 .map { _ in item.id }
                                 .handleEvents(receiveOutput: { _ in item.action?() })
@@ -273,7 +272,6 @@ class SessionTableViewController<NavItemId: Equatable, Section: SessionTableSect
                         items.map { item -> DisposableBarButtonItem in
                             let buttonItem: DisposableBarButtonItem = item.createBarButtonItem()
                             buttonItem.themeTintColor = .textPrimary
-
                             buttonItem.tapPublisher
                                 .map { _ in item.id }
                                 .handleEvents(receiveOutput: { _ in item.action?() })

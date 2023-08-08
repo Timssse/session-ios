@@ -65,7 +65,7 @@ extension UILabel {
         self.attributedText = attributedStr
     }
     
-    func setMiniLineHeight(minLineHeight: CGFloat = 25,aligenment: NSTextAlignment = .left) {
+    func setMiniLineHeight(minLineHeight: CGFloat = 22.w,aligenment: NSTextAlignment = .left) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight = minLineHeight
         paragraphStyle.alignment = aligenment
@@ -116,6 +116,8 @@ extension UILabel {
         }
         return linesArr
     }
+    
+    
 }
 
 extension UILabel {

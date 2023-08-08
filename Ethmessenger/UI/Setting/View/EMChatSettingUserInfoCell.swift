@@ -6,6 +6,9 @@ import SessionUIKit
 
 class EMChatSettingUserInfoCell: BaseTableViewCell {
     
+    let labName : UILabel = UILabel(font: UIFont.Bold(size: 20.w),textColor: .textPrimary)
+    let labSessionId : UILabel = UILabel(font: UIFont.Medium(size: 12.w),textColor: .color_91979D)
+    
     override func layoutUI() {
         self.contentView.themeBackgroundColor = .navBack
         self.contentView.addSubview(profilePictureView)
@@ -16,13 +19,30 @@ class EMChatSettingUserInfoCell: BaseTableViewCell {
             make.size.equalTo(CGSize(width: 124.w, height: 124.w))
         }
         
-        self.contentView.addSubview(idView)
-        idView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(25.w)
-            make.right.equalToSuperview().offset(-25.w)
+        self.contentView.addSubview(labName)
+        labName.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
             make.top.equalTo(profilePictureView.snp.bottom).offset(20.w)
+        }
+        
+        labSessionId.textAlignment = .center
+        labSessionId.numberOfLines = 0
+        self.contentView.addSubview(labSessionId)
+        labSessionId.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(293.w)
+            make.top.equalTo(labName.snp.bottom).offset(11.w)
             make.bottom.equalToSuperview().offset(-10.w)
         }
+        
+        
+//        self.contentView.addSubview(idView)
+//        idView.snp.makeConstraints { make in
+//            make.left.equalToSuperview().offset(25.w)
+//            make.right.equalToSuperview().offset(-25.w)
+//            make.top.equalTo(profilePictureView.snp.bottom).offset(20.w)
+//            make.bottom.equalToSuperview().offset(-10.w)
+//        }
         
     }
     
@@ -35,32 +55,41 @@ class EMChatSettingUserInfoCell: BaseTableViewCell {
         return view
     }()
     
-    lazy var idView : EMUserInfoAddressItem = {
-        let idView = EMUserInfoAddressItem(title: "ID", dotColor: .path_connected)
-        return idView
-    }()
     
     
-    var model : Profile?{
+    
+//    lazy var idView : EMUserInfoAddressItem = {
+//        let idView = EMUserInfoAddressItem(title: "ID", dotColor: .path_connected)
+//        return idView
+//    }()
+    
+    
+    var model : SessionThreadViewModel?{
         didSet{
-            let threadViewModel = SessionThreadViewModel(
-                threadId: model?.id ?? "",
-                threadIsNoteToSelf: true,
-                contactProfile: model
-            )
+            guard let model = model else{return}
+            
             profilePictureView.update(
-                publicKey: model?.id ?? "",
-                profile: model,
-                additionalProfile: threadViewModel.additionalProfile,
-                threadVariant: threadViewModel.threadVariant,
-                openGroupProfilePictureData: threadViewModel.openGroupProfilePictureData,
+                publicKey: model.id,
+                profile: model.profile,
+                additionalProfile: model.additionalProfile,
+                threadVariant: model.threadVariant,
+                openGroupProfilePictureData: model.openGroupProfilePictureData,
                 useFallbackPicture: (
-                    threadViewModel.threadVariant == .openGroup &&
-                    threadViewModel.openGroupProfilePictureData == nil
+                    model.threadVariant == .openGroup &&
+                    model.openGroupProfilePictureData == nil
                 ),
                 showMultiAvatarForClosedGroup: true
             )
-            idView.labContent.text = model?.id
+            labName.text = {
+                guard !model.threadIsNoteToSelf else {
+                    guard let profile: Profile = model.profile else {
+                        return Profile.truncated(id: model.threadId, truncating: .middle)
+                    }
+                    return profile.displayName()
+                }
+                return model.displayName
+            }()
+            labSessionId.text = model.profile?.id
         }
     }
 }

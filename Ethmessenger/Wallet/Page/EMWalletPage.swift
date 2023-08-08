@@ -3,7 +3,7 @@
 import UIKit
 import SessionUIKit
 
-class EMWalletPage: EMRefreshController ,EMHideNavigationBarProtocol,ThemedNavigation{
+class EMWalletPage: EMRefreshController ,EMHideNavigationBarProtocol{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,36 +71,54 @@ class EMWalletPage: EMRefreshController ,EMHideNavigationBarProtocol,ThemedNavig
 
 
 extension EMWalletPage{
-    func getData(){
-        self.navView.chain = EMWalletConfigModel.shared.network.first
-        updateToken()
-    }
     
-    @objc func updateToken(){
-        dataArr = EMTableToken.selectTokenWithChainId(WalletUtilities.account.chain.chainId)
-        self.tableView.reloadData()
+    override func refressh() {
         Task{
-            await EMWalletController.getTokensBalance(WalletUtilities.account.chain.chainId)
-            dataArr = EMTableToken.selectTokenWithChainId(WalletUtilities.account.chain.chainId)
-            self.tableView.reloadData()
+            await updateToken()
         }
     }
     
+    func getData(){
+        Task{
+            await EMWalletController.getConfig()
+            self.navView.chain = EMNetworkModel.getNetwork()
+            await updateToken()
+        }
+        
+        
+    }
+    
+    @objc func updateToken() async{
+        dataArr = EMTableToken.selectTokenWithChainId(WalletUtilities.account.chain.chainId)
+        updateTotalMoney()
+        self.tableView.reloadData()
+        await EMWalletController.getTokensBalance(WalletUtilities.account.chain.chainId)
+        dataArr = EMTableToken.selectTokenWithChainId(WalletUtilities.account.chain.chainId)
+        updateTotalMoney()
+        self.tableView.reloadData()
+        self.endRefreshing()
+    }
+    
+    @objc func updateTotalMoney(){
+        var moneny = "0.0"
+        dataArr.forEach { token in
+            moneny = moneny.add(numberString: token.fw_num_rmb)
+        }
+        self.headView.moneny = moneny.toNumberFormatter(true)
+    }
+    
+    
     @objc func chainChange(){
-        navView.chain = EMNetworkModel.getNetwork()
+        getData()
+    }
+    
+    @objc func onclickAddToken(){
+        self.push(EMAddTokensPage())
     }
 }
 
-extension EMWalletPage{
-    @objc func onclickPublish(){
-        let vc = EMPublishPage(forward: nil)
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
-    }
-}
 
 extension EMWalletPage : UITableViewDelegate,UITableViewDataSource{
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -133,6 +151,7 @@ extension EMWalletPage : UITableViewDelegate,UITableViewDataSource{
             make.left.equalToSuperview().offset(25.w)
         }
         let btnAdd = UIButton(image: UIImage(named: "icon_wallet_add_token"))
+        btnAdd.addTarget(self, action: #selector(onclickAddToken), for: .touchUpInside)
         view.addSubview(btnAdd)
         btnAdd.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -143,7 +162,8 @@ extension EMWalletPage : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let token = self.dataArr[indexPath.row]
+        self.push(EMTokenDetailPage(token: token))
     }
     
 }

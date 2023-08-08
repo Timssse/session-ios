@@ -47,7 +47,7 @@ class EMAddTokensPage: BaseVC {
         contentView.addSubview(textSymbol)
         textSymbol.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(25.w)
-            make.top.equalTo(labTokenContract.snp.bottom).offset(5.w)
+            make.top.equalTo(labSymbol.snp.bottom).offset(5.w)
             make.right.equalToSuperview().offset(-25.w)
             make.height.equalTo(58.w)
         }
@@ -62,7 +62,7 @@ class EMAddTokensPage: BaseVC {
         contentView.addSubview(textDecimal)
         textDecimal.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(25.w)
-            make.top.equalTo(labTokenContract.snp.bottom).offset(5.w)
+            make.top.equalTo(labDecimals.snp.bottom).offset(5.w)
             make.right.equalToSuperview().offset(-25.w)
             make.height.equalTo(58.w)
         }
@@ -134,17 +134,24 @@ extension EMAddTokensPage: UITextFieldDelegate{
             guard let network = EMNetworkModel.getNetwork() else{
                 return
             }
-            let tokens = await EMWalletController.searchToken(network.chain_symbol.localized(), name: FS(token.address.address))
+            let tokens = await EMWalletController.searchToken(network.chain_id, name: FS(token.address.address))
+            var isAdd = false
             tokens.forEach { model in
                 if model.contract.lowercased() == FS(token.address.address).lowercased(){
                     EMTableToken.insert(model)
                     NotificationCenter.default.post(name: kNotifyRefreshWallet, object: nil)
+                    self.popPage()
+                    isAdd = true
                     return
                 }
+            }
+            if isAdd{
+                return
             }
             let tokenModel = EMTokenModel.create(token, chainID: network.chain_id)
             EMTableToken.insert(tokenModel)
             NotificationCenter.default.post(name: kNotifyAddToken, object: nil)
+            self.popPage()
         }
     }
 }

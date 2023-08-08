@@ -2,7 +2,7 @@
 
 import UIKit
 
-class EMTabBar: UIView {
+class EMTabBar: UITabBar {
     var emItems : [EMTabBarItem] = []
     
     override func layoutSubviews() {
@@ -11,6 +11,11 @@ class EMTabBar: UIView {
     }
     
     func setUpItems() {
+        
+        let line = UIView(.line)
+        line.frame = CGRect.init(x: 0, y: 0, width: Screen_width, height: 1)
+        self.addSubview(line)
+        
         let width = self.frame.width / CGFloat(self.emItems.count)
         let height = self.frame.height
         for i in 0..<self.emItems.count {

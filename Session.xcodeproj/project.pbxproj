@@ -154,6 +154,11 @@
 		B920D6DB2A6FC669008AD159 /* EMLanguageChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6DA2A6FC669008AD159 /* EMLanguageChangeView.swift */; };
 		B920D6DD2A6FCE56008AD159 /* EMLocalizationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6DC2A6FCE56008AD159 /* EMLocalizationTool.swift */; };
 		B920D6DF2A70AC27008AD159 /* EMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920D6DE2A70AC27008AD159 /* EMAlert.swift */; };
+		B92A7F5F2A80992C00DBBFB3 /* EMOtherUserNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F5E2A80992C00DBBFB3 /* EMOtherUserNav.swift */; };
+		B92A7F612A809B0500DBBFB3 /* EMUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F602A809B0500DBBFB3 /* EMUserInfoCell.swift */; };
+		B92A7F632A80C4DD00DBBFB3 /* EMMomentsUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F622A80C4DD00DBBFB3 /* EMMomentsUserPage.swift */; };
+		B92A7F652A80C80600DBBFB3 /* EMAboutUsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F642A80C80600DBBFB3 /* EMAboutUsPage.swift */; };
+		B92A7F672A82119900DBBFB3 /* EMTradeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F662A82119900DBBFB3 /* EMTradeListModel.swift */; };
 		B94278C72A70C61500D89310 /* EMUserCardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278C62A70C61500D89310 /* EMUserCardPage.swift */; };
 		B94278C92A71022A00D89310 /* EMShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278C82A71022A00D89310 /* EMShareManager.swift */; };
 		B94278CE2A712A2500D89310 /* EMWalletPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278CD2A712A2500D89310 /* EMWalletPage.swift */; };
@@ -199,6 +204,20 @@
 		B942792D2A77B6C400D89310 /* EMUserFollowerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942792C2A77B6C400D89310 /* EMUserFollowerPage.swift */; };
 		B942792F2A77B74E00D89310 /* EMUserFollowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942792E2A77B74E00D89310 /* EMUserFollowingCell.swift */; };
 		B94279312A77C3B200D89310 /* EMOtherUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279302A77C3B200D89310 /* EMOtherUserPage.swift */; };
+		B94279332A789F7E00D89310 /* EMOtherUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279322A789F7E00D89310 /* EMOtherUserInfo.swift */; };
+		B942794F2A7A30E400D89310 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942794E2A7A30E400D89310 /* Array+Extension.swift */; };
+		B94279532A7A413100D89310 /* EMCommunityReportPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279522A7A413100D89310 /* EMCommunityReportPage.swift */; };
+		B94279552A7A4BF100D89310 /* EMTokenDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279542A7A4BF100D89310 /* EMTokenDetailPage.swift */; };
+		B94279572A7A4F5B00D89310 /* EMTokenHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279562A7A4F5B00D89310 /* EMTokenHeadView.swift */; };
+		B94279592A7A668F00D89310 /* EMTokenRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279582A7A668F00D89310 /* EMTokenRecordCell.swift */; };
+		B942795B2A7A860400D89310 /* EMTransferPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942795A2A7A860400D89310 /* EMTransferPage.swift */; };
+		B942795D2A7A864100D89310 /* EMReceiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942795C2A7A864100D89310 /* EMReceiveVC.swift */; };
+		B942795F2A7B3ACD00D89310 /* EMTransferTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942795E2A7B3ACD00D89310 /* EMTransferTokenView.swift */; };
+		B94279612A7B7B7000D89310 /* EMCostFeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279602A7B7B7000D89310 /* EMCostFeeModel.swift */; };
+		B94279632A7B8C7400D89310 /* EMPayforeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279622A7B8C7400D89310 /* EMPayforeDetailView.swift */; };
+		B94279672A7BAD6300D89310 /* EMSelectTokenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279662A7BAD6300D89310 /* EMSelectTokenVC.swift */; };
+		B942796A2A7C8C3F00D89310 /* EMScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94279692A7C8C3F00D89310 /* EMScanViewController.swift */; };
+		B942796C2A7C8D0300D89310 /* EMDiyTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942796B2A7C8D0300D89310 /* EMDiyTopBar.swift */; };
 		B98E5B512A611560007B421F /* MiniCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E59CD2A61155F007B421F /* MiniCallView.swift */; };
 		B98E5B522A611560007B421F /* IncomingCallBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E59CE2A61155F007B421F /* IncomingCallBanner.swift */; };
 		B98E5B532A611560007B421F /* CallVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E59CF2A61155F007B421F /* CallVideoView.swift */; };
@@ -1285,6 +1304,11 @@
 		B920D6DA2A6FC669008AD159 /* EMLanguageChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMLanguageChangeView.swift; sourceTree = "<group>"; };
 		B920D6DC2A6FCE56008AD159 /* EMLocalizationTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMLocalizationTool.swift; sourceTree = "<group>"; };
 		B920D6DE2A70AC27008AD159 /* EMAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlert.swift; sourceTree = "<group>"; };
+		B92A7F5E2A80992C00DBBFB3 /* EMOtherUserNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOtherUserNav.swift; sourceTree = "<group>"; };
+		B92A7F602A809B0500DBBFB3 /* EMUserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserInfoCell.swift; sourceTree = "<group>"; };
+		B92A7F622A80C4DD00DBBFB3 /* EMMomentsUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMMomentsUserPage.swift; sourceTree = "<group>"; };
+		B92A7F642A80C80600DBBFB3 /* EMAboutUsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAboutUsPage.swift; sourceTree = "<group>"; };
+		B92A7F662A82119900DBBFB3 /* EMTradeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTradeListModel.swift; sourceTree = "<group>"; };
 		B936FFAD2A5BF7BD0038CD49 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		B936FFAF2A5BF7BE0038CD49 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		B936FFB12A5BF7BF0038CD49 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -1336,6 +1360,20 @@
 		B942792C2A77B6C400D89310 /* EMUserFollowerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserFollowerPage.swift; sourceTree = "<group>"; };
 		B942792E2A77B74E00D89310 /* EMUserFollowingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserFollowingCell.swift; sourceTree = "<group>"; };
 		B94279302A77C3B200D89310 /* EMOtherUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOtherUserPage.swift; sourceTree = "<group>"; };
+		B94279322A789F7E00D89310 /* EMOtherUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOtherUserInfo.swift; sourceTree = "<group>"; };
+		B942794E2A7A30E400D89310 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		B94279522A7A413100D89310 /* EMCommunityReportPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityReportPage.swift; sourceTree = "<group>"; };
+		B94279542A7A4BF100D89310 /* EMTokenDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTokenDetailPage.swift; sourceTree = "<group>"; };
+		B94279562A7A4F5B00D89310 /* EMTokenHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTokenHeadView.swift; sourceTree = "<group>"; };
+		B94279582A7A668F00D89310 /* EMTokenRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTokenRecordCell.swift; sourceTree = "<group>"; };
+		B942795A2A7A860400D89310 /* EMTransferPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTransferPage.swift; sourceTree = "<group>"; };
+		B942795C2A7A864100D89310 /* EMReceiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMReceiveVC.swift; sourceTree = "<group>"; };
+		B942795E2A7B3ACD00D89310 /* EMTransferTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTransferTokenView.swift; sourceTree = "<group>"; };
+		B94279602A7B7B7000D89310 /* EMCostFeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCostFeeModel.swift; sourceTree = "<group>"; };
+		B94279622A7B8C7400D89310 /* EMPayforeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMPayforeDetailView.swift; sourceTree = "<group>"; };
+		B94279662A7BAD6300D89310 /* EMSelectTokenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSelectTokenVC.swift; sourceTree = "<group>"; };
+		B94279692A7C8C3F00D89310 /* EMScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMScanViewController.swift; sourceTree = "<group>"; };
+		B942796B2A7C8D0300D89310 /* EMDiyTopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMDiyTopBar.swift; sourceTree = "<group>"; };
 		B98E59CD2A61155F007B421F /* MiniCallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniCallView.swift; sourceTree = "<group>"; };
 		B98E59CE2A61155F007B421F /* IncomingCallBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingCallBanner.swift; sourceTree = "<group>"; };
 		B98E59CF2A61155F007B421F /* CallVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallVideoView.swift; sourceTree = "<group>"; };
@@ -2499,6 +2537,7 @@
 				B920D62B2A6549F3008AD159 /* EMCommunityExplorePage.swift */,
 				B920D67D2A677E10008AD159 /* EMCommunityDetailPage.swift */,
 				B920D68C2A67ECE5008AD159 /* EMPublishPage.swift */,
+				B94279522A7A413100D89310 /* EMCommunityReportPage.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -2622,12 +2661,14 @@
 			isa = PBXGroup;
 			children = (
 				B920D6A22A6A605F008AD159 /* EMUserPage.swift */,
+				B92A7F622A80C4DD00DBBFB3 /* EMMomentsUserPage.swift */,
 				B94278C62A70C61500D89310 /* EMUserCardPage.swift */,
 				B94279262A77AA9600D89310 /* EMUserEditPage.swift */,
 				B94279282A77B6AA00D89310 /* EMUserFollowMainPage.swift */,
 				B942792A2A77B6B900D89310 /* EMUserFollowingPage.swift */,
 				B942792C2A77B6C400D89310 /* EMUserFollowerPage.swift */,
 				B94279302A77C3B200D89310 /* EMOtherUserPage.swift */,
+				B92A7F642A80C80600DBBFB3 /* EMAboutUsPage.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -2651,8 +2692,11 @@
 			isa = PBXGroup;
 			children = (
 				B920D6A42A6A6245008AD159 /* EMMyInfoCell.swift */,
+				B92A7F602A809B0500DBBFB3 /* EMUserInfoCell.swift */,
+				B94279322A789F7E00D89310 /* EMOtherUserInfo.swift */,
 				B920D6AA2A6A839C008AD159 /* EMUserCommunitCell.swift */,
 				B920D6A62A6A6261008AD159 /* EMMyNav.swift */,
+				B92A7F5E2A80992C00DBBFB3 /* EMOtherUserNav.swift */,
 				B920D6A82A6A7737008AD159 /* EMWalletCardView.swift */,
 				B920D6D42A6F96CF008AD159 /* EMUserSettingCell.swift */,
 				B920D6D82A6FA9B3008AD159 /* EMThemeModeView.swift */,
@@ -2683,10 +2727,14 @@
 			children = (
 				B94278EB2A723A2D00D89310 /* EMWalletNav.swift */,
 				B94278ED2A723B8400D89310 /* EMWalletHeadView.swift */,
+				B94279562A7A4F5B00D89310 /* EMTokenHeadView.swift */,
 				B94278EF2A72490C00D89310 /* EMWalletTokenCell.swift */,
 				B94278FD2A7392AD00D89310 /* EMWalletManageCell.swift */,
 				B94279072A7402B100D89310 /* EMMnemonicView.swift */,
 				B94279222A77626200D89310 /* EMRPCCell.swift */,
+				B94279582A7A668F00D89310 /* EMTokenRecordCell.swift */,
+				B942795E2A7B3ACD00D89310 /* EMTransferTokenView.swift */,
+				B94279622A7B8C7400D89310 /* EMPayforeDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2703,6 +2751,8 @@
 				B942791E2A7759DD00D89310 /* EMViewPrivateKeyPage.swift */,
 				B94279202A775D9A00D89310 /* EMRPCPage.swift */,
 				B94279242A77881E00D89310 /* EMAddTokensPage.swift */,
+				B94279542A7A4BF100D89310 /* EMTokenDetailPage.swift */,
+				B942795A2A7A860400D89310 /* EMTransferPage.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -2715,6 +2765,8 @@
 				B94278D82A72064300D89310 /* EMChain.swift */,
 				B94278DC2A720E0100D89310 /* EMWalletConfigModel.swift */,
 				B94278F92A738E9E00D89310 /* EMWalletManageItemModel.swift */,
+				B94279602A7B7B7000D89310 /* EMCostFeeModel.swift */,
+				B92A7F662A82119900DBBFB3 /* EMTradeListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2765,9 +2817,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B94279682A7C8C3F00D89310 /* ScanView */ = {
+			isa = PBXGroup;
+			children = (
+				B942796B2A7C8D0300D89310 /* EMDiyTopBar.swift */,
+				B94279692A7C8C3F00D89310 /* EMScanViewController.swift */,
+			);
+			path = ScanView;
+			sourceTree = "<group>";
+		};
 		B98E59CA2A61155F007B421F /* Ethmessenger */ = {
 			isa = PBXGroup;
 			children = (
+				B98E5B132A61155F007B421F /* Wallet */,
 				B920D69D2A6A6019008AD159 /* UserInfo */,
 				B920D6612A663897008AD159 /* HTTP */,
 				B920D61C2A654877008AD159 /* Community */,
@@ -2785,7 +2847,6 @@
 				B98E5ABB2A61155F007B421F /* Utilities */,
 				B98E5AD52A61155F007B421F /* Conversations */,
 				B98E5B102A61155F007B421F /* Closed Groups */,
-				B98E5B132A61155F007B421F /* Wallet */,
 				B98E5B1C2A61155F007B421F /* Media Viewing & Editing */,
 				B98E5B3B2A611560007B421F /* Open Groups */,
 				B98E5B3E2A611560007B421F /* Backups */,
@@ -2835,6 +2896,7 @@
 		B98E59DC2A61155F007B421F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B94279682A7C8C3F00D89310 /* ScanView */,
 				B920D6CF2A6E77FA008AD159 /* Placeholder */,
 				B920D6872A67CE71008AD159 /* ImageViewer */,
 				B920D6432A654DEE008AD159 /* PageView */,
@@ -2876,6 +2938,7 @@
 				B920D6952A68DFFC008AD159 /* Thread+Extension.swift */,
 				B920D6992A68FED6008AD159 /* UIViewController+Extension.swift */,
 				B920D6D22A6E8528008AD159 /* UIColor+Extension.swift */,
+				B942794E2A7A30E400D89310 /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2969,6 +3032,8 @@
 				B942790B2A750C0600D89310 /* EMInputAlertViewController.swift */,
 				B942790F2A75127C00D89310 /* EMPasswordAlertViewController.swift */,
 				B94279132A77490800D89310 /* EMSelectNetworkVC.swift */,
+				B94279662A7BAD6300D89310 /* EMSelectTokenVC.swift */,
+				B942795C2A7A864100D89310 /* EMReceiveVC.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -6145,6 +6210,7 @@
 				B920D6652A66393B008AD159 /* HttpType.swift in Sources */,
 				B98E5C0E2A611560007B421F /* UIScrollView+Utilities.swift in Sources */,
 				B98E5C132A611560007B421F /* CGRect+Utilities.swift in Sources */,
+				B94279532A7A413100D89310 /* EMCommunityReportPage.swift in Sources */,
 				B98E5B5D2A611560007B421F /* CameraManager.swift in Sources */,
 				B920D65E2A663559008AD159 /* EMCommunityImageItem.swift in Sources */,
 				B98E5C522A611560007B421F /* ConversationVC+Interaction.swift in Sources */,
@@ -6170,6 +6236,7 @@
 				B98E5B5B2A611560007B421F /* SessionCallManager+CXCallController.swift in Sources */,
 				B98E5BFD2A611560007B421F /* SessionCarouselView+Info.swift in Sources */,
 				B942792F2A77B74E00D89310 /* EMUserFollowingCell.swift in Sources */,
+				B94279552A7A4BF100D89310 /* EMTokenDetailPage.swift in Sources */,
 				B98E5BA72A611560007B421F /* Data+Extension.swift in Sources */,
 				B98E5B782A611560007B421F /* InputModal.swift in Sources */,
 				B98E5B822A611560007B421F /* EMSettingCell.swift in Sources */,
@@ -6190,10 +6257,12 @@
 				B98E5B6D2A611560007B421F /* ProviderNetwork.swift in Sources */,
 				B98E5B9B2A611560007B421F /* BlockedContactCell.swift in Sources */,
 				B98E5C012A611560007B421F /* SessionHighlightingBackgroundLabel.swift in Sources */,
+				B942795D2A7A864100D89310 /* EMReceiveVC.swift in Sources */,
 				B94278D92A72064300D89310 /* EMChain.swift in Sources */,
 				B94278D32A72040600D89310 /* EMTableToken.swift in Sources */,
 				B94279292A77B6AA00D89310 /* EMUserFollowMainPage.swift in Sources */,
 				B942790C2A750C0600D89310 /* EMInputAlertViewController.swift in Sources */,
+				B94279332A789F7E00D89310 /* EMOtherUserInfo.swift in Sources */,
 				B98E5B982A611560007B421F /* PrimaryColorSelectionView.swift in Sources */,
 				B98E5C7F2A611560007B421F /* LandingVC.swift in Sources */,
 				B98E5C452A611560007B421F /* ContextMenuVC.swift in Sources */,
@@ -6211,6 +6280,7 @@
 				B920D62C2A6549F3008AD159 /* EMCommunityExplorePage.swift in Sources */,
 				B98E5C722A611560007B421F /* MediaZoomAnimationController.swift in Sources */,
 				B98E5C4C2A611560007B421F /* ConversationSearch.swift in Sources */,
+				B92A7F5F2A80992C00DBBFB3 /* EMOtherUserNav.swift in Sources */,
 				B94278DF2A720E6900D89310 /* EMWalletRequest.swift in Sources */,
 				B98E5B9A2A611560007B421F /* VersionFooterView.swift in Sources */,
 				B98E5C432A611560007B421F /* ContextMenuVC+EmojiReactsView.swift in Sources */,
@@ -6247,6 +6317,7 @@
 				B920D67A2A66ADE6008AD159 /* EMPhotoLookUtilities.swift in Sources */,
 				B98E5B792A611560007B421F /* Toast.swift in Sources */,
 				B98E5B702A611560007B421F /* EMDappModel.swift in Sources */,
+				B92A7F612A809B0500DBBFB3 /* EMUserInfoCell.swift in Sources */,
 				B98E5C462A611560007B421F /* MentionSelectionView.swift in Sources */,
 				B942792B2A77B6B900D89310 /* EMUserFollowingPage.swift in Sources */,
 				B98E5BA62A611560007B421F /* EmptySearchResultCell.swift in Sources */,
@@ -6271,6 +6342,7 @@
 				B98E5C312A611560007B421F /* DocumentView.swift in Sources */,
 				B98E5B942A611560007B421F /* ConversationSettingsViewModel.swift in Sources */,
 				B98E5B802A611560007B421F /* EMChatSettingUserInfoCell.swift in Sources */,
+				B92A7F672A82119900DBBFB3 /* EMTradeListModel.swift in Sources */,
 				B98E5C532A611560007B421F /* ConversationVC.swift in Sources */,
 				B98E5BE42A611560007B421F /* MainAppContext.m in Sources */,
 				B98E5C1E2A611560007B421F /* UIStoryboard+OWS.swift in Sources */,
@@ -6282,7 +6354,9 @@
 				B98E5BAB2A611560007B421F /* Emoji+Category.swift in Sources */,
 				B98E5B8E2A611560007B421F /* BlockedContactsViewController.swift in Sources */,
 				B94279022A739FBB00D89310 /* EMWalletSetPasswordPage.swift in Sources */,
+				B94279672A7BAD6300D89310 /* EMSelectTokenVC.swift in Sources */,
 				B94278C72A70C61500D89310 /* EMUserCardPage.swift in Sources */,
+				B92A7F652A80C80600DBBFB3 /* EMAboutUsPage.swift in Sources */,
 				B920D6942A68DE6A008AD159 /* AnimationManager.swift in Sources */,
 				B920D67C2A6770DC008AD159 /* EMCommunityMoreView.swift in Sources */,
 				B920D6D12A6E780B008AD159 /* EMPlaceholder.swift in Sources */,
@@ -6291,11 +6365,15 @@
 				B98E5BAA2A611560007B421F /* PathStatusView.swift in Sources */,
 				B98E5B582A611560007B421F /* SessionCall.swift in Sources */,
 				B920D6552A654DEE008AD159 /* SGPagingTitleView.swift in Sources */,
+				B942795F2A7B3ACD00D89310 /* EMTransferTokenView.swift in Sources */,
 				B98E5B812A611560007B421F /* EMUserInfoAddressItem.swift in Sources */,
 				B98E5C2A2A611560007B421F /* LinkPreviewView.swift in Sources */,
 				B98E5B9E2A611560007B421F /* MessageRequestsViewModel.swift in Sources */,
 				B98E5C7E2A611560007B421F /* SeedReminderView.swift in Sources */,
+				B942795B2A7A860400D89310 /* EMTransferPage.swift in Sources */,
+				B94279612A7B7B7000D89310 /* EMCostFeeModel.swift in Sources */,
 				B98E5C1F2A611560007B421F /* HapticFeedback.swift in Sources */,
+				B94279572A7A4F5B00D89310 /* EMTokenHeadView.swift in Sources */,
 				B94279102A75127C00D89310 /* EMPasswordAlertViewController.swift in Sources */,
 				B98E5BAC2A611560007B421F /* EmojiWithSkinTones+String.swift in Sources */,
 				B98E5C6F2A611560007B421F /* MediaInteractiveDismiss.swift in Sources */,
@@ -6318,6 +6396,7 @@
 				B98E5C232A611560007B421F /* ThreadSettingsViewModel.swift in Sources */,
 				B94278E52A7218A800D89310 /* EMWalletCache.swift in Sources */,
 				B920D67E2A677E10008AD159 /* EMCommunityDetailPage.swift in Sources */,
+				B94279632A7B8C7400D89310 /* EMPayforeDetailView.swift in Sources */,
 				B98E5B902A611560007B421F /* NotificationSoundViewModel.swift in Sources */,
 				B98E5C3C2A611560007B421F /* InfoBanner.swift in Sources */,
 				B98E5B952A611560007B421F /* QRCodeVC.swift in Sources */,
@@ -6359,10 +6438,12 @@
 				B920D6D52A6F96CF008AD159 /* EMUserSettingCell.swift in Sources */,
 				B98E5C3A2A611560007B421F /* MessageCell.swift in Sources */,
 				B98E5C7B2A611560007B421F /* AppNotifications.swift in Sources */,
+				B92A7F632A80C4DD00DBBFB3 /* EMMomentsUserPage.swift in Sources */,
 				B920D69C2A692A3B008AD159 /* EMCommunityConfigEntity.swift in Sources */,
 				B98E5C272A611560007B421F /* ConversationSearchVC.swift in Sources */,
 				B98E5C612A611560007B421F /* CropScaleImageViewController.swift in Sources */,
 				B98E5B612A611560007B421F /* Int+extension.swift in Sources */,
+				B942796C2A7C8D0300D89310 /* EMDiyTopBar.swift in Sources */,
 				B94279252A77881E00D89310 /* EMAddTokensPage.swift in Sources */,
 				B920D66C2A663CA9008AD159 /* EMCommunityController.swift in Sources */,
 				B98E5C022A611560007B421F /* SessionCell+AccessoryView.swift in Sources */,
@@ -6386,6 +6467,7 @@
 				B98E5C562A611560007B421F /* WalletError.swift in Sources */,
 				B98E5B6E2A611560007B421F /* WKWebView+Extension.swift in Sources */,
 				B94278FE2A7392AD00D89310 /* EMWalletManageCell.swift in Sources */,
+				B94279592A7A668F00D89310 /* EMTokenRecordCell.swift in Sources */,
 				B920D66A2A663984008AD159 /* EMCommunitRequest.swift in Sources */,
 				B98E5C652A611560007B421F /* GiphyAPI.swift in Sources */,
 				B98E5C242A611560007B421F /* ProfilePictureVC.swift in Sources */,
@@ -6440,9 +6522,11 @@
 				B98E5C152A611560007B421F /* UILabel+Interaction.swift in Sources */,
 				B98E5C5B2A611560007B421F /* ImagePickerController.swift in Sources */,
 				B98E5B922A611560007B421F /* NukeDataModal.swift in Sources */,
+				B942794F2A7A30E400D89310 /* Array+Extension.swift in Sources */,
 				B98E5C6B2A611560007B421F /* PhotoCapture.swift in Sources */,
 				B98E5C5F2A611560007B421F /* MediaPageViewController.swift in Sources */,
 				B98E5B832A611560007B421F /* EMChatGroupInfoCell.swift in Sources */,
+				B942796A2A7C8C3F00D89310 /* EMScanViewController.swift in Sources */,
 				B98E5B842A611560007B421F /* EMSettingUserInfoCell.swift in Sources */,
 				B98E5C4E2A611560007B421F /* EmojiSkinTonePicker.swift in Sources */,
 				B920D6672A66395C008AD159 /* HttpRequest.swift in Sources */,
@@ -6906,6 +6990,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -6979,6 +7064,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -7043,6 +7129,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -7124,6 +7211,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -7196,6 +7284,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -7269,6 +7358,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -7333,6 +7423,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -7415,6 +7506,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -7488,6 +7580,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -7561,6 +7654,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = TZT7FV2FW4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

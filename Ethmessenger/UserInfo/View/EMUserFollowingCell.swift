@@ -1,7 +1,7 @@
 // Copyright © 2023 Rangeproof Pty Ltd. All rights reserved.
 
 import UIKit
-
+import SessionUIKit
 class EMUserFollowingCell: BaseTableViewCell {
     
     var update:((EMCommunityUserEntity)->())?
@@ -12,7 +12,7 @@ class EMUserFollowingCell: BaseTableViewCell {
     let btnStatus = UIButton(font:UIFont.Regular(size: 13.w))
     
     override func layoutUI() {
-        iconHead.dealLayer(corner: 26.w)
+        iconHead.dealBorderLayer(corner: 26.w, bordercolor: .value(.white, alpha: 0.5), borderwidth: 2)
         self.contentView.addSubview(iconHead)
         iconHead.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(25.w)
@@ -47,7 +47,7 @@ class EMUserFollowingCell: BaseTableViewCell {
     ///关注
     var follow : EMCommunityUserEntity?{
         didSet{
-            iconHead.sd_setImage(with: URL(string: FS(follow?.Avatar)), placeholderImage: icon_default)
+            iconHead.sd_setImage(with: URL(string: FS(follow?.Avatar)), placeholderImage: UIImage(named: "icon_community_logo"))
             labName.text = follow?.Nickname
             labAddress.text = FS(follow?.UserAddress).showAddress(6)
             btnStatus.setTitle(follow?.IsFollow == true ? LocalUnFollowing.localized() : LocalFollowing.localized(), for: .normal)
@@ -58,7 +58,7 @@ class EMUserFollowingCell: BaseTableViewCell {
     ///粉丝
     var fans : EMCommunityUserEntity?{
         didSet{
-            iconHead.sd_setImage(with: URL(string: FS(fans?.Avatar)), placeholderImage: icon_default)
+            iconHead.sd_setImage(with: URL(string: FS(fans?.Avatar)), placeholderImage: UIImage(named: "icon_community_logo"))
             labName.text = fans?.Nickname
             labAddress.text = FS(fans?.UserAddress).showAddress(6)
             btnStatus.setTitle(fans?.IsFollow == true ? LocalFriend.localized() : LocalFollowing.localized(), for: .normal)
@@ -68,9 +68,8 @@ class EMUserFollowingCell: BaseTableViewCell {
     
     @objc func onclickFans(){
         if fans != nil{
-            
             Task{
-                var model = fans!
+                let model = fans!
                 let relust = await EMUserController.follow(model.IsFollow, address: model.UserAddress)
                 if relust{
                     model.IsFollow = !model.IsFollow
@@ -82,7 +81,7 @@ class EMUserFollowingCell: BaseTableViewCell {
         }
         if follow != nil{
             Task{
-                var model = follow!
+                let model = follow!
                 let relust = await EMUserController.follow(model.IsFollow, address: model.UserAddress)
                 if relust{
                     model.IsFollow = !model.IsFollow

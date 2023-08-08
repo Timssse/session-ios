@@ -68,7 +68,7 @@ class EMNetworkModel: HandyJSON {
         if let value = EMNetworkModel.deserialize(from: json) {
             return value
         }
-        return nil
+        return EMWalletConfigModel.shared.network.first
     }
     
     required init() {

@@ -20,35 +20,31 @@ class EMTabBarController: UITabBarController {
         Task{
             EMTableToken.addMainToken()
             await EMCommunityController.login()
+
             await EMCommunityController.config()
         }
-        self.tabBar.isHidden = true
         WalletUtilities.createAccount()
         NotificationCenter.default.addObserver(self, selector: #selector(messageChange(_:)), name: kNotifyRefreshMessageCount, object: nil)
         setupUI()
-        
+        hiddenTabbarLine()
         EMTabBarController.shared = self
     }
     
+    func hiddenTabbarLine() {
+        customTabBar.shadowImage = UIImage()
+        customTabBar.backgroundImage = UIImage()
+        customTabBar.barTintColor = UIColor.white
+    }
+    
     func setupUI() {
-        let shaowTabar = UIView();
-        shaowTabar.layer.shadowColor = UIColor.init(white: 0, alpha: 0.15).cgColor
-        shaowTabar.layer.shadowOffset = CGSize(width: 0, height: 0)
-        shaowTabar.layer.shadowOpacity = 28
-        shaowTabar.layer.shadowRadius = 22.w
-        self.view.addSubview(shaowTabar)
-        shaowTabar.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(16.w)
-            make.right.equalToSuperview().offset(-16.w)
-            make.bottom.equalToSuperview().offset(-safeBottomH)
-            make.height.equalTo(66.w)
-        };
+        let frame = self.tabBar.frame
+        customTabBar.themeBackgroundColor = .conversationButton_background
+        self.setValue(customTabBar, forKey: "tabBar")
         
-        self.customTabBar.frame = CGRect(x: 0, y: 0, width: 343.w, height: 66.w)
-        customTabBar.themeBackgroundColor = .tab_select_bg
-        customTabBar.dealLayer(corner: 22.w)
-        shaowTabar.addSubview(customTabBar)
-        
+//        self.customTabBar.frame = CGRect(x: 0, y: 0, width: 343.w, height: 66.w)
+//        customTabBar.themeBackgroundColor = .tab_select_bg
+//        customTabBar.dealLayer(corner: 22.w)
+//        shaowTabar.addSubview(customTabBar)
         
         let itemDAO = EMTabBarType.createItem(.DAO).setSelectd(false).clickAction {[weak self] in
             self?.selectedIndex = 1
@@ -57,6 +53,7 @@ class EMTabBarController: UITabBarController {
             self?.selectedIndex = 2
         }
         self.customTabBar.emItems = [itemChats,itemDAO,itemSetting]
+        self.customTabBar.frame = frame
         let homevc = StyledNavigationController(rootViewController: HomeVC())
         homevc.delegate = self
         addChild(homevc)
@@ -101,34 +98,14 @@ extension EMTabBarController{
     @objc func messageChange(_ notice : Notification){
         itemChats.dot.isHidden = (((notice.object as? Int64) ?? 0) == 0)
     }
-    
-    func showTabbar(){
-        self.customTabBar.superview?.isHidden = false
-    }
-    
-    func hiddenTabbar(){
-        self.customTabBar.superview?.isHidden = true
-    }
-    
 }
 
 extension EMTabBarController : UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if navigationController.viewControllers.count > 1{
-            hiddenTabbar()
-        }
         if (viewController is EMHideNavigationBarProtocol){
             navigationController.setNavigationBarHidden(true, animated: true)
         } else {
             navigationController.setNavigationBarHidden(false, animated: true)
-        }
-    }
-    
-    
-    
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        if navigationController.viewControllers.count <= 1{
-            showTabbar()
         }
     }
 }

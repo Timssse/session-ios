@@ -38,17 +38,17 @@ class EMTokenModel: HandyJSON {
        }
     
     var fw_num_rmb :String{
-        let relust = self.price.take(numberString: EMWalletConfigModel.shared.usd2cny).take(numberString: balance)
+        let relust = self.price.take(numberString: EMWalletConfigModel.shared.usd2usdt).take(numberString: balance)
         return relust
     }
     
     var fw_price_rmb :String{
-        return self.price.take(numberString: EMWalletConfigModel.shared.usd2cny)
+        return self.price.take(numberString: EMWalletConfigModel.shared.usd2usdt)
     }
     
     var rmbStr : String{
         get{
-            let rate = EMWalletConfigModel.shared.usd2cny
+            let rate = EMWalletConfigModel.shared.usd2usdt
             let RMBStr = rate.take(numberString: self.price).take(numberString: self.balance).toNumberFormatter(true)
             return RMBStr
         }
@@ -133,10 +133,18 @@ extension EMTokenModel{
         rs.assets_name = FS(token.name)
         rs.chain_id = chainID
         rs.decimals = FS(token.decimals).toInt()
+        rs.contract = FS(token.address.address)
         return rs
     }
     
 }
+
+extension EMTokenModel{
+    func getBalance() async{
+        self.balance = await EMWalletController.getTokensBalance(self)
+    }
+}
+
 
 class webEthModel: HandyJSON {
     var id : Int = 0

@@ -10,9 +10,7 @@ class EMOtherUserPage: EMRefreshController,EMHideNavigationBarProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        userInfo = Profile.fetchOrCreateCurrentUser()
         NotificationCenter.default.addObserver(self, selector: #selector(refressh), name: kNotifyRefreshCommunity, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(chainChange), name: kNotifychangeChain, object: nil)
         self.refressh()
         
         AnimationManager.shared.setAnimation(self.view)
@@ -41,19 +39,15 @@ class EMOtherUserPage: EMRefreshController,EMHideNavigationBarProtocol {
     }
     
     
-    lazy var navView : EMMyNav = {
-        let view = EMMyNav()
-        view.isOther = true
-        if let model = EMNetworkModel.getNetwork(){
-            view.chain = model
-        }
+    lazy var navView : EMOtherUserNav = {
+        let view = EMOtherUserNav()
         return view
     }()
     
     lazy var tableView : UITableView = {
         let tableView = EMTableView(delegate: self, dataSource: self, backgroundColor: .clear)
         tableView.register(EMUserCommunitCell.self, forCellReuseIdentifier: "EMUserCommunitCell")
-        tableView.register(EMMyInfoCell.self, forCellReuseIdentifier: "EMMyInfoCell")
+        tableView.register(EMOtherUserInfo.self, forCellReuseIdentifier: "EMOtherUserInfo")
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: Screen_width, height: 20.w))
         let footerView = UIView(.conversationButton_background)
         footerView.frame = CGRect(x: 0, y: 0, width: Screen_width, height: 90.w)
@@ -96,13 +90,6 @@ class EMOtherUserPage: EMRefreshController,EMHideNavigationBarProtocol {
     
     lazy var notDataView : UIView = {
         let view = EMPlaceholder.show(EMPlaceholder.emptyTwitter(isPost: true, target: self, postAction: #selector(onclickPublish)),frame: CGRect(x: 0, y: 0, width: Screen_width, height: 380.w),centerY: -70.w)
-//        let walletBottom = UIImageView(image: UIImage(named: "icon_user_wallet_bottom"))
-//        view.addSubview(walletBottom)
-//        walletBottom.snp.makeConstraints { make in
-//            make.left.equalToSuperview().offset(16.w)
-//            make.right.equalToSuperview().offset(-16.w)
-//            make.top.equalToSuperview().offset(-9.w)
-//        }
         return view
     }()
     
@@ -122,31 +109,14 @@ extension EMOtherUserPage{
         isLoadMore = false
         getUserInfo()
         getData()
-        getWalletConfig()
     }
     
     func getUserInfo(){
         Task{
             emUserInfo = await EMUserController.userInfo(address)
-            self.navView.userInfo = emUserInfo
-//            self.navView.profile = self.userInfo
+            self.navView.labTitle.text = emUserInfo?.Nickname
             self.tableView.reloadData()
             AnimationManager.shared.removeAnimaition(self.view)
-        }
-    }
-    
-    func getWalletConfig(){
-        Task{
-            await EMWalletController.getConfig()
-            if let model = EMNetworkModel.getNetwork(){
-                navView.chain = model
-            }else{
-                let model = EMWalletConfigModel.shared.network.first
-                if model != nil{
-                    EMNetworkModel.save(network: model!)
-                }
-            }
-            await EMWalletController.getTokenPrice()
         }
     }
     
@@ -169,10 +139,6 @@ extension EMOtherUserPage{
             self.tableView.tableFooterView = dataArr.count > 0 ? self.footerView : self.notDataView
             
         }
-    }
-    
-    @objc func chainChange(){
-        navView.chain = EMNetworkModel.getNetwork()
     }
 }
 
@@ -201,8 +167,7 @@ extension EMOtherUserPage : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EMMyInfoCell", for: indexPath) as! EMMyInfoCell
-            cell.isOther = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EMOtherUserInfo", for: indexPath) as! EMOtherUserInfo
             cell.emUserInfo = self.emUserInfo
 //            cell.labSessionId.text = self.emUserInfo?.UserAddress.showAddress(6)
 //            cell.userInfo = self.userInfo
@@ -212,13 +177,13 @@ extension EMOtherUserPage : UITableViewDelegate,UITableViewDataSource{
         cell.model = self.dataArr[indexPath.row]
         cell.isFirst = indexPath.row == 0
         cell.toolView.likeBlock = {[weak self] in
+            let model = (self?.dataArr[indexPath.row])!
+            model.isTwLike = !model.isTwLike
+            model.LikeCount = model.isTwLike ? (model.LikeCount + 1) : (model.LikeCount > 0 ? model.LikeCount - 1 : 0)
+            self?.dataArr[indexPath.row] = model
+            self?.tableView.reloadData()
             Task{
-                let model = (self?.dataArr[indexPath.row])!
                 await EMCommunityController.like(model.TwAddress)
-                model.isTwLike = !model.isTwLike
-                model.LikeCount = model.isTwLike ? (model.LikeCount + 1) : (model.LikeCount > 0 ? model.LikeCount - 1 : 0)
-                self?.dataArr[indexPath.row] = model
-                self?.tableView.reloadData()
             }
         }
         return cell
@@ -249,14 +214,16 @@ extension EMOtherUserPage : UITableViewDelegate,UITableViewDataSource{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y <= 50.w {
             self.navView.backgroundColor = .clear
+            self.navView.labTitle.isHidden = true
             return
         }
         
         if scrollView.contentOffset.y > 150.w {
+            self.navView.labTitle.isHidden = false
             self.navView.backgroundColor = UIColor(hex: "3E66FB")
             return
         }
-        self.navView.chainView.alpha = 1-(scrollView.contentOffset.y - 50.w)/100.w
+        self.navView.labTitle.alpha = (scrollView.contentOffset.y - 50.w)/100.w
         self.navView.backgroundColor = UIColor(hex: "3E66FB",alpha: (scrollView.contentOffset.y - 50.w)/100.w)
     }
 }

@@ -7,7 +7,6 @@ public class BaseVC: UIViewController {
     
     var navigationBackground: ThemeValue { .navBack }
     
-    
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         return ThemeManager.currentTheme.statusBarStyle
     }

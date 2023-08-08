@@ -952,13 +952,14 @@ extension ConversationVC:
                             /// Delay the actual presentation to give the 'resignFirstResponder' call the chance to complete
                             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
                                 /// Lock the contentOffset of the tableView so the transition doesn't look buggy
-                                self?.tableView.lockContentOffset = true
+//                                self?.tableView.lockContentOffset = true
                                 
-                                self?.present(viewController, animated: true) { [weak self] in
+                                UIUtil.visibleVC()?.present(viewController, animated: true)
+//                                self?.present(viewController, animated: true) { [weak self] in
                                     // Unlock the contentOffset so everything will be in the right
                                     // place when we return
-                                    self?.tableView.lockContentOffset = false
-                                }
+//                                    self?.tableView.lockContentOffset = false
+//                                }
                             }
                         }
                 }

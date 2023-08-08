@@ -196,17 +196,13 @@ public extension UILabel {
                         textColor = value.color
                         return
                     }
-                    
                     textColor = value.color.withAlphaComponent(alpha)
-                
                 case .theme(let theme, let value, let alpha):
                     guard let alpha: CGFloat = alpha else {
                         textColor = theme.color(for: value)
                         return
                     }
-                    
                     textColor = theme.color(for: value)?.withAlphaComponent(alpha)
-                    
                 case .none: textColor = nil
             }
         }

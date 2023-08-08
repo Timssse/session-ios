@@ -11,6 +11,8 @@ class EMMyInfoCell: BaseTableViewCell {
         self.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
         self.contentView.dealLayer(corner: 0)
+        userIcon.dealBorderLayer(corner: 36.w, bordercolor: .value(.white, alpha: 0.5), borderwidth: 2)
+        userIcon.contentMode = .scaleAspectFill
         self.contentView.addSubview(userIcon)
         userIcon.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20.w)
@@ -24,12 +26,29 @@ class EMMyInfoCell: BaseTableViewCell {
             make.top.equalTo(userIcon).offset(5.w)
         }
         
-        self.contentView.addSubview(sessionView)
-        sessionView.snp.makeConstraints { make in
+        
+        let labSessionIdTitle = UILabel(font: UIFont.Regular(size: 12),textColor: .color_91979D,text: "Session ID")
+        self.contentView.addSubview(labSessionIdTitle)
+        labSessionIdTitle.snp.makeConstraints { make in
             make.left.equalTo(userIcon.snp.right).offset(15.w)
             make.top.equalTo(userName.snp.bottom).offset(10.w)
             make.height.equalTo(22.w)
         }
+        
+        
+        self.contentView.addSubview(sessionView)
+        sessionView.snp.makeConstraints { make in
+            make.left.equalTo(labSessionIdTitle.snp.right)
+            make.top.equalTo(userName.snp.bottom).offset(10.w)
+            make.height.equalTo(22.w)
+        }
+        
+//        self.contentView.addSubview(sessionView)
+//        sessionView.snp.makeConstraints { make in
+//            make.left.equalTo(userIcon.snp.right).offset(15.w)
+//            make.top.equalTo(userName.snp.bottom).offset(10.w)
+//            make.height.equalTo(22.w)
+//        }
         
         
         self.contentView.addSubview(arrowIcon)
@@ -52,17 +71,6 @@ class EMMyInfoCell: BaseTableViewCell {
             make.bottom.equalToSuperview().offset(-20.w)
             make.height.equalTo(25.w)
         }
-        
-        
-        
-//        self.contentView.addSubview(walletView)
-//        walletView.snp.makeConstraints { make in
-//            make.left.equalToSuperview().offset(25.w)
-//            make.right.equalToSuperview().offset(-25.w)
-//            make.top.equalTo(followingView.snp.bottom).offset(23.w)
-//            make.bottom.equalToSuperview().offset(20.w)
-//            make.height.equalTo(105.w)
-//        }
     }
 
     lazy var userIcon : UIImageView = UIImageView(UIColor.clear,corner: 36.w)
@@ -71,10 +79,11 @@ class EMMyInfoCell: BaseTableViewCell {
     
     lazy var sessionView : UIView = {
         let view = UIView(.user_session_bg)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(copySessionID)))
         view.dealBorderLayer(corner: 11.w, bordercolor: .line, borderwidth: 1)
         view.addSubview(labSessionId)
         labSessionId.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(10.w)
+            make.left.equalToSuperview().offset(3.w)
             make.centerY.equalToSuperview()
         }
         let iconCopy = UIImageView(image: UIImage(named: "icon_user_copy"))
@@ -127,44 +136,22 @@ class EMMyInfoCell: BaseTableViewCell {
     
     lazy var labFollower : UILabel = UILabel(font: UIFont.Medium(size: 14),textColor: .textPrimary)
     
-    lazy var walletView : EMWalletCardView = {
-        let view = EMWalletCardView()
-        view.updateMoney()
-        return view
-    }()
-    
     var emUserInfo : EMCommunityUserEntity?{
         didSet{
             userName.text = emUserInfo?.Nickname
-            userIcon.sd_setImage(with: URL(string: emUserInfo?.Avatar ?? ""), placeholderImage: UIImage(named: "icon_community_default"))
+            userIcon.sd_setImage(with: URL(string: emUserInfo?.Avatar ?? ""), placeholderImage: UIImage(named: "icon_community_logo"))
             labFollowing.text = FS(emUserInfo?.FollowCount)
             labFollower.text = FS(emUserInfo?.FansCount)
-            walletView.updateMoney()
         }
     }
     
     var userInfo : Profile?{
         didSet{
-            self.labSessionId.text = userInfo?.id.showAddress(6)
-        }
-    }
-    
-    var isOther : Bool = false{
-        didSet{
-            arrowIcon.isHidden = isOther
-            sessionView.isHidden = isOther
-            if isOther{
-                userName.snp.updateConstraints { make in
-                    make.top.equalTo(userIcon).offset(26.w)
-                }
-            }
+            self.labSessionId.text = "：" + FS(userInfo?.id.showAddress(6))
         }
     }
     
     @objc func onclickEdit(){
-        if isOther {
-            return
-        }
         guard let user = emUserInfo else{
             return
         }
@@ -174,9 +161,11 @@ class EMMyInfoCell: BaseTableViewCell {
     }
     
     @objc func onclickFans(){
-        if isOther {
-            return
-        }
         UIUtil.visibleNav()?.pushViewController(EMUserFollowMainPage(), animated: true)
+    }
+    
+    @objc func copySessionID(){
+        UIPasteboard.general.string = FS(userInfo?.id)
+        Toast.toast(hit: "copied".localized())
     }
 }

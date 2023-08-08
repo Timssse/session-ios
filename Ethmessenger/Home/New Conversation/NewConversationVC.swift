@@ -29,7 +29,9 @@ final class NewConversationVC: BaseVC, ThemedNavigation, UITableViewDelegate, UI
         
         return result
     }()
-    private lazy var joinCommunityButton: NewConversationButton = NewConversationButton(icon: #imageLiteral(resourceName: "Globe"), title: "vc_join_public_chat_title".localized(), shouldShowSeparator: false)
+    private lazy var joinCommunityButton: NewConversationButton = NewConversationButton(icon: #imageLiteral(resourceName: "Globe"), title: "vc_join_public_chat_title".localized(), shouldShowSeparator: true)
+    
+    private lazy var messageRequestButton: NewConversationButton = NewConversationButton(icon: UIImage(named: "icon_chats_message_request")!, title: "MESSAGE_REQUESTS_TITLE".localized(), shouldShowSeparator: false)
     
     private lazy var buttonStackView: UIStackView = {
         let lineTop: UIView = UIView()
@@ -49,6 +51,7 @@ final class NewConversationVC: BaseVC, ThemedNavigation, UITableViewDelegate, UI
                 newDMButton,
                 newGroupButton,
                 joinCommunityButton,
+                messageRequestButton,
                 lineBottom
             ]
         )
@@ -112,7 +115,7 @@ final class NewConversationVC: BaseVC, ThemedNavigation, UITableViewDelegate, UI
             frame: CGRect(
                 x: 0, y: 0,
                 width: UIScreen.main.bounds.width,
-                height: NewConversationButton.height * 3 + Values.mediumSpacing * 2 + Values.mediumFontSize
+                height: NewConversationButton.height * 4 + Values.mediumSpacing * 3 + Values.mediumFontSize
             )
         )
         headerView.addSubview(buttonStackViewContainer)
@@ -207,6 +210,8 @@ final class NewConversationVC: BaseVC, ThemedNavigation, UITableViewDelegate, UI
         }
         else if joinCommunityButton.frame.contains(location) {
             joinOpenGroup()
+        }else if messageRequestButton.frame.contains(location) {
+            messageRequest()
         }
     }
     
@@ -227,6 +232,10 @@ final class NewConversationVC: BaseVC, ThemedNavigation, UITableViewDelegate, UI
     @objc func joinOpenGroup() {
         let joinOpenGroupVC: JoinOpenGroupVC = JoinOpenGroupVC()
         self.navigationController?.pushViewController(joinOpenGroupVC, animated: true)
+    }
+    
+    @objc func messageRequest() {
+        self.navigationController?.pushViewController(MessageRequestsViewController(), animated: true)
     }
 }
 

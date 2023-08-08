@@ -221,14 +221,13 @@ public struct SessionThreadViewModel: FetchableRecordWithRowId, Decodable, Equat
     /// **Note:** The 'threadVariant' parameter is used for profile context but in the search results we actually want this
     /// to always behave as the `contact` variant which is why this needs to be a function instead of just using the provided
     /// parameter
-    public func authorName(for threadVariant: SessionThread.Variant) -> String {
+    public func authorName(for threadVariant: SessionThread.Variant) -> String? {
         return Profile.displayName(
             for: threadVariant,
             id: (authorId ?? threadId),
             name: authorNameInternal,
             nickname: nil,  // Folded into 'authorName' within the Query
-            customFallback: (threadVariant == .contact ?
-                "Anonymous" :
+            customFallback: (
                 nil
             )
         )

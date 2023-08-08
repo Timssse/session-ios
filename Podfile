@@ -36,6 +36,7 @@ abstract_target 'GlobalDependencies' do
     pod 'GQImageVideoViewer'
     pod 'TZImagePickerController/Basic'
     pod 'lottie-ios'
+    pod 'swiftScan' #, :git => 'https://github.com/MxABC/swiftScan.git'
     #pod 'TZImagePreviewController'
   end
   

@@ -32,15 +32,10 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
     var scrollButtonPendingMessageRequestInfoBottomConstraint: NSLayoutConstraint?
     var messageRequestsViewBotomConstraint: NSLayoutConstraint?
     
-    // Search
-    var isShowingSearchUI = false
-    
     // Audio playback & recording
     var audioPlayer: OWSAudioPlayer?
     var audioRecorder: AVAudioRecorder?
     var audioTimer: Timer?
-    
-    private var searchBarWidth: NSLayoutConstraint?
     
     // Context menu
     var contextMenuWindow: ContextMenuWindow?
@@ -79,7 +74,7 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
     override var inputAccessoryView: UIView? {
         guard viewModel.threadData.canWrite else { return nil }
         
-        return (isShowingSearchUI ? searchController.resultsBar : snInputView)
+        return snInputView
     }
 
     /// The height of the visible part of the table view, i.e. the distance from the navigation bar (where the table view's origin is)
@@ -117,15 +112,6 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
 
     lazy var recordVoiceMessageActivity = AudioActivity(audioDescription: "Voice message", behavior: .playAndRecord)
 
-    lazy var searchController: ConversationSearchController = {
-        let result: ConversationSearchController = ConversationSearchController(
-            threadId: self.viewModel.threadData.threadId
-        )
-        result.uiSearchController.obscuresBackgroundDuringPresentation = false
-        result.delegate = self
-        
-        return result
-    }()
 
     // MARK: - UI
 
@@ -277,17 +263,18 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
     
     
     lazy var navView : EMConviersationNavView = {
-        let view = EMConviersationNavView(self.viewModel.threadData).searchAction({[weak self] in
-            self?.showSearchUI()
-            self?.popAllConversationSettingsViews {
-                // Note: Without this delay the search bar doesn't show
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self?.searchController.uiSearchController.searchBar.becomeFirstResponder()
-                }
-            }
-        }).callAction {[weak self] in
-            self?.startCall()
-        }
+        let view = EMConviersationNavView(self.viewModel.threadData)
+//            .searchAction({[weak self] in
+//            self?.showSearchUI()
+//            self?.popAllConversationSettingsViews {
+//                // Note: Without this delay the search bar doesn't show
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    self?.searchController.uiSearchController.searchBar.becomeFirstResponder()
+//                }
+//            }
+//        }).callAction {[weak self] in
+//            self?.startCall()
+//        }
         return view
     }()
 
@@ -324,6 +311,9 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
     }
     
     // MARK: - Lifecycle
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -441,14 +431,11 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if delayFirstResponder || isShowingSearchUI {
+        if delayFirstResponder {
             delayFirstResponder = false
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(50)) { [weak self] in
-                (self?.isShowingSearchUI == false ?
-                    self :
-                    self?.searchController.uiSearchController.searchBar
-                )?.becomeFirstResponder()
+                self?.becomeFirstResponder()
             }
         }
         
@@ -490,13 +477,11 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
         
         recoverInputView()
         
-        if !isShowingSearchUI {
-            if !self.isFirstResponder {
-                self.becomeFirstResponder()
-            }
-            else {
-                self.reloadInputViews()
-            }
+        if !self.isFirstResponder {
+            self.becomeFirstResponder()
+        }
+        else {
+            self.reloadInputViews()
         }
     }
     
@@ -506,7 +491,6 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        searchBarWidth?.constant = size.width - 32
         tableView.reloadData()
     }
     
@@ -854,7 +838,6 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
                 )
                 
                 DispatchQueue.main.asyncAfter(deadline: delay) { [weak self] in
-                    self?.searchController.resultsBar.stopLoading()
                     self?.scrollToInteractionIfNeeded(
                         with: focusedInteractionId,
                         isAnimated: true,
@@ -932,7 +915,6 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
                         DispatchQueue.main.async { [weak self] in
                             // If we had a focusedInteractionId then scroll to it (and hide the search
                             // result bar loading indicator)
-                            self?.searchController.resultsBar.stopLoading()
                             self?.scrollToInteractionIfNeeded(
                                 with: focusedInteractionId,
                                 isAnimated: true,
@@ -952,7 +934,6 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
                 DispatchQueue.main.async { [weak self] in
                     // If we had a focusedInteractionId then scroll to it (and hide the search
                     // result bar loading indicator)
-                    self?.searchController.resultsBar.stopLoading()
                     self?.scrollToInteractionIfNeeded(
                         with: focusedInteractionId,
                         isAnimated: true,
@@ -1057,10 +1038,6 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
     }
     
     func updateNavBarButtons(threadData: SessionThreadViewModel?, initialVariant: SessionThread.Variant) {
-        self.navigationController?.setNavigationBarHidden(!isShowingSearchUI, animated: false)
-        if isShowingSearchUI {
-            return
-        }
         guard
             let threadData: SessionThreadViewModel = threadData,
             (
@@ -1331,6 +1308,10 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
         }
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        inputAccessoryView?.resignFirstResponder()
+    }
+    
     func scrollToBottom(isAnimated: Bool) {
         guard
             !self.isUserScrolling,
@@ -1472,79 +1453,12 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
         }
     }
     
-    func showSearchUI() {
-        isShowingSearchUI = true
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        // Search bar
-        let searchBar = searchController.uiSearchController.searchBar
-        searchBar.setUpSessionStyle()
-        
-        let searchBarContainer = UIView()
-        searchBarContainer.layoutMargins = UIEdgeInsets.zero
-        searchBar.sizeToFit()
-        searchBar.layoutMargins = UIEdgeInsets.zero
-        searchBarContainer.set(.height, to: 44)
-        searchBarWidth = searchBarContainer.set(.width, to: UIScreen.main.bounds.width - 32)
-        searchBarContainer.addSubview(searchBar)
-        navigationItem.titleView = searchBarContainer
-        
-        // On iPad, the cancel button won't show
-        // See more https://developer.apple.com/documentation/uikit/uisearchbar/1624283-showscancelbutton?language=objc
-        if UIDevice.current.isIPad {
-            let ipadCancelButton = UIButton()
-            ipadCancelButton.setTitle(LocalCancel.localized(), for: .normal)
-            ipadCancelButton.addTarget(self, action: #selector(hideSearchUI), for: .touchUpInside)
-            ipadCancelButton.setThemeTitleColor(.textPrimary, for: .normal)
-            searchBarContainer.addSubview(ipadCancelButton)
-            ipadCancelButton.pin(.trailing, to: .trailing, of: searchBarContainer)
-            ipadCancelButton.autoVCenterInSuperview()
-            searchBar.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero, excludingEdge: .trailing)
-            searchBar.pin(.trailing, to: .leading, of: ipadCancelButton, withInset: -Values.smallSpacing)
-        }
-        else {
-            searchBar.autoPinEdgesToSuperviewMargins()
-        }
-        
-        // Nav bar buttons
-        updateNavBarButtons(threadData: self.viewModel.threadData, initialVariant: viewModel.initialThreadVariant)
-        
-        // Hack so that the ResultsBar stays on the screen when dismissing the search field
-        // keyboard.
-        //
-        // Details:
-        //
-        // When the search UI is activated, both the SearchField and the ConversationVC
-        // have the resultsBar as their inputAccessoryView.
-        //
-        // So when the SearchField is first responder, the ResultsBar is shown on top of the keyboard.
-        // When the ConversationVC is first responder, the ResultsBar is shown at the bottom of the
-        // screen.
-        //
-        // When the user swipes to dismiss the keyboard, trying to see more of the content while
-        // searching, we want the ResultsBar to stay at the bottom of the screen - that is, we
-        // want the ConversationVC to becomeFirstResponder.
-        //
-        // If the SearchField were a subview of ConversationVC.view, this would all be automatic,
-        // as first responder status is percolated up the responder chain via `nextResponder`, which
-        // basically travereses each superView, until you're at a rootView, at which point the next
-        // responder is the ViewController which controls that View.
-        //
-        // However, because SearchField lives in the Navbar, it's "controlled" by the
-        // NavigationController, not the ConversationVC.
-        //
-        // So here we stub the next responder on the navBar so that when the searchBar resigns
-        // first responder, the ConversationVC will be in it's responder chain - keeeping the
-        // ResultsBar on the bottom of the screen after dismissing the keyboard.
-        searchController.uiSearchController.stubbableSearchBar.stubbedNextResponder = self
-    }
+    
 
     @objc func hideSearchUI() {
-        isShowingSearchUI = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 //        navigationItem.titleView = titleView
         updateNavBarButtons(threadData: self.viewModel.threadData, initialVariant: viewModel.initialThreadVariant)
-        
-        searchController.uiSearchController.stubbableSearchBar.stubbedNextResponder = nil
         becomeFirstResponder()
         reloadInputViews()
     }
@@ -1587,7 +1501,6 @@ final class ConversationVC: BaseVC, ConversationSearchControllerDelegate,EMHideN
             guard self.didFinishInitialLayout else { return }
             
             self.isLoadingMore = true
-            self.searchController.resultsBar.startLoading()
             
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 if isJumpingToLastInteraction {

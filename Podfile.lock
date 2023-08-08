@@ -82,6 +82,7 @@ PODS:
     - SQLCipher/common
   - Starscream (4.0.4)
   - SwiftProtobuf (1.5.0)
+  - swiftScan (1.2.1)
   - TrustWalletCore (3.1.35):
     - TrustWalletCore/Core (= 3.1.35)
   - TrustWalletCore/Core (3.1.35):
@@ -191,6 +192,7 @@ DEPENDENCIES:
   - Sodium (from `https://github.com/oxen-io/session-ios-swift-sodium.git`, branch `session-build`)
   - SQLCipher (~> 4.5.3)
   - SwiftProtobuf (~> 1.5.0)
+  - swiftScan
   - TrustWalletCore
   - TZImagePickerController/Basic
   - web3swift (~> 3.1.2)
@@ -228,6 +230,7 @@ SPEC REPOS:
     - SQLCipher
     - Starscream
     - SwiftProtobuf
+    - swiftScan
     - TrustWalletCore
     - TZImagePickerController
     - Web3Core
@@ -299,6 +302,7 @@ SPEC CHECKSUMS:
   SQLCipher: 57fa9f863fa4a3ed9dd3c90ace52315db8c0fdca
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
+  swiftScan: 0849e7d7c1c641384767a573ee8cb90b88d1ddd9
   TrustWalletCore: 188beb78722894c4cd4419ea30ef2dc793489401
   TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   Web3Core: 050eb18f0434ac16c42eb7b2270fbce325935128
@@ -308,6 +312,6 @@ SPEC CHECKSUMS:
   YYImage: f1ddd15ac032a58b78bbed1e012b50302d318331
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: c7c2909c6cded51d6ad43e5102707ee5891c801e
+PODFILE CHECKSUM: 2e64252bb661a628a2dfd54a681957a24afb21bb
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

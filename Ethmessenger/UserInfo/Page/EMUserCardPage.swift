@@ -27,6 +27,7 @@ class EMUserCardPage: BaseVC ,EMHideNavigationBarProtocol {
     }
     
     override func layoutUI() {
+        self.view.backgroundColor =  UIColor.white
         scrollView.backgroundColor = UIColor.white
         scrollView.showsVerticalScrollIndicator = false
         scrollView.contentInset = UIEdgeInsets(top: -statusBarH, leading: 0, bottom: 0, trailing: 0)
@@ -45,13 +46,10 @@ class EMUserCardPage: BaseVC ,EMHideNavigationBarProtocol {
             make.top.equalToSuperview()
         }
         
-        
-        
-        
         scrollView.addSubview(self.contentView)
         self.contentView.snp.makeConstraints { make in
-            make.left.equalTo(self.view).offset(29.w)
-            make.right.equalTo(self.view).offset(-29.w)
+            make.centerX.equalTo(self.view)
+            make.width.equalTo(321.w)
             make.top.equalTo(topBG.snp.bottom).offset(-25.w)
             make.bottom.equalToSuperview().offset(-20.w)
         }
@@ -102,7 +100,7 @@ class EMUserCardPage: BaseVC ,EMHideNavigationBarProtocol {
         nav.addSubview(backBtn)
         backBtn.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()
-            make.width.equalTo(32.w)
+            make.width.equalTo(52.w)
         }
         
         let name = UILabel(font: UIFont.Bold(size: 16),color: .black,text: LocalCard.localized())
@@ -132,18 +130,10 @@ class EMUserCardPage: BaseVC ,EMHideNavigationBarProtocol {
             make.top.equalToSuperview().offset(47.w)
         }
         
-//        let labId = UILabel(font: UIFont.Regular(size: 14),textColor: .black,text: self.userInfo?.id.showAddress(6))
-//        view.addSubview(labId)
-//        labId.snp.makeConstraints { make in
-//            make.centerX.equalToSuperview()
-//            make.top.equalToSuperview().offset(47.w)
-//        }
-        
         let followingView = self.createNumItem(FS(self.emUserInfo?.FollowCount), lab: LocalFollowing.localized())
         view.addSubview(followingView)
         followingView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(44.w)
-            make.width.equalToSuperview().multipliedBy(1/3.0)
             make.top.equalTo(labName.snp.bottom).offset(14.w)
             make.height.equalTo(25.w)
         }
@@ -151,8 +141,7 @@ class EMUserCardPage: BaseVC ,EMHideNavigationBarProtocol {
         let followerView = self.createNumItem(FS(self.emUserInfo?.FansCount), lab: LocalFollower.localized())
         view.addSubview(followerView)
         followerView.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(44.w)
-            make.width.equalToSuperview().multipliedBy(1/3.0)
+            make.right.equalToSuperview().offset(-44.w)
             make.centerY.equalTo(followingView)
             make.height.equalTo(25.w)
         }
@@ -171,13 +160,14 @@ class EMUserCardPage: BaseVC ,EMHideNavigationBarProtocol {
                 .withRenderingMode(.alwaysTemplate)
         )
         qrCodeImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        qrCodeImageView.tintColor = .black
         qrcodeView.addSubview(qrCodeImageView)
         qrCodeImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 7.w, leading: 7.w, bottom: 7.w, trailing: 7.w))
         }
         
         let labTips = UILabel(font: UIFont.Regular(size: 12),color: UIColor(hex: "A2A2A2"),text: LocalScanTips.localized())
-        qrcodeView.addSubview(labTips)
+        view.addSubview(labTips)
         labTips.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(qrcodeView.snp.bottom).offset(16.w)
@@ -195,7 +185,7 @@ class EMUserCardPage: BaseVC ,EMHideNavigationBarProtocol {
         view.addSubview(labSessionId)
         labSessionId.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20.w)
-            make.right.equalToSuperview().offset(20.w)
+            make.right.equalToSuperview().offset(-20.w)
             make.top.equalTo(labSessionIdTitle.snp.bottom).offset(6.w)
         }
         

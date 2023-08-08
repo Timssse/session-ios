@@ -88,6 +88,6 @@ extension EMWalletNav{
     }
     
     @objc func onclickChain(){
-        EMAlert.alert(.selectNetwork).popup()
+        EMAlert.alert(.selectNetwork)?.popup()
     }
 }

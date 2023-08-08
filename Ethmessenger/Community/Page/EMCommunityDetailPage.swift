@@ -211,14 +211,14 @@ extension EMCommunityDetailPage : UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "EMCommunitDetailHeadCell", for: indexPath) as! EMCommunitDetailHeadCell
             cell.model = self.model
             cell.toolView.likeBlock = {[weak self] in
+                guard let model = self?.model else{
+                    return
+                }
+                model.isTwLike = !model.isTwLike
+                model.LikeCount = model.isTwLike ? (model.LikeCount + 1) : (model.LikeCount > 0 ? model.LikeCount - 1 : 0)
+                self?.tableView.reloadData()
                 Task{
-                    guard let model = self?.model else{
-                        return
-                    }
                     await EMCommunityController.like(model.TwAddress)
-                    model.isTwLike = !model.isTwLike
-                    model.LikeCount = model.isTwLike ? (model.LikeCount + 1) : (model.LikeCount > 0 ? model.LikeCount - 1 : 0)
-                    self?.tableView.reloadData()
                 }
             }
             return cell

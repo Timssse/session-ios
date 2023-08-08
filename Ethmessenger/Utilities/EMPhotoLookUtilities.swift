@@ -12,11 +12,9 @@ class EMPhotoLookUtilities {
                 imageArray.append([GQIsImageURL:model.type == .image,GQURLString:url] as [String : Any])
             }
         }
-        
-//        let labNum = UILabel(font: UIFont.Regular(size: 18),textColor: .white,text: "\(selectIndex + 1)/\(images.count)")
-        
         let view = GQImageVideoViewer.sharedInstance()!;
         view.backgroundColor = UIColor.black
+        view.placeholderImage = icon_default
         view.dataArray = imageArray
         view.usePageControl = false
         view.selectIndex = selectIndex
@@ -24,11 +22,5 @@ class EMPhotoLookUtilities {
 //            labNum.text = "\(index + 1)/\(images.count)"
         }
         view.show(in: UIUtil.getWindow())
-        
-//        view.addSubview(labNum)
-//        labNum.snp.makeConstraints { make in
-//            make.centerX.equalToSuperview()
-//            make.bottom.equalToSuperview().offset(-safeBottomH)
-//        }
     }
 }

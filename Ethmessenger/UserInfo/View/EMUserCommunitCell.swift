@@ -58,7 +58,7 @@ class EMUserCommunitCell: BaseTableViewCell {
         self.contentView.addSubview(imagesCollectionView)
         imagesCollectionView.snp.makeConstraints { make in
             make.left.equalTo(labName)
-            make.right.equalToSuperview().offset(-25.w)
+            make.width.equalTo(80.w * 3 + 5.w*2 + 1)
             make.top.equalTo(labContent.snp.bottom).offset(5.w)
             make.height.equalTo(0)
         }
@@ -84,13 +84,6 @@ class EMUserCommunitCell: BaseTableViewCell {
             make.height.equalTo(1)
         }
         
-//        let walletBottom = UIImageView(image: UIImage(named: "icon_user_wallet_bottom"))
-//        self.contentView.addSubview(walletBottom)
-//        walletBottom.snp.makeConstraints { make in
-//            make.left.equalToSuperview().offset(17.w)
-//            make.right.equalToSuperview().offset(-17.w)
-//            make.top.equalToSuperview().offset(-8.w)
-//        }
         
     }
 
@@ -119,7 +112,7 @@ class EMUserCommunitCell: BaseTableViewCell {
     }()
     
     lazy var labContent : UILabel = {
-        let lab = UILabel(font: UIFont.Regular(size: 13),textColor: .textPrimary)
+        let lab = UILabel(font: UIFont.Medium(size: 14),textColor: .textPrimary)
         lab.numberOfLines = 0
         return lab
     }()
@@ -128,7 +121,7 @@ class EMUserCommunitCell: BaseTableViewCell {
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 8.w;
+        layout.minimumLineSpacing = 5.w;
         let collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -153,7 +146,8 @@ class EMUserCommunitCell: BaseTableViewCell {
             labName.text = model.UserInfo?.Nickname
             labTime.text = model.CreatedAt.showTime
             labContent.text = model.Content
-            let imageHeight = ceil(CGFloat((model.images.count > 9 ? 9 : model.images.count))/3.0) * 106.w
+            labContent.setMiniLineHeight()
+            let imageHeight = ceil(CGFloat((model.images.count > 9 ? 9 : model.images.count))/3.0) * 85.w
             imagesCollectionView.snp.updateConstraints { make in
                 make.height.equalTo(imageHeight)
             }
@@ -193,7 +187,7 @@ class EMUserCommunitCell: BaseTableViewCell {
         frame.size = CGSize(width: 77.w, height: 35.w)
         EMCommunityMoreView.share.show(UIUtil.getWindow()!,contentFrame: frame)
         EMCommunityMoreView.share.reportBlock = {
-            
+            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(), animated: true)
         }
     }
 }

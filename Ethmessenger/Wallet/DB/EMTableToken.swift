@@ -104,14 +104,14 @@ class EMTableToken: NSObject {
         return rs
     }
     
-    static func selectAllMainTokenWithChainId(_ chainId : Int) -> [EMTokenModel] {
-        var rs: [EMTokenModel] = []
+    static func selectMainTokenWithChainId(_ chainId : Int) -> EMTokenModel? {
+        var rs: EMTokenModel?
         EMDataBaseTool.shared.queue?.inDatabase({ (db) in
             guard let fmrs = db.executeQuery("SELECT * FROM token where contract = ? and chain_id = ?", withArgumentsIn: ["",chainId]) else {return}
             while fmrs.next() {
                 if let oneDic = fmrs.resultDictionary as NSDictionary? {
                     if let one = EMTokenModel.deserialize(from: oneDic) {
-                        rs.append(one)
+                        rs = one
                     }
                 }
             }
@@ -145,9 +145,10 @@ class EMTableToken: NSObject {
                 token.rmbStr,
                 token.price,
                 token.contract,
-                token.contract.lowercased()
+                token.contract.lowercased(),
+                token.chain_id
                                 ]
-            db.executeUpdate("UPDATE token SET balance = ?,sort = ?,RMB = ?,price = ?,contract = ?  WHERE lower(contract) = ?",
+            db.executeUpdate("UPDATE token SET balance = ?,sort = ?,RMB = ?,price = ?,contract = ?  WHERE lower(contract) = ? and chain_id = ?",
                                   withArgumentsIn: values)
         })
     }

@@ -73,12 +73,8 @@ class NetworkingTool {
     func request(request: URLRequest) -> NetworkingRequest {
         let task = NetworkingRequest()
         task.request = _session.request(request).validate().responseJSON { [weak self] response in
-            task.handleResponse(response: response)
-//            if let index = self?._taskQueue.firstIndex(of: task) {
-//                self?._taskQueue.remove(at: index)
-//            }
+            task.handleBodyResponse(response: response)
         }
-//        _taskQueue.append(task)
         return task
     }
     
@@ -202,6 +198,7 @@ class NetworkingRequest: Equatable {
         switch response.result {
         case .failure(let error):
             if let closure = _failedHandler {
+                SNLog("网络请求失败====URL===\(request?.request?.url?.absoluteString ?? "")")
                 SNLog("======" + error.localizedDescription)
                 try? closure(HTTPError(code: error.responseCode ?? -1, desc: error.localizedDescription))
             }
@@ -210,6 +207,7 @@ class NetworkingRequest: Equatable {
             guard let ok = (json?["Code"] as? Int) ?? json?["code"] as? Int,
                   ok == 0,
                   let data = (json?["Data"]) ?? json?["data"] else {
+                SNLog("网络请求失败====URL===\(request?.request?.url?.absoluteString ?? "")")
                 if json?["Size"] != nil{
                     if let closure = _successHandler {
                         closure(json!)
@@ -217,14 +215,37 @@ class NetworkingRequest: Equatable {
                     clearReference()
                     return
                 }
-                
+                if json?["result"] != nil{
+                    if let closure = _successHandler {
+                        closure(json!["result"]!)
+                    }
+                    clearReference()
+                    return
+                }
                 if let closure = _failedHandler {
-                    try? closure(HTTPError(code: -2, desc: (json?["Msg"] ?? json?["msg"]) as! String))
+                    try? closure(HTTPError(code: -2, desc: ((json?["Msg"] ?? json?["msg"] ?? json?["message"]) as? String) ?? ""))
                 }
                 clearReference()
                 return
             }
-            
+            if let closure = _successHandler {
+                closure(data)
+            }
+        }
+        clearReference()
+    }
+    
+    /// Handle request response
+    func handleBodyResponse(response: AFDataResponse<Any>) {
+        switch response.result {
+        case .failure(let error):
+            if let closure = _failedHandler {
+                SNLog("网络请求失败====URL===\(request?.request?.url?.absoluteString ?? "")")
+                SNLog("======" + error.localizedDescription)
+                try? closure(HTTPError(code: error.responseCode ?? -1, desc: error.localizedDescription))
+            }
+        case .success:
+            let data = String(data: response.data ?? Data(), encoding: .utf8) ?? ""
             if let closure = _successHandler {
                 closure(data)
             }

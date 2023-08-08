@@ -74,7 +74,7 @@ extension ContextMenuVC {
             return Action(
                 icon: UIImage(named: "ic_copy"),
                 title: "vc_conversation_settings_copy_Ethmessenger_id_button_title".localized(),
-                accessibilityLabel: "Copy Session ID"
+                accessibilityLabel: "LocalCopySessionID".localized()
                 
             ) { delegate?.copySessionID(cellViewModel) }
         }

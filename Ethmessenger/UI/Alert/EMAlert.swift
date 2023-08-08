@@ -8,8 +8,10 @@ enum EMAlert {
     case input
     case password
     case selectNetwork
+    case receive
+    case selectToken
     
-    static func alert(_ type: EMAlert = .tip) -> EMAlertController {
+    static func alert(_ type: EMAlert = .tip) -> EMAlertController? {
         if type == .tip{
             return EMTipAlertViewController()
         }
@@ -17,10 +19,20 @@ enum EMAlert {
             return EMInputAlertViewController()
         }
         if type == .password{
+            if WalletUtilities.account.password == nil{
+                UIUtil.visibleNav()?.pushViewController(EMWalletSetPasswordPage(), animated: true)
+                return nil
+            }
             return EMPasswordAlertViewController()
         }
         if type == .selectNetwork{
             return EMSelectNetworkVC()
+        }
+        if type == .receive{
+            return EMReceiveVC()
+        }
+        if type == .selectToken{
+            return EMSelectTokenVC()
         }
         
         let alert = EMAlertController()

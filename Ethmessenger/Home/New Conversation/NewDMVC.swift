@@ -229,9 +229,7 @@ final class NewDMVC: BaseVC, UIPageViewControllerDataSource, UIPageViewControlle
         let maybeThread: SessionThread? = Storage.shared.write { db in
             try SessionThread.fetchOrCreate(db, id: sessionId, variant: .contact)
         }
-        
         guard maybeThread != nil else { return }
-        
         presentingViewController?.dismiss(animated: true, completion: nil)
         
         SessionApp.presentConversation(for: sessionId, action: .compose, animated: false)

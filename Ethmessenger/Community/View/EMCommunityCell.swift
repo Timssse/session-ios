@@ -17,14 +17,14 @@ class EMCommunityCell: BaseTableViewCell {
         self.contentView.addSubview(labContent)
         labContent.snp.makeConstraints { make in
             make.left.equalTo(publisherView.labName)
-            make.right.equalToSuperview().offset(-25.w)
+            make.right.equalToSuperview().offset(-15.w)
             make.top.equalTo(publisherView.snp.bottom).offset(5.w)
         }
         
         self.contentView.addSubview(imagesCollectionView)
         imagesCollectionView.snp.makeConstraints { make in
-            make.left.equalTo(publisherView.labName)
-            make.right.equalToSuperview().offset(-25.w)
+            make.left.equalTo(publisherView.labName).offset(-1.w)
+            make.right.equalToSuperview().offset(-13.w)
             make.top.equalTo(labContent.snp.bottom).offset(5.w)
             make.height.equalTo(0)
         }
@@ -58,7 +58,7 @@ class EMCommunityCell: BaseTableViewCell {
     }()
     
     lazy var labContent : UILabel = {
-        let lab = UILabel(font: UIFont.Regular(size: 13),textColor: .textPrimary)
+        let lab = UILabel(font: UIFont.Medium(size: 14),textColor: .textPrimary)
         lab.numberOfLines = 0
         return lab
     }()
@@ -67,7 +67,7 @@ class EMCommunityCell: BaseTableViewCell {
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 8.w;
+        layout.minimumLineSpacing = 5.w;
         let collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -91,7 +91,8 @@ class EMCommunityCell: BaseTableViewCell {
         didSet{
             self.publisherView.model = model
             labContent.text = model.Content
-            let imageHeight = ceil(CGFloat((model.images.count > 9 ? 9 : model.images.count))/3.0) * 88.w
+            labContent.setMiniLineHeight()
+            let imageHeight = ceil(CGFloat((model.images.count > 9 ? 9 : model.images.count))/3.0) * 99.w
             imagesCollectionView.snp.updateConstraints { make in
                 make.height.equalTo(imageHeight)
             }
@@ -138,7 +139,7 @@ extension EMCommunityCell : UICollectionViewDelegate,UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 80.w, height: 80.w)
+        return CGSize.init(width: 93.w, height: 93.w)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

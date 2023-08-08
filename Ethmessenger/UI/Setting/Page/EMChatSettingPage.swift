@@ -66,10 +66,10 @@ class EMChatSettingPage: BaseVC {
     }
     
     override func layoutUI() {
-        self.title = self.viewModel.threadVariant == .contact ? self.viewModel.displayName : "vc_group_settings_title".localized()
-        let qrcodeItem = UIBarButtonItem(image: UIImage(named: "icon_chats_edit"), style: .done, target: self, action: #selector(onclickEditName))
-        qrcodeItem.themeTintColor = .textPrimary
-        navigationItem.rightBarButtonItem = self.viewModel.threadVariant == .contact ? qrcodeItem : nil
+        self.title = self.viewModel.threadVariant == .contact ? LocalDetail.localized() : "vc_group_settings_title".localized()
+//        let qrcodeItem = UIBarButtonItem(image: UIImage(named: "icon_chats_edit"), style: .done, target: self, action: #selector(onclickEditName))
+//        qrcodeItem.themeTintColor = .textPrimary
+//        navigationItem.rightBarButtonItem = self.viewModel.threadVariant == .contact ? qrcodeItem : nil
     }
     
     lazy var tableView : UITableView = {
@@ -118,7 +118,7 @@ extension EMChatSettingPage{
     private func startObservingChanges() {
         // Start observing for data changes
         dataChangeCancellable = _observableSettingsData.receiveOnMain(
-                immediately: false
+            immediately: false
         ).sink(receiveCompletion: { _ in
             
         }, receiveValue: { _ in
@@ -162,70 +162,19 @@ extension EMChatSettingPage{
             ), animated: true)
             return
         }
-        self.title = updatedNickname
-        self.updateProfile(
-            name: updatedNickname,
-            profilePicture: nil,
-            profilePictureFilePath: ProfileManager.profileAvatarFilepath(id: self.viewModel?.id ?? ""),
-            isUpdatingDisplayName: true,
-            isUpdatingProfilePicture: false
-        )
+        
+        self.dependencies.storage.writeAsync { db in
+            try Profile
+                .filter(id: self.viewModel.id)
+                .updateAll(
+                    db,
+                    Profile.Columns.nickname
+                        .set(to: (updatedNickname))
+                )
+        }
     }
     
-    private func updateProfile(
-        name: String,
-        profilePicture: UIImage?,
-        profilePictureFilePath: String?,
-        isUpdatingDisplayName: Bool,
-        isUpdatingProfilePicture: Bool,
-        onComplete: (() -> ())? = nil
-    ) {
-        ProfileManager.updateLocal(
-            queue: DispatchQueue.global(qos: .default),
-            profileName: name,
-            image: profilePicture,
-            imageFilePath: profilePictureFilePath,
-            success: { db, updatedProfile in
-                if isUpdatingDisplayName {
-                    UserDefaults.standard[.lastDisplayNameUpdate] = Date()
-                }
-
-                if isUpdatingProfilePicture {
-                    UserDefaults.standard[.lastProfilePictureUpdate] = Date()
-                }
-
-                try MessageSender.syncConfiguration(db, forceSyncNow: true).retainUntilComplete()
-
-                // Wait for the database transaction to complete before updating the UI
-                db.afterNextTransaction { _ in
-                    
-                }
-            },
-            failure: { error in
-                DispatchQueue.main.async {
-                    let isMaxFileSizeExceeded: Bool = (error == .avatarUploadMaxFileSizeExceeded)
-                    
-                    UIUtil.visibleVC()?.present(ConfirmationModal(
-                        info: ConfirmationModal.Info(
-                            title: (isMaxFileSizeExceeded ?
-                                "Maximum File Size Exceeded" :
-                                "Couldn't Update Profile"
-                            ),
-                            body: .text(isMaxFileSizeExceeded ?
-                                "Please select a smaller photo and try again" :
-                                "Please check your internet connection and try again"
-                            ),
-                            cancelTitle: "BUTTON_OK".localized(),
-                            cancelStyle: .alert_text,
-                            dismissType: .single
-                        )
-                    ), animated: true, completion: nil)
-                }
-            }
-        )
-    }
 }
-
 extension EMChatSettingPage: UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.dataArr.count
@@ -245,11 +194,11 @@ extension EMChatSettingPage: UITableViewDelegate,UITableViewDataSource{
         if indexPath.section == 0{
             if self.viewModel.threadVariant == .contact{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EMChatSettingUserInfoCell", for: indexPath) as! EMChatSettingUserInfoCell
-                cell.model = data.cells[indexPath.row].userInfo
+                cell.model = self.maybeThreadViewModel
                 return cell
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "EMChatGroupInfoCell", for: indexPath) as! EMChatGroupInfoCell
-            cell.threadViewModel = self.viewModel
+            cell.threadViewModel = self.maybeThreadViewModel
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "EMSettingCell", for: indexPath) as! EMSettingCell
@@ -278,12 +227,19 @@ extension EMChatSettingPage: UITableViewDelegate,UITableViewDataSource{
         let data = self.dataArr[indexPath.section]
         let model = data.cells[indexPath.row]
         switch model.type{
+        case .copySessionID :
+            UIPasteboard.general.string = self.profile?.id
+            Toast.toast(hit: "copied".localized())
+            break
         case .photo :
             self.push(MediaGalleryViewModel.createAllMediaViewController(
                 threadId: self.viewModel.threadId,
                 threadVariant: self.viewModel.threadVariant,
                 focusedAttachmentId: nil
             ))
+            break
+        case .notes :
+            onclickEditName()
             break
         case .copyGroupUrl :
             guard

@@ -80,8 +80,8 @@ class EMTabBarItem: UIView {
     
     var isSelect : Bool = false{
         didSet{
-            backgroundView.themeBackgroundColor =  isSelect ? .textPrimary : .tab_select_bg
-            icon.themeTintColor = isSelect ? .tab_select_bg : .textPrimary
+//            backgroundView.themeBackgroundColor =  isSelect ? .textPrimary : .tab_select_bg
+            icon.themeTintColor = isSelect ? .textPrimary : .color_91979D
             switch type{
             case .Chats:
                 icon.image = UIImage(named: "tabbar_chat_" + (isSelect ? "s" : "n"))?.withRenderingMode(.alwaysTemplate)

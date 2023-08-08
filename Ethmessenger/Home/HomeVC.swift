@@ -96,7 +96,6 @@ final class HomeVC: BaseVC, UITableViewDataSource, UITableViewDelegate, SeedRemi
         result.register(view: FullConversationCell.self)
         result.dataSource = self
         result.delegate = self
-        result.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: Screen_width, height: 90.w))
         if #available(iOS 15.0, *) {
             result.sectionHeaderTopPadding = 0
         }
@@ -513,7 +512,6 @@ final class HomeVC: BaseVC, UITableViewDataSource, UITableViewDelegate, SeedRemi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section: HomeViewModel.SectionModel = viewModel.threadData[indexPath.section]
-        
         switch section.model {
             case .messageRequests:
                 let threadViewModel: SessionThreadViewModel = section.elements[indexPath.row]

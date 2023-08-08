@@ -84,6 +84,26 @@ struct EMChain {
         }
     }
     
+    var browserApi : String{
+        switch self.type{
+            case .eth: return ETHSCAN
+            case .bsc: return BSCSCAN
+            case .op: return OPSCAN
+            case .arb: return ARBSCAN
+            case .matic: return MATICSCAN
+        }
+    }
+    
+    var browserApiKey : String{
+        switch self.type{
+            case .eth: return ETHApiKey
+            case .bsc: return BSCApiKey
+            case .op: return OPApiKey
+            case .arb: return ARBApiKey
+            case .matic: return MATICApiKey
+        }
+    }
+    
     func saveRpc(_ rpc : String){
         switch self.type{
         case .eth:
@@ -103,6 +123,8 @@ struct EMChain {
             break;
         }
     }
+    
+    
     
     init(type: EMChainType? = nil, chainId: Int) {
         self.type = type ?? EMChainType.create(chainId: chainId)

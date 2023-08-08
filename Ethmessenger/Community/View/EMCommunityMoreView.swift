@@ -50,6 +50,7 @@ class EMCommunityMoreView: UIView {
     
     lazy var btnReport : UIButton = {
         let btn = UIButton(type: .system,title: "  " + LocalReport.localized(),font: UIFont.Regular(size: 11),image: UIImage(named: "icon_community_report"),tintColor: .textPrimary)
+        btn.addTarget(self, action: #selector(onclickReport), for: .touchUpInside)
         return btn
     }()
     
@@ -69,6 +70,7 @@ class EMCommunityMoreView: UIView {
 extension EMCommunityMoreView{
     @objc func onclickReport(){
         self.reportBlock?()
+        dismiss()
     }
     
     @objc func onclickCollection(){

@@ -216,7 +216,7 @@ final class RegisterVC : BaseVC {
     @objc private func copyPublicKey() {
         UIPasteboard.general.string = x25519KeyPair.hexEncodedPublicKey
         copyPublicKeyButton.isUserInteractionEnabled = false
-        copyPublicKeyButton.accessibilityLabel = "Copy session id"
+        copyPublicKeyButton.accessibilityLabel = "LocalCopySessionID".localized()
         copyPublicKeyButton.isAccessibilityElement = true
         UIView.transition(with: copyPublicKeyButton, duration: 0.25, options: .transitionCrossDissolve, animations: {
             self.copyPublicKeyButton.setTitle("copied".localized(), for: .normal)

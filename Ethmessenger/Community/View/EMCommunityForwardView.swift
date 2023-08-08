@@ -88,7 +88,7 @@ class EMCommunityForwardView: UIView {
     
     var model : EMCommunityHomeListEntity?{
         didSet{
-            icon.sd_setImage(with: URL(string: model?.UserInfo?.Avatar ?? ""),placeholderImage: UIImage(named: ""))
+            icon.sd_setImage(with: URL(string: model?.UserInfo?.Avatar ?? ""),placeholderImage: UIImage(named: "icon_community_logo"))
             labName.text = model?.UserInfo?.Nickname
             labTime.text = model?.CreatedAt.showTime
             labContent.text = model?.Content

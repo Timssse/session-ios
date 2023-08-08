@@ -9,7 +9,7 @@ class EMSettingCell: BaseTableViewCell {
     let labTitle = UILabel(font: UIFont.Bold(size: 15),textColor: .textPrimary)
     let labContent = UILabel(font: UIFont.Regular(size: 12),textColor: .textPrimary)
     let btnSound = UIButton(type: .system,font:UIFont.Bold(size: 15),image: UIImage(named: "icon_chats_triangle"),tintColor: .textPrimary)
-    let btnSwitch = UIButton(image: UIImage(named: "icon_chats_switch_close"),selectImage: UIImage(named: "icon_chats_switch_open"))
+    let btnSwitch = UIButton(image: UIImage(named: "icon_chats_switch_close")?.withRenderingMode(.alwaysTemplate),selectImage: UIImage(named: "icon_chats_switch_open"))
     
     override func layoutUI() {
         self.contentView.themeBackgroundColor = .conversationButton_background
@@ -67,8 +67,11 @@ class EMSettingCell: BaseTableViewCell {
             btnSound.setTitle("  \(model?.notificationSound?.displayName ?? "")", for: .normal)
             
             btnSwitch.isHidden = (model?.type != .mute && model?.type != .shield && model?.type != .notifyMentionsOnly)
+            btnSwitch.themeTintColor = .textPrimary
             if model?.type == .mute{
                 btnSwitch.isSelected = (model?.maybeThreadViewModel?.threadMutedUntilTimestamp != nil)
+                
+                
             }
             if model?.type == .shield{
                 btnSwitch.isSelected = (model?.maybeThreadViewModel?.threadIsBlocked == true)

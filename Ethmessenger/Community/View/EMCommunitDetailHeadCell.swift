@@ -59,7 +59,7 @@ class EMCommunitDetailHeadCell: BaseTableViewCell {
     }()
     
     lazy var labContent : UILabel = {
-        let lab = UILabel(font: UIFont.Regular(size: 13),textColor: .textPrimary)
+        let lab = UILabel(font: UIFont.Medium(size: 14),textColor: .textPrimary)
         lab.numberOfLines = 0
         return lab
     }()
@@ -93,6 +93,7 @@ class EMCommunitDetailHeadCell: BaseTableViewCell {
         didSet{
             self.publisherView.model = model
             labContent.text = model.Content
+            labContent.setMiniLineHeight()
             let imageHeight = ceil(CGFloat((model.images.count > 9 ? 9 : model.images.count))/3.0) * 112.w
             imagesCollectionView.snp.updateConstraints { make in
                 make.height.equalTo(imageHeight)

@@ -43,5 +43,8 @@ extension UIButton{
         }
     }
     
-    
+    convenience init(submitTitle : String? = nil) {
+        self.init(title: submitTitle, font: UIFont.Bold(size: 16), color: .white ,backgroundColor: .messageBubble_outgoingBackground)
+        self.dealLayer(corner: 8.w)
+    }
 }

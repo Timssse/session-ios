@@ -31,6 +31,7 @@ struct EMUserController {
         }
     }
     
+    @discardableResult
     static func editUserInfo(name : String , icon : [PHAsset],userInfo : EMCommunityUserEntity) async -> Bool{
         do{
             if EMCommunityConfigEntity.share.IpfsHost == ""{
@@ -49,6 +50,20 @@ struct EMUserController {
             let msg = [address,nickName,desc,avatar,updateSignUnix].joined(separator: "|")
             let sign = WalletUtilities.signPersonalMessage(message: msg) ?? ""
             try await UserUpdateInfoRequest(param: ["avatar":avatar,"nickname":nickName,"desc":desc,"sex":userInfo.Sex,"sign":sign,"updateSignUnix":updateSignUnix]).request()
+            //更新本地数据
+            ProfileManager.updateLocal(
+                queue: DispatchQueue.global(qos: .default),
+                profileName: name,
+                image: nil,
+                imageFilePath: avatar,
+                success: { db, updatedProfile in
+                    UserDefaults.standard[.lastDisplayNameUpdate] = Date()
+                    UserDefaults.standard[.lastProfilePictureUpdate] = Date()
+                    try MessageSender.syncConfiguration(db, forceSyncNow: true).retainUntilComplete()
+                    db.afterNextTransaction { _ in
+                        
+                    }
+                })
             return true
         }catch{
             Toast.toast(hit: error.localizedDescription)

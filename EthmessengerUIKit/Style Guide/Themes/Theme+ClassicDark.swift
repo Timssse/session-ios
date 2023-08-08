@@ -130,6 +130,9 @@ internal enum Theme_ClassicDark: ThemeColors {
         .alertTextColor : .color_91979D,
         .wallet_bg : .chatBackgroundPrimaryDark,
         .password_border_color : .lineDark,
-        .forget_textView_bg : .color_272727
+        .forget_textView_bg : .color_272727,
+        .heart : .color_F91880,
+        .FF823B : .color_FF823B,
+        .Color_91979D_616569 : .color_616569
     ]
 }

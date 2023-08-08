@@ -76,9 +76,6 @@ class EMSelectNetworkVC: EMAlertController {
     }()
 }
 
-extension EMSelectNetworkVC{
-    
-}
 
 extension EMSelectNetworkVC: UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -246,7 +246,7 @@ class ThreadSettingsViewModel: SessionTableViewModel<ThreadSettingsViewModel.Nav
                                     "vc_conversation_settings_copy_Ethmessenger_id_button_title".localized()
                                 ),
                                 accessibilityIdentifier: "\(ThreadSettingsViewModel.self).copy_thread_id",
-                                accessibilityLabel: "Copy Session ID",
+                                accessibilityLabel: "LocalCopySessionID".localized(),
                                 onTap: {
                                     switch threadVariant {
                                         case .contact, .closedGroup:

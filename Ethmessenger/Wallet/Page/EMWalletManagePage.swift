@@ -69,13 +69,13 @@ extension EMWalletManagePage : UITableViewDelegate,UITableViewDataSource{
             return
         }
         if model.type == .mnemonics{
-            EMAlert.alert(.password).confirmAction {[weak self] _ in
+            EMAlert.alert(.password)?.confirmAction {[weak self] _ in
                 self?.push(EMViewMnemonicsPage())
             }.popup()
             return
         }
         if model.type == .privateKey{
-            EMAlert.alert(.password).confirmAction {[weak self] _ in
+            EMAlert.alert(.password)?.confirmAction {[weak self] _ in
                 self?.push(EMViewPrivateKeyPage())
             }.popup()
             return

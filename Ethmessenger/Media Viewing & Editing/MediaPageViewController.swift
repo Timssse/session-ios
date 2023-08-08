@@ -6,13 +6,13 @@ import PromiseKit
 import SessionUIKit
 import SessionMessagingKit
 import SignalUtilitiesKit
-
-class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, MediaDetailViewControllerDelegate, InteractivelyDismissableViewController {
+//MediaDismissAnimationController
+class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, MediaDetailViewControllerDelegate {
     class DynamicallySizedView: UIView {
         override var intrinsicContentSize: CGSize { CGSize.zero }
     }
     
-    fileprivate var mediaInteractiveDismiss: MediaInteractiveDismiss?
+//    fileprivate var mediaInteractiveDismiss: MediaInteractiveDismiss?
     
     public let viewModel: MediaGalleryViewModel
     private var dataChangeObservable: DatabaseCancellable?
@@ -75,7 +75,7 @@ class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSou
         self.dataSource = self
         self.delegate = self
         self.modalPresentationStyle = .overFullScreen
-        self.transitioningDelegate = self
+//        self.transitioningDelegate = self
         self.setViewControllers([initialPage], direction: .forward, animated: false, completion: nil)
     }
 
@@ -143,8 +143,8 @@ class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSou
         // Disable the interactivePopGestureRecognizer as we want to be able to swipe between
         // different pages
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        self.mediaInteractiveDismiss = MediaInteractiveDismiss(targetViewController: self)
-        self.mediaInteractiveDismiss?.addGestureRecognizer(to: view)
+//        self.mediaInteractiveDismiss = MediaInteractiveDismiss(targetViewController: self)
+//        self.mediaInteractiveDismiss?.addGestureRecognizer(to: view)
 
         // Get reference to paged content which lives in a scrollView created by the superclass
         // We show/hide this content during presentation
@@ -991,34 +991,34 @@ extension MediaPageViewController: CaptionContainerViewDelegate {
 
 // MARK: - UIViewControllerTransitioningDelegate
 
-extension MediaPageViewController: UIViewControllerTransitioningDelegate {
-    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard self == presented || self.navigationController == presented else { return nil }
-
-        return MediaZoomAnimationController(galleryItem: currentItem)
-    }
-
-    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard self == dismissed || self.navigationController == dismissed else { return nil }
-        guard !self.viewModel.albumData.isEmpty else { return nil }
-
-        let animationController = MediaDismissAnimationController(galleryItem: currentItem, interactionController: mediaInteractiveDismiss)
-        mediaInteractiveDismiss?.interactiveDismissDelegate = animationController
-
-        return animationController
-    }
-
-    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        guard let animator = animator as? MediaDismissAnimationController,
-              let interactionController = animator.interactionController,
-              interactionController.interactionInProgress
-        else {
-            return nil
-        }
-        
-        return interactionController
-    }
-}
+//extension MediaPageViewController: UIViewControllerTransitioningDelegate {
+//    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        guard self == presented || self.navigationController == presented else { return nil }
+//
+//        return MediaZoomAnimationController(galleryItem: currentItem)
+//    }
+//
+////    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+////        guard self == dismissed || self.navigationController == dismissed else { return nil }
+////        guard !self.viewModel.albumData.isEmpty else { return nil }
+////
+////        let animationController = MediaDismissAnimationController(galleryItem: currentItem, interactionController: mediaInteractiveDismiss)
+////        mediaInteractiveDismiss?.interactiveDismissDelegate = animationController
+////
+////        return animationController
+////    }
+//
+//    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//        guard let animator = animator as? MediaDismissAnimationController,
+//              let interactionController = animator.interactionController,
+//              interactionController.interactionInProgress
+//        else {
+//            return nil
+//        }
+//
+//        return interactionController
+//    }
+//}
 
 // MARK: - MediaPresentationContextProvider
 

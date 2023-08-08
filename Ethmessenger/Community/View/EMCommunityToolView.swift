@@ -18,13 +18,20 @@ class EMCommunityToolView: UIView {
         
         self.addSubview(btnReply)
         btnReply.snp.makeConstraints { make in
-            make.left.equalTo(btnLike.snp.right).offset(28.w)
+            make.centerX.equalToSuperview().multipliedBy(2/3.0)
             make.centerY.equalTo(btnLike)
         }
         
         self.addSubview(btnForward)
         btnForward.snp.makeConstraints { make in
-            make.left.equalTo(btnReply.snp.right).offset(28.w)
+            make.centerX.equalToSuperview().multipliedBy(4/3.0)
+            make.centerY.equalTo(btnLike)
+            
+        }
+        
+        self.addSubview(btnShare)
+        btnShare.snp.makeConstraints { make in
+            make.right.equalToSuperview()
             make.centerY.equalTo(btnLike)
             
         }
@@ -35,21 +42,28 @@ class EMCommunityToolView: UIView {
     }
     
     lazy var btnLike : UIButton = {
-        let btn = UIButton(type: .custom,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_like")?.withRenderingMode(.alwaysTemplate),selectImage: UIImage(named: "icon_community_like_selelct"))
+        let btn = UIButton(type: .custom,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_like")?.withRenderingMode(.alwaysTemplate),selectImage: UIImage(named: "icon_community_like_selelct")?.withRenderingMode(.alwaysTemplate))
         btn.addTarget(self, action: #selector(onclickLike), for: .touchUpInside)
         return btn
     }()
     
     lazy var btnReply : UIButton = {
-        let btn = UIButton(type: .system,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_reply"),tintColor: .communitTool)
+        let btn = UIButton(type: .system,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_reply"),tintColor: .iconColor)
         btn.isUserInteractionEnabled = false
 //        btn.addTarget(self, action: #selector(onclickReply), for: .touchUpInside)
         return btn
     }()
     
     lazy var btnForward : UIButton = {
-        let btn = UIButton(type: .system,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_forward"),tintColor: .communitTool)
+        let btn = UIButton(type: .system,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_forward"),tintColor: .iconColor)
         btn.addTarget(self, action: #selector(onclickForword), for: .touchUpInside)
+        return btn
+    }()
+    
+    
+    lazy var btnShare : UIButton = {
+        let btn = UIButton(type: .system,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_share"),tintColor: .iconColor)
+        btn.addTarget(self, action: #selector(onclickShare), for: .touchUpInside)
         return btn
     }()
     
@@ -59,8 +73,11 @@ class EMCommunityToolView: UIView {
             btnReply.setTitle("  \(model.CommentCount)", for: .normal)
             btnForward.setTitle("  \(model.ForwardCount)", for: .normal)
             btnLike.isSelected = model.isTwLike
-            btnLike.setThemeTitleColor(model.isTwLike ? .danger : .communitTool, for: .normal)
-            btnLike.themeTintColor = model.isTwLike ? .danger : .communitTool
+            btnLike.setThemeTitleColor(model.isTwLike ? .heart : .iconColor, for: .normal)
+            btnLike.themeTintColor = model.isTwLike ? .heart : .iconColor
+            
+            
+            
         }
     }
     
@@ -68,13 +85,13 @@ class EMCommunityToolView: UIView {
         self.likeBlock?()
     }
     
-//    @objc func onclickReply(){
-//        let vc = EMCommunityDetailPage(model: self.model)
-//        UIUtil.visibleNav()?.pushViewController(vc, animated: true)
-//    }
-    
     @objc func onclickForword(){
-//        self.forwardBlock?()
+        let vc = EMPublishPage(forward: self.model)
+        vc.modalPresentationStyle = .fullScreen
+        UIUtil.visibleVC()?.present(vc, animated: true)
+    }
+    
+    @objc func onclickShare(){
         let vc = EMPublishPage(forward: self.model)
         vc.modalPresentationStyle = .fullScreen
         UIUtil.visibleVC()?.present(vc, animated: true)

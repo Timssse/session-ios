@@ -226,6 +226,11 @@ extension EMPublishPage : UITextViewDelegate{
     }
     
     @objc func onclickPublish(){
+        if self.textView.text.removeSpace() == ""{
+            Toast.toast(hit: LocalPleaseInput.localized())
+            return
+        }
+        
         AnimationManager.shared.setAnimation(self.view)
         Task{
             if await EMCommunityController.release(content:self.textView.text, files:self.uploadImages,forwardId:forward?.TwAddress){

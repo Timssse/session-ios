@@ -4,10 +4,9 @@ import UIKit
 import SessionUIKit
 class EMCommunityMainPage: BaseVC,EMHideNavigationBarProtocol,ThemedNavigation {
 
-    let vc1 = EMCommunityFollowPage()
-    let vc2 = EMCommunityExplorePage()
+    let vc1 = EMCommunityExplorePage()
+    let vc2 = EMCommunityFollowPage()
     
-    override var navigationBackground: ThemeValue { .conversationButton_background }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ class EMCommunityMainPage: BaseVC,EMHideNavigationBarProtocol,ThemedNavigation {
     
     lazy var pageTitleView : SGPagingTitleView = {
         let configure = SGPagingTitleViewConfigure(showBottomSeparator: false, font: UIFont.Bold(size: 16), selectedFont: UIFont.Bold(size: 16),indicatorColor: #colorLiteral(red: 0.2431372549, green: 0.4, blue: 0.9843137255, alpha: 1),indicatorHeight: 3.w,indicatorFixedWidth: 164.w,indicatorType: .Fixed)
-        let titleView = SGPagingTitleView(frame: CGRect(x: 0, y: statusBarH, width: Screen_width, height: 50.w), titles: [LocalFollowing.localized(),LocalExplore.localized()], configure: configure)
+        let titleView = SGPagingTitleView(frame: CGRect(x: 0, y: statusBarH, width: Screen_width, height: 50.w), titles: [LocalExplore.localized(),LocalFollowing.localized()], configure: configure)
         titleView.delegate = self
         titleView.themeBackgroundColor = .navBack
         return titleView

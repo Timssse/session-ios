@@ -13,6 +13,7 @@ class EMCommunityUserEntity: HandyJSON {
     var Sex : Int = 0
     var Desc : String = ""
     var FansCount : Int = 0
+    var TwCount : Int = 0
     var FollowCount : Int = 0
     var Sign : String = ""
     var Token : String = ""

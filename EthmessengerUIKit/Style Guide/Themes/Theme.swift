@@ -247,6 +247,12 @@ public indirect enum ThemeValue: Hashable {
     case password_border_color
     
     case forget_textView_bg
+    
+    case heart
+    
+    case FF823B
+    
+    case Color_91979D_616569
 }
 
 // MARK: - ForcedThemeValue

@@ -3,39 +3,30 @@
 import UIKit
 
 var baseURLString = "https://fairapi.dappconnect.io/api/v1/"
-//
-//class EMWalletConfig: NSObject {
-//    let chainConfigPath = "https://fairapi.dappconnect.io/api/v1/app_config"
-//    static let shared = EMWalletConfig()
-//
-//    var chains : [EMChainModel] = []
-//    @discardableResult
-//    func getChains() async -> [EMChainModel]{
-//        if (chains.count > 0){
-//            return chains
-//        }
-//        let data = await getChainsConfig()
-//        if let model = [EMChainModel].deserialize(from: data) as? [EMChainModel]{
-//            self.chains = model
-//            return model
-//        }
-//        return []
-//    }
-//
-//    func getChainsConfig() async -> [Any]?{
-//        return try? await withCheckedThrowingContinuation({ continuation in
-//            let request:URLRequest = URLRequest(url: URL(string:  chainConfigPath)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 20)
-//            let dataTask = URLSession.shared.dataTask(with: request,
-//                                                      completionHandler: {(data, response, error) -> Void in
-//                if error != nil{
-//                    continuation.resume(returning: nil)
-//                }else{
-//                    let str = String(data: data!, encoding: String.Encoding.utf8)
-//                    let dict = str?.toArray()
-//                    continuation.resume(returning: dict)
-//                }
-//            }) as URLSessionTask
-//            dataTask.resume()
-//        })
-//    }
-//}
+
+let ETHSCAN = "https://api-cn.etherscan.com/api" //交易记录
+let OPSCAN = "https://api-optimistic.etherscan.io/api";
+let BSCSCAN = "https://api.bscscan.com/api";
+let MATICSCAN = "https://api.polygonscan.com/api";
+let ARBSCAN = "https://api.arbiscan.io/api";
+
+
+let ETHApiKey = "RW3GNJWQI8GJXIK189G2GB11DGEE8S6UKK" //apikey
+let OPApiKey = "1IXK6WEFAX6MKJ5UDSX4VBCFHZKZCQXTG2";
+let BSCApiKey = "Y75KSE8J1BRMVXCQ9K11B24YX9NKRW9GTN";
+let MATICApiKey = "RS31MYK3FR1JK5NCVD9FMQ2Q3XHU92GUIV";
+let ARBApiKey = "CKGT65KM4GSMQRZZPMZUD5IS1YK3SZ8HZN";
+
+
+/// app版本信息
+struct AppInfo {
+    static let shared = AppInfo()
+    var version: String? {
+        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    var numverVersion: String? {
+        return version?.replacingOccurrences(of: ".", with: "")
+    }
+    var appName = "Fair Wallet"
+    
+}
