@@ -23,24 +23,28 @@ class EMUserInfoCell: BaseTableViewCell {
         self.contentView.addSubview(userName)
         userName.snp.makeConstraints { make in
             make.left.equalTo(userIcon.snp.right).offset(15.w)
-            make.top.equalTo(userIcon).offset(5.w)
+            make.top.equalTo(userIcon).offset(3.w)
         }
         
+        self.contentView.addSubview(followingView)
+        followingView.snp.makeConstraints { make in
+            make.left.equalTo(userName)
+            make.bottom.equalTo(userIcon).offset(-5.w)
+        }
         
-        let labSessionIdTitle = UILabel(font: UIFont.Regular(size: 12),textColor: .color_91979D,text: "Session ID")
-        self.contentView.addSubview(labSessionIdTitle)
-        labSessionIdTitle.snp.makeConstraints { make in
-            make.left.equalTo(userIcon.snp.right).offset(15.w)
-            make.top.equalTo(userName.snp.bottom).offset(10.w)
-            make.height.equalTo(22.w)
+        self.contentView.addSubview(followerView)
+        followerView.snp.makeConstraints { make in
+            make.left.equalTo(followingView.snp.right).offset(25.w)
+            make.centerY.equalTo(followingView)
         }
         
         
         self.contentView.addSubview(sessionView)
         sessionView.snp.makeConstraints { make in
-            make.left.equalTo(labSessionIdTitle.snp.right)
-            make.top.equalTo(userName.snp.bottom).offset(10.w)
-            make.height.equalTo(22.w)
+            make.left.equalToSuperview().offset(20.w)
+            make.right.equalToSuperview().offset(-20.w)
+            make.top.equalTo(userIcon.snp.bottom).offset(15.w)
+            make.height.equalTo(31.w)
         }
         
         self.contentView.addSubview(arrowIcon)
@@ -54,38 +58,24 @@ class EMUserInfoCell: BaseTableViewCell {
         line.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(25.w)
             make.right.equalToSuperview().offset(-25.w)
-            make.top.equalTo(userIcon.snp.bottom).offset(22.w)
+            make.top.equalTo(sessionView.snp.bottom).offset(11.w)
             make.height.equalTo(1)
-        }
-        
-        self.contentView.addSubview(momentsView)
-        momentsView.snp.makeConstraints { make in
-            make.left.equalToSuperview()
-            make.top.equalTo(line.snp.bottom).offset(12.w)
-            make.width.equalToSuperview().multipliedBy(1/3.0)
-        }
-        
-        self.contentView.addSubview(followingView)
-        followingView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalTo(momentsView)
-            make.width.equalToSuperview().multipliedBy(1/3.0)
-        }
-        
-        self.contentView.addSubview(followerView)
-        followerView.snp.makeConstraints { make in
-            make.right.equalToSuperview()
-            make.centerY.equalTo(momentsView)
-            make.width.equalToSuperview().multipliedBy(1/3.0)
         }
         
         self.contentView.addSubview(walletView)
         walletView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(25.w)
             make.right.equalToSuperview().offset(-25.w)
-            make.top.equalTo(momentsView.snp.bottom).offset(21.w)
-            make.bottom.equalToSuperview().offset(-20.w)
+            make.top.equalTo(line.snp.bottom).offset(11.w)
             make.height.equalTo(75.w)
+        }
+        
+        self.contentView.addSubview(itemView)
+        itemView.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(25.w)
+            make.right.equalToSuperview().offset(-25.w)
+            make.top.equalTo(walletView.snp.bottom).offset(11.w)
+            make.bottom.equalToSuperview().offset(-10.w)
         }
     }
 
@@ -94,60 +84,45 @@ class EMUserInfoCell: BaseTableViewCell {
     lazy var userName : UILabel = UILabel(font: UIFont.Bold(size: 20),textColor: .textPrimary)
     
     lazy var sessionView : UIView = {
-        let view = UIView(.user_session_bg)
+        let view = UIView(.line)
+        view.dealLayer(corner: 10.w)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(copySessionID)))
-        view.dealBorderLayer(corner: 11.w, bordercolor: .line, borderwidth: 1)
+        
+        let labSessionIdTitle = UILabel(font: UIFont.Regular(size: 12),textColor: .white,text: "Session ID：")
+        view.addSubview(labSessionIdTitle)
+        labSessionIdTitle.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(20.w)
+            make.centerY.equalToSuperview()
+        }
+        
         view.addSubview(labSessionId)
         labSessionId.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(3.w)
+            make.left.equalTo(labSessionIdTitle.snp.right)
             make.centerY.equalToSuperview()
-        }
-        let iconCopy = UIImageView(image: UIImage(named: "icon_user_copy"))
-        view.addSubview(iconCopy)
-        iconCopy.snp.makeConstraints { make in
-            make.left.equalTo(labSessionId.snp.right).offset(8.w)
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-10.w)
         }
         return view
     }()
     
-    lazy var labSessionId : UILabel = UILabel(font: UIFont.Regular(size: 12),textColor: .color_91979D)
-    
-    lazy var momentsView : UIView = {
-        let view = UIView()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickMoments)))
-        view.addSubview(labMoments)
-        labMoments.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
-        }
-        let labMomentsTitle : UILabel = UILabel(font: UIFont.Medium(size: 14),textColor: .color_616569,text: LocalMoments.localized())
-        view.addSubview(labMomentsTitle)
-        labMomentsTitle.snp.makeConstraints { make in
-            make.top.equalTo(labMoments.snp.bottom).offset(4.w)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        return view
+    lazy var labSessionId : UILabel = {
+        let lab = UILabel(font: UIFont.Regular(size: 12),textColor: .color_91979D)
+        lab.lineBreakMode = .byTruncatingMiddle
+        return lab
     }()
-    
-    lazy var labMoments : UILabel = UILabel(font: UIFont.Medium(size: 14),textColor: .textPrimary)
     
     lazy var followingView : UIView = {
         let view = UIView()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickFans)))
         view.addSubview(labFollowing)
         labFollowing.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview()
         }
         let labFollowTitle : UILabel = UILabel(font: UIFont.Medium(size: 14),textColor: .color_616569,text: LocalFollowing.localized())
         view.addSubview(labFollowTitle)
         labFollowTitle.snp.makeConstraints { make in
-            make.top.equalTo(labFollowing.snp.bottom).offset(4.w)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.left.equalTo(labFollowing.snp.right).offset(10.w)
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview()
         }
         return view
     }()
@@ -159,15 +134,15 @@ class EMUserInfoCell: BaseTableViewCell {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickFans)))
         view.addSubview(labFollower)
         labFollower.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview()
         }
         let labFollowTitle : UILabel = UILabel(font: UIFont.Medium(size: 14),textColor: .color_616569,text: LocalFollower.localized())
         view.addSubview(labFollowTitle)
         labFollowTitle.snp.makeConstraints { make in
-            make.top.equalTo(labFollower.snp.bottom).offset(4.w)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.left.equalTo(labFollower.snp.right).offset(10.w)
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview()
         }
         return view
     }()
@@ -179,25 +154,24 @@ class EMUserInfoCell: BaseTableViewCell {
         return view
     }()
     
+    
+    lazy var itemView = EMUserItemView()
+    
     var emUserInfo : EMCommunityUserEntity?{
         didSet{
             userName.text = emUserInfo?.Nickname
             userIcon.sd_setImage(with: URL(string: emUserInfo?.Avatar ?? ""), placeholderImage: UIImage(named: "icon_community_logo"))
             labFollowing.text = FS(emUserInfo?.FollowCount)
             labFollower.text = FS(emUserInfo?.FansCount)
-            labMoments.text = FS(emUserInfo?.TwCount)
         }
     }
     
     var userInfo : Profile?{
         didSet{
-            self.labSessionId.text = "：" + FS(userInfo?.id.showAddress(6))
+            self.labSessionId.text = FS(userInfo?.id).showAddress(16)
         }
     }
     
-    @objc func onclickMoments(){
-        UIUtil.visibleNav()?.pushViewController(EMMomentsUserPage(), animated: true)
-    }
     
     @objc func onclickEdit(){
         guard let user = emUserInfo else{

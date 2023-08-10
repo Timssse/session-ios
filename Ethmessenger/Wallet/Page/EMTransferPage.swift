@@ -23,7 +23,7 @@ class EMTransferPage: BaseVC {
     }
     
     override func layoutUI() {
-        self.title = LocalTrasfer.localized()
+        self.title = LocalRepost.localized()
         let contentView = UIView(.wallet_bg)
         contentView.dealCorner(type: .topLeftRight, corner: 20.w)
         self.view.addSubview(contentView)
@@ -57,6 +57,12 @@ class EMTransferPage: BaseVC {
             make.left.right.equalTo(tokenView)
             make.top.equalTo(labReceiverTitle.snp.bottom).offset(15.w)
             make.height.equalTo(58.w)
+        }
+        
+        textReviceAddress.addSubview(self.btnScan)
+        btnScan.snp.makeConstraints { make in
+            make.top.bottom.right.equalToSuperview()
+            make.width.equalTo(56.w)
         }
         
         let labAmountTitle = UILabel.init(font: UIFont.Medium(size: 16),textColor: .textPrimary,text: LocalAmount.localized())
@@ -115,12 +121,13 @@ class EMTransferPage: BaseVC {
         let text = UITextField.init(LocalInputReviceWalletAddress.localized(),font: UIFont.Medium(size: 13),textColor: .textPrimary)
         text.dealBorderLayer(corner: 14.w, bordercolor: .line, borderwidth: 1)
         text.addLeftView(20,width: 17.w)
+        text.delegate = self
         return text
     }()
     
     
     lazy var btnScan : UIButton = {
-        let btn = UIButton.init(type: .system,image: UIImage(named: "icon_user_eye_open"),selectImage: UIImage(named: "icon_user_eye_close"),tintColor: .textGary1)
+        let btn = UIButton.init(type: .system,image: UIImage(named: "icon_user_scan"),tintColor: .Color_91979D_616569)
         btn.addTarget(self, action: #selector(onclickScan), for: .touchUpInside)
         return btn
     }()
@@ -135,13 +142,22 @@ class EMTransferPage: BaseVC {
         let text = UITextField.init(LocalInputReviceWalletAddress.localized(),font: UIFont.Medium(size: 13),textColor: .textPrimary)
         text.dealBorderLayer(corner: 14.w, bordercolor: .line, borderwidth: 1)
         text.addLeftView(20,width: 17.w)
+        text.delegate = self
         text.keyboardType = .numbersAndPunctuation
         return text
     }()
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
+extension EMTransferPage:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
 
 extension EMTransferPage{
     @objc func changeToken(){
@@ -250,9 +266,10 @@ extension EMTransferPage{
         self.view.endEditing(true)
         EMPayforeDetailView
             .show(num: FS(textSendNum.text), receiver: FS(self.textReviceAddress.text), gas: self.costFeeModel!, token: self.token)
-            .confirmAction {[weak self] in
-                self?.getBalaceRequest()
-            
+            .confirmAction {
+                EMAlert.alert(.password)?.confirmAction {[weak self] _ in
+                    self?.getBalaceRequest()
+                }.popup()
         }
     }
 }

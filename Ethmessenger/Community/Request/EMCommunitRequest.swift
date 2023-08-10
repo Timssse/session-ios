@@ -214,3 +214,69 @@ struct CommunityUploadRequest: HTTPRequest {
         return try await self.uploadAwait(datas)
     }
 }
+
+struct CommunityReportRequest: HTTPRequest {
+    var url: String = "v0/tweets/report"
+    
+    var method: HTTPMethod = .post
+    
+    var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
+    
+    var id : String
+    
+    @discardableResult
+    func request() async throws -> Any{
+        return try await self.fetchAwait(["id":id])
+    }
+}
+
+struct CommunityLikeMeRequest: HTTPRequest {
+    var url: String = "v0/users/likeMe"
+    
+    var method: HTTPMethod = .get
+    
+    var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
+    
+    var page : Int
+    
+    func request() async throws -> Any{
+        return try await self.fetchAwait(["page":page])
+    }
+}
+
+
+struct CommunityReplyMeRequest: HTTPRequest {
+    var url: String = "v0/users/commentMe"
+    
+    var method: HTTPMethod = .get
+    
+    var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
+    
+    var page : Int
+    
+    func request() async throws -> Any{
+        return try await self.fetchAwait(["page":page])
+    }
+}
+
+struct CommunityRepostMeRequest: HTTPRequest {
+    var url: String = "v0/users/forwardMe"
+    
+    var method: HTTPMethod = .get
+    
+    var headers: [String : String]? = nil
+    
+    var urlType : RequestUrlType = .communit
+    
+    var page : Int
+    
+    func request() async throws -> Any{
+        return try await self.fetchAwait(["page":page])
+    }
+}

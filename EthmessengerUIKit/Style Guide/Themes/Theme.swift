@@ -253,6 +253,10 @@ public indirect enum ThemeValue: Hashable {
     case FF823B
     
     case Color_91979D_616569
+    
+    case Color_F9FAFF_272727
+    
+    case Color_white_616569
 }
 
 // MARK: - ForcedThemeValue

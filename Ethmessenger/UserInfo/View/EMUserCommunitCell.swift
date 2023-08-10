@@ -72,8 +72,8 @@ class EMUserCommunitCell: BaseTableViewCell {
         self.contentView.addSubview(toolView)
         toolView.snp.makeConstraints { make in
             make.left.right.equalTo(imagesCollectionView)
-            make.top.equalTo(imagesCollectionView.snp.bottom).offset(10.w)
-            make.bottom.equalToSuperview().offset(-10.w)
+            make.top.equalTo(imagesCollectionView.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         
         let line = UIView(.line)
@@ -187,7 +187,7 @@ class EMUserCommunitCell: BaseTableViewCell {
         frame.size = CGSize(width: 77.w, height: 35.w)
         EMCommunityMoreView.share.show(UIUtil.getWindow()!,contentFrame: frame)
         EMCommunityMoreView.share.reportBlock = {
-            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(), animated: true)
+            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(type: .tweet, id: FS(self.model?.TwAddress)), animated: true)
         }
     }
 }

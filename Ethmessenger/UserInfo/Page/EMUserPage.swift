@@ -117,11 +117,19 @@ extension EMUserPage : UITableViewDelegate,UITableViewDataSource{
         }
         let model = self.dataArr[indexPath.row]
         if model.type == .invite{
-            let invitation: String = "Hey, I've been using Ethmessager to chat with complete privacy and security. Come join me! Download it at https://ethmessenger.app/. My Session ID is \(userInfo?.id ?? "") !"
-            self.present(UIActivityViewController(
-                activityItems: [ invitation ],
-                applicationActivities: nil
-            ), animated: true)
+            
+            let vc = EMInviteVC()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.view.backgroundColor = UIColor.init(white: 0, alpha: 0)
+            UIView.animate(withDuration: 0.3) {
+                vc.view.backgroundColor = UIColor.init(white: 0, alpha: 0.4)
+            };
+            self.present(vc, animated: true)
+//            let invitation: String = "Hey, I've been using Ethmessager to chat with complete privacy and security. Come join me! Download it at https://ethmessenger.app/. My Session ID is \(userInfo?.id ?? "") !"
+//            self.present(UIActivityViewController(
+//                activityItems: [ invitation ],
+//                applicationActivities: nil
+//            ), animated: true)
             return
         }
         if model.type == .setting{

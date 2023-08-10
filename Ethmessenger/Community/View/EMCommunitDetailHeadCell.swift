@@ -38,8 +38,8 @@ class EMCommunitDetailHeadCell: BaseTableViewCell {
         self.contentView.addSubview(toolView)
         toolView.snp.makeConstraints { make in
             make.left.right.equalTo(imagesCollectionView)
-            make.top.equalTo(imagesCollectionView.snp.bottom).offset(10.w)
-            make.bottom.equalToSuperview().offset(-10)
+            make.top.equalTo(imagesCollectionView.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         
         let line = UIView(.line)

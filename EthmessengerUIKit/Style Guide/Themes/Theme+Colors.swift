@@ -112,6 +112,8 @@ internal extension UIColor {
     static let color_FAFAFA : UIColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)        // #FAFAFA
     static let color_F91880 : UIColor = #colorLiteral(red: 0.9764705882, green: 0.09411764706, blue: 0.5019607843, alpha: 1)        // #F91880
     static let color_FF823B : UIColor = #colorLiteral(red: 1, green: 0.5098039216, blue: 0.231372549, alpha: 1)        // #FF823B
+    static let color_F9FAFF : UIColor = #colorLiteral(red: 0.9764705882, green: 0.9803921569, blue: 1, alpha: 1)        // #F9FAFF
+    
 }
 
 public extension UIColor {

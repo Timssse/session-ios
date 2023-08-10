@@ -25,7 +25,7 @@ enum EMSettingSectionType : String{
             return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.userInfo,profile: profile)], type: .userInfo)
         case groupInfo :
             return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.groupInfo,profile: profile)], type: .groupInfo)
-        case settings :
+        case .settings :
             return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.appearance),
                                                       EMSettingCellType.createCell(.language),
                                                       EMSettingCellType.createCell(.cleanCache),
@@ -43,7 +43,7 @@ enum EMSettingSectionType : String{
 //                                                      EMSettingCellType.createCell(.website)
 //                                                      EMSettingCellType.createCell(.useGuide)
                                                       ], type: .settings)
-        case help :
+        case .help :
             return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.help),EMSettingCellType.createCell(.clean)], type: .help)
         case chatSettings :
             return EMSettingSectionModel.init(cells: [EMSettingCellType.createCell(.copySessionID),
@@ -144,7 +144,7 @@ enum EMSettingCellType : String{
         case invite :
             return EMSettingCellModel(title: "vc_settings_invite_a_friend_button_title".localized(),icon: UIImage(named: "icon_setting_invite"),type: type,showArrow: true)
         case .setting :
-            return EMSettingCellModel(title: "Setting".localized(),type: type,showArrow: true)
+            return EMSettingCellModel(title: LocalSetting.localized(),type: type,showArrow: true)
         case language :
             return EMSettingCellModel(title: LocalLanguage.localized(),content: EMLocalizationTool.getLanguageName(EMLocalizationTool.shared.currentLanguage),type: type,showArrow: true)
         case help :

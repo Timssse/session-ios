@@ -741,3 +741,8 @@
 "LocalVersion" = "版本";
 "LocalUserAgreement" = "用户协议";
 "LocalPrivacyAgreement" = "隐私协议";
+"LocalSetting" = "设置";
+"LocalLike" = "点赞";
+"LocalReply" = "回复";
+"LocalRepost" = "转发";
+"LocalLikeYouMoment" = "点赞了您的动态";

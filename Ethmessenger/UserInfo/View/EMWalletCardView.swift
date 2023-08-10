@@ -36,7 +36,8 @@ class EMWalletCardView: UIView {
             make.centerY.equalTo(walletIcon)
         }
         
-        let arrowIcon = UIImageView(image: UIImage(named: "icon_user_arrow"))
+        let arrowIcon = UIImageView(image: UIImage(named: "icon_user_arrow")?.withRenderingMode(.alwaysTemplate))
+        arrowIcon.tintColor = UIColor(white: 1, alpha: 0.7)
         self.addSubview(arrowIcon)
         arrowIcon.snp.makeConstraints { make in
             make.left.equalTo(labWallet.snp.right).offset(10.w)

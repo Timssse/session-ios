@@ -29,6 +29,12 @@ class EMUserEditPage: BaseVC {
             make.size.equalTo(CGSize(width: 76.w, height: 76.w))
         }
         
+        let maskView = UIImageView(UIColor.init(white: 1, alpha: 0.4))
+        icon.addSubview(maskView)
+        maskView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         let imageV = UIImageView(image: UIImage(named: "icon_user_edit"))
         icon.addSubview(imageV)
         imageV.snp.makeConstraints { make in
@@ -46,7 +52,7 @@ class EMUserEditPage: BaseVC {
 
     lazy var icon : UIImageView = {
         let icon = UIImageView()
-        icon.sd_setImage(with: URL(string: FS(emUserInfo?.Avatar)), placeholderImage: icon_default)
+        icon.sd_setImage(with: URL(string: FS(emUserInfo?.Avatar)), placeholderImage: UIImage(named: "icon_community_logo"))
         icon.dealLayer(corner: 38.w)
         icon.isUserInteractionEnabled = true
         icon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickPhoto)))

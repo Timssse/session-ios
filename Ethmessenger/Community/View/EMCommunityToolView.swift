@@ -13,19 +13,22 @@ class EMCommunityToolView: UIView {
         self.addSubview(btnLike)
         btnLike.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()
-            make.height.equalTo(30.w)
+            make.height.equalTo(50.w)
         }
         
         self.addSubview(btnReply)
         btnReply.snp.makeConstraints { make in
             make.centerX.equalToSuperview().multipliedBy(2/3.0)
             make.centerY.equalTo(btnLike)
+            make.height.equalTo(50.w)
+            
         }
         
         self.addSubview(btnForward)
         btnForward.snp.makeConstraints { make in
             make.centerX.equalToSuperview().multipliedBy(4/3.0)
             make.centerY.equalTo(btnLike)
+            make.height.equalTo(50.w)
             
         }
         
@@ -33,7 +36,8 @@ class EMCommunityToolView: UIView {
         btnShare.snp.makeConstraints { make in
             make.right.equalToSuperview()
             make.centerY.equalTo(btnLike)
-            
+            make.height.equalTo(50.w)
+            make.width.equalToSuperview().multipliedBy(1/4.0)
         }
     }
     
@@ -64,6 +68,7 @@ class EMCommunityToolView: UIView {
     lazy var btnShare : UIButton = {
         let btn = UIButton(type: .system,font: UIFont.Medium(size: 11),image: UIImage(named: "icon_community_share"),tintColor: .iconColor)
         btn.addTarget(self, action: #selector(onclickShare), for: .touchUpInside)
+        btn.contentHorizontalAlignment = .right
         return btn
     }()
     
@@ -92,8 +97,12 @@ class EMCommunityToolView: UIView {
     }
     
     @objc func onclickShare(){
-        let vc = EMPublishPage(forward: self.model)
-        vc.modalPresentationStyle = .fullScreen
-        UIUtil.visibleVC()?.present(vc, animated: true)
+        guard let invitation = URL(string: "https://app.ethtweet.io/#/tweet/detail?id=\(self.model.TwAddress)") else{
+            return
+        }
+        UIUtil.visibleVC()?.present(UIActivityViewController(
+            activityItems: [ invitation ],
+            applicationActivities: nil
+        ), animated: true)
     }
 }

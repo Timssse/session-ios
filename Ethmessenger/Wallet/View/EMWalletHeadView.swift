@@ -40,7 +40,7 @@ class EMWalletHeadView: UIView {
         
         self.addSubview(labUsd)
         labUsd.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(18.w)
+            make.left.equalToSuperview().offset(25.w)
             make.top.equalTo(labAssetTitle.snp.bottom).offset(6.w)
         }
         
@@ -97,7 +97,7 @@ class EMWalletHeadView: UIView {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
         }
-        let labContent = UILabel(font: UIFont.Medium(size: 12),textColor: .setting_icon_icon,text: lab)
+        let labContent = UILabel(font: UIFont.Medium(size: 12),textColor: .Color_white_616569,text: lab)
         view.addSubview(labContent)
         labContent.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -139,14 +139,19 @@ extension EMWalletHeadView{
         UIUtil.visibleNav()?.pushViewController(EMWalletManagePage(), animated: true)
     }
     
-    @objc func onclickTransfer(_ receiveAddress : String = ""){
+    @objc func onclickTransfer(){
+        self.pushTransferPage()
+    }
+    
+    
+    func pushTransferPage(_ address : String = ""){
         guard let network = EMNetworkModel.getNetwork() else{
             return
         }
         guard let token = EMTableToken.selectMainTokenWithChainId(network.chain_id) else{
             return
         }
-        UIUtil.visibleNav()?.pushViewController(EMTransferPage(token: token), animated: true)
+        UIUtil.visibleNav()?.pushViewController(EMTransferPage(token: token,receiveAddress: address), animated: true)
     }
     
     @objc func onclickReceive(){
@@ -157,7 +162,7 @@ extension EMWalletHeadView{
         let vc = EMScanViewController()
         vc.okayBlock = { [weak self] (_, code) in//扫描地址
             let address = code.split(separator: ":").last
-            self?.onclickTransfer(FS(address))
+            self?.pushTransferPage(FS(address))
         }
         vc.modalPresentationStyle = .overFullScreen
         UIUtil.visibleVC()?.present(vc, animated: true, completion: nil)

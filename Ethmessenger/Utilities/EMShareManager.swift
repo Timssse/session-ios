@@ -25,7 +25,7 @@ class EMShareManager{
     }
     
     
-    class func shareToPaltm(title: String,image: UIImage?,urlStr: String) {
+    class func shareToPaltm(title: String,image: UIImage?,urlStr: String,presentVC : UIViewController? = nil) {
            
            var items = [Any]()
            if title.count != 0 {
@@ -42,7 +42,8 @@ class EMShareManager{
            
            let vc = UIActivityViewController(activityItems: items, applicationActivities: nil)
          
-           if let nav = UIUtil.visibleVC() {
+        
+           if let nav = presentVC ?? UIUtil.visibleVC() {
                nav.present(vc, animated: true, completion: nil)
            }
 

@@ -741,3 +741,8 @@
 "LocalVersion" = "Version";
 "LocalUserAgreement" = "User Agreement";
 "LocalPrivacyAgreement" = "Privacy Agreement";
+"LocalSetting" = "Setting";
+"LocalLike" = "Like";
+"LocalReply" = "Reply";
+"LocalRepost" = "Repost";
+"LocalLikeYouMoment" = "Liked You Moment";

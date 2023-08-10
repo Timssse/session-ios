@@ -23,14 +23,14 @@ class EMCommunityCommentCell: BaseTableViewCell {
             make.top.equalTo(icon).offset(3.w)
         }
         
-        let more = UIButton(type: .system,image: UIImage(named: "icon_community_more"),tintColor: .setting_icon_icon)
-        more.addTarget(self, action: #selector(onclickMore(_:)), for: .touchUpInside)
-        self.contentView.addSubview(more)
-        more.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-25.w)
-            make.centerY.equalTo(labName)
-        }
-        
+//        let more = UIButton(type: .system,image: UIImage(named: "icon_community_more"),tintColor: .setting_icon_icon)
+//        more.addTarget(self, action: #selector(onclickMore(_:)), for: .touchUpInside)
+//        self.contentView.addSubview(more)
+//        more.snp.makeConstraints { make in
+//            make.right.equalToSuperview().offset(-25.w)
+//            make.centerY.equalTo(labName)
+//        }
+//
         self.contentView.addSubview(labContent)
         labContent.snp.makeConstraints { make in
             make.left.equalTo(labName)
@@ -84,15 +84,15 @@ class EMCommunityCommentCell: BaseTableViewCell {
         UIUtil.visibleNav()?.pushViewController(vc, animated: true)
     }
     
-    @objc func onclickMore(_ sender : UIButton){
-        var frame = sender.convert(sender.bounds, to: UIUtil.getWindow()!)
-        frame.origin.x -= 55.w
-        frame.origin.y += 31.w
-        frame.size = CGSize(width: 77.w, height: 35.w)
-        EMCommunityMoreView.share.show(UIUtil.getWindow()!,contentFrame: frame)
-        EMCommunityMoreView.share.reportBlock = {
-            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(), animated: true)
-        }
-    }
+//    @objc func onclickMore(_ sender : UIButton){
+//        var frame = sender.convert(sender.bounds, to: UIUtil.getWindow()!)
+//        frame.origin.x -= 55.w
+//        frame.origin.y += 31.w
+//        frame.size = CGSize(width: 77.w, height: 35.w)
+//        EMCommunityMoreView.share.show(UIUtil.getWindow()!,contentFrame: frame)
+//        EMCommunityMoreView.share.reportBlock = {
+//            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(type: .tweet, id: FS(self.model?.TwAddress)), animated: true)
+//        }
+//    }
 }
 

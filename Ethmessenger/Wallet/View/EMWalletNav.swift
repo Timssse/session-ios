@@ -29,7 +29,7 @@ class EMWalletNav: UIView {
         nav.addSubview(backBtn)
         backBtn.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()
-            make.width.equalTo(32.w)
+            make.width.equalTo(60.w)
         }
         
         nav.addSubview(chainView)

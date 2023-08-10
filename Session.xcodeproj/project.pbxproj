@@ -159,6 +159,13 @@
 		B92A7F632A80C4DD00DBBFB3 /* EMMomentsUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F622A80C4DD00DBBFB3 /* EMMomentsUserPage.swift */; };
 		B92A7F652A80C80600DBBFB3 /* EMAboutUsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F642A80C80600DBBFB3 /* EMAboutUsPage.swift */; };
 		B92A7F672A82119900DBBFB3 /* EMTradeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F662A82119900DBBFB3 /* EMTradeListModel.swift */; };
+		B92A7F692A8226C400DBBFB3 /* EMInviteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F682A8226C400DBBFB3 /* EMInviteVC.swift */; };
+		B92A7F6B2A82435A00DBBFB3 /* EMUserItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F6A2A82435A00DBBFB3 /* EMUserItemView.swift */; };
+		B92A7F6D2A8320EC00DBBFB3 /* EMLikePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F6C2A8320EC00DBBFB3 /* EMLikePage.swift */; };
+		B92A7F6F2A83216B00DBBFB3 /* EMLikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F6E2A83216B00DBBFB3 /* EMLikeCell.swift */; };
+		B92A7F712A832CDF00DBBFB3 /* EMCommunityLikeMeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F702A832CDF00DBBFB3 /* EMCommunityLikeMeEntity.swift */; };
+		B92A7F732A8342E800DBBFB3 /* EMReplyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F722A8342E800DBBFB3 /* EMReplyPage.swift */; };
+		B92A7F752A83639200DBBFB3 /* EMRepostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A7F742A83639200DBBFB3 /* EMRepostPage.swift */; };
 		B94278C72A70C61500D89310 /* EMUserCardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278C62A70C61500D89310 /* EMUserCardPage.swift */; };
 		B94278C92A71022A00D89310 /* EMShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278C82A71022A00D89310 /* EMShareManager.swift */; };
 		B94278CE2A712A2500D89310 /* EMWalletPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94278CD2A712A2500D89310 /* EMWalletPage.swift */; };
@@ -1309,6 +1316,13 @@
 		B92A7F622A80C4DD00DBBFB3 /* EMMomentsUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMMomentsUserPage.swift; sourceTree = "<group>"; };
 		B92A7F642A80C80600DBBFB3 /* EMAboutUsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAboutUsPage.swift; sourceTree = "<group>"; };
 		B92A7F662A82119900DBBFB3 /* EMTradeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMTradeListModel.swift; sourceTree = "<group>"; };
+		B92A7F682A8226C400DBBFB3 /* EMInviteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMInviteVC.swift; sourceTree = "<group>"; };
+		B92A7F6A2A82435A00DBBFB3 /* EMUserItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMUserItemView.swift; sourceTree = "<group>"; };
+		B92A7F6C2A8320EC00DBBFB3 /* EMLikePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMLikePage.swift; sourceTree = "<group>"; };
+		B92A7F6E2A83216B00DBBFB3 /* EMLikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMLikeCell.swift; sourceTree = "<group>"; };
+		B92A7F702A832CDF00DBBFB3 /* EMCommunityLikeMeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCommunityLikeMeEntity.swift; sourceTree = "<group>"; };
+		B92A7F722A8342E800DBBFB3 /* EMReplyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMReplyPage.swift; sourceTree = "<group>"; };
+		B92A7F742A83639200DBBFB3 /* EMRepostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRepostPage.swift; sourceTree = "<group>"; };
 		B936FFAD2A5BF7BD0038CD49 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		B936FFAF2A5BF7BE0038CD49 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		B936FFB12A5BF7BF0038CD49 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -2669,6 +2683,10 @@
 				B942792C2A77B6C400D89310 /* EMUserFollowerPage.swift */,
 				B94279302A77C3B200D89310 /* EMOtherUserPage.swift */,
 				B92A7F642A80C80600DBBFB3 /* EMAboutUsPage.swift */,
+				B92A7F682A8226C400DBBFB3 /* EMInviteVC.swift */,
+				B92A7F6C2A8320EC00DBBFB3 /* EMLikePage.swift */,
+				B92A7F722A8342E800DBBFB3 /* EMReplyPage.swift */,
+				B92A7F742A83639200DBBFB3 /* EMRepostPage.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -2684,6 +2702,7 @@
 		B920D6A02A6A6019008AD159 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B92A7F702A832CDF00DBBFB3 /* EMCommunityLikeMeEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2702,6 +2721,8 @@
 				B920D6D82A6FA9B3008AD159 /* EMThemeModeView.swift */,
 				B920D6DA2A6FC669008AD159 /* EMLanguageChangeView.swift */,
 				B942792E2A77B74E00D89310 /* EMUserFollowingCell.swift */,
+				B92A7F6A2A82435A00DBBFB3 /* EMUserItemView.swift */,
+				B92A7F6E2A83216B00DBBFB3 /* EMLikeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6230,6 +6251,7 @@
 				B98E5C0C2A611560007B421F /* UINavigationBar+Utilities.swift in Sources */,
 				B94279232A77626200D89310 /* EMRPCCell.swift in Sources */,
 				B98E5C162A611560007B421F /* MentionUtilities.swift in Sources */,
+				B92A7F692A8226C400DBBFB3 /* EMInviteVC.swift in Sources */,
 				B98E5C4B2A611560007B421F /* InputView.swift in Sources */,
 				B94278EC2A723A2D00D89310 /* EMWalletNav.swift in Sources */,
 				B94278D72A7204AF00D89310 /* EMTokenModel.swift in Sources */,
@@ -6309,6 +6331,7 @@
 				B98E5B9C2A611560007B421F /* AppearanceViewController.swift in Sources */,
 				B920D6502A654DEE008AD159 /* UIScreen+SGPagingView.swift in Sources */,
 				B98E5BA32A611560007B421F /* NewConversationViewModel.swift in Sources */,
+				B92A7F6D2A8320EC00DBBFB3 /* EMLikePage.swift in Sources */,
 				B98E5B732A611560007B421F /* EMTransferConfirmView.swift in Sources */,
 				B94278E82A721CB000D89310 /* EMAccount.swift in Sources */,
 				B98E5C7C2A611560007B421F /* PushRegistrationManager.swift in Sources */,
@@ -6316,6 +6339,7 @@
 				B98E5B8B2A611560007B421F /* NotificationSettingsViewModel.swift in Sources */,
 				B920D67A2A66ADE6008AD159 /* EMPhotoLookUtilities.swift in Sources */,
 				B98E5B792A611560007B421F /* Toast.swift in Sources */,
+				B92A7F712A832CDF00DBBFB3 /* EMCommunityLikeMeEntity.swift in Sources */,
 				B98E5B702A611560007B421F /* EMDappModel.swift in Sources */,
 				B92A7F612A809B0500DBBFB3 /* EMUserInfoCell.swift in Sources */,
 				B98E5C462A611560007B421F /* MentionSelectionView.swift in Sources */,
@@ -6401,6 +6425,7 @@
 				B98E5C3C2A611560007B421F /* InfoBanner.swift in Sources */,
 				B98E5B952A611560007B421F /* QRCodeVC.swift in Sources */,
 				B920D62E2A654B8A008AD159 /* EMLocalText.swift in Sources */,
+				B92A7F6F2A83216B00DBBFB3 /* EMLikeCell.swift in Sources */,
 				B98E5B8F2A611560007B421F /* BlockedContactsViewModel.swift in Sources */,
 				B920D6532A654DEE008AD159 /* SGPagingContentViewDelegate.swift in Sources */,
 				B98E5C302A611560007B421F /* ReactionView.swift in Sources */,
@@ -6450,6 +6475,7 @@
 				B920D6D32A6E8528008AD159 /* UIColor+Extension.swift in Sources */,
 				B98E5C202A611560007B421F /* CacheUtilites.swift in Sources */,
 				B920D6C72A6E47A0008AD159 /* PubMethod.swift in Sources */,
+				B92A7F732A8342E800DBBFB3 /* EMReplyPage.swift in Sources */,
 				B98E5C822A611560007B421F /* PNModeVC.swift in Sources */,
 				B98E5B562A611560007B421F /* CallVC+Camera.swift in Sources */,
 				B98E5B972A611560007B421F /* ThemeSelectionView.swift in Sources */,
@@ -6479,6 +6505,7 @@
 				B98E5BF32A611560007B421F /* SessionTableViewModel+NavItem.swift in Sources */,
 				B98E5C0B2A611560007B421F /* BackgroundPoller.swift in Sources */,
 				B98E5C542A611560007B421F /* NewClosedGroupVC.swift in Sources */,
+				B92A7F752A83639200DBBFB3 /* EMRepostPage.swift in Sources */,
 				B98E5BFC2A611560007B421F /* CaptionView.swift in Sources */,
 				B98E5B6A2A611560007B421F /* WebEthModel.swift in Sources */,
 				B98E5B7D2A611560007B421F /* EMChatSettingPage.swift in Sources */,
@@ -6532,6 +6559,7 @@
 				B920D6672A66395C008AD159 /* HttpRequest.swift in Sources */,
 				B98E5B932A611560007B421F /* SeedModal.swift in Sources */,
 				B98E5B892A611560007B421F /* EMBannerLayout.swift in Sources */,
+				B92A7F6B2A82435A00DBBFB3 /* EMUserItemView.swift in Sources */,
 				B98E5C582A611560007B421F /* EMJsonProtocol.swift in Sources */,
 				B920D6562A654DEE008AD159 /* SGPagingTitleViewConfigure.swift in Sources */,
 				B98E5BB12A611560007B421F /* Emoji+Available.swift in Sources */,

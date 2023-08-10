@@ -42,6 +42,7 @@ class EMAboutUsPage: BaseVC {
         }
         
         let twitter = createAgreementItem("Twitter")
+        twitter.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickTwitter)))
         contentView.addSubview(twitter)
         twitter.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-25.w)
@@ -50,21 +51,13 @@ class EMAboutUsPage: BaseVC {
             make.height.equalTo(55.w)
         }
         
-        let Telegarm = createAgreementItem("Telegarm")
-        contentView.addSubview(Telegarm)
-        Telegarm.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-25.w)
-            make.left.equalToSuperview().offset(25.w)
-            make.top.equalTo(twitter.snp.bottom)
-            make.height.equalTo(55.w)
-        }
-        
         let WebSite = createAgreementItem(LocalWebsite.localized())
+        WebSite.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onclickWebsite)))
         contentView.addSubview(WebSite)
         WebSite.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-25.w)
             make.left.equalToSuperview().offset(25.w)
-            make.top.equalTo(Telegarm.snp.bottom)
+            make.top.equalTo(twitter.snp.bottom)
             make.height.equalTo(55.w)
         }
     }
@@ -90,12 +83,9 @@ class EMAboutUsPage: BaseVC {
 
 extension EMAboutUsPage{
     @objc func onclickTwitter(){
-        UIApplication.shared.open(URL(string: "https://ethmessenger.app/")!,completionHandler: nil)
+        UIApplication.shared.open(URL(string: "https://twitter.com/EthMessengerApp")!,completionHandler: nil)
     }
     
-    @objc func onclickTelegarm(){
-        UIApplication.shared.open(URL(string: "https://ethmessenger.app/")!,completionHandler: nil)
-    }
     
     @objc func onclickWebsite(){
         UIApplication.shared.open(URL(string: "https://ethmessenger.app/")!,completionHandler: nil)

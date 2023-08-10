@@ -189,4 +189,51 @@ struct EMCommunityController{
         return ""
     }
     
+    static func report(id : String) async -> Bool{
+        do{
+            try await CommunityReportRequest(id: id).request()
+            return true
+        }catch{
+            Thread.safe_main {
+                Toast.toast(hit: error.localizedDescription)
+            }
+            return false
+        }
+    }
+    
+    static func likeListMe(_ page : Int = 0) async -> [EMCommunityLikeMeEntity]{
+        do{
+            guard let data = try await CommunityLikeMeRequest(page: page).request() as? HTTPList else{
+                return []
+            }
+            let relust = [EMCommunityLikeMeEntity].deserialize(from: data)
+            return (relust as? [EMCommunityLikeMeEntity]) ?? []
+        }catch{
+            return []
+        }
+    }
+    
+    static func replyListMe(_ page : Int = 0) async -> [EMCommunityLikeMeEntity]{
+        do{
+            guard let data = try await CommunityReplyMeRequest(page: page).request() as? HTTPList else{
+                return []
+            }
+            let relust = [EMCommunityLikeMeEntity].deserialize(from: data)
+            return (relust as? [EMCommunityLikeMeEntity]) ?? []
+        }catch{
+            return []
+        }
+    }
+    
+    static func repostListMe(_ page : Int = 0) async -> [EMCommunityLikeMeEntity]{
+        do{
+            guard let data = try await CommunityRepostMeRequest(page: page).request() as? HTTPList else{
+                return []
+            }
+            let relust = [EMCommunityLikeMeEntity].deserialize(from: data)
+            return (relust as? [EMCommunityLikeMeEntity]) ?? []
+        }catch{
+            return []
+        }
+    }
 }

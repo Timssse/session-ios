@@ -133,6 +133,8 @@ internal enum Theme_ClassicLight: ThemeColors {
         .forget_textView_bg : .color_FAFAFA,
         .heart : .color_F91880,
         .FF823B : .color_FF823B,
-        .Color_91979D_616569 : .color_91979D
+        .Color_91979D_616569 : .color_91979D,
+        .Color_F9FAFF_272727 : .color_F9FAFF,
+        .Color_white_616569 : .white
     ]
 }

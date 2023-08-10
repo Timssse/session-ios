@@ -48,6 +48,7 @@ class EMCommunityDetailPage: EMRefreshController {
     }
     
     override func layoutUI() {
+        self.title = LocalDetail.localized()
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -65,6 +66,7 @@ class EMCommunityDetailPage: EMRefreshController {
 
     lazy var tableView : UITableView = {
         let tableView = EMTableView(delegate: self, dataSource: self, backgroundColor: .conversationButton_background)
+        tableView.dealCorner(type: .topLeftRight, corner: 20.w)
         tableView.register(EMCommunitDetailHeadCell.self, forCellReuseIdentifier: "EMCommunitDetailHeadCell")
         tableView.register(EMCommunityCommentCell.self, forCellReuseIdentifier: "EMCommunityCommentCell")
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: Screen_width, height: 20.w))

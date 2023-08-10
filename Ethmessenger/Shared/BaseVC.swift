@@ -34,7 +34,7 @@ public class BaseVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = ""
-        view.themeBackgroundColor = .backgroundPrimary
+        view.themeBackgroundColor = .navBack
         ThemeManager.applyNavigationStylingIfNeeded(to: self)
         
         setNeedsStatusBarAppearanceUpdate()

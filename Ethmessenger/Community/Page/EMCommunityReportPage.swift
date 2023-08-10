@@ -1,15 +1,31 @@
 // Copyright © 2023 Rangeproof Pty Ltd. All rights reserved.
 
 import UIKit
+enum ReportType {
+    case user
+    case tweet
+}
 
 class EMCommunityReportPage: BaseVC {
+    var type : ReportType = .tweet
+    var id : String = ""
+    init(type:ReportType,id:String){
+        self.type = type
+        self.id = id
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     
     override func layoutUI() {
-        self.title = LocalForgotPassword.localized()
+        self.title = LocalReport.localized()
         
         let contentView = UIView(.wallet_bg)
         contentView.dealCorner(type: .topLeftRight, corner: 20.w)
@@ -58,17 +74,18 @@ class EMCommunityReportPage: BaseVC {
         text.font = UIFont.Medium(size: 14)
         return text
     }()
-    
 }
 
-
-
 extension EMCommunityReportPage : UITextViewDelegate{
-        
-    @objc func onclickSubmit(){
-        
-    }
     
+    @objc func onclickSubmit(){
+        Task{
+            let relust = await EMCommunityController.report(id:self.id)
+            if relust{
+                self.popPage()
+            }
+        }
+    }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if textView.text == LocalEnterDesc.localized() {
@@ -93,7 +110,7 @@ extension EMCommunityReportPage : UITextViewDelegate{
         }
         return true
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.textView.resignFirstResponder()
     }

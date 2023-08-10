@@ -248,7 +248,7 @@ extension EMSettingPage: UITableViewDelegate,UITableViewDataSource{
             }
         }
         
-        let lab = UILabel(font: UIFont.Bold(size: 16),textColor: .textPrimary,text: section == 1 ? "vc_settings_title".localized() : LocalChatSetting.localized())
+        let lab = UILabel(font: UIFont.Bold(size: 16),textColor: .textPrimary,text: section == 0 ? "vc_settings_title".localized() : LocalChatSetting.localized())
         bgView.addSubview(lab)
         lab.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(25.w)

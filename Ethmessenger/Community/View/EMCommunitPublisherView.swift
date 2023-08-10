@@ -83,7 +83,7 @@ class EMCommunitPublisherView: UIView {
         frame.size = CGSize(width: 77.w, height: 35.w)
         EMCommunityMoreView.share.show(UIUtil.getWindow()!,contentFrame: frame)
         EMCommunityMoreView.share.reportBlock = {
-            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(), animated: true)
+            UIUtil.visibleNav()?.pushViewController(EMCommunityReportPage(type: .tweet, id: FS(self.model.TwAddress)), animated: true)
         }
     }
 }

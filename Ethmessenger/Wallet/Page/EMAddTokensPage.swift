@@ -52,7 +52,7 @@ class EMAddTokensPage: BaseVC {
             make.height.equalTo(58.w)
         }
         
-        let labDecimals = UILabel.init(font:UIFont.Medium(size: 15),textColor:.textPrimary,text:LocalSymbol.localized())
+        let labDecimals = UILabel.init(font:UIFont.Medium(size: 15),textColor:.textPrimary,text:LocalDecimals.localized())
         contentView.addSubview(labDecimals)
         labDecimals.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(25.w)
@@ -67,7 +67,6 @@ class EMAddTokensPage: BaseVC {
             make.height.equalTo(58.w)
         }
     }
-
     
     lazy var textContract : UITextField = {
         let text = UITextField.init(LocalTokenContractPlaceholder.localized(),font:UIFont.Medium(size: 12),textColor:.textPrimary)
@@ -96,6 +95,10 @@ class EMAddTokensPage: BaseVC {
         text.delegate = self
         return text
     }()
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 extension EMAddTokensPage: UITextFieldDelegate{
@@ -114,13 +117,22 @@ extension EMAddTokensPage: UITextFieldDelegate{
     
     @discardableResult
     func getTokenInfo() async -> ERC20?{
+        
         guard let network = EMNetworkModel.getNetwork() else{
             return nil
         }
-        let chain = EMChain.init(chainId: network.chain_id)
-        guard let token = await EMWalletController.getTokenInfo(chain, token: self.textContract.text ?? "") else{
+        
+        if (self.textContract.text == ""){
             return nil
         }
+        
+        AnimationManager.shared.setAnimation(self.view)
+        let chain = EMChain.init(chainId: network.chain_id)
+        guard let token = await EMWalletController.getTokenInfo(chain, token: self.textContract.text ?? "") else{
+            AnimationManager.shared.removeAnimaition(self.view)
+            return nil
+        }
+        AnimationManager.shared.removeAnimaition(self.view)
         self.textDecimal.text = FS(token.decimals)
         self.textSymbol.text = FS(token.symbol)
         return token
